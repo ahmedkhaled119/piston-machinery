@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Industry — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .id-hero { position: relative; height: 257px; background: #fff; line-height: 1.35; }
+    .id-hero > img { position: absolute; right: 0; top: 0; width: 996px; max-width: 65%; }
+    .id-hero .container { position: relative; }
+    .id-hero .breadcrumb { padding: 15px 0 0 9px; font-size: 11px; color: #222; margin: 0; gap: 6px; }
+    .id-hero .ey { display: block; margin: 12px 0 0 21px; color: var(--red); font-weight: 600; font-size: 14px; letter-spacing: .3px; text-transform: uppercase; }
+    .id-hero h1 { font-size: 40px; font-weight: 700; line-height: .93; letter-spacing: .4px; margin: 2px 0 13px 21px; color: #111; }
+    .id-hero p { font-size: 13px; color: #2b2d32; margin: 0 0 10px 21px; max-width: 335px; line-height: 1.46; }
+    .id-hero .acts { margin-left: 21px; display: flex; gap: 20px; }
+    .id-hero .btn { padding: 8px 16px; font-size: 9.5px; gap: 14px; }
+    .id-hero .btn-w { background: #fff; border: 1px solid #e3e4e7; color: #111; }
+    .id-tabs { position: relative; z-index: 2; margin: 0 14px 0 8px; background: #fff; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,.06); padding: 19px 20px 7px 20px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+    .id-tabs a { border: 1px solid #ececef; border-radius: 3px; height: 62px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 7px; padding-bottom: 8px; font-size: 9px; font-weight: 700; color: #111; }
+    .id-tabs a img { height: 27px; }
+    .id-tabs a.on { border: 1.5px solid var(--red); border-bottom-width: 3px; color: var(--red); padding-bottom: 6px; }
+    .id-row1 { display: grid; grid-template-columns: 320px 1fr 347px; gap: 17px; margin: 9px 14px 0 8px; line-height: 1.35; }
+    .id-row2 { display: grid; grid-template-columns: 419px 351px 1fr; gap: 17px; margin: 11px 14px 10px 8px; line-height: 1.35; }
+    .id-box { background: #fff; border-radius: 4px; box-shadow: 0 1px 8px rgba(0,0,0,.06); padding: 10px 17px 12px; }
+    .id-box h3 { font-family: var(--font); font-size: 10.5px; font-weight: 700; letter-spacing: 0; margin: 0 0 10px; color: #111; }
+    .id-about p { font-size: 9.4px; color: #2b2d32; margin: 0 0 10px; line-height: 1.5; }
+    .id-about > img { width: 100%; display: block; border-radius: 2px; }
+    .id-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 21px 10px; margin-top: 15px; }
+    .id-feat div { display: flex; gap: 10px; align-items: flex-start; }
+    .id-feat img { width: 21px; height: 22px; object-fit: contain; flex: none; }
+    .id-feat b { display: block; font-size: 9.3px; }
+    .id-feat small { display: block; font-size: 8.4px; color: #555; line-height: 1.45; max-width: 105px; }
+    .id-proc { display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; margin: 0 -6px 18px; }
+    .id-proc > div { position: relative; }
+    .id-proc > div + div::before { content: "\2192"; position: absolute; left: -10px; top: 18px; font-size: 18px; color: #444; }
+    .id-proc .ic { position: relative; width: 63px; height: 60px; margin: 0 auto 4px; }
+    .id-proc .ic img { width: 63px; height: 60px; object-fit: contain; display: block; }
+    .id-proc .ic span { position: absolute; left: 50%; top: 2px; transform: translateX(-50%); width: 13px; height: 13px; border-radius: 50%; background: #d71920; color: #fff; font-size: 7px; font-weight: 700; display: grid; place-items: center; }
+    .id-proc b { display: block; font-size: 9.5px; }
+    .id-proc small { display: block; font-size: 7.8px; color: #555; line-height: 1.35; max-width: 84px; margin: 1px auto 0; }
+    .id-sol { display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr 26px 1fr 26px 1fr; align-items: end; text-align: center; margin: 4px -6px 0; }
+    .id-sol .arr, .id-pop .arr { font-size: 18px; color: #444; align-self: center; margin-top: -10px; }
+    .id-sol a, .id-pop a { color: #111; }
+    .id-sol .im { height: 58px; display: flex; align-items: flex-end; justify-content: center; }
+    .id-sol .im img { max-width: 100%; max-height: 58px; }
+    .id-sol b, .id-pop b { display: block; font-size: 10.5px; margin-top: 10px; }
+    .id-sol small, .id-pop small { display: block; font-size: 8.4px; color: #555; }
+    .id-detail { display: block; margin: 16px 0 0; text-align: center; color: var(--red); font-size: 10px; font-weight: 700; letter-spacing: .3px; }
+    .id-detail.bar { background: #f6f6f7; border-radius: 2px; padding: 6px; font-size: 8px; }
+    .id-ben .r { display: flex; gap: 18px; align-items: center; margin-bottom: 7px; }
+    .id-ben .r img { width: 22px; height: 22px; object-fit: contain; flex: none; margin-left: 5px; }
+    .id-ben .r b { display: block; font-size: 13px; line-height: 1.1; }
+    .id-ben .r small { font-size: 9px; color: #2b2d32; }
+    .id-exp { border-top: 6px solid #f4f4f5; margin: 6px -17px 0; padding: 7px 17px 0; }
+    .id-exp .row { display: grid; grid-template-columns: 86px 1fr; gap: 12px; }
+    .id-exp .row img { width: 86px; height: 82px; object-fit: contain; object-position: bottom; display: block; margin-bottom: -12px; }
+    .id-exp p { font-size: 9.6px; color: #2b2d32; margin: 4px 0 0; line-height: 1.6; max-width: 175px; }
+    .id-exp .btn { width: 100%; margin-top: 10px; padding: 8px 10px; font-size: 9.5px; gap: 10px; }
+    .id-apps .row { display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; margin: 14px -8px 0 -6px; padding-right: 8px; position: relative; }
+    .id-apps .row::after { content: "\203A"; position: absolute; right: -8px; top: 6px; color: #bbb; font-size: 14px; }
+    .id-apps img { width: 32px; height: 30px; object-fit: contain; display: block; margin: 0 auto 6px; }
+    .id-apps b { display: block; font-size: 7px; font-weight: 600; }
+    .id-story .card2 { display: grid; grid-template-columns: auto 1fr; gap: 13px; background: #f6f6f7; border-radius: 2px; margin: -1px 0 -6px; }
+    .id-story .card2 img { height: 78px; width: auto; max-width: 180px; display: block; }
+    .id-story .card2 div { padding: 4px 10px 6px 0; }
+    .id-story b { display: block; font-size: 9.5px; }
+    .id-story p { font-size: 8.2px; color: #2b2d32; margin: 5px 0 6px; line-height: 1.55; }
+    .id-story a { color: var(--red); font-size: 8.2px; font-weight: 700; }
+    .id-pop h3 { display: flex; justify-content: space-between; }
+    .id-pop h3 a { color: var(--red); font-size: 8.5px; font-weight: 600; text-transform: none; }
+    .id-pop .row { display: grid; grid-template-columns: 1fr 30px 1fr 30px 1fr 30px 1fr; align-items: end; text-align: center; margin-top: 8px; }
+    .id-pop .im { height: 44px; display: flex; align-items: flex-end; justify-content: center; }
+    .id-pop .im img { max-width: 100%; max-height: 44px; }
+    .id-pop b { margin-top: 6px; }
+    @media (max-width: 1100px) {
+      .id-hero { height: auto !important; display: flex; flex-direction: column; }
+      /* the image's lower part (baked tab strip) is hidden under the tabs on desktop → crop to the hero height */
+      .id-hero > img { position: static; order: 2; width: 100%; max-width: 100%; height: auto; aspect-ratio: 996 / var(--hh); object-fit: cover; object-position: top; margin-top: 14px; }
+      .id-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 12px 0 0; }
+      .id-tabs a { height: auto; min-height: 62px; padding: 8px 4px; text-align: center; }
+      .id-tabs a.on { padding-bottom: 6px; }
+      .id-row1, .id-row2 { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-left: 0; margin-right: 0; }
+      .id-row1 > :nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+      .id-row2 > :nth-child(3) { grid-column: 1 / -1; }
+      .id-tabs a { font-size: 12px; }
+      .id-box h3 { font-size: 13px; }
+      .id-about p, .id-exp p { font-size: 13px; max-width: none; }
+      .id-feat b { font-size: 12.5px; }
+      .id-feat small { font-size: 12px; max-width: none; }
+      .id-proc b { font-size: 12.5px; }
+      .id-proc small { font-size: 12px; }
+      .id-sol b, .id-pop b { font-size: 13px; }
+      .id-sol small, .id-pop small { font-size: 12px; }
+      .id-detail, .id-detail.bar { font-size: 12px; padding: 10px; }
+      .id-ben .r b { font-size: 16px; }
+      .id-ben .r small { font-size: 12px; }
+      .id-exp .row { grid-template-columns: 86px minmax(0, 1fr); }
+      .id-exp .btn { white-space: normal; font-size: 12px; }
+      .id-apps .row { gap: 14px 6px; }
+      .id-apps b { font-size: 12px; }
+      .id-story b { font-size: 13px; }
+      .id-story p, .id-story a, .id-pop h3 a { font-size: 12px; }
+      .id-pop h3 { gap: 12px; }
+    }
+    @media (max-width: 760px) {
+      .id-hero .breadcrumb { padding-left: 0; flex-wrap: wrap; }
+      .id-hero .ey, .id-hero h1, .id-hero p, .id-hero .acts { margin-left: 0; }
+      .id-hero h1 { font-size: 30px; line-height: 1; }
+      .id-hero p { font-size: 14px; max-width: none; }
+      .id-hero .acts { flex-wrap: wrap; gap: 10px; }
+      .id-hero .btn { flex: 1 1 200px; padding: 11px 14px; font-size: 12px; }
+      .id-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 10px; }
+      .id-row1, .id-row2 { grid-template-columns: minmax(0, 1fr); }
+      .id-row1 > :nth-child(2) { grid-row: auto; }
+      .id-proc { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; row-gap: 14px; margin: 0 0 18px; }
+      .id-proc > div + div::before, .id-sol .arr, .id-pop .arr, .id-apps .row::after { display: none; }
+      .id-sol, .id-pop .row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 16px; margin: 4px 0 0; }
+      .id-apps .row { grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 14px 0 0; padding: 0; }
+      .id-story .card2 { grid-template-columns: minmax(0, 1fr); }
+      .id-story .card2 img { width: 100%; height: 190px; max-width: none; object-fit: cover; }
+      .id-story .card2 div { padding: 0 12px 12px; }
+    }
+
+    /* Furniture (mockup 07.58.14, long-page layout measured at 1440px) */
+    .fu { line-height: 1.35; color: #16181b; }
+    .fu-hero { position: relative; height: 316px; background: #fafafa; overflow: hidden; }
+    .fu-hero .pic { position: absolute; right: 0; top: 0; bottom: 0; width: 913px; max-width: 64%; }
+    .fu-hero .pic img { width: 100%; height: 100%; object-fit: cover; object-position: left; display: block; }
+    .fu-hero .pic::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 30px; background: linear-gradient(90deg, #fafafa, rgba(250,250,250,0)); }
+    .fu-hero .in { position: relative; padding: 21px 0 0 58px; }
+    .fu-hero .breadcrumb { padding: 0; margin: 0; font-size: 11.5px; line-height: 14px; color: #222; gap: 8px; }
+    .fu-hero .breadcrumb b { font-weight: 600; }
+    .fu-hero .ey { display: block; margin-top: 16px; color: var(--red); font-size: 10px; line-height: 13px; font-weight: 600; letter-spacing: .3px; }
+    .fu-hero h1 { font-family: var(--font); font-size: 42.5px; line-height: 37.6px; font-weight: 700; letter-spacing: 0; margin: 9px 0 0; color: #111; }
+    .fu-hero p { font-size: 14px; line-height: 22.4px; color: #222; margin: 19px 0 0; max-width: 335px; }
+    .fu-stats { display: grid; grid-template-columns: 141px 155px 132px auto; margin-top: 41px; }
+    .fu-stats > div { display: flex; gap: 12px; align-items: center; height: 35px; }
+    .fu-stats > div + div { border-left: 1px solid #dcdcde; }
+    .fu-stats > div:nth-child(2) { padding-left: 25px; } .fu-stats > div:nth-child(3) { padding-left: 26px; } .fu-stats > div:nth-child(4) { padding-left: 17px; }
+    .fu-stats img { height: 35px; width: 32px; object-fit: contain; flex: none; }
+    .fu-stats b { display: block; font-size: 17px; line-height: 19px; }
+    .fu-stats small { display: block; font-size: 12px; color: #333; }
+    .fu-tabs { display: flex; align-items: center; height: 64px; background: #fff; border-bottom: 1px solid #ececee; padding-left: 58px; position: sticky; top: 0; z-index: 5; }
+    .fu-tabs a { position: relative; display: flex; align-items: center; gap: 10px; height: 100%; padding: 0 19px; font-size: 11px; font-weight: 600; letter-spacing: .3px; color: #222; text-transform: uppercase; }
+    .fu-tabs a + a { margin-left: 64px; }
+    .fu-tabs a + a::before { content: ""; position: absolute; left: -32px; top: 22px; height: 20px; border-left: 1px solid #dcdcde; }
+    .fu-tabs a img { height: 18px; width: 18px; object-fit: contain; }
+    .fu-tabs a.on { color: #111; }
+    .fu-tabs a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 2px; background: var(--red); }
+    .fu-tabs .btn { margin: 0 59px 0 auto; width: 170px; height: 35px; padding: 0; font-size: 11.5px; gap: 12px; }
+    .fu [id^="fu-"] { scroll-margin-top: 70px; }
+    .fu-ey { display: block; color: var(--red); font-size: 10px; line-height: 13px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; }
+    .fu-ey.lg { font-size: 11.5px; }
+    .fu-ov { display: grid; grid-template-columns: 486px repeat(4, 185px); padding: 31px 0 0 58px; }
+    .fu-ov h2 { font-family: var(--font); font-size: 30.8px; line-height: 31px; font-weight: 700; letter-spacing: 0; margin: 15px 0 0; }
+    .fu-ov p { font-size: 12.5px; line-height: 20px; color: #2b2d32; margin: 8px 0 0; max-width: 365px; }
+    .fu-ov .ft { border-left: 1px solid #e6e6e8; text-align: center; margin-top: 43px; padding: 0 12px; height: 104px; }
+    .fu-ov .ft img { height: 42px; width: 42px; object-fit: contain; display: block; margin: -19px auto 18px; }
+    .fu-ov .ft b { display: block; font-size: 12.5px; font-weight: 600; }
+    .fu-ov .ft small { display: block; font-size: 11px; line-height: 16px; color: #444; margin: 7px auto 0; max-width: 145px; }
+    .fu-gray { background: #f8f8fa; border-radius: 4px; margin: 0 51px 0 48px; }
+    .fu-ch { margin-top: 36px; padding: 23px 0 0 26px; height: 161px; }
+    .fu-ch ul { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: 216px 229px 213px 211px 211px 1fr; }
+    .fu-ch li { display: flex; gap: 15px; align-items: flex-start; }
+    .fu-ch li + li { border-left: 1px solid #e8e9eb; padding-left: 14px; }
+    .fu-ch .ci { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #f0d0d0; background: #fff; display: grid; place-items: center; flex: none; }
+    .fu-ch .ci img { width: 26px; height: 26px; object-fit: contain; }
+    .fu-ch b { display: block; font-size: 12px; }
+    .fu-ch small { display: block; font-size: 11px; line-height: 16px; color: #444; margin-top: 5px; max-width: 115px; }
+    .fu-sol { margin-top: 12px; padding: 26px 0 13px 26px; }
+    .fu-sol .top { display: grid; grid-template-columns: 171.5px repeat(5, 197px); column-gap: 18.5px; }
+    .fu-sol .lead { font-size: 13px; line-height: 17.5px; color: #2b2d32; margin: 14px 0 0; max-width: 172px; }
+    .fu-sc { display: flex; flex-direction: column; height: 238px; margin-top: 2px; background: #fff; border: 1px solid #ececee; border-radius: 4px; overflow: hidden; color: #16181b; }
+    .fu-sc img { width: 100%; height: 109px; object-fit: cover; display: block; flex: none; }
+    .fu-sc .bd { position: relative; flex: 1; padding: 7px 14px 10px 10px; }
+    .fu-sc i { display: block; font-style: normal; color: var(--red); font-size: 10px; font-weight: 700; }
+    .fu-sc b { display: block; font-size: 13px; margin-top: 3px; }
+    .fu-sc small { display: block; font-size: 12px; line-height: 16.5px; color: #333; margin-top: 7px; }
+    .fu-sc .ar { position: absolute; right: 12px; bottom: 8px; color: var(--red); font-size: 19px; }
+    .fu-all { display: block; width: 150px; height: 32px; line-height: 30px; margin: 13px auto 0; text-align: center; border: 1px solid var(--red); border-radius: 3px; background: #fff; color: var(--red); font-size: 10.5px; font-weight: 700; letter-spacing: .3px; position: relative; left: -11.5px; }
+    .fu-hd { display: flex; justify-content: space-between; align-items: center; padding-right: 21px; }
+    .fu-hd a { font-size: 11px; font-weight: 600; color: #16181b; }
+    .fu-hd a span { color: var(--red); margin-left: 6px; }
+    .fu-mac .fu-hd { margin-top: -5px; }
+    .fu-car { display: grid; grid-template-columns: 30px repeat(5, 243px) 30px; column-gap: 10px; align-items: center; margin: 14px 0 0 -24px; }
+    .fu-car > button { width: 30px; height: 31px; padding: 0; border: 1px solid #c9c9cc; border-radius: 3px; background: #fff; font-size: 22px; line-height: 1; color: #222; cursor: pointer; }
+    .fu-mc { height: 232px; background: #fff; border: 1px solid #ececee; border-radius: 4px; padding: 8px 14px 0 21px; color: #16181b; }
+    .fu-mc .im { height: 77px; display: flex; align-items: center; justify-content: center; }
+    .fu-mc .im img { max-height: 77px; max-width: 200px; }
+    .fu-mc b { display: block; font-size: 12px; margin-top: 23px; }
+    .fu-mc .ty { display: block; font-size: 11px; color: #333; margin-top: 2px; }
+    .fu-mc .sp { display: grid; grid-template-columns: 96px 1fr; margin-top: 12px; }
+    .fu-mc .sp > div + div { border-left: 1px solid #dcdcde; padding-left: 5px; }
+    .fu-mc .sp strong { display: block; font-size: 12px; }
+    .fu-mc .sp strong em { font-style: normal; color: var(--red); }
+    .fu-mc .sp small { display: block; font-size: 10.5px; color: #333; margin-top: 2px; }
+    .fu-mc .vd { display: block; margin-top: 13px; color: var(--red); font-size: 10px; font-weight: 700; }
+    .fu-cases { margin-top: 37px; }
+    .fu-cases .fu-hd { margin-left: -5px; }
+    .fu-cases .row { display: grid; grid-template-columns: repeat(3, 409px); column-gap: 19.5px; margin: 14px 0 0 -5px; }
+    .fu-kc { position: relative; display: block; height: 206px; border-radius: 4px; overflow: hidden; background: #0b0a08; color: #fff; }
+    .fu-kc img { width: 100%; height: 98px; object-fit: cover; display: block; }
+    .fu-kc::before { content: ""; position: absolute; left: 0; right: 0; top: 40px; height: 60px; background: linear-gradient(rgba(11,10,8,0), #0b0a08); }
+    .fu-kc .tx { position: absolute; left: 21px; right: 21px; top: 106px; }
+    .fu-kc b { display: block; font-size: 12.5px; }
+    .fu-kc small { display: block; font-size: 11px; line-height: 16px; color: #d6d6d8; margin-top: 7px; max-width: 250px; }
+    .fu-kc span { display: block; font-size: 10px; font-weight: 700; margin-top: 14px; letter-spacing: .2px; }
+    .fu-imp { position: relative; display: grid; grid-template-columns: 237px 187px 194px 195px 181px 176px; height: 129px; margin: 13px 45px 0 43px; background: #0c1016; border-radius: 4px; color: #fff; overflow: hidden; }
+    .fu-imp > img { position: absolute; right: 3px; top: 2px; width: 176px; height: 127px; }
+    .fu-imp .lt { padding: 25px 0 0 31px; }
+    .fu-imp h3 { font-family: var(--font); font-size: 13px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .fu-imp p { font-size: 11px; line-height: 18px; color: #cfd2d6; margin: 14px 0 0; }
+    .fu-imp .st { border-left: 1px solid #262a31; text-align: center; height: 95px; margin-top: 17px; padding-top: 11px; }
+    .fu-imp .st img { height: 31px; width: 31px; object-fit: contain; display: block; margin: 0 auto 6px; }
+    .fu-imp .st b { display: block; font-size: 13.5px; }
+    .fu-imp .st small { display: block; font-size: 11px; color: #cfd2d6; margin-top: 8px; }
+    .fu-cta { position: relative; height: 100px; margin-top: 15px; background: #b70507; color: #fff; display: flex; align-items: center; overflow: hidden; }
+    .fu-cta > img { position: absolute; right: 0; top: 0; height: 100%; width: 288px; }
+    .fu-cta .tx { position: relative; width: 712px; padding-left: 50px; box-sizing: border-box; }
+    .fu-cta h2 { font-family: var(--font); font-size: 19.2px; font-weight: 700; letter-spacing: .2px; margin: 0; }
+    .fu-cta p { font-size: 12.5px; margin: 8px 0 0; color: #f6dede; }
+    .fu-cta .btn { position: relative; height: 40px; padding: 0; font-size: 11px; gap: 12px; border-radius: 3px; }
+    .fu-cta .btn-w { width: 177px; background: #fff; color: var(--red); }
+    .fu-cta .btn-o { width: 197px; margin-left: 32px; background: transparent; border: 1px solid #fff; color: #fff; }
+    .fu-cta .btn-o svg { width: 15px; height: 15px; }
+    @media (max-width: 1400px) {
+      .fu-tabs a { padding: 0 12px; }
+      .fu-tabs a + a { margin-left: 24px; }
+      .fu-tabs a + a::before { left: -12px; }
+      .fu-tabs .btn { margin-right: 28px; }
+      .fu-ov { grid-template-columns: minmax(0, 486fr) repeat(4, minmax(0, 185fr)); padding-right: 40px; }
+      .fu-ch { padding-right: 16px; }
+      .fu-ch ul { grid-template-columns: minmax(0, 216fr) minmax(0, 229fr) minmax(0, 213fr) minmax(0, 211fr) minmax(0, 211fr) minmax(0, 220fr); }
+      .fu-sol { padding-right: 26px; }
+      .fu-sol .top { grid-template-columns: minmax(0, 171.5fr) repeat(5, minmax(0, 197fr)); }
+      .fu-sc { height: auto; min-height: 238px; }
+      .fu-car { grid-template-columns: 30px repeat(5, minmax(0, 1fr)) 30px; }
+      .fu-mc { height: auto; min-height: 232px; padding: 8px 10px 12px 14px; }
+      .fu-mc .im img { max-width: 100%; }
+      .fu-mc .sp { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+      .fu-mc .sp strong { overflow-wrap: anywhere; }
+      .fu-cases .row { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-right: 21px; }
+      .fu-imp { grid-template-columns: minmax(0, 237fr) repeat(4, minmax(0, 190fr)) minmax(0, 176fr); }
+    }
+    @media (max-width: 1100px) {
+      .fu-hero { height: auto; display: flex; flex-direction: column; }
+      .fu-hero .pic { position: static; order: 2; width: 100%; max-width: none; margin-top: 20px; }
+      .fu-hero .pic img { height: auto; aspect-ratio: 619 / 216; object-position: right; }
+      .fu-hero .pic::before { display: none; }
+      .fu-hero .in { padding: 18px 18px 0; }
+      .fu-tabs { padding-left: 6px; overflow-x: auto; scrollbar-width: thin; }
+      .fu-tabs a, .fu-tabs .btn { flex: none; }
+      .fu-tabs .btn { margin: 0 18px 0 24px; }
+      .fu-ov { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 28px 18px 0; }
+      .fu-ov > div:first-child { grid-column: 1 / -1; }
+      .fu-ov p { max-width: 640px; }
+      .fu-ov .ft:nth-child(2) { border-left: 0; }
+      .fu-gray { margin: 0 18px; }
+      .fu-ch { height: auto; padding: 23px 20px; }
+      .fu-ch ul { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 22px; }
+      .fu-ch li + li { border-left: 0; padding-left: 0; }
+      .fu-ch small { max-width: none; }
+      .fu-sol { padding: 26px 20px 20px; }
+      .fu-sol .top { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 16px; }
+      .fu-sol .lead { max-width: none; }
+      .fu-all { left: 0; }
+      .fu-car { display: flex; gap: 12px; overflow-x: auto; margin: 14px 0 0; padding-bottom: 8px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+      .fu-car > button { display: none; }
+      .fu-mc { flex: 0 0 240px; scroll-snap-align: start; }
+      .fu-hd { padding-right: 0; gap: 12px; flex-wrap: wrap; }
+      .fu-cases .fu-hd, .fu-cases .row { margin-left: 0; margin-right: 0; }
+      .fu-imp { grid-template-columns: repeat(5, minmax(0, 1fr)); height: auto; margin: 13px 18px 0; padding-bottom: 18px; }
+      .fu-imp .lt { grid-column: 1 / -1; padding: 22px 24px 0; }
+      .fu-imp > img { opacity: .35; }
+      .fu-imp .st:nth-child(3) { border-left: 0; }
+      .fu-cta { height: auto; flex-wrap: wrap; gap: 12px; padding: 20px 18px; }
+      .fu-cta > img { opacity: .35; }
+      .fu-cta .tx { width: 100%; padding-left: 0; }
+      .fu-cta .btn-o { margin-left: 0; }
+    }
+    @media (max-width: 760px) {
+      .fu-hero .breadcrumb { flex-wrap: wrap; }
+      .fu-hero h1 { font-size: 34px; line-height: 1.05; }
+      .fu-hero p { max-width: none; }
+      .fu-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 14px; margin-top: 24px; }
+      .fu-stats > div:nth-child(n) { padding-left: 0; border-left: 0; }
+      .fu-stats > div:nth-child(even) { padding-left: 14px; border-left: 1px solid #dcdcde; }
+      .fu-tabs { height: 52px; }
+      .fu-tabs a { font-size: 12px; }
+      .fu-ey, .fu-ey.lg { font-size: 12px; }
+      .fu-ov { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
+      .fu-ov h2 { font-size: 26px; line-height: 1.15; }
+      .fu-ov p { font-size: 14px; line-height: 1.55; }
+      .fu-ov .ft:nth-child(even) { border-left: 0; }
+      .fu-ov .ft { height: auto; padding-bottom: 12px; }
+      .fu-ov .ft small { font-size: 12px; }
+      .fu-ch ul { grid-template-columns: minmax(0, 1fr); }
+      .fu-ch small { font-size: 12px; }
+      .fu-sol .top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .fu-sol .top > div:first-child { grid-column: 1 / -1; }
+      .fu-sc { min-height: 0; }
+      .fu-sc .bd { padding-bottom: 30px; }
+      .fu-hd a { font-size: 12px; }
+      .fu-mac .fu-hd { margin-top: 20px; }
+      .fu-cases .row { grid-template-columns: minmax(0, 1fr); row-gap: 14px; }
+      .fu-kc small { max-width: none; }
+      .fu-imp { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .fu-imp > img { display: none; }
+      .fu-imp .st, .fu-imp .st:nth-child(3) { border-left: 0; border-top: 1px solid #262a31; height: auto; margin: 14px 12px 0; padding: 12px 0 0; }
+      .fu-imp p { font-size: 12px; }
+      .fu-cta h2 { font-size: 18px; }
+      .fu-cta .btn-w, .fu-cta .btn-o { flex: 1 1 170px; width: auto; }
+    }
+    @media (max-width: 480px) {
+      .fu-sol .top { grid-template-columns: minmax(0, 1fr); }
+      .fu-sc img { height: 130px; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="industries" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+  <main id="page"></main>
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Page content transcribed from the industry mockups (06.30.19 … 06.35.36).
+    const IND = {
+      cabinet: {
+        bar: true,
+        lead: "From precise cutting to perfect finishing, Piston provides integrated solutions that help cabinet manufacturers achieve higher quality, greater efficiency and lower costs.",
+        about: "Modern cabinet manufacturing requires precision, consistency and efficiency. Piston's integrated solutions are designed to streamline your workflow from the first cut to the final assembly.",
+        features: [["Perfect Finishing", "High quality edges and perfect joints"], ["Design Flexibility", "Handle custom designs with ease"], ["Material Optimization", "Reduce waste and save material costs"], ["Scalable Solutions", "Solutions for workshops and large factories"]],
+        proc: [["Panel Cutting", "Accurate sizing and optimization"], ["Edge Banding", "Seamless edges and perfect finish"], ["Drilling", "Precise holes for hardware fitting"], ["Assembly", "Fast and accurate assembly"], ["Quality Control", "Ensure highest quality standards"], ["Packing", "Secure packing and delivery"]],
+        sol: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press"], ["", "PWB 110", "Panel Saw"]],
+        benefits: [["+25%", "Increase in Production Capacity"], ["-20%", "Reduction in Material Waste"], ["+30%", "Improvement in Efficiency"], ["High Quality", "Perfect finishing & accuracy"]],
+        expert: "Our engineering team will help you build the right solution for your cabinet manufacturing needs.",
+        apps: ["Kitchen Cabinets", "Wardrobes", "Office Furniture", "Bathroom Cabinets", "Storage Solutions", "Custom Cabinets"],
+        story: ["Modern Cabinets Co.", "Increased production capacity by 28% and reduced production time by 18% using Piston's integrated solution.", "cairo-cabinets"],
+        pop: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press"]]
+      },
+      door: {
+        heroH: 266,
+        lead: "From raw panel processing to finishing, Piston provides integrated solutions for high-quality door manufacturing with precision, efficiency and reliability.",
+        about: "Piston solutions help door manufacturers achieve consistent quality, smooth finishes and higher production efficiency from start to finish.",
+        features: [["High Accuracy", "Precise cuts and perfect component fit"], ["Smooth Finishing", "Superior surface quality ready for assembly"], ["Process Efficiency", "Optimized workflow and reduced cycle time"], ["Cost Optimization", "Lower scrap rate and better material usage"]],
+        proc: [["Panel Cutting", "Cutting panels to required dimensions"], ["Edge Processing", "Edge banding or molding application"], ["Grooving & Routing", "Lock, hinge & handle preparation"], ["Assembly", "Frame and panel assembly"], ["Sanding", "Surface preparation for finishing"], ["Finishing", "Painting, laminating or veneering"]],
+        sol: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["cnc2500", "CS 2500", "CNC Router"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press"]],
+        benefits: [["+30%", "Increase in Production Capacity"], ["-20%", "Reduction in Material Waste"], ["+25%", "Improvement in Efficiency"], ["High Consistency", "Perfect doors, every time"]],
+        expert: "Our engineering team will design the best solution for your door production needs.",
+        apps: ["Interior Doors", "Entry Doors", "Flush Doors", "Panel Doors", "Molded Doors", "Custom Doors"],
+        story: ["Elite Doors Factory", "By implementing Piston's integrated solution, Elite Doors increased production capacity by 32% and reduced material waste by 18%.", "warsaw-doors"],
+        pop: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["cnc2500", "PCS 2500", "CNC Router"]]
+      },
+      interior: {
+        heroH: 256,
+        lead: "From panels to perfect interiors, Piston delivers integrated solutions for kitchens, wardrobes, wall panels, office furniture and custom interior applications with precision and efficiency.",
+        about: "Piston solutions enable interior manufacturers to create high-quality, customized interiors with seamless workflow, excellent finishing and maximum material utilization.",
+        features: [["Premium Quality", "Exceptional finishing and accuracy"], ["Design Flexibility", "Handle complex and custom designs"], ["Efficient Workflow", "Integrated solutions for smooth production"], ["Higher Profitability", "Reduce waste and increase output"]],
+        proc: [["Panel Cutting", "Precision cutting and sizing"], ["Edge Banding", "Seamless edges for perfect finish"], ["CNC Processing", "Drilling, grooving & shaping"], ["Assembly", "Fast and accurate assembly"], ["Finishing", "Surface preparation and sanding"], ["Quality Control", "Inspection and final check"], ["Packaging", "Safe packing and delivery"]],
+        sol: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["cnc2500", "CNC 2500", "CNC Router"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press"]],
+        benefits: [["+28%", "Increase in Production Capacity"], ["-18%", "Reduction in Material Waste"], ["+30%", "Improvement in Efficiency"], ["High Quality", "Perfect interiors, every time"]],
+        expert: "Our engineering team will help you build the right solution for your interior production needs.",
+        apps: ["Kitchens", "Wardrobes", "Wall Panels", "Office Furniture", "Retail Interiors", "Custom Interiors"],
+        story: ["Premium Interiors Co.", "Increased production capacity by 32% and reduced material waste by 20% using Piston's integrated solution.", "dubai-interior"],
+        pop: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["cnc2500", "CNC 2500", "CNC Router"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press"]]
+      },
+      workshops: {
+        heroH: 252,
+        labels: { cta: "Build Your Workshop Solution", procT: "TYPICAL WORKSHOP PROCESS", solT: "RECOMMENDED WORKSHOP SETUP", detailT: "VIEW DETAILED WORKSHOP SETUP", expBtn: "Get a Workshop Solution", appsT: "POPULAR APPLICATIONS", popT: "POPULAR MACHINES FOR WORKSHOPS" },
+        lead: "Empower your workshop with reliable, precise and easy-to-use machinery. Piston solutions help woodworking professionals work smarter, produce better and grow their business.",
+        about: "Whether you're a small workshop or a growing business, Piston provides the right machines to help you cut, shape, join and finish wood with confidence.",
+        features: [["Versatile Solutions", "Machines for every need and application"], ["Compact & Efficient", "Save space without compromising power"], ["Affordable Productivity", "Increase output and grow your business"], ["Easy Maintenance", "Simple maintenance less downtime"]],
+        proc: [["Cutting", "Accurate cutting for perfect size"], ["Planing / Thicknessing", "Smooth and consistent wood thickness"], ["Jointing", "Flat and straight edges"], ["Drilling", "Precise holes for joints and fittings"], ["Assembly", "Strong and accurate assembly"], ["Finishing", "Perfect finish and final touch"]],
+        sol: [["r32", "R32", "Sliding Table Saw"], ["", "JPT 310", "Planer Thicknesser"], ["", "J6H", "Jointer"], ["", "MZ73031A", "Multi Boring Machine"], ["", "DS 24", "Dust Collector"]],
+        benefits: [["+25%", "Increase in Productivity"], ["-20%", "Reduction in Material Waste"], ["+30%", "Improvement in Efficiency"], ["High Reliability", "Built to work, every day"]],
+        expert: "Our woodworking experts will help you build the perfect workshop setup for your needs and budget.",
+        apps: ["Custom Furniture", "Wooden Decor", "Shelving Units", "Tables & Chairs", "Wood Art & Crafts", "Repairs & Renovations"],
+        story: ["WoodCraft Workshop", "Upgraded their workshop with Piston machines and increased productivity by 28% while improving product quality.", "casablanca-workshop"],
+        pop: [["r32", "R32", "Sliding Table Saw"], ["", "JPT 310", "Planer Thicknesser"], ["", "J6H", "Jointer"], ["", "MZ73031A", "Multi Boring Machine"], ["", "DS 24", "Dust Collector"]]
+      },
+      industrial: {
+        heroH: 263,
+        labels: { procT: "TYPICAL INDUSTRIAL PRODUCTION PROCESS", detailT: "VIEW DETAILED PRODUCTION LINE" },
+        lead: "Piston delivers high-performance machinery and integrated production solutions for industrial manufacturers seeking precision, efficiency, automation and scalability.",
+        about: "Piston solutions are designed for industrial manufacturers who demand precision, speed and reliability in high-volume production.",
+        features: [["High Productivity", "Increase output and meet demanding targets"], ["Process Stability", "Consistent quality in every production cycle"], ["Scalable Solutions", "From standalone machines to complete lines"], ["Lower Total Cost", "Reduce operating costs and maximize ROI"]],
+        proc: [["Material Handling", "Efficient loading and material preparation"], ["Cutting / Processing", "High-speed cutting and shaping"], ["Edge / Surface", "Edge banding and surface processing"], ["Drilling / Machining", "Precision drilling and CNC machining"], ["Assembly", "Automated and manual assembly"], ["Quality Control", "In-line inspection and testing"], ["Packaging & Shipping", "Safe packaging and logistics"]],
+        sol: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["cnc2500", "CNC 2500", "CNC Router"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press"], ["", "Conveyor System", "Material Handling"]],
+        benefits: [["+35%", "Increase in Production Capacity"], ["-25%", "Reduction in Downtime"], ["+40%", "Improvement in Overall Efficiency"], ["High Reliability", "Built for 24/7 industrial operation"]],
+        expert: "Our industrial experts will help you design the right production solution for your factory.",
+        apps: ["Panel Processing", "Metal to Wood Applications", "Industrial Furniture", "Custom Components", "High Volume Production", "Automated Lines"],
+        story: ["Industrial Panels Co.", "Increased production capacity by 38% and reduced downtime by 27% using Piston's integrated production line.", "riyadh-panels"],
+        pop: [["r32", "R32", "Sliding Table Saw"], ["peb368", "PEB 368", "Edge Banding Machine"], ["pbd21", "PBD 21", "Multi Boring Machine"], ["cnc2500", "CNC 2500", "CNC Router"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press"]]
+      },
+      // Furniture has its own long-page mockup (07.58.14) → rendered by renderFurniture().
+      furniture: {
+        layout: "long",
+        lead: "Complete solutions for modern furniture production from start to finish.",
+        stats: [["24+", "Ready Solutions"], ["1250+", "Installations"], ["80+", "Countries"], ["Tailored", "For Your Needs"]],
+        tabs: [["overview", "Overview"], ["challenges", "Challenges"], ["solutions", "Solutions"], ["machines", "Recommended Machines"], ["cases", "Case Studies"]],
+        heading: ["Build Better Furniture.", "Boost Your Productivity."],
+        about: "From solid wood to panel processing, Piston provides advanced machinery and complete solutions to help furniture manufacturers increase efficiency, improve quality and stay competitive.",
+        features: [["High Precision", "Achieve perfect accuracy in every cut and edge."], ["Reliable Performance", "Heavy-duty machines built for continuous use."], ["Maximum Productivity", "Optimize workflows and reduce production time."], ["End-to-End Support", "From planning to after-sales service, we're with you."]],
+        challenges: [["Complex Production", "Multiple processes and machines lead to inefficiencies."], ["Quality Consistency", "Maintaining the same high quality across every product."], ["Material Waste", "Inefficient cutting and handling increase material waste."], ["Skilled Labor", "Finding and retaining skilled labor is increasingly difficult."], ["Delivery Time", "Tight deadlines require faster turnaround and reliable planning."], ["Cost Control", "Rising costs demand smarter production and resource usage."]],
+        solLead: "Integrated solutions designed for every stage of your furniture production.",
+        solutions: [["saws", "Panel Processing", "High-performance machines for cutting, sizing and shaping wood-based panels."], ["edge", "Edge Banding", "Perfect finishing with precision edge banding solutions for durability and design."], ["drill", "Drilling & Routing", "Advanced drilling and routing for accurate holes, grooves and intricate details."], ["press", "Assembly & Finishing", "Streamline assembly and finishing processes for a flawless final product."], ["other", "Automation & Software", "Smart software and automation to optimize planning, nesting and production flow."]],
+        machines: [["r32", "PISTON R32", "Sliding Table Saw", "5.5", "3200 mm", "Cutting Length"], ["peb368", "PEB 368", "Edge Banding Machine", "11", "0.4 – 3 mm", "Edge Thickness"], ["pbd21", "PBD 21", "Multi Boring Machine", "3", "21 Spindles", "Drilling Heads"], ["pvpm2500", "PVPM 2500", "Vacuum Membrane Press", "7.5", "2500 x 1300 mm", "Table Size"], ["pj1300", "PJ 1300", "Panel Saw", "5.5", "1300 mm", "Cutting Length"]],
+        stories: [["istanbul-automation", "Modern Furniture Factory", "Increased production capacity by 45% with Piston integrated solution."], ["bucharest-expansion", "Premium Cabinet Manufacturer", "Reduced material waste by 30% and improved accuracy with Piston machinery."], ["casablanca-workshop", "Custom Woodworks", "Complete workshop transformation with Piston machines and support."]],
+        impact: [["1250+", "Installations"], ["80+", "Countries Worldwide"], ["24+", "Ready Solutions"], ["98%", "Customer Satisfaction"], ["24/7", "Global Support"]]
+      }
+    };
+
+    function renderFurniture(i, c) {
+      const { qs, qsa, esc } = P;
+      const A = "assets/img/industry/furniture/";
+      const ids = c.machines.map((m) => m[0]).join(",");
+      qs("#page").innerHTML = `<div class="fu">
+      <section class="fu-hero">
+        <div class="pic"><img src="${A}hero.png" alt="Piston SPEED EDGE edge banding line in a furniture factory"></div>
+        <div class="in">
+          <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="industries.html">Industries &amp; Solutions</a><span>›</span><b>${esc(i.name)}</b></div>
+          <span class="ey">INDUSTRY</span>
+          <h1>FURNITURE<br>MANUFACTURING</h1>
+          <p>${esc(c.lead)}</p>
+          <div class="fu-stats">${c.stats.map(([v, l], n) => `<div><img src="${A}st-${n + 1}.png" alt=""><span><b>${v}</b><small>${l}</small></span></div>`).join("")}</div>
+        </div>
+      </section>
+      <nav class="fu-tabs">${c.tabs.map(([id, t], n) => `<a href="#fu-${id}" class="${n ? "" : "on"}"><img src="${A}t-${n + 1}.png" alt="">${t}</a>`).join("")}
+        <button class="btn btn-red" data-wa-quote data-items="${ids}" data-source="${esc(i.name)}">Request a Quote <span>→</span></button></nav>
+
+      <section class="fu-ov" id="fu-overview">
+        <div><span class="fu-ey">Overview</span><h2>${c.heading.join("<br>")}</h2><p>${esc(c.about)}</p></div>
+        ${c.features.map(([t, d], n) => `<div class="ft"><img src="${A}o-${n + 1}.png" alt=""><b>${t}</b><small>${d}</small></div>`).join("")}
+      </section>
+
+      <section class="fu-gray fu-ch" id="fu-challenges"><span class="fu-ey lg">Challenges We Solve</span>
+        <ul>${c.challenges.map(([t, d], n) => `<li><span class="ci"><img src="${A}c-${n + 1}.png" alt=""></span><span><b>${t}</b><small>${d}</small></span></li>`).join("")}</ul>
+      </section>
+
+      <div class="fu-gray fu-sol">
+        <section class="top" id="fu-solutions">
+          <div><span class="fu-ey lg">Our Solutions</span><p class="lead">${esc(c.solLead)}</p></div>
+          ${c.solutions.map(([cat, t, d], n) => `<a class="fu-sc" href="products.html?cat=${cat}"><img src="${A}sol-${n + 1}.png" alt="${t}"><div class="bd"><i>0${n + 1}</i><b>${t}</b><small>${d}</small><span class="ar">→</span></div></a>`).join("")}
+        </section>
+        <a class="fu-all" href="industries.html">VIEW ALL SOLUTIONS</a>
+
+        <section class="fu-mac" id="fu-machines">
+          <div class="fu-hd"><span class="fu-ey lg">Recommended Machines</span><a href="products.html">View All Machines<span>→</span></a></div>
+          <div class="fu-car"><button type="button" data-car="-1" aria-label="Previous">‹</button>
+            ${c.machines.map(([id, m, t, kw, v, l], n) => `<a class="fu-mc" href="product.html?id=${id}"><div class="im"><img src="${A}m-${n + 1}.png" alt="${m}"></div><b>${m}</b><span class="ty">${t}</span>
+              <div class="sp"><div><strong><em>${kw}</em> kW</strong><small>Power</small></div><div><strong>${v}</strong><small>${l}</small></div></div><span class="vd">VIEW DETAILS &nbsp;→</span></a>`).join("")}
+            <button type="button" data-car="1" aria-label="Next">›</button></div>
+        </section>
+
+        <section class="fu-cases" id="fu-cases">
+          <div class="fu-hd"><span class="fu-ey lg">Success Stories</span><a href="case-studies.html">View All Case Studies<span>→</span></a></div>
+          <div class="row">${c.stories.map(([id, t, d], n) => `<a class="fu-kc" href="case-study.html?id=${id}"><img src="${A}k-${n + 1}.png" alt=""><div class="tx"><b>${t}</b><small>${d}</small><span>READ CASE STUDY &nbsp;→</span></div></a>`).join("")}</div>
+        </section>
+      </div>
+
+      <section class="fu-imp"><img src="${A}imp-bg.png" alt="">
+        <div class="lt"><h3>INDUSTRY IMPACT</h3><p>We help furniture manufacturers<br>worldwide achieve more every day.</p></div>
+        ${c.impact.map(([v, l], n) => `<div class="st"><img src="${A}i-${n + 1}.png" alt=""><b>${v}</b><small>${l}</small></div>`).join("")}
+      </section>
+      </div>
+
+      <section class="fu-cta"><img src="${A}cta-bg.png" alt="">
+        <div class="tx"><h2>READY TO TRANSFORM YOUR FURNITURE PRODUCTION?</h2><p>Let our experts design the right solution for your business.</p></div>
+        <button class="btn btn-w" data-wa-quote data-items="${ids}" data-source="${esc(i.name)} CTA">Request a Quote <span>→</span></button>
+        <a class="btn btn-o" href="talk-to-engineer.html?type=custom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg>Talk to an Engineer</a>
+      </section>`;
+
+      const tabs = qsa(".fu-tabs a");
+      tabs.forEach((a) => a.addEventListener("click", () => tabs.forEach((t) => t.classList.toggle("on", t === a))));
+      const car = qs(".fu-car");
+      car.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-car]"); if (!b) return;
+        const cards = qsa(".fu-mc", car);
+        if (b.dataset.car === "1") cards[cards.length - 1].after(cards[0]); else cards[0].before(cards[cards.length - 1]);
+      });
+    }
+
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, esc, param } = P;
+      const slug = IND[param("slug")] ? param("slug") : "cabinet";
+      const i = D.industries.find((x) => x.slug === slug);
+      const c = IND[slug];
+      if (c.layout === "long") { document.title = `${i.name} — PISTON`; renderFurniture(i, c); return; }
+      const L = { cta: "Build Your Production Line", procT: "TYPICAL PRODUCTION PROCESS", solT: "RECOMMENDED PISTON SOLUTION", detailT: "VIEW DETAILED SOLUTION", expBtn: "Get a Custom Solution", appsT: "APPLICATIONS", ...c.labels };
+      const A = `assets/img/industry/${slug}/`;
+      const name = i.name;
+      const known = (id) => id && D.products.some((p) => p.id === id);
+      const href = (id) => (known(id) ? `product.html?id=${id}` : "products.html");
+      const ids = c.sol.map((s) => s[0]).filter(known).join(",");
+      const cols = (n, gap) => Array(n).fill("1fr").join(` ${gap}px `);
+      document.title = `${name} — PISTON`;
+
+      qs("#page").innerHTML = `
+      <section class="id-hero" style="height:${c.heroH || 257}px;--hh:${c.heroH || 257}">
+        <img src="${A}hero.png" alt="${esc(name)} — Why Piston: high precision, maximum productivity, reliable &amp; durable, global support">
+        <div class="container">
+          <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="industries.html">Industries &amp; Solutions</a><span>›</span>${esc(name)}</div>
+          <span class="ey">${esc(name)}</span>
+          <h1>Complete Solutions for<br>${esc(name)}</h1>
+          <p>${esc(c.lead)}</p>
+          <div class="acts">
+            <button class="btn btn-red" data-quote-add="${ids}" data-go="1">${L.cta} <span>→</span></button>
+            <button class="btn btn-w" onclick="P.toast('Brochure PDF — demo')">Download Brochure <span>⤓</span></button>
+          </div>
+        </div>
+      </section>
+
+      <div class="container">
+        <nav class="id-tabs">${D.industries.map((x) => `<a class="${x.slug === slug ? "on" : ""}" href="${IND[x.slug] ? "industry" : "industries"}.html?slug=${x.slug}"><img src="assets/img/industry/${x.slug === slug ? `${slug}/tab-on` : `tabs/off-${x.slug}`}.png" alt="">${esc(x.name)}</a>`).join("")}</nav>
+
+        <section class="id-row1">
+          <div class="id-box id-about">
+            <h3>ABOUT ${esc(name.toUpperCase())}</h3>
+            <p>${esc(c.about)}</p>
+            <img src="${A}about.png" alt="${esc(name)}">
+            <div class="id-feat">${c.features.map(([t, d], n) => `<div><img src="${A}f-${n + 1}.png" alt=""><span><b>${t}</b><small>${d}</small></span></div>`).join("")}</div>
+          </div>
+          <div class="id-box">
+            <h3>${L.procT}</h3>
+            <div class="id-proc" style="grid-template-columns:repeat(${c.proc.length},1fr)">${c.proc.map(([t, d], n) => `<div><div class="ic"><img src="${A}p-${n + 1}.png" alt=""><span>${n + 1}</span></div><b>${t}</b><small>${d}</small></div>`).join("")}</div>
+            <h3>${L.solT}</h3>
+            <div class="id-sol" style="grid-template-columns:${cols(c.sol.length, 26)}">${c.sol.map(([id, m, t], n) => `${n ? '<span class="arr">→</span>' : ""}<a href="${href(id)}"><div class="im"><img src="${A}s-${n + 1}.png" alt="${m}"></div><b>${m}</b><small>${t}</small></a>`).join("")}</div>
+            <a class="id-detail${c.bar ? " bar" : ""}" href="industries.html?slug=${slug}">${L.detailT} &nbsp;→</a>
+          </div>
+          <div class="id-box id-ben">
+            <h3>KEY BENEFITS</h3>
+            ${c.benefits.map(([v, l], n) => `<div class="r"><img src="${A}b-${n + 1}.png" alt=""><span><b>${v}</b><small>${l}</small></span></div>`).join("")}
+            <div class="id-exp">
+              <h3>TALK TO AN EXPERT</h3>
+              <div class="row"><img src="${A}expert.png" alt="Piston engineer"><div><p>${esc(c.expert)}</p><a class="btn btn-red" href="talk-to-engineer.html?type=custom">${L.expBtn} &nbsp;→</a></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="id-row2">
+          <div class="id-box id-apps"><h3>${L.appsT}</h3>
+            <div class="row">${c.apps.map((a, n) => `<div><img src="${A}a-${n + 1}.png" alt=""><b>${a}</b></div>`).join("")}</div></div>
+          <div class="id-box id-story"><h3>SUCCESS STORIES</h3>
+            <div class="card2"><img src="${A}story.png" alt="${esc(c.story[0])}"><div><b>${esc(c.story[0])}</b><p>${esc(c.story[1])}</p><a href="case-study.html?id=${c.story[2]}">VIEW CASE STUDY &nbsp;→</a></div></div></div>
+          <div class="id-box id-pop"><h3>${L.popT || `POPULAR MACHINES FOR ${esc(name.toUpperCase())}`}<a href="products.html">View All Machines</a></h3>
+            <div class="row" style="grid-template-columns:${cols(c.pop.length, 30)}">${c.pop.map(([id, m, t], n) => `${n ? '<span class="arr">→</span>' : ""}<a href="${href(id)}"><div class="im"><img src="${A}m-${n + 1}.png" alt="${m}"></div><b>${m}</b><small>${t}</small></a>`).join("")}</div></div>
+        </section>
+      </div>`;
+    });
+  </script>
+</body>
+</html>

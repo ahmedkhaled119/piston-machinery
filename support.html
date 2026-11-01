@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technical Support — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .sp-hero { position: relative; background: linear-gradient(90deg, #0d0f12 0%, #14171b 45%, #1c1f24 100%); color: #fff; height: 173px; overflow: hidden; }
+    .sp-hero > img { position: absolute; right: 0; top: 0; height: 100%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%); mask-image: linear-gradient(90deg, transparent 0, #000 14%); }
+    .sp-hero .container { position: relative; padding-top: 22px; }
+    .sp-hero h1 { font-size: 40px; margin: 0 0 6px; padding-left: 40px; }
+    .sp-hero p { font-size: 15px; color: #e5e6e9; max-width: 440px; margin: 0 0 14px 40px; line-height: 1.35; }
+    .sp-search { display: flex; align-items: center; gap: 14px; width: 422px; margin-left: 40px; border: 1px solid #8a8c92; border-radius: 3px; padding: 0 16px; background: rgba(0,0,0,.25); }
+    .sp-search svg { width: 20px; color: #fff; }
+    .sp-search input { flex: 1; background: none; border: 0; color: #fff; font: inherit; font-size: 13.5px; padding: 11px 0; outline: none; }
+    .sp-search input::placeholder { color: #e5e6e9; }
+    .sp-tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 15px; }
+    .sp-tiles a { display: flex; gap: 14px; align-items: center; background: #fff; border: 1px solid #e6e7ea; border-radius: 4px; padding: 12px 14px; line-height: 1.35; }
+    .sp-tiles a:hover { border-color: var(--red); }
+    .sp-tiles img { width: 34px; height: 34px; object-fit: contain; flex: none; }
+    .sp-tiles b { display: block; font-size: 13px; margin-bottom: 4px; }
+    .sp-tiles small { font-size: 11px; color: #34363b; white-space: nowrap; }
+    .sp-tiles a::after { content: "›"; margin-left: auto; font-size: 20px; color: #333; }
+    .sp-find { margin-top: 12px; background: #fff; border: 1px solid #e6e7ea; border-radius: 4px; padding: 10px 28px; display: grid; grid-template-columns: auto 1fr 306px 344px 230px; gap: 22px; align-items: center; line-height: 1.35; }
+    .sp-find > img { width: 64px; }
+    .sp-find h3 { font-family: var(--font); font-size: 19px; text-transform: none; letter-spacing: 0; margin-bottom: 6px; }
+    .sp-find p { font-size: 12.5px; margin: 0; color: #2b2d32; }
+    .sp-find label { font-size: 10.5px; font-weight: 700; display: block; margin-bottom: 6px; }
+    .sp-find label span { font-weight: 400; }
+    .sp-sel { display: flex; align-items: center; gap: 12px; border: 1px solid #d4d5d9; border-radius: 3px; padding: 5px 12px; height: 52px; position: relative; }
+    .sp-sel img { width: 84px; }
+    .sp-sel b { display: block; font-size: 12.5px; }
+    .sp-sel small { font-size: 11.5px; }
+    .sp-sel select { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    .sp-sel::after { content: "⌄"; margin-left: auto; font-size: 16px; }
+    .sp-sn { display: flex; align-items: center; border: 1px solid #d4d5d9; border-radius: 3px; height: 38px; padding: 0 0 0 12px; }
+    .sp-sn input { flex: 1; border: 0; font: inherit; font-size: 12.5px; outline: none; }
+    .sp-sn img { height: 18px; padding: 0 12px; border-left: 1px solid #d4d5d9; }
+    .sp-sn button { display: flex; align-self: stretch; align-items: center; background: none; border: 0; padding: 0; cursor: help; }
+    .sp-find label a { float: right; font-weight: 600; color: var(--red); }
+    .sp-find label a:hover { text-decoration: underline; }
+    .sp-snhelp ol { margin: 10px 0 0 18px; padding: 0; font-size: 13.5px; line-height: 1.6; }
+    .sp-find .btn { height: 38px; align-self: end; font-size: 12.5px; gap: 10px; }
+    .sp-main { display: grid; grid-template-columns: 384px 1fr 300px; gap: 14px; margin-top: 12px; align-items: start; line-height: 1.35; }
+    .sp-box { background: #fff; border: 1px solid #e6e7ea; border-radius: 4px; padding: 14px 18px; }
+    .sp-box .hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .sp-box .hd h4 { font-family: var(--font); font-size: 15px; text-transform: none; letter-spacing: 0; margin: 0; }
+    .sp-box .hd a { color: var(--red); font-size: 11.5px; font-weight: 600; }
+    .sp-mach { display: flex; gap: 16px; align-items: center; margin-bottom: 8px; }
+    .sp-mach img { width: 118px; }
+    .sp-mach b { display: block; font-size: 13px; }
+    .sp-mach u { font-size: 12.5px; }
+    .sp-res { display: flex; align-items: center; gap: 16px; border: 1px solid #ececef; border-radius: 3px; padding: 4px 10px; margin-bottom: 4px; }
+    .sp-res img { width: 24px; height: 24px; object-fit: contain; }
+    .sp-res b { display: block; font-size: 12px; }
+    .sp-res small { font-size: 11px; color: #34363b; }
+    .sp-res button { margin-left: auto; width: 30px; height: 30px; border: 1px solid #e6e7ea; background: #fff; border-radius: 3px; font-size: 14px; }
+    .sp-vids { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sp-vids a { border: 1px solid #ececef; border-radius: 3px; overflow: hidden; }
+    .sp-vids img { width: 100%; display: block; }
+    .sp-vids b { display: block; font-size: 12.5px; padding: 6px 10px 0; }
+    .sp-vids small { display: block; font-size: 11.5px; color: #34363b; padding: 2px 10px 8px; }
+    .sp-topics { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .sp-topics a { border: 1px solid #ececef; border-radius: 3px; text-align: center; padding: 8px 6px 8px; font-size: 11.5px; line-height: 1.3; }
+    .sp-topics a:hover { border-color: var(--red); }
+    .sp-topics img { height: 32px; margin: 0 auto 8px; }
+    .sp-assist { background: #fdf2f2; border: 1px solid #f3d7d7; border-radius: 4px; padding: 16px 22px 18px; }
+    .sp-assist .t { display: flex; gap: 14px; align-items: center; }
+    .sp-assist img { width: 46px; }
+    .sp-assist h4 { font-family: var(--font); font-size: 16px; text-transform: none; letter-spacing: 0; margin: 0; }
+    .sp-assist b { display: block; font-size: 12.5px; margin: 4px 0 8px 60px; }
+    .sp-assist p { font-size: 11.5px; color: #34363b; margin: 0 0 14px 10px; }
+    .sp-assist .btn { width: 100%; padding: 12px; font-size: 12.5px; gap: 10px; }
+    .sp-reach { display: flex; gap: 16px; align-items: center; padding: 6px 0; border-bottom: 1px solid #ececef; }
+    .sp-reach:last-child { border-bottom: 0; }
+    .sp-reach img { width: 34px; height: 34px; object-fit: contain; border: 1px solid #ececef; border-radius: 3px; padding: 6px; }
+    .sp-reach b { display: block; font-size: 12px; }
+    .sp-reach small { font-size: 11px; color: #34363b; }
+    .sp-band { display: flex; align-items: center; gap: 18px; margin: 10px 0 0; background: #f4f4f6; border: 1px solid #e6e7ea; border-radius: 4px; padding: 6px 76px; line-height: 1.35; }
+    .sp-band img { width: 30px; }
+    .sp-band b { display: block; font-size: 13px; }
+    .sp-band small { font-size: 12px; }
+    .sp-band .btn { margin-left: auto; padding: 12px 44px; font-size: 13px; gap: 12px; }
+    @media (max-width: 1400px) {
+      .sp-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .sp-find { grid-template-columns: auto minmax(0, 1fr) minmax(0, 306px) minmax(0, 344px) auto; gap: 18px; padding: 10px 20px; }
+      .sp-main { grid-template-columns: minmax(0, 340px) minmax(0, 1fr) minmax(0, 280px); }
+    }
+    @media (max-width: 1280px) {
+      .sp-find { grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); }
+      .sp-find > div:first-of-type { grid-column: 2 / -1; }
+      .sp-find > div:nth-of-type(2) { grid-column: 1 / 3; }
+      .sp-find .btn { grid-column: 1 / -1; justify-self: end; padding: 0 28px; }
+      .sp-topics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 1100px) { .sp-tiles { grid-template-columns: repeat(2, 1fr); } .sp-find, .sp-main { grid-template-columns: 1fr; } .sp-topics { grid-template-columns: repeat(3, 1fr); } .sp-hero > img { opacity: .3; } }
+    @media (max-width: 1100px) {
+      .sp-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sp-find > div:first-of-type, .sp-find > div:nth-of-type(2), .sp-find .btn { grid-column: auto; }
+      .sp-find .btn { justify-self: stretch; }
+      .sp-find > img { display: none; }
+    }
+    @media (max-width: 760px) {
+      .sp-hero { height: auto; padding-bottom: 20px; }
+      .sp-hero > img { opacity: .15; }
+      .sp-hero h1 { font-size: 32px; padding-left: 0; margin-top: 24px; }
+      .sp-hero p { margin-left: 0; }
+      .sp-search { width: auto; max-width: 422px; margin-left: 0; }
+      .sp-tiles small { white-space: normal; }
+      .sp-find { padding: 14px 16px; gap: 14px; }
+      .sp-box, .sp-assist { padding: 14px; }
+      .sp-vids { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .sp-band { flex-wrap: wrap; padding: 14px 16px; }
+      .sp-band .btn { margin-left: 0; width: 100%; justify-content: center; }
+      .sp-assist b { margin-left: 0; }
+      .sp-assist p { margin-left: 0; }
+      .sp-reach b { overflow-wrap: anywhere; }
+    }
+    @media (max-width: 480px) {
+      .sp-tiles { grid-template-columns: minmax(0, 1fr); }
+      .sp-vids { grid-template-columns: minmax(0, 1fr); }
+      .sp-tiles small, .sp-res small, .sp-reach small, .sp-topics a, .sp-vids small, .sp-assist p { font-size: 12px; }
+      .sp-res b, .sp-reach b, .sp-vids b { font-size: 13px; }
+      .sp-res button { width: 36px; height: 36px; }
+      .sp-sel img { width: 64px; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="support" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="sp-hero">
+    <img src="assets/img/support/hero.png" alt="">
+    <div class="container">
+      <h1>Technical Support</h1>
+      <p>Everything you need to operate, maintain, and get the most from your Piston machinery.</p>
+      <form class="sp-search" action="search.html"><svg viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input name="q" placeholder="Search manuals, parts, videos, FAQ..."></form>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="sp-tiles">
+      <a href="#res"><img src="assets/img/support/tile-1.png" alt=""><span><b>User Manuals</b><small>Download machine manuals</small></span></a>
+      <a href="#res"><img src="assets/img/support/tile-2.png" alt=""><span><b>Maintenance</b><small>Maintenance guides &amp; schedules</small></span></a>
+      <a href="spare-parts.html"><img src="assets/img/support/tile-3.png" alt=""><span><b>Spare Parts</b><small>Find genuine Piston parts</small></span></a>
+      <a href="videos.html"><img src="assets/img/support/tile-4.png" alt=""><span><b>Videos</b><small>Installation &amp; operation videos</small></span></a>
+      <a href="technical-support.html"><img src="assets/img/support/tile-5.png" alt=""><span><b>Technical Support</b><small>Contact our engineers</small></span></a>
+      <a href="faq.html"><img src="assets/img/support/tile-6.png" alt=""><span><b>FAQ</b><small>Get quick answers</small></span></a>
+    </div>
+
+    <section class="sp-find">
+      <img src="assets/img/support/find.png" alt="">
+      <div><h3>Find Support for Your Machine</h3><p>Get machine-specific documentation, guides and parts information.</p></div>
+      <div><label>Select Machine<a href="products.html">Browse all machines</a></label><div class="sp-sel"><img id="selImg" src="assets/img/support/mach-r32.png" alt=""><span><b id="selModel">PISTON R32</b><small id="selName">Sliding Table Saw</small></span><select id="mach" aria-label="Select machine"></select></div></div>
+      <div><label>Model / Serial Number <span>(Optional)</span></label><div class="sp-sn"><input id="sn" placeholder="Enter model or serial number" aria-label="Model or serial number"><button type="button" id="snHelp" title="Where to find your serial number?" aria-label="Where to find your serial number?"><img src="assets/img/support/barcode.png" alt=""></button></div></div>
+      <button class="btn btn-red" id="find"><svg viewBox="0 0 24 24" style="width:18px"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Find Support</button>
+    </section>
+
+    <section class="sp-main">
+      <div class="sp-box" id="res">
+        <div class="hd"><h4>Featured Resources</h4><a href="#">View All &nbsp;→</a></div>
+        <div class="sp-mach"><img id="resImg" src="assets/img/support/res-r32.png" alt=""><span><b id="resModel">PISTON R32</b><u id="resName">Sliding Table Saw</u></span></div>
+        <div id="resList"></div>
+      </div>
+      <div>
+        <div class="sp-box">
+          <div class="hd"><h4>Video Center</h4><a href="videos.html">View All &nbsp;→</a></div>
+          <div class="sp-vids" id="vids"></div>
+        </div>
+        <div class="sp-box" style="margin-top:12px">
+          <div class="hd"><h4>Common Support Topics</h4><a href="faq.html">View All &nbsp;→</a></div>
+          <div class="sp-topics">
+            <a href="faq.html"><img src="assets/img/support/topic-1.png" alt="">Installation<br>Support</a>
+            <a href="faq.html"><img src="assets/img/support/topic-2.png" alt="">Operation<br>Guidelines</a>
+            <a href="faq.html"><img src="assets/img/support/topic-3.png" alt="">Maintenance<br>Schedules</a>
+            <a href="spare-parts.html"><img src="assets/img/support/topic-4.png" alt="">Part<br>Replacement</a>
+            <a href="#res"><img src="assets/img/support/topic-5.png" alt="">Software<br>Updates</a>
+            <a href="#res"><img src="assets/img/support/topic-6.png" alt="">Safety<br>Instructions</a>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <div class="sp-assist">
+          <div class="t"><img src="assets/img/support/assist.png" alt=""><h4>Technical Assistance</h4></div>
+          <b>Need help from a Piston engineer?</b><p>Our technical team is ready to support you.</p>
+          <a class="btn btn-red" href="technical-support.html">✉ &nbsp;Contact Support</a>
+        </div>
+        <div class="sp-box" style="margin-top:12px">
+          <div class="hd"><h4>Other Ways to Reach Us</h4></div>
+          <div class="sp-reach"><img src="assets/img/support/reach-1.png" alt=""><span><b data-setting="phone"></b><small id="hrs"></small></span></div>
+          <div class="sp-reach"><img src="assets/img/support/reach-2.png" alt=""><span><b>support@piston-machinery.com</b><small>We reply within 24 hours</small></span></div>
+          <a class="sp-reach" href="contact.html"><img src="assets/img/support/reach-3.png" alt=""><span><b>Global Service Network</b><small>Local support in your region</small></span><span style="margin-left:auto;font-size:18px">›</span></a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="sp-band">
+      <img src="assets/img/support/shield.png" alt="">
+      <div><b>Genuine Piston Support. Total Peace of Mind.</b><small>Keep your machines running at peak performance.</small></div>
+      <a class="btn btn-red" href="spare-parts.html">Explore Spare Parts &nbsp;→</a>
+    </section>
+  </main>
+
+  <div id="site-footer" style="margin-top:0"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, S, qs, esc, param, product } = P;
+      const R = "assets/img/support/";
+      const h = S.hours.find((x) => x.channel === "Technical Support");
+      qs("#hrs").textContent = `${h.days.replace("Sunday", "Sun").replace("Thursday", "Thu")}, ${h.time} (Cairo Time)`;
+      qs("#mach").innerHTML = D.products.map((p) => `<option value="${p.id}">${esc(p.model)} — ${esc(p.name)}</option>`).join("");
+      const docs = [["User Manual", "Complete operating instructions"], ["Installation Guide", "Step-by-step installation"], ["Maintenance Guide", "Preventive maintenance schedule"], ["Electrical Diagram", "Electrical & pneumatic schematics"], ["Troubleshooting Guide", "Common issues and solutions"]];
+      const vids = [["Machine Overview", "Main features and components"], ["Blade Setup & Adjustment", "Complete setup procedure"], ["Daily Maintenance", "Keep your machine in top condition"]];
+      function apply(id) {
+        const p = product(id), short = p.model.replace("PISTON ", "");
+        const art = P.productImg(p);
+        const pic = id === "r32" ? null : art.startsWith("<img") ? `assets/img/products/${id}.png` : `data:image/svg+xml;charset=utf-8,${encodeURIComponent(art.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg"'))}`;
+        qs("#selModel").textContent = qs("#resModel").textContent = p.model;
+        qs("#selName").textContent = qs("#resName").textContent = p.name;
+        qs("#selImg").src = pic || R + "mach-r32.png"; qs("#resImg").src = pic || R + "res-r32.png";
+        qs("#resList").innerHTML = docs.map(([t, d], i) => `<div class="sp-res"><img src="${R}res-${i + 1}.png" alt=""><span><b>${t}</b><small>${d}</small></span><button aria-label="Download ${t}" onclick="P.toast('${t} (PDF) — demo download')">⤓</button></div>`).join("");
+        qs("#vids").innerHTML = vids.map(([t, d], i) => `<a href="videos.html"><img src="${R}vid-${i + 1}.png" alt=""><b>${short} - ${t}</b><small>${d}</small></a>`).join("");
+      }
+      qs("#mach").onchange = () => apply(qs("#mach").value);
+      qs("#find").onclick = () => {
+        // A typed model or serial prefix (e.g. "R32-2024-001234") selects the matching machine.
+        const sn = qs("#sn").value.trim().toUpperCase().replace(/\s+/g, "");
+        const hit = sn && D.products.find((p) => sn.startsWith(p.model.replace("PISTON ", "").toUpperCase().replace(/\s+/g, "")));
+        if (hit) qs("#mach").value = hit.id;
+        else if (sn) P.toast("Model not recognised — showing the selected machine");
+        apply(qs("#mach").value); qs("#res").scrollIntoView({ behavior: "smooth" });
+      };
+      qs("#sn").onkeydown = (e) => { if (e.key === "Enter") qs("#find").click(); };
+      qs("#snHelp").onclick = () => P.modal(`<div class="sp-snhelp"><h3>Where to find your serial number?</h3><ol>
+        <li>Check the metal type plate on the machine frame, usually near the main switch or control cabinet.</li>
+        <li>The serial starts with the model, e.g. <b>R32-2024-001234</b>.</li>
+        <li>It is also printed on your invoice and delivery documents.</li></ol>
+        <p class="muted" style="font-size:12.5px;margin-top:12px">Can't find it? <a href="technical-support.html" style="color:var(--red)">Contact Technical Support</a>.</p></div>`);
+      const pre = param("machine"); if (pre && product(pre)) qs("#mach").value = pre;
+      apply(qs("#mach").value);
+    });
+  </script>
+</body>
+</html>

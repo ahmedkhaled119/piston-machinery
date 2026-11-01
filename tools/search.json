@@ -1,0 +1,22 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.41.54.png",
+  "out": "src/demo/assets/img/search",
+  "items": [
+    { "name": "hero.png", "box": [560, 57, 1536, 214] },
+    { "name": "m-r32.png", "box": [294, 296, 414, 368], "trim": true },
+    { "name": "m-r42.png", "box": [548, 296, 668, 368], "trim": true },
+    { "name": "m-r32se.png", "box": [794, 296, 912, 368], "trim": true },
+    { "name": "m-r28.png", "box": [1040, 296, 1152, 368], "trim": true },
+    { "name": "i-len.png", "box": [420, 366, 432, 378], "trim": true, "scale": 2 },
+    { "name": "i-motor.png", "box": [420, 380, 432, 392], "trim": true, "scale": 2 },
+    { "name": "s-1.png", "box": [296, 468, 414, 568] },
+    { "name": "s-2.png", "box": [554, 468, 668, 568] },
+    { "name": "s-3.png", "box": [799, 468, 915, 568] },
+    { "name": "s-4.png", "box": [1048, 468, 1166, 568] },
+    { "name": "pdf.png", "box": [302, 618, 350, 680], "trim": true, "scale": 2 },
+    { "name": "p-1.png", "box": [294, 730, 384, 810], "trim": true },
+    { "name": "p-2.png", "box": [536, 728, 608, 812], "trim": true },
+    { "name": "p-3.png", "box": [776, 732, 874, 808], "trim": true },
+    { "name": "p-4.png", "box": [1034, 736, 1114, 804], "trim": true }
+  ]
+}

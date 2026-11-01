@@ -1,0 +1,351 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 06.31.33.png",
+ "out": "src/demo/assets/img/industry/door",
+ "items": [
+  {
+   "name": "hero.png",
+   "box": [
+    540,
+    57,
+    1536,
+    335
+   ]
+  },
+  {
+   "name": "about.png",
+   "box": [
+    47,
+    499,
+    329,
+    596
+   ]
+  },
+  {
+   "name": "f-1.png",
+   "box": [
+    50,
+    612,
+    75,
+    638
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "f-2.png",
+   "box": [
+    196,
+    612,
+    222,
+    638
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "f-3.png",
+   "box": [
+    50,
+    660,
+    75,
+    686
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "f-4.png",
+   "box": [
+    196,
+    660,
+    222,
+    686
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "p-1.png",
+   "box": [
+    388,
+    446,
+    450,
+    507
+   ]
+  },
+  {
+   "name": "p-2.png",
+   "box": [
+    518,
+    446,
+    580,
+    507
+   ]
+  },
+  {
+   "name": "p-3.png",
+   "box": [
+    647,
+    446,
+    709,
+    507
+   ]
+  },
+  {
+   "name": "p-4.png",
+   "box": [
+    777,
+    446,
+    839,
+    507
+   ]
+  },
+  {
+   "name": "p-5.png",
+   "box": [
+    905,
+    446,
+    967,
+    507
+   ]
+  },
+  {
+   "name": "p-6.png",
+   "box": [
+    1033,
+    446,
+    1095,
+    507
+   ]
+  },
+  {
+   "name": "s-1.png",
+   "box": [
+    378,
+    598,
+    482,
+    652
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-2.png",
+   "box": [
+    533,
+    600,
+    634,
+    652
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-3.png",
+   "box": [
+    686,
+    598,
+    768,
+    652
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-4.png",
+   "box": [
+    820,
+    593,
+    932,
+    652
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-5.png",
+   "box": [
+    983,
+    598,
+    1085,
+    652
+   ],
+   "trim": true
+  },
+  {
+   "name": "b-1.png",
+   "box": [
+    1163,
+    442,
+    1193,
+    472
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "b-2.png",
+   "box": [
+    1163,
+    484,
+    1193,
+    514
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "b-3.png",
+   "box": [
+    1163,
+    527,
+    1193,
+    557
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "b-4.png",
+   "box": [
+    1163,
+    570,
+    1193,
+    600
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "expert.png",
+   "box": [
+    1158,
+    650,
+    1234,
+    736
+   ]
+  },
+  {
+   "name": "a-1.png",
+   "box": [
+    52,
+    772,
+    88,
+    820
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-2.png",
+   "box": [
+    114,
+    772,
+    150,
+    820
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-3.png",
+   "box": [
+    176,
+    772,
+    212,
+    820
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-4.png",
+   "box": [
+    239,
+    772,
+    275,
+    820
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-5.png",
+   "box": [
+    300,
+    772,
+    336,
+    820
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-6.png",
+   "box": [
+    363,
+    772,
+    399,
+    820
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "story.png",
+   "box": [
+    450,
+    770,
+    630,
+    851
+   ]
+  },
+  {
+   "name": "m-1.png",
+   "box": [
+    828,
+    770,
+    930,
+    824
+   ],
+   "trim": true
+  },
+  {
+   "name": "m-2.png",
+   "box": [
+    976,
+    770,
+    1074,
+    824
+   ],
+   "trim": true
+  },
+  {
+   "name": "m-3.png",
+   "box": [
+    1130,
+    772,
+    1210,
+    824
+   ],
+   "trim": true
+  },
+  {
+   "name": "m-4.png",
+   "box": [
+    1276,
+    768,
+    1380,
+    824
+   ],
+   "trim": true
+  },
+  {
+   "name": "tab-on.png",
+   "box": [
+    620,
+    336,
+    670,
+    372
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

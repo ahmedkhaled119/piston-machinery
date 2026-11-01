@@ -1,0 +1,116 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.28.53.png",
+ "out": "src/demo/assets/img/event",
+ "items": [
+  {
+   "name": "ti-contact-on.png",
+   "box": [
+    864,
+    340,
+    885,
+    361
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "cw-1.png",
+   "box": [
+    415,
+    453,
+    443,
+    478
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "cw-2.png",
+   "box": [
+    591,
+    452,
+    618,
+    479
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "cw-4.png",
+   "box": [
+    965,
+    452,
+    992,
+    479
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "tm-1.png",
+   "box": [
+    445,
+    605,
+    512,
+    670
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "tm-2.png",
+   "box": [
+    621,
+    605,
+    686,
+    670
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "tm-3.png",
+   "box": [
+    795,
+    605,
+    865,
+    670
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "tm-4.png",
+   "box": [
+    966,
+    605,
+    1029,
+    670
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "mail.png",
+   "box": [
+    421,
+    714,
+    439,
+    729
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "lock.png",
+   "box": [
+    57,
+    730,
+    74,
+    748
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

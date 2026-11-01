@@ -1,0 +1,30 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.39.59.png",
+  "out": "src/demo/assets/img/contact",
+  "items": [
+    { "name": "hero.png", "box": [470, 57, 1536, 277] },
+    { "name": "h-1.png", "box": [76, 328, 130, 376], "trim": true, "scale": 2 },
+    { "name": "h-2.png", "box": [355, 328, 403, 376], "trim": true, "scale": 2 },
+    { "name": "h-3.png", "box": [650, 328, 698, 376], "trim": true, "scale": 2 },
+    { "name": "h-4.png", "box": [934, 326, 986, 376], "trim": true, "scale": 2 },
+    { "name": "h-5.png", "box": [1237, 328, 1285, 376], "trim": true, "scale": 2 },
+    { "name": "i-user.png", "box": [63, 456, 80, 473], "trim": true, "scale": 2 },
+    { "name": "i-company.png", "box": [286, 456, 303, 473], "trim": true, "scale": 2 },
+    { "name": "i-country.png", "box": [63, 499, 80, 516], "trim": true, "scale": 2 },
+    { "name": "i-type.png", "box": [286, 499, 303, 516], "trim": true, "scale": 2 },
+    { "name": "i-email.png", "box": [63, 542, 80, 559], "trim": true, "scale": 2 },
+    { "name": "i-phone.png", "box": [286, 542, 303, 559], "trim": true, "scale": 2 },
+    { "name": "i-msg.png", "box": [63, 587, 80, 604], "trim": true, "scale": 2 },
+    { "name": "i-lock.png", "box": [64, 706, 81, 724], "trim": true, "scale": 2 },
+    { "name": "g-phone.png", "box": [546, 454, 589, 497] },
+    { "name": "g-email.png", "box": [546, 518, 589, 561] },
+    { "name": "g-pin.png", "box": [546, 582, 589, 625] },
+    { "name": "g-hours.png", "box": [546, 648, 589, 691] },
+    { "name": "map.png", "box": [838, 435, 1485, 652] },
+    { "name": "n-wa.png", "box": [58, 783, 102, 826], "trim": true, "scale": 2 },
+    { "name": "n-call.png", "box": [362, 783, 406, 826], "trim": true, "scale": 2 },
+    { "name": "n-email.png", "box": [660, 783, 704, 826], "trim": true, "scale": 2 },
+    { "name": "n-support.png", "box": [948, 783, 992, 826], "trim": true, "scale": 2 },
+    { "name": "n-downloads.png", "box": [1243, 783, 1287, 826], "trim": true, "scale": 2 }
+  ]
+}

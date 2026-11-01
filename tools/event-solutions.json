@@ -1,0 +1,171 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.22.00.png",
+ "out": "src/demo/assets/img/event",
+ "items": [
+  {
+   "name": "ti-solutions-on.png",
+   "box": [
+    373,
+    331,
+    394,
+    351
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "so-1.png",
+   "box": [
+    68,
+    513,
+    188,
+    578
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "so-2.png",
+   "box": [
+    426,
+    510,
+    547,
+    582
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "so-3.png",
+   "box": [
+    778,
+    503,
+    890,
+    584
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "so-4.png",
+   "box": [
+    70,
+    614,
+    195,
+    694
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "so-5.png",
+   "box": [
+    421,
+    616,
+    546,
+    691
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "so-6.png",
+   "box": [
+    784,
+    614,
+    888,
+    701
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "si-1.png",
+   "box": [
+    205,
+    505,
+    227,
+    527
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "si-2.png",
+   "box": [
+    567,
+    505,
+    590,
+    527
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "si-3.png",
+   "box": [
+    916,
+    505,
+    939,
+    527
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "si-4.png",
+   "box": [
+    205,
+    616,
+    228,
+    639
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "si-5.png",
+   "box": [
+    567,
+    618,
+    590,
+    637
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "si-6.png",
+   "box": [
+    916,
+    617,
+    936,
+    638
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "bulb.png",
+   "box": [
+    79,
+    730,
+    118,
+    773
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "cta-q.png",
+   "box": [
+    257,
+    803,
+    306,
+    845
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

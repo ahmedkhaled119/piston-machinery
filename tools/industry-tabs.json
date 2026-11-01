@@ -1,0 +1,12 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.30.19.png",
+  "out": "src/demo/assets/img/industry/tabs",
+  "items": [
+    { "name": "off-furniture.png", "box": [150, 336, 205, 372], "trim": true, "scale": 2 },
+    { "name": "on-cabinet.png", "box": [380, 336, 430, 372], "trim": true, "scale": 2 },
+    { "name": "off-door.png", "box": [615, 336, 665, 372], "trim": true, "scale": 2 },
+    { "name": "off-interior.png", "box": [842, 336, 894, 372], "trim": true, "scale": 2 },
+    { "name": "off-workshops.png", "box": [1075, 336, 1127, 372], "trim": true, "scale": 2 },
+    { "name": "off-industrial.png", "box": [1310, 336, 1360, 372], "trim": true, "scale": 2 }
+  ]
+}

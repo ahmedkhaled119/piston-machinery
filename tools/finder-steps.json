@@ -1,0 +1,160 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 05.42.50.png",
+  "out": "src/demo/assets/img/finder",
+  "items": [
+    {
+      "name": "op-cutting.png",
+      "box": [
+        836,
+        319,
+        885,
+        367
+      ],
+      "trim": true,
+      "scale": 2
+    },
+    {
+      "name": "op-edge.png",
+      "box": [
+        935,
+        323,
+        984,
+        367
+      ],
+      "trim": true,
+      "scale": 2
+    },
+    {
+      "name": "op-pressing.png",
+      "box": [
+        1032,
+        323,
+        1081,
+        362
+      ],
+      "trim": true,
+      "scale": 2
+    },
+    {
+      "name": "op-drilling.png",
+      "box": [
+        1131,
+        320,
+        1181,
+        370
+      ],
+      "trim": true,
+      "scale": 2
+    },
+    {
+      "name": "op-other.png",
+      "box": [
+        1228,
+        322,
+        1279,
+        368
+      ],
+      "trim": true,
+      "scale": 2
+    },
+    {
+      "name": "mat-mdf.png",
+      "box": [
+        39,
+        704,
+        132,
+        743
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "mat-plywood.png",
+      "box": [
+        149,
+        707,
+        237,
+        739
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "mat-solid.png",
+      "box": [
+        254,
+        704,
+        343,
+        741
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "mat-laminate.png",
+      "box": [
+        40,
+        806,
+        132,
+        845
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "mat-particle.png",
+      "box": [
+        151,
+        805,
+        237,
+        845
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "mat-multiple.png",
+      "box": [
+        258,
+        792,
+        343,
+        847
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "ns-quote.png",
+      "box": [
+        1378,
+        843,
+        1399,
+        868
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "ns-line.png",
+      "box": [
+        1378,
+        878,
+        1399,
+        903
+      ],
+      "trim": true,
+      "scale": 3
+    },
+    {
+      "name": "ns-expert.png",
+      "box": [
+        1378,
+        913,
+        1399,
+        938
+      ],
+      "trim": true,
+      "scale": 3
+    }
+  ]
+}

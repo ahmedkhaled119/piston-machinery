@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit Your Story — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .ss-hero { position: relative; height: 200px; background: #fff; line-height: 1.35; overflow: hidden; }
+    .ss-hero > img { position: absolute; right: 0; top: 0; width: 900px; max-width: 62%; height: 200px; object-fit: cover; }
+    .ss-hero::after { content: ""; position: absolute; top: 0; bottom: 0; right: calc(min(900px, 62%) - 260px); width: 260px; background: linear-gradient(90deg, #fff, rgba(255,255,255,0)); }
+    .ss-hero .container { position: relative; z-index: 1; }
+    .ss-hero .breadcrumb { padding: 10px 0 0 15px; font-size: 11px; color: #222; margin: 0; gap: 6px; }
+    .ss-hero .ey { display: block; margin: 19px 0 0 15px; color: var(--red); font-weight: 700; font-size: 12px; text-transform: uppercase; }
+    .ss-hero h1 { font-size: 36px; font-weight: 800; line-height: .97; letter-spacing: 2px; margin: 1px 0 10px 15px; color: #111; }
+    .ss-hero p { font-size: 12px; color: #111; margin: 0 0 0 15px; max-width: 390px; line-height: 1.45; }
+    .ss-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 16px; margin: 0 11px 24px 10px; line-height: 1.4; align-items: start; position: relative; z-index: 1; }
+    .ss-box { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.08); }
+    .ss-box h2, .ss-box h3 { font-family: var(--font); font-weight: 700; letter-spacing: 0; color: #111; margin: 0; }
+    .ss-form { padding: 20px 26px 22px; }
+    .ss-form h2 { font-size: 16px; }
+    .ss-form .sub { font-size: 11.2px; color: #444; margin: 4px 0 0; }
+    .ss-sec { margin-top: 18px; padding-top: 14px; border-top: 1px solid #f0f0f2; }
+    .ss-sec h3 { display: flex; align-items: center; gap: 9px; font-size: 11.6px; margin-bottom: 12px; }
+    .ss-sec h3 i { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--red); color: var(--red); font-style: normal; font-size: 10px; }
+    .ss-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; }
+    .ss-grid .ss-wide { grid-column: 1 / -1; }
+    .ss-f label { display: block; font-size: 10.4px; font-weight: 600; margin-bottom: 5px; color: #222; }
+    .ss-f label em { color: var(--red); font-style: normal; }
+    .ss-f label small { font-weight: 400; color: #777; }
+    .ss-f input, .ss-f select, .ss-f textarea { width: 100%; height: 32px; padding: 0 11px; border: 1px solid #e3e4e7; border-radius: 2px; font: inherit; font-size: 11px; color: #111; background: #fff; }
+    .ss-f select { appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' fill='none' stroke='%23333' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 11px center; }
+    .ss-f textarea { height: 82px; padding: 8px 11px; resize: vertical; line-height: 1.5; }
+    .ss-f input:focus, .ss-f select:focus, .ss-f textarea:focus { outline: 0; border-color: var(--red); box-shadow: 0 0 0 2px rgba(227,6,19,.12); }
+    .ss-f .hint { display: block; font-size: 9.4px; color: #777; margin-top: 4px; }
+    .ss-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .ss-type { position: relative; display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; padding: 11px 12px; border: 1px solid #e3e4e7; border-radius: 3px; cursor: pointer; font-size: 9.8px; color: #444; line-height: 1.45; }
+    .ss-type input { position: absolute; opacity: 0; pointer-events: none; }
+    .ss-type svg { width: 26px; height: 26px; color: #333; }
+    .ss-type b { display: block; font-size: 11.4px; color: #111; }
+    .ss-type:has(input:checked) { border-color: var(--red); background: #fff7f7; box-shadow: inset 0 0 0 1px var(--red); }
+    .ss-type:has(input:checked) svg { color: var(--red); }
+    .ss-type:has(input:focus-visible) { outline: 2px solid rgba(227,6,19,.35); }
+    .ss-up { display: grid; place-items: center; gap: 4px; padding: 18px 12px; border: 1px dashed #c9cacd; border-radius: 3px; background: #fafafb; text-align: center; font-size: 10.4px; color: #555; cursor: pointer; }
+    .ss-up:hover { border-color: var(--red); }
+    .ss-up b { font-size: 11.2px; color: #111; }
+    .ss-up b span { color: var(--red); }
+    .ss-up input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .ss-files { list-style: none; margin: 8px 0 0; padding: 0; font-size: 10px; color: #333; }
+    .ss-files li { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f2; }
+    .ss-ok { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: start; margin-top: 16px; font-size: 10.4px; color: #333; line-height: 1.55; cursor: pointer; }
+    .ss-ok input { width: 13px; height: 13px; margin: 2px 0 0; accent-color: var(--red); }
+    .ss-ok a { color: var(--red); }
+    .ss-act { display: flex; align-items: center; gap: 16px; margin-top: 16px; }
+    .ss-act .btn { height: 34px; padding: 0 26px; font-size: 10.6px; gap: 14px; }
+    .ss-act small { font-size: 9.6px; color: #777; }
+    .ss-side { display: grid; gap: 12px; }
+    .ss-next { padding: 18px 20px 16px; }
+    .ss-next h3 { font-size: 12.4px; margin-bottom: 14px; }
+    .ss-step { position: relative; display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding-bottom: 14px; font-size: 10.2px; color: #444; line-height: 1.5; }
+    .ss-step:not(:last-child)::before { content: ""; position: absolute; left: 12px; top: 26px; bottom: 2px; border-left: 1px dashed #d4d5d8; }
+    .ss-step span { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--red); color: var(--red); font-size: 11px; font-weight: 700; background: #fff; }
+    .ss-step b { display: block; font-size: 11px; color: #111; margin: 3px 0 1px; }
+    .ss-note { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; margin-top: 2px; padding: 10px 12px; background: #f6f6f7; border-left: 2px solid var(--red); font-size: 10.4px; line-height: 1.5; }
+    .ss-note svg { width: 26px; height: 26px; color: var(--red); }
+    .ss-why { padding: 16px 20px; }
+    .ss-why h3 { font-size: 12px; margin-bottom: 10px; }
+    .ss-why ul { list-style: none; margin: 0; padding: 0; font-size: 10.4px; line-height: 1.5; color: #333; }
+    .ss-why li { display: flex; gap: 9px; padding: 3px 0; }
+    .ss-why li::before { content: "✓"; color: var(--red); font-weight: 700; }
+    .ss-help { display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 14px 18px; align-items: center; font-size: 10.4px; line-height: 1.5; color: #333; }
+    .ss-help svg { width: 34px; height: 34px; color: var(--red); }
+    .ss-help b { display: block; font-size: 11.4px; color: #111; }
+    .ss-help a { color: var(--red); font-weight: 700; font-size: 9.6px; }
+    .ss-form .success-box h3 { font-size: 16px; }
+    @media (max-width: 1100px) { .ss-wrap { grid-template-columns: 1fr; } .ss-hero > img { opacity: .25; max-width: 100%; } .ss-hero::after { display: none; } .ss-side { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; } }
+    @media (max-width: 700px) { .ss-grid, .ss-types { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) {
+      .ss-hero { height: auto; padding-bottom: 18px; }
+      .ss-hero > img { height: 100%; }
+      .ss-hero h1 { font-size: 30px; }
+      .ss-hero p { margin-right: 15px; font-size: 13px; }
+      .ss-wrap { margin: 0 0 24px; }
+      .ss-form { padding: 16px 14px 18px; }
+      .ss-form .sub, .ss-type, .ss-up, .ss-ok, .ss-step, .ss-note, .ss-why ul, .ss-help { font-size: 12px; }
+      .ss-f label, .ss-f input, .ss-f select, .ss-f textarea { font-size: 13px; }
+      .ss-f .hint, .ss-act small { font-size: 11px; }
+      .ss-act { flex-wrap: wrap; gap: 10px; }
+      .ss-act .btn { width: 100%; }
+      .ss-side { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="about" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="ss-hero">
+    <img src="assets/img/news-article/hero-smart-manufacturing.png" alt="">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="hub.html">News, Case Studies &amp; Projects</a><span>›</span>Submit Your Story</div>
+      <span class="ey">Share Your Success</span>
+      <h1>Submit Your Story.<br>Inspire the Industry.</h1>
+      <p>Running Piston machines in your factory or workshop? Share your case study, project or video and we may feature it in our News, Case Studies &amp; Projects hub.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="ss-wrap">
+      <section class="ss-box ss-form">
+        <form data-demo-form="STORY" id="storyForm">
+          <h2>SUBMIT YOUR STORY / PROJECT / VIDEO</h2>
+          <p class="sub">Fields marked <em style="color:var(--red);font-style:normal">*</em> are required. It takes about 5 minutes.</p>
+
+          <div class="ss-sec">
+            <h3><i>1</i>WHAT ARE YOU SUBMITTING?</h3>
+            <div class="ss-types" role="radiogroup" aria-label="Story type">
+              <label class="ss-type"><input type="radio" name="type" value="Case Study" required checked>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+                <span><b>Case Study</b>Challenge, solution and measurable results</span></label>
+              <label class="ss-type"><input type="radio" name="type" value="Project">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V9l6 4V9l6 4V5h6v16z"/><path d="M7 17h2M13 17h2"/></svg>
+                <span><b>Project</b>A new line, factory setup or upgrade</span></label>
+              <label class="ss-type"><input type="radio" name="type" value="Video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3z"/></svg>
+                <span><b>Video</b>Your Piston machines in action</span></label>
+            </div>
+          </div>
+
+          <div class="ss-sec">
+            <h3><i>2</i>YOUR DETAILS</h3>
+            <div class="ss-grid">
+              <div class="ss-f"><label for="company">Company name <em>*</em></label><input id="company" name="company" required autocomplete="organization"></div>
+              <div class="ss-f"><label for="name">Contact name <em>*</em></label><input id="name" name="name" required autocomplete="name"></div>
+              <div class="ss-f"><label for="email">Email <em>*</em></label><input id="email" name="email" type="email" required autocomplete="email"></div>
+              <div class="ss-f"><label for="phone">Phone / WhatsApp <em>*</em></label><input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="+20 ..."></div>
+              <div class="ss-f"><label for="country">Country <em>*</em></label><input id="country" name="country" required autocomplete="country-name" list="countries"><datalist id="countries"></datalist></div>
+              <div class="ss-f"><label for="industry">Industry <em>*</em></label><select id="industry" name="industry" required><option value="">Select industry</option></select></div>
+            </div>
+          </div>
+
+          <div class="ss-sec">
+            <h3><i>3</i>YOUR STORY</h3>
+            <div class="ss-grid">
+              <div class="ss-f ss-wide"><label for="title">Title <em>*</em></label><input id="title" name="title" required maxlength="120" placeholder="e.g. How we increased cabinet output by 30%"></div>
+              <div class="ss-f ss-wide"><label for="desc">Short description <em>*</em></label><textarea id="desc" name="description" required maxlength="1500" placeholder="Tell us about your company, the challenge you faced and how Piston machines helped."></textarea></div>
+              <div class="ss-f ss-wide"><label for="results">Results achieved <small>(optional)</small></label><textarea id="results" name="results" maxlength="1000" style="height:64px" placeholder="e.g. +30% production capacity, -15% material waste, faster delivery times"></textarea><span class="hint">Numbers help — capacity, waste, cycle time, quality or delivery improvements.</span></div>
+              <div class="ss-f ss-wide"><label for="video">Link to video <small>(optional)</small></label><input id="video" name="video" type="url" placeholder="https://youtube.com/..."><span class="hint" id="videoHint">YouTube, Vimeo, Google Drive or any shareable link.</span></div>
+            </div>
+          </div>
+
+          <div class="ss-sec">
+            <h3><i>4</i>PHOTOS &amp; VIDEOS</h3>
+            <label class="ss-up" for="files">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="1.5"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
+              <b>Drag &amp; drop files here or <span>browse</span></b>
+              JPG, PNG, MP4 or MOV — up to 10 files (demo: files are not uploaded)
+              <input id="files" name="files" type="file" multiple accept="image/*,video/*">
+            </label>
+            <ul class="ss-files" id="fileList"></ul>
+          </div>
+
+          <label class="ss-ok"><input type="checkbox" name="consent" required>
+            <span>I confirm I have the right to share this content and I agree that Piston may edit and publish it (with my company name) on its website and social channels, in line with the <a href="#" data-toast="Privacy Policy — demo">Privacy Policy</a>. <em style="color:var(--red);font-style:normal">*</em></span></label>
+
+          <div class="ss-act"><button class="btn btn-red" type="submit">SUBMIT YOUR STORY <span>→</span></button><small>We'll never share your contact details.</small></div>
+        </form>
+      </section>
+
+      <aside class="ss-side">
+        <section class="ss-box ss-next">
+          <h3>WHAT HAPPENS NEXT?</h3>
+          <div class="ss-step"><span>1</span><div><b>We receive your submission</b>You get a reference number and a confirmation email right away.</div></div>
+          <div class="ss-step"><span>2</span><div><b>Our team reviews it</b>Our marketing and engineering team reviews every story within 5 business days.</div></div>
+          <div class="ss-step"><span>3</span><div><b>We contact you</b>We may ask for more details, photos or a short interview, or arrange a visit to film on site.</div></div>
+          <div class="ss-step"><span>4</span><div><b>Your story goes live</b>You approve the final version before it is published in our News, Case Studies &amp; Projects hub.</div></div>
+          <div class="ss-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Review time: up to 5 business days.</b><br>Sunday – Thursday, Cairo time (GMT+2).</span></div>
+        </section>
+        <section class="ss-box ss-why">
+          <h3>WHY SHARE YOUR STORY?</h3>
+          <ul>
+            <li>Showcase your factory and capabilities to buyers in the region</li>
+            <li>Get featured on the Piston website and social channels</li>
+            <li>Professional write-up and photography support from our team</li>
+            <li>Inspire other manufacturers to grow their production</li>
+          </ul>
+        </section>
+        <section class="ss-box ss-help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12a8 8 0 0 1 16 0v5a2 2 0 0 1-2 2h-2v-6h4M4 12v5a2 2 0 0 0 2 2h2v-6H4"/></svg>
+          <div><b>Questions about your submission?</b>Our team is happy to help you prepare your story.<br><a href="contact.html">CONTACT US &nbsp;→</a></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, esc, param } = P;
+      qs("#industry").insertAdjacentHTML("beforeend", D.industries.map((i) => `<option value="${esc(i.slug)}">${esc(i.name)}</option>`).join(""));
+      qs("#countries").innerHTML = ["Egypt", "Saudi Arabia", "United Arab Emirates", "Jordan", "Kuwait", "Qatar", "Oman", "Bahrain", "Iraq", "Libya", "Sudan", "Morocco", "Algeria", "Tunisia", "Kenya", "Nigeria", "Turkey"].map((c) => `<option value="${c}">`).join("");
+
+      const TYPES = { case: "Case Study", project: "Project", video: "Video" };
+      const pre = TYPES[param("type")];
+      if (pre) qs(`input[name=type][value="${pre}"]`).checked = true;
+      const syncType = () => {
+        const v = qs("input[name=type]:checked")?.value;
+        qs("#video").required = v === "Video";
+        qs("label[for=video] small").textContent = v === "Video" ? "(required for videos)" : "(optional)";
+      };
+      qs("#storyForm").addEventListener("change", (e) => { if (e.target.name === "type") syncType(); });
+      syncType();
+
+      const fmt = (b) => (b > 1048576 ? `${(b / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(b / 1024))} KB`);
+      qs("#files").addEventListener("change", (e) => {
+        const files = [...e.target.files];
+        if (files.length > 10) P.toast("Please select up to 10 files");
+        qs("#fileList").innerHTML = files.slice(0, 10).map((f) => `<li><span>${esc(f.name)}</span><span>${fmt(f.size)}</span></li>`).join("");
+      });
+      const up = qs(".ss-up");
+      up.addEventListener("dragover", (e) => { e.preventDefault(); up.style.borderColor = "var(--red)"; });
+      up.addEventListener("dragleave", () => (up.style.borderColor = ""));
+      up.addEventListener("drop", (e) => { e.preventDefault(); up.style.borderColor = ""; qs("#files").files = e.dataTransfer.files; qs("#files").dispatchEvent(new Event("change")); });
+
+      document.addEventListener("click", (e) => { const t = e.target.closest("[data-toast]"); if (t) { e.preventDefault(); P.toast(t.dataset.toast); } });
+      // Runs after main.js has swapped in the generic success panel.
+      qs("#storyForm").addEventListener("submit", () => {
+        const f = qs("#storyForm");
+        const h = f.querySelector(".success-box h3"), p = f.querySelector(".success-box p.mt-2");
+        if (h) h.textContent = "Thank you — your story has been submitted";
+        if (p) p.textContent = "A confirmation email has been sent. Our team will review your submission within 5 business days and contact you.";
+      });
+    });
+  </script>
+</body>
+</html>

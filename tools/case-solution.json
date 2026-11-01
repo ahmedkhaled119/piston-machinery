@@ -1,0 +1,144 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.00.29.png",
+ "out": "src/demo/assets/img/case",
+ "items": [
+  {
+   "name": "sf-1.png",
+   "box": [
+    52,
+    510,
+    94,
+    548
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "sf-2.png",
+   "box": [
+    52,
+    573,
+    94,
+    611
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "sf-3.png",
+   "box": [
+    52,
+    645,
+    94,
+    683
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "sf-4.png",
+   "box": [
+    52,
+    705,
+    94,
+    743
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "sm-1.png",
+   "box": [
+    350,
+    548,
+    458,
+    636
+   ],
+   "trim": true
+  },
+  {
+   "name": "sm-2.png",
+   "box": [
+    480,
+    548,
+    588,
+    636
+   ],
+   "trim": true
+  },
+  {
+   "name": "sm-3.png",
+   "box": [
+    625,
+    548,
+    726,
+    636
+   ],
+   "trim": true
+  },
+  {
+   "name": "sm-4.png",
+   "box": [
+    750,
+    548,
+    901,
+    636
+   ],
+   "trim": true
+  },
+  {
+   "name": "sm-5.png",
+   "box": [
+    931,
+    548,
+    1064,
+    636
+   ],
+   "trim": true
+  },
+  {
+   "name": "sb-1.png",
+   "box": [
+    349,
+    718,
+    379,
+    748
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "sb-2.png",
+   "box": [
+    533,
+    718,
+    563,
+    748
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "sb-3.png",
+   "box": [
+    714,
+    718,
+    744,
+    748
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "sb-4.png",
+   "box": [
+    897,
+    718,
+    927,
+    748
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.44.21.png",
+  "out": "src/demo/assets/img/hub",
+  "items": [
+    { "name": "hero.png", "box": [500, 57, 1536, 300] },
+    { "name": "featured.png", "box": [46, 358, 451, 571] },
+    { "name": "pin.png", "box": [469, 430, 484, 446], "trim": true, "scale": 2 },
+    { "name": "mt-1.png", "box": [478, 499, 506, 527], "trim": true, "scale": 2 },
+    { "name": "mt-2.png", "box": [622, 499, 650, 527], "trim": true, "scale": 2 },
+    { "name": "mt-3.png", "box": [762, 499, 790, 527], "trim": true, "scale": 2 },
+    { "name": "hl-1.png", "box": [932, 391, 958, 417], "trim": true, "scale": 2 },
+    { "name": "hl-2.png", "box": [932, 427, 958, 453], "trim": true, "scale": 2 },
+    { "name": "hl-3.png", "box": [932, 463, 958, 489], "trim": true, "scale": 2 },
+    { "name": "hl-4.png", "box": [932, 499, 958, 525], "trim": true, "scale": 2 },
+    { "name": "hl-5.png", "box": [932, 534, 958, 560], "trim": true, "scale": 2 },
+    { "name": "quote.png", "box": [1234, 386, 1260, 408], "trim": true, "scale": 2 },
+    { "name": "avatar.png", "box": [1236, 507, 1280, 551] },
+    { "name": "pr-1.png", "box": [46, 607, 170, 698] },
+    { "name": "pr-2.png", "box": [358, 607, 486, 698] },
+    { "name": "pr-3.png", "box": [679, 607, 826, 698] },
+    { "name": "st-1.png", "box": [1036, 607, 1145, 700] },
+    { "name": "st-2.png", "box": [1281, 607, 1389, 700] },
+    { "name": "nw-1.png", "box": [46, 751, 132, 834] },
+    { "name": "nw-2.png", "box": [310, 751, 396, 834] },
+    { "name": "nw-3.png", "box": [564, 751, 645, 834] },
+    { "name": "nw-4.png", "box": [809, 751, 873, 834] },
+    { "name": "vd-1.png", "box": [1010, 754, 1121, 822] },
+    { "name": "vd-2.png", "box": [1128, 754, 1239, 822] },
+    { "name": "vd-3.png", "box": [1246, 754, 1357, 822] },
+    { "name": "vd-4.png", "box": [1365, 754, 1476, 822] },
+    { "name": "cta.png", "box": [266, 853, 316, 897], "trim": true, "scale": 2 }
+  ]
+}

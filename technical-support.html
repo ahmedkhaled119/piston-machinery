@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technical Support Request — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body.wide .ts-c { padding: 0 60px; }
+    .ts-hero { position: relative; height: 269px; background: #fff; overflow: hidden; line-height: 1.35; }
+    .ts-hero > img { position: absolute; right: 0; top: 0; height: 100%; }
+    .ts-hero .ts-c { position: relative; }
+    .ts-crumb { display: flex; gap: 8px; font-size: 13.5px; color: #444; padding-top: 26px; }
+    .ts-crumb a:hover { color: var(--red); }
+    .ts-crumb b { color: #111; font-weight: 600; }
+    .ts-hero h1 { font-family: var(--font); font-weight: 700; font-size: 48px; line-height: 1; letter-spacing: -.2px; color: #111; margin: 58px 0 0 15px; }
+    .ts-hero p { font-size: 18px; color: #222; margin: 22px 0 0 15px; }
+    .ts-row { display: grid; grid-template-columns: 682px 1fr; gap: 40px; margin-top: 24px; line-height: 1.35; }
+    .ts-card { background: #fff; border: 1px solid #ececef; border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,.03); }
+    .ts-card h2 { font-family: var(--font); font-size: 18px; font-weight: 700; letter-spacing: .2px; color: #111; margin: 0; line-height: 22px; }
+    .ts-help { padding: 30px 29px 27px 32px; }
+    .ts-list { margin-top: 30px; border: 1px solid #ececef; border-radius: 4px; }
+    .ts-list > * { display: grid; grid-template-columns: 44px 1fr; gap: 30px; align-items: center; width: 100%; height: 96px; padding: 0 22px; background: #fff; border: 0; border-top: 1px solid #ececef; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+    .ts-list > :first-child { border-top: 0; }
+    .ts-list > :hover b { color: var(--red); }
+    .ts-ico { width: 44px; height: 44px; border-radius: 4px; background: #fdf0f0; display: grid; place-items: center; color: var(--red); }
+    .ts-ico svg { width: 24px; height: 24px; stroke-width: 2; }
+    .ts-list b { display: block; font-size: 15.5px; color: #111; }
+    .ts-list small { display: block; font-size: 14.5px; color: #444; margin-top: 8px; }
+    .ts-list .chev { color: #999; font-size: 18px; }
+    .ts-hours { padding: 51px 43px 30px; }
+    .ts-hr { display: grid; grid-template-columns: 22px 1fr; gap: 31px; align-items: center; font-size: 15.5px; color: #222; height: 56px; }
+    .ts-hr:first-of-type { margin-top: 15px; }
+    .ts-hr svg { width: 22px; height: 22px; color: #222; }
+    .ts-hr a { color: var(--red); }
+    .ts-hr a#tel { color: #111; font-weight: 600; }
+    .ts-hr em { font-style: normal; color: #444; margin-right: 10px; }
+    .ts-sep { border-top: 1px solid #ececef; margin: 6px 0 3px; }
+    .ts-hours .btn { width: 298px; height: 48px; margin-top: 33px; font-size: 14px; letter-spacing: .6px; }
+    .ts-req { margin: 24px 0 53px; padding: 30px 32px 32px; scroll-margin-top: 20px; }
+    .ts-req .sub { font-size: 13.5px; color: #444; margin: 8px 0 22px; }
+    .ts-g { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 28px; }
+    .ts-f { display: block; }
+    .ts-f.w2 { grid-column: span 2; }
+    .ts-f.w { grid-column: 1 / -1; }
+    .ts-f > span:first-child { display: block; font-size: 13px; font-weight: 500; color: #222; margin-bottom: 8px; }
+    .ts-f > span:first-child i { color: var(--red); font-style: normal; }
+    .ts-f input, .ts-f select, .ts-f textarea { width: 100%; height: 44px; border: 1px solid #e3e4e7; border-radius: 4px; background: #fff; font: inherit; font-size: 13px; color: #111; padding: 0 13px; }
+    .ts-f input::placeholder, .ts-f textarea::placeholder { color: #6b6d72; }
+    .ts-f select { appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23333' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 16px center; padding-right: 34px; }
+    .ts-f select:invalid { color: #6b6d72; }
+    .ts-f input:focus, .ts-f select:focus, .ts-f textarea:focus { outline: 2px solid rgba(226, 35, 26, .2); border-color: var(--red); }
+    .ts-sn { display: flex; border: 1px solid #e3e4e7; border-radius: 4px; }
+    .ts-sn input { border: 0; height: 42px; }
+    .ts-sn img { height: 18px; padding: 0 12px; border-left: 1px solid #e3e4e7; align-self: center; }
+    .ts-f textarea { height: 120px; padding: 12px 13px; resize: vertical; display: block; }
+    .ts-drop { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 84px; border: 1px dashed #d4d5d9; border-radius: 4px; cursor: pointer; text-align: center; font-size: 13.5px; font-weight: 500; color: #111; }
+    .ts-drop.over { border-color: var(--red); background: #fff7f7; }
+    .ts-drop svg { display: inline-block; width: 20px; height: 20px; vertical-align: -4px; margin-right: 8px; color: #333; }
+    .ts-drop u { color: var(--red); text-decoration: none; }
+    .ts-drop small { display: block; font-size: 12.5px; font-weight: 400; color: #555; margin-top: 8px; }
+    .ts-drop input { display: none; }
+    .ts-files { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .ts-files:empty { display: none; }
+    .ts-files span { font-size: 12px; background: #f4f4f6; border: 1px solid #e3e4e7; border-radius: 3px; padding: 3px 8px; }
+    .ts-files span.bad { border-color: #f1b8b5; color: #b3261e; }
+    .ts-acts { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+    .ts-acts .btn { height: 45px; font-size: 12.5px; letter-spacing: .6px; padding: 0 30px; }
+    .ts-acts .btn-red { min-width: 298px; }
+    .ts-acts .ts-wa { background: #fff; border: 1px solid #d6d7db; color: #111; gap: 10px; }
+    .ts-acts .ts-wa svg { width: 18px; height: 18px; color: #1faa53; }
+    .ts-acts .ts-wa:hover { border-color: #1faa53; }
+    .ts-acts small { margin-left: auto; font-size: 12.5px; color: #555; }
+    /* Desktop-only footer tweaks; below 1281px the shared responsive footer takes over. */
+    @media (min-width: 1281px) {
+    body.wide.ts-page .site-footer { font-size: 14px; line-height: 1.45; padding-top: 26px; }
+    body.wide.ts-page .footer-grid { grid-template-columns: 1.5fr 1fr 1.15fr .95fr 1.05fr 1.45fr; gap: 20px; }
+    body.wide.ts-page .footer-grid > div + div { border-left: 1px solid #25272c; padding-left: 18px; }
+    body.wide.ts-page .footer-grid h4 { font-size: 14px; margin-bottom: 8px; }
+    body.wide.ts-page .footer-grid a { padding: 2px 0; }
+    body.wide.ts-page .footer-about p { font-size: 13.5px; margin: 12px 0 16px; }
+    body.wide.ts-page .footer-bottom { font-size: 13.5px; margin-top: 16px; padding: 14px 0; }
+    }
+    @media (max-width: 1100px) {
+      body.wide .ts-c { padding: 0 20px; }
+      .ts-hero > img { opacity: .25; }
+      .ts-row, .ts-g { grid-template-columns: 1fr; }
+      .ts-f.w2 { grid-column: auto; }
+      .ts-acts { flex-wrap: wrap; }
+    }
+    @media (max-width: 760px) {
+      .ts-hero { height: auto; padding-bottom: 28px; }
+      .ts-hero > img { height: 100%; width: auto; max-width: none; opacity: .15; }
+      .ts-hero h1 { font-size: 34px; margin: 32px 0 0; }
+      .ts-hero p { font-size: 16px; margin: 14px 0 0; }
+      .ts-help, .ts-hours, .ts-req { padding: 22px 16px; }
+      .ts-list { margin-top: 18px; }
+      .ts-list > * { grid-template-columns: 40px minmax(0, 1fr); gap: 16px; height: auto; min-height: 84px; padding: 14px; }
+      .ts-ico { width: 40px; height: 40px; }
+      .ts-list small { font-size: 13.5px; margin-top: 4px; }
+      .ts-hours .btn { width: 100%; }
+      .ts-hr { grid-template-columns: 22px minmax(0, 1fr); gap: 16px; height: auto; min-height: 48px; font-size: 14.5px; overflow-wrap: anywhere; }
+      .ts-acts .btn { flex: 1 1 100%; }
+      .ts-acts .btn-red { min-width: 0; }
+      .ts-acts small { margin-left: 0; }
+    }
+    @media (max-width: 480px) {
+      .ts-hero h1 { font-size: 28px; }
+      .ts-crumb { font-size: 12.5px; padding-top: 18px; }
+    }
+  </style>
+</head>
+<body class="wide ts-page" data-nav="support" data-footer="plain">
+  <div id="site-header"></div>
+
+  <section class="ts-hero">
+    <img src="assets/img/tech-support/hero.png" alt="">
+    <div class="container ts-c">
+      <nav class="ts-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a>›<a href="support.html">Support</a>›<b>Technical Support</b></nav>
+      <h1>TECHNICAL SUPPORT</h1>
+      <p>Our experts are here to help you solve any technical issues.</p>
+    </div>
+  </section>
+
+  <main class="container ts-c">
+    <div class="ts-row">
+      <section class="ts-card ts-help">
+        <h2>HOW CAN WE HELP YOU?</h2>
+        <div class="ts-list" id="help"></div>
+      </section>
+      <section class="ts-card ts-hours">
+        <h2>SUPPORT HOURS</h2>
+        <div class="ts-hr"><span data-i="clock"></span><span id="hrs"></span></div>
+        <div class="ts-hr"><span data-i="globe"></span><span>Available in multiple languages</span></div>
+        <div class="ts-sep"></div>
+        <div class="ts-hr"><span data-i="phone"></span><span><em>Phone:</em><a id="tel" data-setting="phone"></a></span></div>
+        <div class="ts-hr"><span data-i="mail"></span><span><em>Email:</em><a href="mailto:support@piston-machinery.com">support@piston-machinery.com</a></span></div>
+        <div class="ts-sep"></div>
+        <a class="btn btn-red" href="#request" data-issue="">CREATE A TICKET</a>
+      </section>
+    </div>
+
+    <form class="ts-card ts-req" id="request" data-demo-form="TS">
+      <h2>SUBMIT A SUPPORT REQUEST</h2>
+      <p class="sub">Tell us about your machine and the issue. Our support engineers reply within 24 business hours.</p>
+      <div class="ts-g">
+        <label class="ts-f"><span>Full Name <i>*</i></span><input required name="name" autocomplete="name" placeholder="Enter your full name"></label>
+        <label class="ts-f"><span>Company Name <i>*</i></span><input required name="company" autocomplete="organization" placeholder="Enter your company name"></label>
+        <label class="ts-f"><span>Country <i>*</i></span><select required name="country" id="country"><option value="">Select your country</option></select></label>
+        <label class="ts-f"><span>Email Address <i>*</i></span><input required type="email" name="email" autocomplete="email" placeholder="Enter your email address"></label>
+        <label class="ts-f"><span>Phone / WhatsApp <i>*</i></span><input required type="tel" name="phone" autocomplete="tel" placeholder="+20 1xx xxx xxxx"></label>
+        <label class="ts-f"><span>Urgency</span><select name="urgency"><option>General question</option><option>Production affected</option><option>Machine stopped</option></select></label>
+        <label class="ts-f"><span>Machine <i>*</i></span><select required name="machine" id="machine"><option value="">Select your machine</option></select></label>
+        <label class="ts-f"><span>Serial Number</span><span class="ts-sn"><input name="serial" placeholder="e.g. R32-2024-001234" pattern="[A-Za-z0-9\-\/ ]{3,30}" title="Letters, numbers and dashes only"><img src="assets/img/support/barcode.png" alt=""></span></label>
+        <label class="ts-f"><span>Issue Type <i>*</i></span><select required name="issue" id="issue"><option value="">Select issue type</option></select></label>
+        <label class="ts-f w"><span>Problem Description <i>*</i></span><textarea required name="message" maxlength="2000" placeholder="Describe the problem, when it started, error codes shown on the control panel and what you have already tried..."></textarea></label>
+        <div class="ts-f w"><span>Photos / Videos / Documents (Optional)</span>
+          <label class="ts-drop" id="drop"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5M12 12v8m-3-5 3-3 3 3"/></svg>Drag and drop files here or <u>browse</u></span><small>Supported files: JPG, PNG, MP4, PDF (Max. 20MB each)</small>
+            <input type="file" id="files" multiple accept=".jpg,.jpeg,.png,.mp4,.mov,.pdf"></label>
+          <div class="ts-files" id="fileList"></div>
+        </div>
+      </div>
+      <div class="ts-acts">
+        <button class="btn btn-red">SUBMIT REQUEST <span>→</span></button>
+        <a class="btn ts-wa" href="#" data-wa-quote data-channel="support" data-source="Technical Support page" id="waBtn"></a>
+        <small>Machine stopped? WhatsApp is the fastest way to reach our engineers.</small>
+      </div>
+    </form>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, S, qs, qsa, esc, param, product, icon, toast } = P;
+      const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+      const I = {
+        report: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 8v5m0 3v.01"/>',
+        remote: '<path d="M4 5h16v11H8l-4 4z"/><path d="M9 10.5h6"/>',
+        service: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/>',
+        status: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/>',
+        clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+        globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>',
+        phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
+        mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'
+      };
+      qsa("[data-i]").forEach((el) => (el.outerHTML = svg(I[el.dataset.i])));
+
+      const issues = ["Mechanical problem", "Electrical problem", "Control panel / software", "Cutting / finishing quality", "Installation & commissioning", "On-site service visit", "Preventive maintenance", "Other"];
+      qs("#issue").insertAdjacentHTML("beforeend", issues.map((t) => `<option>${esc(t)}</option>`).join(""));
+      qs("#machine").insertAdjacentHTML("beforeend", D.products.map((p) => `<option value="${p.id}">${esc(p.model)} — ${esc(p.name)}</option>`).join("") + '<option value="other">Other / not listed</option>');
+      const countries = ["Egypt", "Saudi Arabia", "United Arab Emirates", "Kuwait", "Qatar", "Jordan", "Morocco", "Algeria", "Tunisia", "Turkey", "Poland", "Romania", "Indonesia", "Other"];
+      qs("#country").insertAdjacentHTML("beforeend", countries.map((c) => `<option>${esc(c)}</option>`).join(""));
+
+      const help = [
+        ["report", "Report an Issue", "Describe your problem and we'll get back to you.", 'data-issue=""'],
+        ["remote", "Remote Support", "Let our experts diagnose your machine remotely via WhatsApp.", 'data-wa-quote data-channel="support" data-source="Technical Support — Remote support"'],
+        ["service", "Service Request", "Request on-site service from our technicians.", 'data-issue="On-site service visit"'],
+        ["status", "Check Ticket Status", "Send your ticket reference to our support team on WhatsApp.", 'data-wa-quote data-channel="support" data-source="Technical Support — Request status"']
+      ];
+      qs("#help").innerHTML = help.map(([i, t, d, a]) => `<button type="button" ${a}><span class="ts-ico">${svg(I[i])}</span><span><b>${t}</b><small>${d}</small></span></button>`).join("");
+
+      // Links/buttons that open the form, optionally pre-selecting an issue type.
+      document.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-issue]");
+        if (!b) return;
+        e.preventDefault();
+        const f = qs("#request"), sel = qs("#issue", f);
+        if (sel && b.dataset.issue) sel.value = b.dataset.issue;
+        f.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      const h = S.hours.find((x) => x.channel === "Technical Support");
+      qs("#hrs").textContent = `${h.days.replace("Sunday", "Sun").replace("Thursday", "Thu")}: ${h.time} ${h.tz}`;
+      qs("#tel").href = `tel:${S.phone.replace(/\s/g, "")}`;
+      qs("#waBtn").innerHTML = `${icon("wa")}WhatsApp Support`;
+
+      const pre = param("machine");
+      if (pre && product(pre)) qs("#machine").value = pre;
+      if (param("issue") === "service") qs("#issue").value = "On-site service visit";
+
+      const ok = /\.(jpe?g|png|mp4|mov|pdf)$/i, MAX = 20 * 1024 * 1024;
+      const show = (files) => {
+        qs("#fileList").innerHTML = [...files].map((f) => {
+          const bad = !ok.test(f.name) ? "unsupported type" : f.size > MAX ? "over 20MB" : "";
+          return `<span class="${bad ? "bad" : ""}">${esc(f.name)}${bad ? ` — ${bad}` : ""}</span>`;
+        }).join("");
+      };
+      const drop = qs("#drop"), input = qs("#files");
+      input.onchange = () => show(input.files);
+      ["dragenter", "dragover"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+      ["dragleave", "drop"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+      drop.addEventListener("drop", (e) => { input.files = e.dataTransfer.files; show(input.files); toast(`${e.dataTransfer.files.length} file(s) attached (demo — not uploaded)`); });
+    });
+  </script>
+</body>
+</html>

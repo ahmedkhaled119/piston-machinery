@@ -1,0 +1,311 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.14.01.png",
+ "out": "src/demo/assets/img/event",
+ "items": [
+  {
+   "name": "hero-1.png",
+   "box": [
+    643,
+    73,
+    1130,
+    309
+   ]
+  },
+  {
+   "name": "ligna.png",
+   "box": [
+    356,
+    164,
+    393,
+    193
+   ],
+   "scale": 2
+  },
+  {
+   "name": "m-cal.png",
+   "box": [
+    38,
+    168,
+    60,
+    190
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "m-pin.png",
+   "box": [
+    191,
+    168,
+    210,
+    190
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ti-overview-on.png",
+   "box": [
+    66,
+    342,
+    85,
+    361
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ti-expect-off.png",
+   "box": [
+    206,
+    341,
+    226,
+    362
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ti-solutions-off.png",
+   "box": [
+    385,
+    341,
+    406,
+    361
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ti-details-off.png",
+   "box": [
+    575,
+    341,
+    595,
+    361
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ti-location-off.png",
+   "box": [
+    741,
+    341,
+    759,
+    361
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ti-contact-off.png",
+   "box": [
+    876,
+    341,
+    895,
+    361
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ed-1.png",
+   "box": [
+    1184,
+    118,
+    1207,
+    141
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ed-2.png",
+   "box": [
+    1184,
+    163,
+    1206,
+    186
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ed-3.png",
+   "box": [
+    1184,
+    223,
+    1207,
+    247
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ed-4.png",
+   "box": [
+    1184,
+    269,
+    1207,
+    292
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ed-5.png",
+   "box": [
+    1184,
+    329,
+    1207,
+    352
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ext.png",
+   "box": [
+    1286,
+    349,
+    1302,
+    364
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "dl.png",
+   "box": [
+    1206,
+    651,
+    1226,
+    671
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ov-1.png",
+   "box": [
+    654,
+    408,
+    691,
+    447
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ov-2.png",
+   "box": [
+    910,
+    408,
+    945,
+    446
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ov-3.png",
+   "box": [
+    653,
+    487,
+    691,
+    526
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ov-4.png",
+   "box": [
+    909,
+    487,
+    946,
+    526
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "check-s.png",
+   "box": [
+    80,
+    535,
+    93,
+    545
+   ],
+   "trim": true,
+   "scale": 3
+  },
+  {
+   "name": "fm-1.png",
+   "box": [
+    66,
+    649,
+    248,
+    727
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "fm-2.png",
+   "box": [
+    278,
+    649,
+    460,
+    727
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "fm-3.png",
+   "box": [
+    495,
+    649,
+    675,
+    727
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "fm-4.png",
+   "box": [
+    710,
+    649,
+    890,
+    728
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "fm-5.png",
+   "box": [
+    925,
+    649,
+    1105,
+    727
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "cta.png",
+   "box": [
+    316,
+    810,
+    359,
+    848
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

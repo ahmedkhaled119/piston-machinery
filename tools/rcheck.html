@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Responsive check</title></head>
+<body style="margin:0">
+<pre id="out"></pre>
+<script>
+  // Loads each page in an iframe of the given width and reports horizontal overflow (needs --allow-file-access-from-files).
+  const q = new URLSearchParams(location.search);
+  const widths = (q.get("w") || "375,768,1024,1366,1536").split(",").map(Number);
+  const pages = (q.get("pages") || "").split(",").filter(Boolean);
+  const out = document.getElementById("out");
+  const res = [];
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  (async () => {
+    for (const w of widths) {
+      for (const p of pages) {
+        const f = document.createElement("iframe");
+        f.style.cssText = `width:${w}px;height:900px;border:0;position:absolute;left:0;top:0`;
+        document.body.appendChild(f);
+        await new Promise((r) => { f.onload = r; f.src = "../" + p; });
+        await wait(600);
+        let line;
+        try {
+          const d = f.contentDocument, vw = d.documentElement.clientWidth, sw = d.documentElement.scrollWidth;
+          let worst = [];
+          if (sw > vw + 1) {
+            d.querySelectorAll("body *").forEach((e) => {
+              const b = e.getBoundingClientRect();
+              if (b.width && b.right > vw + 1 && f.contentWindow.getComputedStyle(e).position !== "fixed") worst.push([Math.round(b.right - vw), e.tagName.toLowerCase() + (typeof e.className === "string" && e.className ? "." + e.className.trim().split(/\s+/).join(".") : "") + (e.id ? "#" + e.id : "")]);
+            });
+            worst.sort((a, b) => b[0] - a[0]);
+            // Keep the outermost culprits: skip elements whose overflow equals a listed parent's.
+            worst = worst.slice(0, 6).map(([o, t]) => `+${o} ${t}`);
+          }
+          line = sw > vw + 1 ? `FAIL ${w} ${p} +${sw - vw}px :: ${worst.join(" | ")}` : `ok   ${w} ${p}`;
+        } catch (e) { line = `ERR  ${w} ${p} ${e.message}`; }
+        res.push(line);
+        f.remove();
+      }
+    }
+    out.textContent = res.join("\n") + "\nDONE";
+  })();
+</script>
+</body>
+</html>

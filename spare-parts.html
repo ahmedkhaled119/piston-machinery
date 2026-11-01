@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spare Parts — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .spp { display: grid; grid-template-columns: 1fr 184px; gap: 16px; line-height: 1.35; }
+    .spp-crumb { font-size: 12.5px; padding: 12px 0 0; }
+    .spp-crumb span { margin: 0 8px; }
+    .spp h1 { font-size: 40px; margin: 4px 0 4px; color: #111; }
+    .spp .lead { font-size: 14.5px; margin: 0 0 4px; }
+    .spp-search { display: grid; grid-template-columns: 430px 330px 216px 92px; gap: 30px 30px; align-items: end; }
+    .spp-search > div { position: relative; }
+    .spp-search > div + div + div { margin-left: 0; }
+    .spp-search label { font-size: 11.5px; font-weight: 600; display: block; margin-bottom: 8px; }
+    .spp-in { display: flex; align-items: center; border: 1px solid #d4d5d9; border-radius: 3px; height: 35px; padding: 0 14px; background: #fff; }
+    .spp-in input, .spp-in select { flex: 1; border: 0; font: inherit; font-size: 12.5px; outline: none; background: none; }
+    .spp-in svg { width: 16px; }
+    .spp-in img { width: 56px; margin-right: 10px; }
+    .spp-search .btn-dark { height: 35px; padding: 0; font-size: 12px; margin-left: -20px; }
+    .spp-vals { display: grid; grid-template-columns: repeat(4, 1fr) 1fr; gap: 0; background: #fff; border: 1px solid #e6e7ea; border-radius: 4px; padding: 10px 30px; margin-top: 14px; }
+    .spp-vals div { display: flex; gap: 14px; align-items: center; font-size: 11.5px; }
+    .spp-vals img { width: 28px; height: 28px; object-fit: contain; }
+    .spp-vals b { display: block; font-size: 11.5px; margin-bottom: 2px; }
+    .spp-3 { display: grid; grid-template-columns: 518px 332px 1fr; gap: 9px; margin-top: 12px; }
+    .spp-box { background: #fff; border: 1px solid #e6e7ea; border-radius: 4px; padding: 14px 14px; }
+    .spp-box h4 { font-family: var(--font); font-size: 12.5px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .spp-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .spp-hd small { font-size: 10px; }
+    .spp-comp { display: grid; grid-template-columns: 128px 1fr; }
+    .spp-list button { display: flex; gap: 10px; align-items: center; width: 100%; background: none; border: 0; padding: 5px 2px; font-size: 10.5px; text-align: left; color: #222; }
+    .spp-list button span { width: 16px; height: 16px; border-radius: 50%; background: #f1f2f4; display: grid; place-items: center; font-size: 8.5px; flex: none; }
+    .spp-list button.on { background: #fdeeee; color: var(--red); }
+    .spp-list button.on span { background: var(--red); color: #fff; }
+    .spp-list button:first-child { color: var(--red); }
+    .spp-dia { position: relative; }
+    .spp-dia > img { width: 100%; display: block; }
+    .spp-dia .hit { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: transparent; border: 0; cursor: pointer; }
+    .spp-tools { display: flex; justify-content: space-around; border: 1px solid #e6e7ea; border-radius: 3px; padding: 6px; margin: 4px 20px 0; }
+    .spp-tools button { background: none; border: 0; display: flex; gap: 6px; align-items: center; font-size: 9.5px; }
+    .spp-tools img { width: 13px; height: 13px; object-fit: contain; }
+    .spp-row { display: grid; grid-template-columns: 62px 1fr auto 28px; gap: 10px; align-items: center; border: 1px solid #ececef; border-radius: 3px; padding: 2px 8px; margin-bottom: 4px; cursor: pointer; }
+    .spp-row.on { border: 1.5px solid var(--red); background: #fff7f7; }
+    .spp-row img { width: 58px; height: 44px; object-fit: contain; }
+    .spp-row b { display: block; font-size: 10px; }
+    .spp-row small { display: block; font-size: 9px; color: #34363b; margin-top: 2px; }
+    .spp-row .st { color: #1f9d55; font-size: 8.5px; text-align: right; }
+    .spp-row .add { width: 26px; height: 26px; border: 1px solid #e6e7ea; border-radius: 3px; background: #fff; font-size: 13px; }
+    .spp-row.on .add { color: var(--red); border-color: transparent; background: transparent; }
+    .spp-all { display: block; width: 100%; text-align: center; border: 1px solid #e6e7ea; border-radius: 3px; padding: 6px; font-size: 9.5px; font-weight: 700; margin-top: 4px; background: #fff; }
+    .spp-det { display: grid; grid-template-columns: 150px 1fr; gap: 14px; }
+    .spp-det > img { width: 100%; }
+    .spp-det h5 { font-size: 13px; margin: 8px 0 8px; display: flex; justify-content: space-between; }
+    .spp-det h5 span { background: #e5f6ec; color: #1f9d55; font-size: 9px; font-weight: 500; padding: 3px 8px; border-radius: 2px; }
+    .spp-kv { display: grid; grid-template-columns: 82px 1fr; gap: 6px 0; font-size: 10px; }
+    .spp-act { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center; margin-top: 8px; font-size: 10px; }
+    .spp-qty { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+    .spp-qty .qty button { width: 26px; height: 26px; }
+    .spp-qty .qty input { width: 40px; height: 26px; font-size: 10px; }
+    .spp-act .btn { padding: 8px 10px; font-size: 10px; width: 168px; }
+    .spp-act .btn-outline { border-color: #cfd0d4; color: #222; }
+    .spp-tabs { display: flex; gap: 34px; border-bottom: 1px solid #e6e7ea; margin: 8px -14px 8px; padding: 0 14px; }
+    .spp-tabs button { background: none; border: 0; border-bottom: 2px solid transparent; padding: 6px 0; font-size: 9.5px; font-weight: 700; }
+    .spp-tabs button.on { color: var(--red); border-color: var(--red); }
+    .spp-desc { display: grid; grid-template-columns: 1fr 145px; gap: 14px; font-size: 9.5px; }
+    .spp-desc ul { list-style: none; padding: 0; margin: 10px 0 0; }
+    .spp-desc li { margin-bottom: 4px; display: flex; gap: 6px; }
+    .spp-desc li::before { content: "✓"; width: 11px; height: 11px; border-radius: 50%; background: var(--red); color: #fff; font-size: 7px; display: grid; place-items: center; flex: none; }
+    .spp-doc { display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #ececef; padding: 6px 0; }
+    .spp-doc img { width: 16px; }
+    .spp-doc b { display: block; font-size: 9px; }
+    .spp-doc small { font-size: 8px; color: #555; }
+    .spp-doc button { margin-left: auto; background: none; border: 0; font-size: 12px; }
+    .spp-bot { display: grid; grid-template-columns: 618px 300px 1fr; gap: 9px; margin-top: 10px; }
+    .spp-pop { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .spp-pop div { display: grid; grid-template-columns: 54px 1fr; gap: 6px; border: 1px solid #ececef; border-radius: 3px; padding: 6px; font-size: 8.5px; }
+    .spp-pop img { width: 54px; height: 54px; object-fit: contain; grid-row: span 2; }
+    .spp-pop b { display: block; font-size: 9.5px; }
+    .spp-pop button { justify-self: end; align-self: end; width: 22px; height: 22px; border: 1px solid #e6e7ea; background: #fff; border-radius: 3px; font-size: 11px; }
+    .spp-help p { font-size: 10px; margin: 6px 0 12px; }
+    .spp-help .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .spp-help .two button { display: flex; gap: 10px; align-items: center; border: 1px solid #e6e7ea; background: #fff; border-radius: 3px; padding: 8px 10px; font-size: 9.5px; text-align: left; }
+    .spp-help .two img { width: 20px; }
+    .spp-help .two b { display: block; font-size: 10px; }
+    .spp-help .two small { color: #555; font-size: 8.5px; }
+    .spp-cf .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .spp-cf .btn { border-color: #cfd0d4; color: #222; font-size: 9.5px; padding: 9px 8px; }
+    .spp-side { background: #fff; border: 1px solid #e6e7ea; border-radius: 4px; padding: 14px 12px; margin-top: 128px; align-self: start; }
+    .spp-side h4 { font-family: var(--font); font-size: 12.5px; font-weight: 700; letter-spacing: 0; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .spp-side h4 span { position: relative; font-size: 16px; }
+    .spp-side h4 em { position: absolute; top: -8px; right: -8px; background: var(--red); color: #fff; font-style: normal; font-size: 9px; width: 15px; height: 15px; border-radius: 50%; display: grid; place-items: center; }
+    .spp-it { display: grid; grid-template-columns: 46px 1fr 16px; gap: 8px; padding: 8px 0; border-bottom: 1px solid #ececef; font-size: 9px; }
+    .spp-it img { width: 46px; height: 42px; object-fit: contain; border: 1px solid #ececef; border-radius: 3px; }
+    .spp-it b { display: block; font-size: 9.5px; }
+    .spp-it button { background: none; border: 0; font-size: 11px; color: #555; align-self: start; }
+    .spp-side .btn { width: 100%; font-size: 10.5px; padding: 9px; margin-top: 10px; }
+    .spp-side .btn-outline { border-color: #cfd0d4; color: #222; }
+    .spp-sv { display: flex; gap: 10px; align-items: center; margin-top: 16px; font-size: 9px; }
+    .spp-sv img { width: 20px; height: 20px; object-fit: contain; }
+    .spp-sv b { display: block; font-size: 9.5px; font-weight: 500; }
+    @media (max-width: 1400px) {
+      .spp { grid-template-columns: minmax(0, 1fr) 184px; }
+      .spp-search { grid-template-columns: minmax(0, 430fr) minmax(0, 330fr) minmax(0, 216fr) 92px; gap: 30px 24px; }
+      .spp-3 { grid-template-columns: minmax(0, 1.25fr) minmax(0, .8fr) minmax(0, 1fr); }
+      .spp-bot { grid-template-columns: minmax(0, 1.7fr) minmax(0, .85fr) minmax(0, 1fr); }
+      .spp-act .btn { width: 100%; max-width: 168px; }
+      .spp-vals { padding: 10px 20px; gap: 10px; }
+    }
+    @media (max-width: 1100px) { .spp, .spp-3, .spp-bot, .spp-search { grid-template-columns: 1fr; } .spp-side { margin-top: 0; } }
+    @media (max-width: 1100px) {
+      .spp, .spp-3, .spp-bot, .spp-search { grid-template-columns: minmax(0, 1fr); }
+      .spp-search .btn-dark { margin-left: 0; }
+      .spp-vals { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .spp h1 { font-size: 32px; }
+      .spp-crumb { font-size: 13px; }
+      .spp-vals { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 12px 14px; }
+      .spp-vals div, .spp-vals b { font-size: 12px; }
+      .spp-box { padding: 14px 12px; }
+      .spp-box h4, .spp-side h4 { font-size: 14px; }
+      .spp-hd small, .spp-all, .spp-tools button { font-size: 12px; }
+      .spp-box .spp-hd a, .spp-cf p { font-size: 12px !important; }
+      .spp-list button { font-size: 12.5px; padding: 6px 2px; }
+      .spp-list button span { width: 18px; height: 18px; font-size: 10px; }
+      .spp-tools { margin: 6px 0 0; flex-wrap: wrap; gap: 4px; }
+      .spp-row b { font-size: 12.5px; }
+      .spp-row small { font-size: 11.5px; }
+      .spp-row .st { font-size: 11px; }
+      .spp-row .add { width: 32px; height: 32px; }
+      .spp-row { grid-template-columns: 62px minmax(0, 1fr) auto 32px; }
+      .spp-det h5 { font-size: 15px; }
+      .spp-det h5 span { font-size: 11px; }
+      .spp-kv, .spp-act, .spp-desc { font-size: 12px; }
+      .spp-kv { grid-template-columns: 100px minmax(0, 1fr); }
+      .spp-act { grid-template-columns: 1fr; }
+      .spp-qty { justify-content: flex-start; }
+      .spp-act .btn { max-width: none; font-size: 12.5px; padding: 10px; }
+      .spp-tabs { gap: 18px; overflow-x: auto; margin: 10px -12px; padding: 0 12px; }
+      .spp-tabs button { font-size: 12px; white-space: nowrap; }
+      .spp-desc { grid-template-columns: 1fr; }
+      .spp-desc li::before { width: 14px; height: 14px; font-size: 9px; }
+      .spp-doc b { font-size: 12px; }
+      .spp-doc small { font-size: 11px; }
+      .spp-pop { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .spp-pop div { font-size: 11px; }
+      .spp-pop b { font-size: 12px; }
+      .spp-pop button { width: 30px; height: 30px; }
+      .spp-help p { font-size: 12px; }
+      .spp-help .two button { font-size: 11.5px; }
+      .spp-help .two b { font-size: 12px; }
+      .spp-help .two small { font-size: 11px; }
+      .spp-cf p { max-width: none !important; }
+      .spp-cf .btn { font-size: 12px; padding: 11px 8px; }
+      .spp-it { font-size: 12px; grid-template-columns: 46px minmax(0, 1fr) 24px; }
+      .spp-it b { font-size: 12px; }
+      .spp-side .btn { font-size: 13px; padding: 11px; }
+      .spp-sv, .spp-sv b { font-size: 12px; }
+    }
+    @media (max-width: 480px) {
+      .spp-vals, .spp-pop, .spp-help .two, .spp-cf .two { grid-template-columns: minmax(0, 1fr); }
+      .spp-comp { grid-template-columns: 118px minmax(0, 1fr); }
+      .spp-det { grid-template-columns: 1fr; }
+      .spp-det > img { max-width: 220px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="support" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <main class="container spp">
+    <div>
+      <div class="spp-crumb"><a href="index.html">Home</a><span>›</span>Spare Parts</div>
+      <h1>Spare Parts</h1>
+      <p class="lead">Find genuine Piston parts for your machine.</p>
+      <div class="spp-search">
+        <div><div class="spp-in"><input id="q" placeholder="Search by part name, part number or machine model..."><svg viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div></div>
+        <div><label>Select Machine</label><div class="spp-in"><img src="assets/img/parts/sel-r32.png" alt=""><select id="mach"></select></div></div>
+        <div><label>Find by Part Number</label><div class="spp-in"><input id="pn" placeholder="e.g. PM-R32-001"></div></div>
+        <button class="btn btn-dark" id="search">Search</button>
+      </div>
+      <div class="spp-vals">
+        <div><img src="assets/img/parts/val-1.png" alt=""><span><b>100% Genuine Parts</b>Original Piston quality</span></div>
+        <div><img src="assets/img/parts/val-2.png" alt=""><span><b>Global Fast Delivery</b>Reliable worldwide shipping</span></div>
+        <div><img src="assets/img/parts/val-3.png" alt=""><span><b>Expert Support</b>We help you find the right part</span></div>
+        <div><img src="assets/img/parts/val-4.png" alt=""><span><b>12 Months Warranty</b>On all genuine parts</span></div>
+      </div>
+
+      <section class="spp-3">
+        <div class="spp-box">
+          <div class="spp-hd" style="justify-content:flex-start;gap:30px"><h4>Machine Components</h4><a href="viewer.html?id=r32" style="color:var(--red);font-size:10px;display:flex;gap:6px;align-items:center"><img src="assets/img/parts/view3d.png" alt="" style="width:14px">View in 360°</a></div>
+          <div class="spp-comp">
+            <div class="spp-list" id="comps"></div>
+            <div><div class="spp-dia" id="dia"><img src="assets/img/parts/diagram.png" alt="PISTON R32 component diagram"></div>
+              <div class="spp-tools"><button onclick="location.href='viewer.html?id=r32'"><img src="assets/img/parts/t-rotate.png" alt="">Rotate</button><button onclick="location.href='viewer.html?id=r32'"><img src="assets/img/parts/t-zoom.png" alt="">Zoom</button>
+                <button title="Phase 2" onclick="P.toast('Exploded view is planned for Phase 2')"><img src="assets/img/parts/t-explode.png" alt="">Explode</button><button id="diaReset"><img src="assets/img/parts/t-reset.png" alt="">Reset</button></div></div>
+          </div>
+        </div>
+        <div class="spp-box">
+          <div class="spp-hd"><h4 id="listTitle">Parts List (Main Motor)</h4><small id="listCount">12 Parts &nbsp;⚲</small></div>
+          <div id="parts"></div>
+          <button class="spp-all" onclick="P.toast('Showing 6 of 12 parts in this demo')">View All 12 Parts ⌄</button>
+        </div>
+        <div class="spp-box" id="det"></div>
+      </section>
+
+      <section class="spp-bot">
+        <div class="spp-box"><div class="spp-hd"><h4>Popular Replacement Parts</h4><a href="#" data-toast="Full parts catalogue — search by part number or ask our parts specialist (demo)" style="color:var(--red);font-size:9.5px;font-weight:600">View All Parts →</a></div><div class="spp-pop" id="pop"></div></div>
+        <div class="spp-box spp-help"><h4>Need Help Identifying a Part?</h4><p>Upload a photo or select the part directly in the 360° view.</p>
+          <div class="two"><button id="upload"><img src="assets/img/parts/upload.png" alt=""><span><b>Upload Photo</b><small>JPG, PNG up to 5MB</small></span></button>
+            <button onclick="location.href='viewer.html?id=r32'"><img src="assets/img/parts/identify.png" alt=""><span><b>Identify in 360°</b><small>Select on model</small></span></button></div>
+          <input type="file" id="file" accept="image/png,image/jpeg" hidden></div>
+        <div class="spp-box spp-cf"><h4>Can't Find What You Need?</h4><p style="font-size:10px;margin:6px 0 0;max-width:200px">Our parts specialists are here to help you find the exact part you need.</p>
+          <div class="two"><button class="btn btn-outline" data-wa-quote data-channel="parts" data-source="Spare parts — specialist">Contact Parts Specialist</button><a class="btn btn-outline" href="tel:+201234567891">✆ &nbsp;+20 123 456 7891</a></div></div>
+      </section>
+    </div>
+
+    <aside class="spp-side">
+      <h4>Parts List <span>🛒<em id="cnt">0</em></span></h4>
+      <div id="plist"></div>
+      <button class="btn btn-red" id="send" title="Opens WhatsApp with our Spare Parts team">Request Quote</button>
+      <button class="btn btn-outline" id="clear">Clear List</button>
+      <div class="spp-sv"><img src="assets/img/parts/sb-1.png" alt=""><span><b>No Online Payment</b>Quote by our parts team</span></div>
+      <div class="spp-sv"><img src="assets/img/parts/sb-2.png" alt=""><span><b>Fast Delivery</b>Worldwide Shipping</span></div>
+      <div class="spp-sv"><img src="assets/img/parts/sb-3.png" alt=""><span><b>12 Months Warranty</b>On All Parts</span></div>
+      <div class="spp-sv"><img src="assets/img/parts/sb-4.png" alt=""><span><b>Easy Returns</b>30-Day Returns</span></div>
+    </aside>
+  </main>
+
+  <div id="site-footer" style="margin-top:14px"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc, param, openWhatsApp, toast } = P;
+      const A = "assets/img/parts/";
+      const comps = ["Main Assembly", "Main Motor", "Saw Blade", "Sliding Table", "Rip Fence", "Control Panel", "Dust Extraction", "Safety Guard", "Scoring Unit", "Electrical Box", "Rail System", "Pneumatic System"];
+      const motor = [
+        { pn: "PM-R32-001", name: "Main Motor", spec: "7.5 kW / 380V / 50Hz", img: "p-001" },
+        { pn: "PM-R32-002", name: "Motor Pulley", spec: "SPB 180-3", img: "p-002" },
+        { pn: "PM-R32-003", name: "V-Belt", spec: "SPB 1800", img: "p-003" },
+        { pn: "PM-R32-004", name: "Motor Mount", spec: "Cast Iron", img: "p-004" },
+        { pn: "PM-R32-005", name: "Motor Bearing (DE)", spec: "6205 ZZ", img: "p-005" },
+        { pn: "PM-R32-006", name: "Motor Bearing (NDE)", spec: "6205 ZZ", img: "p-006" }];
+      const popular = [
+        { pn: "PM-R32-010", name: "Saw Blade", spec: "Ø300 x 3.2 x 30 mm", img: "pop-1" }, { pn: "PM-R32-011", name: "Riving Knife", spec: "THK 2.5 mm", img: "pop-2" },
+        { pn: "PM-R32-012", name: "Sliding Table Roller", spec: "Ø80 x 20 mm", img: "pop-3" }, { pn: "PM-R32-013", name: "Fence Lock Handle", spec: "M10 x 40 mm", img: "pop-4" }];
+      const all = motor.concat(popular);
+      // Clickable areas over the numbered markers drawn in the diagram (percent of image).
+      const marks = [[84, 6, 6], [59.6, 13, 8], [20.5, 24, 3], [44.9, 25, 7], [11, 40, 8], [66, 69, 1], [11, 81, 10], [31, 79, 2], [85, 73, 7], [84, 88, 9], [66, 93, 6]];
+      const PL = "piston_parts_list";
+      const getPL = () => JSON.parse(sessionStorage.getItem(PL) || "[]");
+      const setPL = (l) => sessionStorage.setItem(PL, JSON.stringify(l));
+      let comp = 1, selPn = "PM-R32-001";
+      qs("#mach").innerHTML = D.products.map((p) => `<option value="${p.id}">${esc(p.model.replace("PISTON", "Piston"))} - ${esc(p.name)}</option>`).join("");
+      if (param("id")) qs("#mach").value = param("id");
+      qs("#dia").innerHTML += marks.map(([x, y, c]) => `<button class="hit" data-comp="${c}" style="left:calc(${x}% - 11px);top:calc(${y}% - 11px)" aria-label="${comps[c]}"></button>`).join("");
+
+      function renderComps() { qs("#comps").innerHTML = comps.map((c, i) => `<button class="${i === comp ? "on" : ""}" data-comp="${i}"><span>${i + 1}</span>${c}</button>`).join(""); }
+      function renderParts() {
+        const list = comp === 1 ? motor : [];
+        qs("#listTitle").textContent = `Parts List (${comps[comp]})`;
+        qs("#parts").innerHTML = list.length ? list.map((p) => `<div class="spp-row ${p.pn === selPn ? "on" : ""}" data-pn="${p.pn}"><img src="${A}${p.img}.png" alt=""><div><b>${esc(p.name)}</b><small>${p.pn}</small><small>${esc(p.spec)}</small></div><span class="st">In Stock</span><button class="add" data-add="${p.pn}" aria-label="Add to parts list">🛒</button></div>`).join("")
+          : `<p style="font-size:11px;color:#555;padding:20px 4px">Parts for ${esc(comps[comp])} will be listed here. Use "Contact Parts Specialist" for help.</p>`;
+      }
+      function renderDetail() {
+        const p = all.find((x) => x.pn === selPn) || motor[0];
+        const isMotor = p.pn === "PM-R32-001";
+        qs("#det").innerHTML = `<div class="spp-hd"><h4>Part Details</h4></div>
+          <div class="spp-det"><img src="${isMotor ? A + "detail-motor.png" : A + p.img + ".png"}" alt=""><div><h5>${esc(p.name)} <span>In Stock</span></h5>
+            <div class="spp-kv"><span>Part Number</span><span>${p.pn}</span><span>Category</span><span>${isMotor ? "Electrical Components" : "Mechanical Components"}</span>
+            <span>Compatibility</span><span>Piston R32, R32 Pro</span><span>Specifications</span><span>${isMotor ? "7.5 kW / 380V / 50Hz<br>3 Phase / 4 Pole / B35" : esc(p.spec)}</span>
+            ${isMotor ? "<span>Weight</span><span>56.4 kg</span>" : ""}<span>Warranty</span><span>12 Months</span></div></div></div>
+          <div class="spp-act"><div class="spp-qty">Quantity <span class="qty"><button id="dm">−</button><input id="dq" value="1" readonly><button id="dp">+</button></span></div>
+            <div><button class="btn btn-red" id="reqOne">🛒 &nbsp;Request Part / Quote</button><button class="btn btn-outline" id="addOne" style="margin-top:8px">☐ &nbsp;Add to Parts List</button></div></div>
+          <div class="spp-tabs">${["Description", "Compatibility", "Documents", "Related Parts"].map((t, i) => `<button class="${i ? "" : "on"}" data-ptab="${i}">${t}</button>`).join("")}</div>
+          <div class="spp-desc"><div id="ptab"></div>
+            <div>${[["Installation Guide", "PDF · 1.2 MB"], ["Wiring Diagram", "PDF · 820 KB"], ["Technical Datasheet", "PDF · 1.1 MB"]].map(([t, s]) => `<div class="spp-doc"><img src="${A}doc.png" alt=""><span><b>${t}</b><small>${s}</small></span><button onclick="P.toast('${t} — demo download')">⤓</button></div>`).join("")}</div></div>`;
+        qs("#dm").onclick = () => (qs("#dq").value = Math.max(1, +qs("#dq").value - 1));
+        const tabs = [`High performance ${esc(p.name.toLowerCase())} designed for the Piston R32 Sliding Table Saw. Built for continuous heavy-duty operation with high efficiency and low vibration.
+            <ul><li>High efficiency IE3 motor</li><li>Thermal overload protection</li><li>Low noise &amp; vibration</li><li>IP55 protection class</li></ul>`,
+          `Fits the following machines:<ul><li>Piston R32 Sliding Table Saw</li><li>Piston R32 Pro Sliding Table Saw</li></ul>Not sure? Send your machine serial number to our parts specialist.`,
+          `Installation guide, wiring diagram and technical datasheet are listed alongside.<ul><li>PDF documents</li><li>English &amp; Arabic</li></ul>`,
+          `Often ordered together:<ul>${motor.filter((x) => x.pn !== p.pn).slice(0, 4).map((x) => `<li>${esc(x.name)} — ${x.pn}</li>`).join("")}</ul>`];
+        const showTab = (i) => { qsa("[data-ptab]").forEach((b) => b.classList.toggle("on", +b.dataset.ptab === i)); qs("#ptab").innerHTML = tabs[i]; };
+        qsa("[data-ptab]").forEach((b) => b.onclick = () => showTab(+b.dataset.ptab));
+        showTab(0);
+        qs("#dp").onclick = () => (qs("#dq").value = +qs("#dq").value + 1);
+        qs("#reqOne").onclick = () => openWhatsApp({ channel: "parts", items: [{ label: `${p.pn} ${p.name}`, qty: +qs("#dq").value }], source: "Spare parts — Piston R32" });
+        qs("#addOne").onclick = () => add(p.pn, +qs("#dq").value);
+      }
+      function renderPop() { qs("#pop").innerHTML = popular.map((p) => `<div><img src="${A}${p.img}.png" alt=""><span><b>${esc(p.name)}</b>${p.pn}<br>${esc(p.spec)}</span><button data-add="${p.pn}" aria-label="Add to parts list">🛒</button></div>`).join(""); }
+      function renderPL() {
+        const l = getPL();
+        qs("#cnt").textContent = l.reduce((a, b) => a + b.qty, 0);
+        qs("#plist").innerHTML = l.length ? l.map((x) => { const p = all.find((y) => y.pn === x.pn); return `<div class="spp-it"><img src="${A}${p.pn === "PM-R32-001" ? "p-001" : p.img}.png" alt=""><span><b>${p.pn}</b>${esc(p.name)}<br>Qty: ${x.qty}</span><button data-del="${p.pn}" aria-label="Remove">🗑</button></div>`; }).join("")
+          : `<p style="font-size:10px;color:#555">No parts added yet.</p>`;
+      }
+      function add(pn, qty = 1) { const l = getPL(); const it = l.find((x) => x.pn === pn); it ? (it.qty += qty) : l.push({ pn, qty }); setPL(l); renderPL(); toast(`${pn} added to parts list`); }
+      document.addEventListener("click", (e) => {
+        const c = e.target.closest("[data-comp]"); if (c) { comp = +c.dataset.comp; renderComps(); renderParts(); return; }
+        const a = e.target.closest("[data-add]"); if (a) { e.stopPropagation(); add(a.dataset.add); return; }
+        const d = e.target.closest("[data-del]"); if (d) { setPL(getPL().filter((x) => x.pn !== d.dataset.del)); renderPL(); return; }
+        const r = e.target.closest(".spp-row"); if (r) { selPn = r.dataset.pn; renderParts(); renderDetail(); }
+      });
+      qs("#send").onclick = () => { const l = getPL(); if (!l.length) return toast("Add parts to your list first");
+        openWhatsApp({ channel: "parts", items: l.map((x) => ({ label: `${x.pn} ${all.find((y) => y.pn === x.pn).name}`, qty: x.qty })), source: "Spare parts list" }); };
+      qs("#clear").onclick = () => { setPL([]); renderPL(); };
+      qs("#search").onclick = () => { const q = (qs("#pn").value || qs("#q").value).trim().toLowerCase(); if (!q) return toast("Enter a part number or part name");
+        const hit = all.find((p) => (p.pn + " " + p.name).toLowerCase().includes(q)); if (!hit) return toast("No matching part found — contact our parts specialist");
+        if (motor.includes(hit)) { comp = 1; renderComps(); } selPn = hit.pn; renderParts(); renderDetail(); };
+      qs("#upload").onclick = () => qs("#file").click();
+      qs("#diaReset").onclick = () => { comp = 1; selPn = "PM-R32-001"; renderComps(); renderParts(); renderDetail(); };
+      qs("#file").onchange = () => { const f = qs("#file").files[0]; if (!f) return; if (f.size > 5 * 1024 * 1024) return toast("File too large — max 5 MB"); toast(`Photo "${f.name}" received — a specialist will identify the part (demo)`); };
+      if (!getPL().length) setPL([{ pn: "PM-R32-001", qty: 1 }, { pn: "PM-R32-003", qty: 2 }]);
+      renderComps(); renderParts(); renderDetail(); renderPop(); renderPL();
+    });
+  </script>
+</body>
+</html>

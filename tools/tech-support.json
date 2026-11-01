@@ -1,0 +1,7 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 07.44.14.png",
+  "out": "src/demo/assets/img/tech-support",
+  "items": [
+    { "name": "hero.png", "box": [728, 530, 1024, 625], "scale": 3 }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.53.33.png",
+  "out": "src/demo/assets/img/videos",
+  "items": [
+    { "name": "hero.png", "box": [540, 57, 1536, 273] },
+    { "name": "f-1.png", "box": [51, 372, 328, 517] },
+    { "name": "f-2.png", "box": [343, 372, 591, 517] },
+    { "name": "f-3.png", "box": [606, 372, 855, 517] },
+    { "name": "f-4.png", "box": [870, 372, 1117, 517] },
+    { "name": "l-1.png", "box": [51, 618, 189, 693] },
+    { "name": "l-2.png", "box": [219, 618, 365, 693] },
+    { "name": "l-3.png", "box": [395, 618, 540, 693] },
+    { "name": "l-4.png", "box": [569, 618, 731, 693] },
+    { "name": "l-5.png", "box": [761, 618, 912, 693] },
+    { "name": "l-6.png", "box": [942, 618, 1089, 693] },
+    { "name": "cat-1.png", "box": [1181, 369, 1197, 385], "trim": true, "scale": 2 },
+    { "name": "cat-2.png", "box": [1181, 388, 1197, 404], "trim": true, "scale": 2 },
+    { "name": "cat-3.png", "box": [1181, 407, 1197, 423], "trim": true, "scale": 2 },
+    { "name": "cat-4.png", "box": [1181, 426, 1197, 442], "trim": true, "scale": 2 },
+    { "name": "cat-5.png", "box": [1181, 445, 1197, 461], "trim": true, "scale": 2 },
+    { "name": "cat-6.png", "box": [1181, 464, 1197, 480], "trim": true, "scale": 2 },
+    { "name": "cat-7.png", "box": [1181, 483, 1197, 499], "trim": true, "scale": 2 },
+    { "name": "playlist.png", "box": [1180, 546, 1293, 622] },
+    { "name": "pl-1.png", "box": [1181, 637, 1231, 657] },
+    { "name": "pl-2.png", "box": [1181, 661, 1231, 681] },
+    { "name": "pl-3.png", "box": [1181, 686, 1231, 706] },
+    { "name": "pl-4.png", "box": [1181, 710, 1231, 730] },
+    { "name": "cta.png", "box": [280, 792, 332, 842], "trim": true, "scale": 2 },
+    { "name": "yt.png", "box": [796, 814, 820, 832], "trim": true, "scale": 2 }
+  ]
+}

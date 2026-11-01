@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machinery — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Responsive overrides of global .lhero/.cat-bar/.pgrid/.pcard/.help-box (desktop ≥1440 untouched) */
+    @media (max-width: 1300px) {
+      .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .layout-side > div { min-width: 0; }
+    }
+    @media (max-width: 1100px) {
+      .layout-side[style] { grid-template-columns: minmax(0, 1fr) !important; }
+      .pfilters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+      .pfilters .fh, .pfilters .btn-reset { grid-column: 1 / -1; }
+      .pfilters .pfg[style] { border-bottom: 1px solid #e3e4e7 !important; }
+      .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pgrid.list .pcard { grid-template-columns: 200px minmax(0, 1fr); }
+      .pgrid.list .pc-img { grid-row: span 6; }
+      .lhero .container { min-height: 0; padding-top: 40px; }
+      .lhero-img { width: 100%; margin-right: 0; }
+      .cmp-items { flex-wrap: wrap; }
+      .help-box .line-art { width: 160px; }
+    }
+    @media (max-width: 760px) {
+      .lhero h1 { font-size: 34px; margin-top: 20px; }
+      .lhero p { font-size: 15px; }
+      .cat-bar { margin-top: -24px; padding: 0 8px; }
+      .cat-bar button { padding: 16px 4px; gap: 8px; }
+      .cat-bar button:nth-child(odd)::before { display: none; }
+      .pfilters { grid-template-columns: minmax(0, 1fr); }
+      .pfilters:not(.open) > .pfg, .pfilters:not(.open) > .btn-reset { display: none; }
+      .pfilters:not(.open) .fh { border-bottom: 0; }
+      .pfilters .fh b { cursor: pointer; padding: 6px 0; }
+      .pfilters .fh b::after { content: " \25BE"; }
+      .pfilters.open .fh b::after { content: " \25B4"; }
+      .pfilters { padding-bottom: 6px; }
+      .pfilters.open { padding-bottom: 18px; }
+      .ptool { flex-wrap: wrap; gap: 10px; }
+      .ptool .sort select { min-width: 0; }
+      .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pgrid.list .pcard { grid-template-columns: minmax(0, 1fr); }
+      .pgrid.list .pc-img { grid-row: auto; }
+      .pc-specs { grid-template-columns: repeat(3, minmax(0, auto)); }
+      .pc-specs span { white-space: normal; }
+      .cmp-item { min-width: 0; flex: 1 1 100%; }
+      .help-box { padding: 22px; gap: 22px; }
+      .help-box > div { flex-wrap: wrap; gap: 16px; }
+      .help-box .line-art { margin-left: 0; }
+    }
+    @media (max-width: 560px) {
+      .pgrid { grid-template-columns: minmax(0, 1fr); }
+      .pc-actions .btn-xs { font-size: 11px; padding: 10px; }
+      .pc-specs span { font-size: 12px; }
+      .pc-specs small { font-size: 11px; }
+    }
+  </style>
+</head>
+<body data-nav="products">
+  <div id="site-header"></div>
+
+  <section class="lhero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Machinery</div>
+      <div>
+        <h1>Engineered Machinery<br>for Your <span class="red">Production</span></h1>
+        <p>Discover our complete range of professional woodworking machinery built for precision, durability and high industrial performance.</p>
+      </div>
+      <div><img class="lhero-img" src="assets/img/products/hero-products.png" alt="PISTON R32 sliding table saw"></div>
+    </div>
+  </section>
+
+  <div class="container"><div class="cat-bar" id="catBar"></div></div>
+
+  <section class="container" style="padding-top:30px">
+    <div class="layout-side" style="grid-template-columns:240px 1fr;gap:18px">
+      <aside class="pfilters" id="filters">
+        <div class="fh"><b>Filters</b><a href="#" id="clearAll">Clear All 🗑</a></div>
+        <div class="pfg"><h5>Industry</h5><div id="fInd"></div><a class="more" href="#" id="indMore">Show More ⌄</a></div>
+        <div class="pfg"><h5>Machine Type</h5><div id="fType"></div></div>
+        <div class="pfg"><h5>Power Range</h5>
+          <div class="flex between" style="flex-wrap:nowrap;font-size:12px"><span>1 kW</span>
+            <div class="range" style="flex:1"><div class="track" id="track"></div><input type="range" id="pMin" min="1" max="30" value="1"><input type="range" id="pMax" min="1" max="30" value="30"></div>
+            <span>30+ kW</span></div></div>
+        <div class="pfg"><h5 class="closed">Capacity</h5><div class="flex" style="flex-wrap:nowrap"><select><option>Min</option><option>500</option><option>1,000</option></select><select><option>Max</option><option>5,000</option><option>10,000</option></select></div></div>
+        <div class="pfg"><h5 class="closed">Application</h5><select><option>Select Application</option><option>Panel sizing</option><option>Edge finishing</option><option>Membrane pressing</option><option>Hardware drilling</option></select></div>
+        <div class="pfg" style="border-bottom:0"><h5 class="closed">Availability</h5>
+          <label><input type="checkbox" name="av" value="In Stock"> In Stock</label>
+          <label><input type="checkbox" name="av" value="Made to Order"> Made to Order</label></div>
+        <button class="btn-reset" id="reset">↻ Reset Filters</button>
+      </aside>
+
+      <div>
+        <div class="ptool">
+          <span id="count"></span>
+          <div class="flex" style="flex-wrap:nowrap;gap:0">
+            <div class="sort"><span>Sort By</span><select id="sort"><option value="featured">Featured</option><option value="az">Model A–Z</option><option value="power">Power</option></select></div>
+            <div class="view-tog"><button class="on" data-view="grid" aria-label="Grid view"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+              <button data-view="list" aria-label="List view"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+          </div>
+        </div>
+        <div class="pgrid" id="grid"></div>
+        <div class="pager" id="pager"></div>
+      </div>
+    </div>
+
+    <div id="cmpInline"></div>
+
+    <div class="help-box">
+      <div><img src="assets/img/products/help-headset.png" alt="" style="width:52px">
+        <div><h3>Can't find the right machine?</h3><p>Our experts are ready to help you find the best solution for your production.</p>
+          <a class="btn btn-outline" href="talk-to-engineer.html">Talk to an Expert</a></div></div>
+      <div><div><h3>Need a complete production line?</h3><p>We design and provide complete woodworking production solutions tailored to your needs.</p>
+          <a class="btn btn-outline" href="industries.html">Build Your Solution</a></div>
+        <img class="line-art" src="assets/img/products/help-line.png" alt=""></div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc, param, productCard, productImg, product, getCmp, setCmp } = P;
+      const PER = 12;
+      let cat = param("cat") || "all", page = 1;
+      const tabs = [["all", "All Machines", "tab-all"], ["saws", "Sliding Table Saws", "tab-saws"], ["edge", "Edge Banding Machines", "tab-edge"], ["press", "Vacuum Presses", "tab-press"], ["drill", "Drilling Machines", "tab-drill"], ["other", "Other Machinery", "tab-other"]];
+      qs("#catBar").innerHTML = tabs.map(([id, t, img]) => `<button class="${id === cat ? "on" : ""}" data-cat="${id}"><img src="assets/img/products/${img}.png" alt="">${t}</button>`).join("");
+      const count = (f) => D.products.filter(f).length;
+      const indBox = (i) => `<label><input type="checkbox" name="ind" value="${i.slug}"> ${esc(i.name)} (${count((p) => p.industries.includes(i.slug))})</label>`;
+      qs("#fInd").innerHTML = D.industries.slice(0, 5).map(indBox).join("");
+      qs("#indMore").onclick = (e) => { e.preventDefault(); qs("#fInd").insertAdjacentHTML("beforeend", D.industries.slice(5).map(indBox).join("")); e.currentTarget.remove(); };
+      qs("#fType").innerHTML = D.categories.map((c) => `<label><input type="checkbox" name="type" value="${c.id}"> ${esc(c.name)} (${count((p) => p.cat === c.id)})</label>`).join("");
+      // Photographed machines first, in the mockup's order.
+      const order = ["r32", "peb368", "pvpm2500", "pbd21", "peb468", "pj1300", "pvpm3000", "pbd29", "r42", "peb580", "pbd42"];
+      const rank = (p) => (order.includes(p.id) ? order.indexOf(p.id) : 99);
+
+      function filtered() {
+        const v = (n) => qsa(`[name=${n}]:checked`).map((x) => x.value);
+        const ind = v("ind"), type = v("type"), av = v("av"), lo = +qs("#pMin").value, hi = +qs("#pMax").value;
+        const l = D.products.filter((p) => (cat === "all" || p.cat === cat) && (!ind.length || ind.some((i) => p.industries.includes(i)))
+          && (!type.length || type.includes(p.cat)) && (!av.length || av.includes(p.availability)) && p.power >= lo && (hi >= 30 || p.power <= hi));
+        const s = qs("#sort").value;
+        return l.sort(s === "az" ? (a, b) => a.model.localeCompare(b.model) : s === "power" ? (a, b) => a.power - b.power : (a, b) => rank(a) - rank(b));
+      }
+      function render() {
+        const l = filtered(), pages = Math.max(1, Math.ceil(l.length / PER)); page = Math.min(page, pages);
+        const from = (page - 1) * PER;
+        qs("#count").textContent = l.length ? `Showing ${from + 1} – ${Math.min(from + PER, l.length)} of ${l.length} machines` : "No machines match your filters";
+        qs("#grid").innerHTML = l.slice(from, from + PER).map((p, i) => productCard(p, { source: "Products listing", badge: page === 1 && i === 0 && p.featured })).join("");
+        qs("#pager").innerHTML = pages > 1 ? `<a href="#" data-pg="${Math.max(1, page - 1)}">‹</a>` + Array.from({ length: pages }, (_, i) => `<a href="#" class="${i + 1 === page ? "on" : ""}" data-pg="${i + 1}">${i + 1}</a>`).join("") + `<a href="#" data-pg="${Math.min(pages, page + 1)}">›</a>` : "";
+        const lo = +qs("#pMin").value, hi = +qs("#pMax").value;
+        qs("#track").style.cssText = `left:${(lo - 1) / 29 * 100}%;right:${100 - (hi - 1) / 29 * 100}%`;
+        renderCmp();
+      }
+      function renderCmp() {
+        const ids = getCmp();
+        qs("#cmpInline").innerHTML = ids.length ? `<div class="cmp-inline">
+          <div class="ic"><img src="assets/img/products/compare-icon.png" alt=""></div>
+          <div><b>${ids.length} Machine${ids.length > 1 ? "s" : ""} Selected</b><small>Compare the specifications side by side</small><button class="clear" id="cmpClear">Clear All</button></div>
+          <div class="cmp-items">${ids.map(product).filter(Boolean).map((p) => `<div class="cmp-item">${productImg(p)}<div><b>${esc(p.model)}</b><span>${esc(p.name)}</span></div><button data-uncmp="${p.id}" aria-label="Remove">✕</button></div>`).join("")}</div>
+          <a class="btn btn-red cmp-go" href="compare.html">Compare Machines &nbsp;→</a></div>` : "";
+      }
+      qs("#catBar").onclick = (e) => { const b = e.target.closest("[data-cat]"); if (!b) return; cat = b.dataset.cat; page = 1; qsa("#catBar button").forEach((x) => x.classList.toggle("on", x === b)); render(); };
+      qs("#filters").addEventListener("input", () => { if (+qs("#pMin").value > +qs("#pMax").value) qs("#pMin").value = qs("#pMax").value; page = 1; render(); });
+      // Phones: the filter panel is collapsed behind its "Filters" heading.
+      qs("#filters .fh b").onclick = () => qs("#filters").classList.toggle("open");
+      qs("#sort").onchange = render;
+      qs("#pager").onclick = (e) => { const a = e.target.closest("[data-pg]"); if (!a) return; e.preventDefault(); page = +a.dataset.pg; render(); qs("#grid").scrollIntoView({ behavior: "smooth" }); };
+      qsa("[data-view]").forEach((b) => b.onclick = () => { qsa("[data-view]").forEach((x) => x.classList.toggle("on", x === b)); qs("#grid").classList.toggle("list", b.dataset.view === "list"); });
+      const reset = (e) => { e.preventDefault(); qsa("#filters input[type=checkbox]").forEach((x) => (x.checked = false)); qs("#pMin").value = 1; qs("#pMax").value = 30; page = 1; render(); };
+      qs("#reset").onclick = reset; qs("#clearAll").onclick = reset;
+      document.addEventListener("change", (e) => { if (e.target.matches("[data-compare]")) renderCmp(); });
+      document.addEventListener("click", (e) => {
+        const u = e.target.closest("[data-uncmp]"); if (u) { setCmp(getCmp().filter((x) => x !== u.dataset.uncmp)); render(); }
+        if (e.target.id === "cmpClear") { setCmp([]); render(); }
+      });
+      if (!getCmp().length) setCmp(["r32", "peb368"]);
+      render();
+    });
+  </script>
+</body>
+</html>

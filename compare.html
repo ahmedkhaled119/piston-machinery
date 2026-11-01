@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare Machines — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .cmp-hero { position: relative; height: 210px; overflow: hidden; background: linear-gradient(90deg, #fbfbfc 0%, #f1f2f4 50%, #e9ebee 100%); line-height: 1.35; }
+    .cmp-art { position: absolute; right: 0; top: 0; height: 100%; }
+    .cmp-art img { height: 100%; width: auto; }
+    .cmp-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #eceef1 0%, rgba(236,238,241,.6) 18%, rgba(236,238,241,0) 42%); }
+    .cmp-hero .container { position: relative; }
+    .cmp-hero .breadcrumb { padding: 12px 0 0; font-size: 12px; color: #444; }
+    .cmp-hero .ey { display: block; margin-top: 18px; color: var(--red); font-weight: 700; font-size: 12px; letter-spacing: .6px; text-transform: uppercase; }
+    .cmp-hero h1 { font-size: 40px; font-weight: 800; line-height: 1; letter-spacing: 1px; margin: 4px 0 10px; color: #111; text-transform: uppercase; }
+    .cmp-hero p { font-size: 14px; color: #3f4146; margin: 0; max-width: 470px; }
+
+    .cmp-box { position: relative; z-index: 1; margin-top: -26px; background: #fff; border-radius: 4px; box-shadow: 0 2px 14px rgba(0,0,0,.08); }
+    .cmp-bar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 14px 22px; border-bottom: 1px solid #eceef0; font-size: 13px; }
+    .cmp-bar .cnt b { font-size: 15px; text-transform: uppercase; }
+    .cmp-bar .cnt small { display: block; color: #6b6d73; font-size: 12px; }
+    .cmp-sw { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; margin-left: auto; -webkit-user-select: none; user-select: none; }
+    .cmp-sw input { position: absolute; opacity: 0; pointer-events: none; }
+    .cmp-sw .trk { width: 36px; height: 20px; border-radius: 20px; background: #cfd0d4; position: relative; transition: .2s; }
+    .cmp-sw .trk::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: .2s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+    .cmp-sw input:checked + .trk { background: var(--red); }
+    .cmp-sw input:checked + .trk::after { left: 19px; }
+    .cmp-sw input:focus-visible + .trk { outline: 2px solid #111; outline-offset: 2px; }
+    .cmp-link { background: none; border: 0; padding: 0; font: inherit; font-size: 12px; font-weight: 700; color: #333; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; text-transform: uppercase; }
+    .cmp-link svg { width: 15px; height: 15px; }
+    .cmp-link:hover { color: var(--red); }
+
+    .cmp-scroll { overflow-x: auto; }
+    .cmp-t { width: 100%; min-width: 900px; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
+    .cmp-t col.lbl { width: 230px; }
+    .cmp-t th, .cmp-t td { padding: 11px 18px; border-bottom: 1px solid #eceef0; text-align: center; vertical-align: middle; }
+    .cmp-t tbody th { text-align: left; font-weight: 600; color: #3a3c41; position: relative; }
+    .cmp-t td + td, .cmp-t th + td, .cmp-t thead th + th { border-left: 1px solid #eceef0; }
+    .cmp-t thead th { vertical-align: top; padding: 18px 16px 16px; font-weight: 400; }
+    .cmp-t thead th.lbl { text-align: left; vertical-align: bottom; }
+    .cmp-t thead th.lbl b { display: block; font-family: var(--font-head); font-size: 22px; font-weight: 800; text-transform: uppercase; line-height: 1.05; color: #111; }
+    .cmp-t thead th.lbl small { display: block; margin-top: 8px; color: #6b6d73; font-size: 12px; line-height: 1.45; }
+    .cmp-t tr.sec th { background: #f6f6f7; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #111; padding: 9px 18px; }
+    .cmp-t tr.sec th span { display: inline-block; width: 3px; height: 12px; background: var(--red); margin-right: 9px; vertical-align: -1px; }
+    .cmp-t td.na { color: #a3a5ab; }
+    .cmp-t.hl tr.diff td:not(.na):not(.pad) { background: #fff4f4; font-weight: 700; color: #111; }
+    .cmp-t.hl tr.diff th::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; background: var(--red); }
+    .cmp-t tfoot td { border-bottom: 0; padding: 16px; }
+
+    .cmp-m { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .cmp-x { position: absolute; top: -8px; right: -6px; width: 26px; height: 26px; border-radius: 50%; border: 1px solid #e3e4e7; background: #fff; color: #555; font-size: 12px; cursor: pointer; display: grid; place-items: center; }
+    .cmp-x:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .cmp-img { height: 112px; width: 100%; display: grid; place-items: center; margin: 6px 0 10px; }
+    .cmp-img img { max-width: 92%; max-height: 104px; width: auto; object-fit: contain; }
+    .cmp-img svg { width: 80%; max-height: 104px; }
+    .cmp-cat { font-size: 10.5px; font-weight: 700; text-transform: uppercase; color: var(--red); letter-spacing: .5px; }
+    .cmp-model { font-family: var(--font-head); font-weight: 800; font-size: 22px; text-transform: uppercase; color: #111; line-height: 1.1; margin-top: 2px; }
+    .cmp-model:hover { color: var(--red); }
+    .cmp-type { font-size: 13.5px; color: #2b2d32; margin: 1px 0 12px; }
+    .cmp-btns { display: flex; gap: 8px; width: 100%; }
+    .cmp-btns .btn { flex: 1; padding: 9px 8px; font-size: 10.5px; letter-spacing: .3px; }
+    .cmp-btns .btn-outline { border-color: #cfd0d4; color: #222; }
+
+    .cmp-add { height: 100%; min-height: 236px; border: 1.5px dashed #cfd0d4; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; background: #fafafb; }
+    .cmp-add .plus { width: 46px; height: 46px; border-radius: 50%; background: #fff; border: 1px solid #e3e4e7; display: grid; place-items: center; font-size: 26px; color: var(--red); line-height: 1; }
+    .cmp-add b { font-size: 13px; text-transform: uppercase; }
+    .cmp-add small { color: #6b6d73; font-size: 12px; }
+    .cmp-sel { width: 100%; max-width: 240px; height: 36px; border: 1px solid #d4d5d9; border-radius: 3px; font: inherit; font-size: 12.5px; padding: 0 10px; background: #fff; }
+    .cmp-avail { display: inline-flex; align-items: center; gap: 6px; }
+    .cmp-avail::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #1fa855; }
+    .cmp-avail.mto::before { background: #f0a020; }
+    .cmp-ql { background: none; border: 0; font: inherit; font-size: 12px; font-weight: 700; color: #222; cursor: pointer; text-transform: uppercase; display: inline-flex; gap: 6px; align-items: center; }
+    .cmp-ql svg { width: 15px; height: 15px; }
+    .cmp-ql:hover { color: var(--red); }
+
+    .cmp-cta { background: #121316; color: #fff; border-radius: 4px; padding: 20px 24px; display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; margin: 22px 0 14px; }
+    .cmp-cta .ic { width: 58px; height: 58px; border-radius: 6px; background: var(--red); display: grid; place-items: center; }
+    .cmp-cta .ic img { width: 40px; filter: brightness(10); }
+    .cmp-cta b { font-size: 16px; text-transform: uppercase; }
+    .cmp-cta p { margin: 4px 0 0; color: #c4c6cb; font-size: 13px; }
+    .cmp-cta .acts { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cmp-cta .btn-outline { border-color: #6a6c72; color: #fff; }
+    .cmp-note { font-size: 12px; color: #6b6d73; margin: 0 0 26px; }
+
+    .cmp-empty { text-align: center; padding: 60px 20px 64px; }
+    .cmp-empty .ic { width: 64px; height: 64px; margin: 0 auto 18px; }
+    .cmp-empty .ic img { width: 64px; }
+    .cmp-empty h2 { font-size: 28px; margin: 0 0 8px; text-transform: uppercase; }
+    .cmp-empty p { color: #4d4f55; max-width: 520px; margin: 0 auto 22px; font-size: 14px; }
+    .cmp-empty .acts { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .cmp-empty .cmp-sel { width: 260px; max-width: none; height: 42px; }
+    .cmp-empty .or { color: #8a8c92; font-size: 12px; text-transform: uppercase; }
+
+    @media (max-width: 900px) {
+      .cmp-hero { height: auto; padding-bottom: 46px; }
+      .cmp-art { opacity: .25; }
+      .cmp-sw { margin-left: 0; }
+      .cmp-cta { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="products" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="cmp-hero">
+    <div class="cmp-art"><img src="assets/img/products/hero-products.png" alt=""></div>
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="products.html">Machinery</a><span>›</span>Compare Machines</div>
+      <span class="ey">Compare Machines</span>
+      <h1>Compare Side by Side</h1>
+      <p>Put up to 4 PISTON machines next to each other, spot the differences in key specifications and request one quotation for the right choice.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="cmp-box" id="box"></section>
+    <div id="after"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, esc, param, icon, product, productImg, catName, getCmp, setCmp, getQL, toast } = P;
+      const MAX = 4;
+      // Same quantity, different label in data.js — merge into one row.
+      const ALIAS = { "Main Motor": "Main Motor Power", "Main Saw Blade": "Saw Blade Diameter" };
+      const valid = (ids) => [...new Set(ids)].filter((id) => product(id)).slice(0, MAX);
+
+      const fromUrl = param("ids");
+      let ids = valid(fromUrl ? fromUrl.split(",").map((s) => s.trim()) : getCmp());
+      let hl = true;
+
+      function save() {
+        setCmp(ids);
+        try { history.replaceState(null, "", ids.length ? `?ids=${ids.join(",")}` : location.pathname); } catch { /* file:// may block URL updates */ }
+        render();
+      }
+
+      function picker(cls = "cmp-sel") {
+        const opts = D.categories.map((c) => {
+          const list = D.products.filter((p) => p.cat === c.id && !ids.includes(p.id));
+          return list.length ? `<optgroup label="${esc(c.name)}">${list.map((p) => `<option value="${p.id}">${esc(p.model)} — ${esc(p.name)}</option>`).join("")}</optgroup>` : "";
+        }).join("");
+        return `<select class="${cls}" data-add aria-label="Add a machine to compare"><option value="">Select a machine…</option>${opts}</select>`;
+      }
+
+      function rows(list) {
+        const overview = [
+          ["Category", (p) => catName(p.cat)],
+          ["Machine Type", (p) => p.name],
+          ["Main Power", (p) => `${p.power} kW`],
+          ["Availability", (p) => p.availability, (p) => `<span class="cmp-avail ${p.availability === "In Stock" ? "" : "mto"}">${esc(p.availability)}</span>`],
+          ["Suitable Industries", (p) => p.industries.map((s) => (D.industries.find((i) => i.slug === s) || {}).name).filter(Boolean).join(", ")]
+        ];
+        const labels = [];
+        list.forEach((p) => p.specs.forEach(([k]) => { const l = ALIAS[k] || k; if (!labels.includes(l)) labels.push(l); }));
+        const specVal = (p, label) => { const s = p.specs.find(([k]) => (ALIAS[k] || k) === label); return s ? s[1] : ""; };
+        const specs = labels.map((l) => [l, (p) => specVal(p, l)]);
+        const row = ([label, val, html]) => {
+          const vals = list.map(val);
+          // Only values two or more machines actually state can differ.
+          const present = vals.filter(Boolean);
+          const diff = present.length > 1 && new Set(present).size > 1;
+          return `<tr class="${diff ? "diff" : ""}"><th scope="row">${esc(label)}</th>${list.map((p, i) => vals[i] ? `<td>${html ? html(p) : esc(vals[i])}</td>` : `<td class="na">—</td>`).join("")}${pad(list, '<td class="pad"></td>')}</tr>`;
+        };
+        const sec = (t) => `<tr class="sec"><th colspan="${MAX + 1}"><span></span>${t}</th></tr>`;
+        return sec("Overview") + overview.map(row).join("") + sec("Technical Specifications") + specs.map(row).join("");
+      }
+      const pad = (list, cell) => cell.repeat(MAX - list.length);
+
+      function head(p) {
+        return `<th scope="col"><div class="cmp-m">
+          <button class="cmp-x" data-rm="${p.id}" aria-label="Remove ${esc(p.model)}">✕</button>
+          <a class="cmp-img" href="product.html?id=${p.id}">${productImg(p)}</a>
+          <span class="cmp-cat">${esc(catName(p.cat))}</span>
+          <a class="cmp-model" href="product.html?id=${p.id}">${esc(p.model)}</a>
+          <div class="cmp-type">${esc(p.name)}</div>
+          <div class="cmp-btns"><a class="btn btn-outline" href="product.html?id=${p.id}">View Details</a>
+            <button class="btn btn-red" data-wa-quote data-items="${p.id}" data-source="Compare machines">Request a Quote</button></div>
+        </div></th>`;
+      }
+      const addSlot = (first) => `<th scope="col"><div class="cmp-add"><span class="plus">+</span><b>Add Machine</b>
+        <small>${first ? "Choose another model to compare" : "Optional — up to 4 machines"}</small>${picker()}</div></th>`;
+
+      function render() {
+        const list = ids.map(product);
+        const box = qs("#box"), after = qs("#after");
+        if (!list.length) {
+          box.innerHTML = `<div class="cmp-empty">
+            <div class="ic"><img src="assets/img/products/compare-icon.png" alt=""></div>
+            <h2>No machines to compare yet</h2>
+            <p>Tick <b>“Add to Compare”</b> on up to 4 machines in our catalogue, or pick a first machine below to start building your comparison.</p>
+            <div class="acts"><a class="btn btn-red" href="products.html">Browse Machinery &nbsp;→</a><span class="or">or</span>${picker()}</div></div>`;
+          after.innerHTML = "";
+          return;
+        }
+        const slots = list.length < MAX ? addSlot(list.length === 1) + pad(list.concat([null]), "<th></th>") : "";
+        box.innerHTML = `
+          <div class="cmp-bar">
+            <div class="cnt"><b>${list.length} of ${MAX} machines selected</b><small>Specifications shown side by side${list.length > 1 ? " — rows that differ are marked" : ""}</small></div>
+            <label class="cmp-sw"><input type="checkbox" id="hl" ${hl ? "checked" : ""}><span class="trk"></span>Highlight differences</label>
+            <button class="cmp-link" id="clear">${icon("trash")} Clear all</button>
+          </div>
+          <div class="cmp-scroll"><table class="cmp-t ${hl ? "hl" : ""}" id="tbl">
+            <colgroup><col class="lbl">${"<col>".repeat(MAX)}</colgroup>
+            <thead><tr><th class="lbl" scope="col"><b>Machine<br>Comparison</b><small>Remove a machine with ✕ or add another from the empty column.</small></th>
+              ${list.map(head).join("")}${slots}</tr></thead>
+            <tbody>${rows(list)}</tbody>
+            <tfoot><tr><th></th>${list.map((p) => `<td><button class="cmp-ql" data-ql="${p.id}">${icon("list")} Add to Quote List</button></td>`).join("")}${pad(list, "<td></td>")}</tr></tfoot>
+          </table></div>`;
+        after.innerHTML = `
+          <div class="cmp-cta"><div class="ic"><img src="assets/img/products/compare-icon.png" alt=""></div>
+            <div><b>Ready for a quotation?</b><p>Send ${list.length > 1 ? `all ${list.length} machines` : "this machine"} to our sales team in one WhatsApp message — we reply within 24 hours.</p></div>
+            <div class="acts"><button class="btn btn-outline" data-quote-add="${ids.join(",")}" data-go="1">Add ${list.length > 1 ? "All " : ""}to Quote List</button>
+              <button class="btn btn-red" data-wa-quote data-items="${ids.join(",")}" data-source="Compare machines">${icon("wa")} Request a Quote${list.length > 1 ? " for All" : ""}</button></div></div>
+          <p class="cmp-note">Specifications are indicative and may vary with configuration and options. Our engineers confirm the final specification with your quotation.</p>`;
+      }
+
+      document.addEventListener("change", (e) => {
+        if (e.target.matches("[data-add]") && e.target.value) { ids = valid(ids.concat(e.target.value)); save(); }
+        if (e.target.id === "hl") { hl = e.target.checked; qs("#tbl").classList.toggle("hl", hl); }
+      });
+      document.addEventListener("click", (e) => {
+        const rm = e.target.closest("[data-rm]");
+        if (rm) { ids = ids.filter((x) => x !== rm.dataset.rm); save(); return; }
+        if (e.target.closest("#clear")) { ids = []; save(); return; }
+        const ql = e.target.closest("[data-ql]");
+        if (ql) {
+          const id = ql.dataset.ql;
+          if (getQL().some((x) => x.id === id)) { toast(`${product(id).model} is already in your quote list`); return; }
+          P.addToQL(id);
+        }
+      });
+
+      if (fromUrl) setCmp(ids);
+      render();
+    });
+  </script>
+</body>
+</html>

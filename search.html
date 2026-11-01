@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Results — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .sr-hero { position: relative; height: 160px; background: #fff; line-height: 1.35; }
+    .sr-hero > img { position: absolute; right: 0; top: 0; width: 976px; max-width: 64%; }
+    .sr-hero .container { position: relative; }
+    .sr-hero .breadcrumb { padding: 15px 0 0 13px; font-size: 11.5px; color: #222; margin: 0; gap: 6px; }
+    .sr-hero h1 { font-size: 33px; font-weight: 800; line-height: 1; letter-spacing: .4px; margin: 11px 0 10px 13px; color: #111; }
+    .sr-hero h1 span { color: var(--red); }
+    .sr-hero form { display: flex; margin-left: 13px; width: 453px; }
+    .sr-hero form label { flex: 1; display: flex; align-items: center; gap: 8px; height: 33px; border: 1px solid #dcdde0; border-right: 0; border-radius: 3px 0 0 3px; padding: 0 12px; background: #fff; }
+    .sr-hero form input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 11.5px; color: #111; }
+    .sr-hero form button { width: 49px; border: 0; border-radius: 0 3px 3px 0; background: var(--red); color: #fff; display: grid; place-items: center; cursor: pointer; }
+    .sr-hero .count { margin: 12px 0 0 13px; font-size: 12px; }
+    .sr-hero .count b { color: var(--red); font-weight: 500; }
+    .sr-dym { position: absolute; right: 39px; top: 9px; width: 208px; height: 129px; background: rgba(16,17,20,.96); border-radius: 4px; color: #fff; padding: 14px 13px; font-size: 10px; }
+    .sr-dym h4 { font-family: var(--font); font-size: 10px; letter-spacing: 0; margin: 0 0 9px; }
+    .sr-dym a { display: flex; gap: 9px; align-items: center; color: #fff; padding: 3.5px 0; }
+    .ico-s { width: 10px; height: 10px; flex: none; }
+    .sr-main { display: grid; grid-template-columns: 246px 1fr 204px; gap: 12px; margin: 5px 3px 8px -1px; line-height: 1.35; align-items: start; }
+    .sr-box { background: #fff; border-radius: 4px; box-shadow: 0 1px 8px rgba(0,0,0,.07); }
+    .sr-f { padding: 17px 16px 16px 18px; }
+    .sr-f .hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .sr-f h3 { font-family: var(--font); font-size: 11.5px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .sr-f .hd button { background: none; border: 0; color: var(--red); font-size: 8.5px; font-weight: 600; cursor: pointer; }
+    .sr-f h5 { font-size: 10px; font-weight: 700; margin: 0 0 6px; text-transform: uppercase; }
+    .sr-f .grp { margin-bottom: 15px; }
+    .sr-f label.o { display: grid; grid-template-columns: 12px 1fr auto; gap: 10px; align-items: center; font-size: 9.8px; height: 18.4px; cursor: pointer; }
+    .sr-f label.o input { appearance: none; -webkit-appearance: none; width: 11px; height: 11px; border: 1px solid #c9cacd; border-radius: 2px; margin: 0; display: grid; place-items: center; }
+    .sr-f label.o input:checked { background: var(--red); border-color: var(--red); }
+    .sr-f label.o input:checked::after { content: ""; width: 5px; height: 3px; border: solid #fff; border-width: 0 0 1.5px 1.5px; transform: rotate(-45deg) translate(0, -1px); }
+    .sr-f label.o small { font-size: 8.5px; color: #333; }
+    .sr-f label.o input:checked ~ small { color: var(--red); }
+    .sr-f select { width: 100%; height: 21px; margin-bottom: 4px; border: 1px solid #dcdde0; border-radius: 2px; font: inherit; font-size: 9px; padding: 0 6px; appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' fill='none' stroke='%23333' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 8px center; }
+    .sr-f .reset { width: 100%; margin-top: 26px; height: 26px; background: #fff; border: 1px solid var(--red); border-radius: 2px; color: var(--red); font-size: 9.5px; font-weight: 700; cursor: pointer; }
+    .sr-tabs { display: flex; align-items: center; gap: 10px; padding: 0 3px 0 10px; height: 47px; }
+    .sr-tabs button { height: 23px; padding: 0 11px; border: 1px solid #e3e4e7; border-radius: 2px; background: #fff; font-size: 9px; font-weight: 600; cursor: pointer; }
+    .sr-tabs button.on { background: var(--red); border-color: var(--red); color: #fff; }
+    .sr-tabs .sort { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 9px; }
+    .sr-tabs select { width: 81px; height: 23px; border: 1px solid #e3e4e7; border-radius: 2px; font: inherit; font-size: 9px; padding: 0 8px; appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' fill='none' stroke='%23333' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 8px center; }
+    .sr-sec { margin: 0 3px 12px 10px; }
+    .sr-sec .hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .sr-sec h4 { font-family: var(--font); font-size: 10.5px; font-weight: 600; letter-spacing: 0; margin: 0; }
+    .sr-sec .hd a { color: var(--red); font-size: 8px; font-weight: 600; }
+    .sr-row { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding-right: 10px; }
+    .sr-row .nx { position: absolute; right: -2px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border-radius: 3px; border: 1px solid #e3e4e7; background: #fff; display: grid; place-items: center; font-size: 13px; cursor: pointer; }
+    .sr-card { background: #fff; border-radius: 3px; box-shadow: 0 1px 5px rgba(0,0,0,.07); padding: 6px 8px 10px; display: grid; gap: 9px; color: #111; }
+    .sr-card .lk { color: var(--red); font-size: 7.6px; font-weight: 700; display: inline-block; margin-top: 7px; }
+    .sr-m { grid-template-columns: 120px 1fr; min-height: 129px; }
+    .sr-m .im { display: flex; align-items: flex-start; padding-top: 5px; }
+    .sr-m .im img, .sr-m .im svg { max-width: 118px; max-height: 66px; }
+    .sr-m b { display: block; font-size: 10.5px; margin-top: 2px; }
+    .sr-m .sub { display: block; font-size: 8.2px; color: #333; }
+    .sr-m p { font-size: 8.4px; color: #333; margin: 9px 0 8px; line-height: 1.5; }
+    .sr-m .sp { display: flex; gap: 5px; align-items: center; font-size: 8px; margin-bottom: 3px; }
+    .sr-m .sp img { width: 7px; }
+    .sr-s { grid-template-columns: 118px 1fr; padding: 4px 6px 4px 6px; min-height: 108px; }
+    .sr-s .ph { width: 118px; height: 100px; object-fit: cover; display: block; }
+    .sr-s b { display: block; font-size: 9.2px; line-height: 1.4; margin-top: 2px; }
+    .sr-s p { font-size: 8.3px; color: #333; margin: 8px 0 6px; line-height: 1.55; }
+    .sr-s .lk { margin-top: 0; }
+    .sr-d { grid-template-columns: 50px 1fr; padding: 13px 10px 10px 16px; min-height: 92px; }
+    .sr-d img { width: 32px; margin-top: 2px; }
+    .sr-d b { display: block; font-size: 9.3px; }
+    .sr-d small { display: block; font-size: 8.2px; color: #333; margin-top: 4px; }
+    .sr-d .lk { margin-top: 13px; }
+    .sr-p { grid-template-columns: 96px 1fr; padding: 6px 8px 8px; min-height: 104px; }
+    .sr-p .im { display: flex; align-items: center; justify-content: center; }
+    .sr-p .im img { max-width: 90px; max-height: 82px; }
+    .sr-p b { display: block; font-size: 9.3px; margin-top: 5px; }
+    .sr-p small { display: block; font-size: 8.4px; color: #333; margin-top: 4px; }
+    .sr-p .st { color: #1a8f3a; font-size: 7.6px; display: block; margin-top: 3px; }
+    .sr-p .lk { margin-top: 8px; }
+    .sr-r { display: grid; gap: 12px; }
+    .sr-r .sr-box { padding: 16px 18px 17px; }
+    .sr-r h3 { font-family: var(--font); font-size: 11.5px; font-weight: 700; letter-spacing: 0; margin: 0 0 13px; line-height: 1.35; }
+    .sr-r p { font-size: 9.5px; color: #2b2d32; line-height: 1.7; margin: 0 0 14px; }
+    .sr-r .ob { display: flex; align-items: center; justify-content: center; gap: 12px; height: 27px; border: 1px solid var(--red); border-radius: 2px; color: var(--red); font-size: 9.5px; font-weight: 700; }
+    .sr-r .pop a { display: flex; gap: 14px; align-items: center; color: #111; font-size: 9.2px; height: 21.7px; padding-left: 6px; }
+    .sr-r .pop h3 { margin-bottom: 9px; }
+    .sr-empty { padding: 18px; font-size: 11px; }
+    @media (max-width: 1400px) {
+      .sr-main { grid-template-columns: 246px minmax(0, 1fr) 204px; }
+      .sr-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sr-tabs { flex-wrap: wrap; row-gap: 8px; height: auto; padding: 10px 3px 10px 10px; }
+    }
+    @media (max-width: 1100px) {
+      .sr-hero { height: auto; display: flex; flex-direction: column; padding-bottom: 6px; }
+      .sr-hero > img { display: none; }
+      .sr-dym { position: static; order: 2; width: auto; height: auto; margin: 14px 18px 0; display: flex; flex-wrap: wrap; gap: 2px 18px; }
+      .sr-dym h4 { width: 100%; }
+      .sr-main { grid-template-columns: minmax(0, 1fr); margin: 5px 0 8px; }
+      .sr-f { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); column-gap: 24px; }
+      .sr-f .hd, .sr-f .reset { grid-column: 1 / -1; }
+      .sr-f .reset { margin-top: 0; }
+      .sr-tabs { padding: 10px 0; }
+      .sr-sec { margin: 0 0 12px; }
+      .sr-r { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .sr-hero .breadcrumb { padding-left: 0; }
+      .sr-hero h1, .sr-hero form, .sr-hero .count { margin-left: 0; }
+      .sr-hero h1 { font-size: 30px; }
+      .sr-hero form { width: auto; }
+      .sr-hero form label { height: 42px; min-width: 0; }
+      .sr-hero form input { font-size: 14px; min-width: 0; }
+      .sr-hero .count { font-size: 13px; overflow-wrap: anywhere; }
+      .sr-row { grid-template-columns: minmax(0, 1fr); }
+      .sr-m { grid-template-columns: 110px minmax(0, 1fr); }
+      .sr-m .im img, .sr-m .im svg { max-width: 108px; }
+    }
+    @media (max-width: 1100px) {
+      .sr-dym, .sr-dym h4 { font-size: 12px; }
+      .sr-f h3, .sr-r h3 { font-size: 13px; }
+      .sr-f .hd button, .sr-f h5 { font-size: 12px; }
+      .sr-f label.o { font-size: 13px; height: 28px; }
+      .sr-f label.o small { font-size: 12px; }
+      .sr-f select { height: 34px; font-size: 13px; }
+      .sr-f .reset { height: 36px; font-size: 12px; }
+      .sr-tabs button { height: 30px; font-size: 12px; }
+      .sr-tabs .sort { font-size: 12px; }
+      .sr-tabs select { width: 110px; height: 30px; font-size: 12px; }
+      .sr-sec h4 { font-size: 13px; }
+      .sr-sec .hd a { font-size: 12px; }
+      .sr-card .lk { font-size: 12px; }
+      .sr-m b, .sr-s b, .sr-d b, .sr-p b { font-size: 13px; }
+      .sr-m .sub, .sr-m p, .sr-m .sp, .sr-s p, .sr-d small, .sr-p small, .sr-p .st { font-size: 12px; }
+      .sr-r p { font-size: 13px; }
+      .sr-r .ob { height: 38px; font-size: 12px; }
+      .sr-r .pop a { font-size: 13px; height: 30px; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="sr-hero">
+    <img src="assets/img/search/hero.png" alt="">
+    <div class="sr-dym" id="dym"></div>
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Search Results</div>
+      <h1>Search <span>Results</span></h1>
+      <form action="search.html" role="search">
+        <label><svg class="ico-s" viewBox="0 0 16 16" fill="none" stroke="#111" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg><input name="q" id="q" aria-label="Search"></label>
+        <button aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg></button>
+      </form>
+      <div class="count" id="count"></div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="sr-main">
+      <aside class="sr-box sr-f" id="filters">
+        <div class="hd"><h3>REFINE YOUR SEARCH</h3><button type="button" data-clear>Clear All</button></div>
+        <div class="grp"><h5>Content Type</h5><div id="fType"></div></div>
+        <div class="grp"><h5>Industry</h5><div id="fInd"></div></div>
+        <div class="grp"><h5>Machine Type</h5><div id="fMt"></div></div>
+        <div class="grp"><h5>Other Filters</h5>
+          <select aria-label="Brand"><option>Brand</option><option>Piston</option></select>
+          <select id="fAv" aria-label="Availability"><option value="">Availability</option><option>In Stock</option><option>Made to Order</option></select>
+          <select aria-label="Country of origin"><option>Country of Origin</option><option>Egypt</option></select>
+        </div>
+        <button type="button" class="reset" data-clear>↻ &nbsp;RESET FILTERS</button>
+      </aside>
+
+      <div>
+        <div class="sr-tabs" id="tabs"></div>
+        <div id="results"></div>
+      </div>
+
+      <aside class="sr-r">
+        <div class="sr-box"><h3>NEED HELP FINDING<br>THE RIGHT SOLUTION?</h3><p>Our experts are ready to help you find the perfect machine or solution for your production needs.</p><a class="ob" href="talk-to-engineer.html">TALK TO AN EXPERT <span>→</span></a></div>
+        <div class="sr-box pop"><h3>POPULAR SEARCHES</h3><div id="pop"></div></div>
+        <div class="sr-box"><h3>CAN'T FIND WHAT<br>YOU'RE LOOKING FOR?</h3><p>Submit a request and our team will assist you.</p><a class="ob" href="contact.html">SUBMIT A REQUEST <span>→</span></a></div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc, param, productImg } = P;
+      const A = "assets/img/search/";
+      const DEMO_Q = "R32 sliding table saw";
+      const q = (param("q") || DEMO_Q).trim();
+      const isDemo = q.toLowerCase() === DEMO_Q.toLowerCase();
+      qs("#q").value = q;
+      const S = '<svg class="ico-s" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>';
+      const link = (s) => `<a href="search.html?q=${encodeURIComponent(s)}">${S}${esc(s)}</a>`;
+      qs("#dym").innerHTML = `<h4>DID YOU MEAN?</h4>${["R32", "R32 sliding table saw manual", "R32 spare parts", "R32 user guide"].map(link).join("")}`;
+      qs("#pop").innerHTML = ["R32", "Edge Banding Machine", "Vacuum Press", "PBD 21", "CNC Router", "PVPM 2500", "Spare Parts", "User Manual", "Drilling Machine", "Woodworking Solution"].map(link).join("");
+
+      // Demo search index: catalogue machines + extra items shown in the search mockup.
+      const mSpec = { r32: ["3.2m Sliding Table", "5.5 kW Main Motor"], r42: ["4.2m Sliding Table", "7.5 kW Main Motor"] };
+      const mDesc = { r32: "High precision sliding table saw for accurate panel cutting.", r42: "Heavy duty sliding table saw for industrial production." };
+      const machines = D.products.map((p) => ({ id: p.id, title: p.model.replace("PISTON ", ""), sub: p.name, desc: mDesc[p.id] || p.desc, cat: p.cat, avail: p.availability, ind: p.industries,
+          specs: mSpec[p.id] || [p.cat === "saws" ? "Sliding Table" : p.name, `${p.power} kW Main Motor`], img: ["r32", "r42"].includes(p.id) ? `<img src="${A}m-${p.id}.png" alt="">` : productImg(p), href: `product.html?id=${p.id}` }))
+        .concat([
+          { id: "r32se", title: "R32 SE", sub: "Sliding Table Saw", desc: "Enhanced version with digital readout and scoring unit.", cat: "saws", avail: "Made to Order", ind: ["furniture", "cabinet", "workshops"], specs: ["3.2m Sliding Table", "5.5 kW Main Motor"], img: `<img src="${A}m-r32se.png" alt="">`, href: "products.html?cat=saws" },
+          { id: "r28", title: "R28", sub: "Sliding Table Saw", desc: "Compact sliding table saw for small workshops.", cat: "saws", avail: "In Stock", ind: ["workshops"], specs: ["2.8m Sliding Table", "4.0 kW Main Motor"], img: `<img src="${A}m-r28.png" alt="">`, href: "products.html?cat=saws" }
+        ]);
+      const order = ["r32", "r42", "r32se", "r28"];
+      machines.sort((a, b) => (order.indexOf(a.id) + 1 || 99) - (order.indexOf(b.id) + 1 || 99));
+      const solutions = [
+        { t: "Cabinet Manufacturing Solution", d: "Complete production line for cabinet manufacturing from cutting to finishing.", ind: "cabinet", href: "industry.html?slug=cabinet" },
+        { t: "Furniture Production Solution", d: "Integrated solution for furniture production with high efficiency.", ind: "furniture", href: "industries.html?slug=furniture" },
+        { t: "Workshop Upgrade Solution", d: "Upgrade your workshop with modern, efficient machinery.", ind: "workshops", href: "industry.html?slug=workshops" },
+        { t: "Small Production Setup", d: "Ideal solution for startups and small-scale production facilities.", ind: "workshops", href: "industry.html?slug=workshops" }
+      ].map((s, n) => ({ ...s, img: `${A}s-${n + 1}.png` }));
+      const docs = [["R32 User Manual", "PDF Manual", "8.4 MB"], ["R32 Installation Guide", "PDF Guide", "6.2 MB"], ["R32 Maintenance Manual", "PDF Manual", "7.1 MB"], ["R32 Parts Catalog", "PDF Catalog", "5.6 MB"]];
+      const parts = [["R32 Saw Blade", "R32-01-001", "Ø 250 mm"], ["R32 Scoring Blade", "R32-01-002", "Ø 120 mm"], ["R32 Main Motor", "R32-02-001", "5.5 kW"], ["R32 Sliding Table Roller", "R32-03-004", "Ø 40 mm"]];
+
+      const words = q.toLowerCase().split(/\s+/).filter((w) => w.length > 1);
+      const hit = (s) => !words.length || words.some((w) => s.toLowerCase().includes(w));
+      const types = [["machines", "Machines", 32], ["parts", "Spare Parts", 45], ["solutions", "Solutions", 18], ["docs", "Support / Manuals", 21], ["news", "Articles & News", 12]];
+      const inds = [["furniture", 28], ["cabinet", 32], ["door", 10], ["interior", 8], ["workshops", 18], ["industrial", 6]];
+      const mtypes = [["Sliding Table Saws", 12, (m) => m.cat === "saws"], ["Panel Saws", 8, (m) => /panel saw/i.test(m.sub)], ["Table Saws", 6, (m) => /table saw/i.test(m.sub)], ["Edge Banding Machines", 24, (m) => m.cat === "edge"], ["CNC Machines", 18, (m) => /cnc/i.test(m.sub)]];
+      const opt = (v, label, n, on) => `<label class="o"><input type="checkbox" value="${v}" ${on ? "checked" : ""}><span>${esc(label)}</span><small>${n}</small></label>`;
+      qs("#fType").innerHTML = types.map(([k, l, n], i) => opt(k, l, isDemo ? n : "", isDemo && i === 0)).join("");
+      qs("#fInd").innerHTML = inds.map(([s, n]) => opt(s, P.industry(s).name, isDemo ? n : "")).join("");
+      qs("#fMt").innerHTML = mtypes.map(([l, n], i) => opt(i, l, isDemo ? n : "")).join("");
+
+      let tab = "all";
+      function compute() {
+        const ci = qsa("#fInd input:checked").map((x) => x.value);
+        const cm = qsa("#fMt input:checked").map((x) => mtypes[x.value][2]);
+        const av = qs("#fAv").value;
+        const r = {
+          machines: machines.filter((m) => hit(`${m.title} ${m.sub} ${m.desc}`) && (!ci.length || m.ind.some((i) => ci.includes(i))) && (!cm.length || cm.some((f) => f(m))) && (!av || m.avail === av)),
+          solutions: solutions.filter((s) => hit(`${s.t} ${s.d} r32 saw`) && (!ci.length || ci.includes(s.ind))),
+          docs: docs.filter((d) => hit(d[0])),
+          parts: parts.filter((p) => hit(`${p[0]} ${p[1]}`)),
+          news: D.news.filter((n) => hit(`${n.title} ${n.excerpt}`))
+        };
+        return r;
+      }
+      function render() {
+        const r = compute();
+        const real = Object.values(r).reduce((a, b) => a + b.length, 0);
+        const total = isDemo ? 128 : real;
+        const n = (k) => (isDemo ? types.find((t) => t[0] === k)[2] : r[k].length);
+        qs("#count").innerHTML = `${total} results found for <b>"${esc(q)}"</b>`;
+        qs("#tabs").innerHTML = [["all", `All Results (${total})`]].concat(types.map(([k, l]) => [k, `${l} (${n(k)})`]))
+          .map(([k, l]) => `<button class="${k === tab ? "on" : ""}" data-tab="${k}">${esc(l)}</button>`).join("")
+          + `<div class="sort">Sort by: <select id="sort" aria-label="Sort by"><option value="rel">Relevance</option><option value="az">Name A–Z</option></select></div>`;
+        qs("#sort").value = sortBy;
+        const show = (k) => tab === "all" || tab === k;
+        const onTypes = qsa("#fType input:checked").map((x) => x.value);
+        const typeOk = (k) => !typeTouched || !onTypes.length || onTypes.includes(k) || tab === k;
+        if (sortBy === "az") r.machines.sort((a, b) => a.title.localeCompare(b.title));
+        const lim = (l) => (tab === "all" ? l.slice(0, 4) : l);
+        const arrow = (k, len) => (tab === "all" && len > 4 ? `<button class="nx" data-more="${k}" aria-label="More">›</button>` : "");
+        const sec = (k, title, viewAll, href, cards, len) => (show(k) && len ? `<section class="sr-sec"><div class="hd"><h4>${title} (${n(k)})</h4>${viewAll ? `<a href="${href}">${viewAll} &nbsp;→</a>` : ""}</div><div class="sr-row">${cards}${arrow(k, len)}</div></section>` : "");
+        const html = [
+          sec("machines", "MACHINES", "View All Machines", "products.html", lim(r.machines).map((m) => `<a class="sr-card sr-m" href="${m.href}"><div class="im">${m.img}</div><div><b>${esc(m.title)}</b><span class="sub">${esc(m.sub)}</span><p>${esc(m.desc)}</p>
+            <span class="sp"><img src="${A}i-len.png" alt="">${esc(m.specs[0])}</span><span class="sp"><img src="${A}i-motor.png" alt="">${esc(m.specs[1])}</span><span class="lk">VIEW PRODUCT &nbsp;→</span></div></a>`).join(""), r.machines.length),
+          sec("solutions", "SOLUTIONS", "View All Solutions", "industries.html", lim(r.solutions).map((s) => `<a class="sr-card sr-s" href="${s.href}"><img class="ph" src="${s.img}" alt=""><div><b>${esc(s.t)}</b><p>${esc(s.d)}</p><span class="lk">VIEW SOLUTION &nbsp;→</span></div></a>`).join(""), r.solutions.length),
+          sec("docs", "SUPPORT / MANUALS", "", "", lim(r.docs).map(([t, ty, sz]) => `<a class="sr-card sr-d" href="#" data-dl="${esc(t)}"><img src="${A}pdf.png" alt="PDF"><div><b>${esc(t)}</b><small>${ty}</small><small style="margin-top:2px">English | PDF | ${sz}</small><span class="lk">DOWNLOAD &nbsp;→</span></div></a>`).join(""), r.docs.length),
+          sec("parts", "SPARE PARTS", "View All Parts", "spare-parts.html", lim(r.parts).map(([t, pn, sp], i) => `<a class="sr-card sr-p" href="spare-parts.html"><div class="im"><img src="${A}p-${i + 1}.png" alt=""></div><div><b>${esc(t)}</b><small>Part No. ${pn}</small><small style="margin-top:9px">${esc(sp)}</small><span class="st">In Stock</span><span class="lk">VIEW PART &nbsp;→</span></div></a>`).join(""), r.parts.length),
+          sec("news", "ARTICLES & NEWS", "View All News", "news.html", lim(r.news).map((a) => `<a class="sr-card sr-d" href="news-article.html?id=${a.id}" style="grid-template-columns:1fr"><div><b>${esc(a.title)}</b><small>${esc(a.cat)} · ${esc(a.date)}</small><span class="lk">READ MORE &nbsp;→</span></div></a>`).join(""), r.news.length && tab === "news" ? r.news.length : 0)
+        ].filter((s, i) => typeOk(["machines", "solutions", "docs", "parts", "news"][i])).join("");
+        qs("#results").innerHTML = html || `<div class="sr-box sr-empty">No results for "<b>${esc(q)}</b>". Try one of the suggestions above, or <a class="red" href="talk-to-engineer.html">ask an expert</a>.</div>`;
+      }
+      let sortBy = "rel", typeTouched = false;
+      qs("#fType").addEventListener("change", () => (typeTouched = true));
+      qs("#tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) { tab = b.dataset.tab; render(); } });
+      qs("#tabs").addEventListener("change", (e) => { if (e.target.id === "sort") { sortBy = e.target.value; render(); } });
+      qs("#results").addEventListener("click", (e) => {
+        const m = e.target.closest("[data-more]"); if (m) { e.preventDefault(); tab = m.dataset.more; render(); return; }
+        const d = e.target.closest("[data-dl]"); if (d) { e.preventDefault(); P.toast(`${d.dataset.dl} — download (demo)`); }
+      });
+      qs("#filters").addEventListener("change", render);
+      qsa("[data-clear]").forEach((b) => b.addEventListener("click", () => { qsa("#filters input").forEach((x) => (x.checked = false)); qsa("#filters select").forEach((s) => (s.selectedIndex = 0)); tab = "all"; render(); }));
+      render();
+    });
+  </script>
+</body>
+</html>

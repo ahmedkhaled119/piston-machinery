@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>360° Viewer — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .vw-crumb { font-size: 12px; color: #2b2d32; padding: 18px 0 10px; }
+    .vw-crumb span { margin: 0 9px; color: #888; }
+    .vw-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .vw-head h1 { font-size: 34px; margin: 0; display: flex; gap: 14px; align-items: center; color: #111; }
+    .vw-head h1 small { font-family: var(--font); font-size: 12px; font-weight: 500; text-transform: none; letter-spacing: 0; background: #ececef; border: 1px solid #d9dadd; padding: 4px 8px; border-radius: 2px; }
+    .vw-head .sub { font-size: 17px; color: #2b2d32; margin-top: 6px; }
+    .vw-head .acts { display: flex; gap: 20px; }
+    .vw-head .btn-outline { border-color: #cfd0d4; color: #222; padding: 13px 22px; }
+    .vw-head .btn-red { padding: 13px 22px; }
+    .vw-grid { display: grid; grid-template-columns: 218px 1fr 250px; gap: 16px; align-items: start; }
+    .vw-box { background: #fff; border: 1px solid #e6e7ea; border-radius: 4px; padding: 14px 14px; }
+    .vw-box h4 { font-size: 13.5px; margin-bottom: 10px; }
+    .vw-comp button { display: flex; align-items: center; gap: 12px; width: 100%; background: none; border: 0; padding: 4.5px 10px; font-size: 11.5px; color: #22242a; border-radius: 3px; text-align: left; white-space: nowrap; }
+    .vw-comp button i { width: 13px; height: 13px; border: 1.5px solid #9a9ca2; border-radius: 50%; flex: none; }
+    .vw-comp button em { margin-left: auto; font-style: normal; font-size: 10px; background: #f1f2f4; color: #555; border-radius: 2px; padding: 2px 5px; }
+    .vw-comp button.on { background: #fdeeee; color: var(--red); }
+    .vw-comp button.on i { border: 4px solid var(--red); }
+    .vw-comp button.on em { background: var(--red); color: #fff; }
+    .vw-about p { font-size: 11.5px; color: #34363b; line-height: 1.32; }
+    .vw-about a { color: var(--red); font-size: 11.5px; font-weight: 600; }
+    .vw-stage { position: relative; background: radial-gradient(ellipse at 50% 45%, #2b2e33 0%, #15171a 70%); border-radius: 6px; overflow: hidden; height: 420px; user-select: none; }
+    .vw-stage::before { content: ""; position: absolute; inset: 55% 0 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 40px 40px; transform: perspective(400px) rotateX(55deg); transform-origin: top; }
+    .vw-img { position: absolute; left: 2%; right: 2%; top: 9%; height: 72%; display: grid; place-items: center; cursor: grab; }
+    .vw-img img { max-width: 100%; max-height: 100%; transition: transform .08s linear; -webkit-user-drag: none; }
+    .vw-img img.small { max-width: 62%; }
+    .vw-hs { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: transparent; border: 0; cursor: pointer; }
+    .vw-mode { position: absolute; z-index: 3; top: 16px; left: 22px; background: rgba(20,22,25,.9); border: 1px solid #34363c; border-radius: 4px; padding: 6px 8px 8px; color: #cfd0d4; font-size: 9px; }
+    .vw-mode div { display: flex; gap: 4px; margin-top: 4px; }
+    .vw-mode button { width: 34px; height: 30px; border: 0; background: transparent; color: #cfd0d4; border-radius: 3px; font-size: 15px; }
+    .vw-mode button.on { background: #3a3d43; color: #fff; }
+    .vw-exp { position: absolute; top: 16px; right: 16px; background: rgba(20,22,25,.9); border: 1px solid #34363c; border-radius: 4px; color: #fff; padding: 10px 14px; font-size: 12px; font-weight: 700; display: flex; gap: 10px; align-items: center; cursor: pointer; z-index: 3; }
+    .vw-exp:hover { border-color: #6a6c72; }
+    .vw-exp img { width: 18px; }
+    .vw-tools { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; background: rgba(20,22,25,.92); border: 1px solid #34363c; border-radius: 4px; padding: 8px 8px 6px; }
+    .vw-tools button { background: none; border: 0; color: #fff; width: 72px; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 600; padding: 6px 0 8px; border-bottom: 2px solid transparent; }
+    .vw-tools button img { width: 20px; height: 20px; object-fit: contain; }
+    .vw-tools button.on { border-bottom-color: var(--red); }
+    .vw-tools button[disabled] { opacity: .45; cursor: not-allowed; }
+    .vw-axes { position: absolute; right: 18px; bottom: 30px; width: 80px; }
+    .vw-angle { position: absolute; left: 22px; bottom: 22px; color: #9a9ca2; font-size: 11px; }
+    .vw-det h4 { margin-bottom: 14px; }
+    .vw-det .nm { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+    .vw-det .nm::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+    .vw-det .nm em { margin-left: auto; font-style: normal; font-size: 10px; background: #f1f2f4; padding: 2px 5px; border-radius: 2px; }
+    .vw-det .pic { height: 100px; display: grid; place-items: center; margin: 10px 0; }
+    .vw-det .pic img { max-height: 100%; }
+    .vw-det p { font-size: 11.5px; color: #34363b; line-height: 1.4; min-height: 48px; }
+    .vw-det .kv { font-size: 11px; padding: 4px 0; }
+    .vw-det .kv span:first-child { color: #34363b; }
+    .vw-det .btn { width: 100%; margin-top: 18px; border-color: #cfd0d4; color: #222; font-size: 11px; display: flex; gap: 8px; justify-content: center; }
+    .vw-det.big .pic { height: 128px; margin: 16px 0 14px; }
+    .vw-det.big .btn { padding: 12px 8px; font-weight: 700; }
+    .vw-fm { position: absolute; left: 3.68%; top: 5.9%; width: 88.9%; pointer-events: none; -webkit-user-drag: none; }
+    .vw-mark { position: absolute; width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; display: grid; place-items: center; transform: translate(-50%, -50%); pointer-events: none; z-index: 2;
+      box-shadow: 0 0 0 5px rgba(225,30,36,.28), 0 0 22px 6px rgba(225,30,36,.55); animation: vwPulse 1.6s ease-in-out infinite; }
+    @keyframes vwPulse { 50% { box-shadow: 0 0 0 9px rgba(225,30,36,.18), 0 0 26px 10px rgba(225,30,36,.4); } }
+    .vw-cps { margin: 14px 0 12px; }
+    .vw-cps h4 { font-size: 13.5px; margin-bottom: 10px; }
+    .vw-cps .rw { display: flex; gap: 11px; align-items: center; }
+    .vw-cps .trk { display: grid; grid-template-columns: repeat(9, minmax(140px, 1fr)); gap: 11px; overflow-x: auto; scrollbar-width: none; flex: 1; }
+    .vw-cp { background: #fff; border: 1px solid #e6e7ea; border-radius: 6px; padding: 9px 10px 10px; cursor: pointer; text-align: left; }
+    .vw-cp:hover { border-color: #c9cacd; }
+    .vw-cp.on { border-color: var(--red); }
+    .vw-cp .t { display: flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; }
+    .vw-cp .t em { font-style: normal; font-size: 11px; background: #f1f2f4; border-radius: 3px; padding: 3px 6px; flex: none; }
+    .vw-cp.on .t em { background: var(--red); color: #fff; }
+    .vw-cp img { display: block; width: 100%; height: 54px; object-fit: contain; margin: 8px 0 7px; }
+    .vw-cp p { font-size: 10.5px; color: #34363b; line-height: 1.35; margin: 0 0 6px; min-height: 28px; }
+    .vw-cp span { font-size: 11px; color: var(--red); font-weight: 600; }
+    .vw-cps .nx { width: 26px; height: 26px; border-radius: 50%; border: 0; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.15); font-size: 17px; flex: none; }
+    .vw-exbar { display: flex; justify-content: space-between; align-items: center; }
+    .vw-exbar .btn { border-color: #cfd0d4; color: #222; padding: 9px 16px; font-size: 11.5px; }
+    .vw-exb { background: radial-gradient(ellipse at 50% 40%, #24272c, #0c0d10 75%); border-radius: 6px; overflow: hidden; margin-bottom: 18px; }
+    .vw-exb > img { display: block; width: 100%; }
+    .vw-exr { display: grid; gap: 0.8%; padding: 0 1.1%; margin-top: 0.85%; }
+    .vw-exr.r1 { grid-template-columns: 394fr 346fr 349fr 361fr; }
+    .vw-exr.r2 { grid-template-columns: 365fr 360fr 363fr 361fr; }
+    .vw-ext { padding: 0; border: 0; background: #15171a; border-radius: 6px; overflow: hidden; cursor: pointer; display: block; }
+    .vw-ext img { display: block; width: 100%; transition: transform .2s; }
+    .vw-ext:hover img { transform: scale(1.02); }
+    .vw-exf { margin-top: 1%; background: linear-gradient(90deg, #0a0b0d, #1a1c21 50%, #0a0b0d); border-top: 1px solid #23262b; color: #fff; display: flex; align-items: center; padding: 14px 36px 14px 40px; gap: 0; }
+    .vw-exf .nm { margin-right: auto; }
+    .vw-exf .nm b { display: block; font-family: var(--font-head); font-style: italic; font-size: 30px; line-height: 1; letter-spacing: .5px; }
+    .vw-exf .nm small { font-size: 13px; color: #c9cacd !important; }
+    .vw-exf .f { display: flex; align-items: center; gap: 14px; font-size: 12px; padding: 0 36px; border-left: 1px solid #34363c; }
+    .vw-exf .f:first-of-type { border-left: 0; }
+    .vw-exf .f img { width: 26px; height: 26px; object-fit: contain; }
+    .vw-exf .btn { margin-left: auto; padding: 14px 54px; font-size: 13px; }
+    #page [hidden] { display: none !important; }
+    .vw-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .vw-row2 { display: grid; grid-template-columns: 1fr 250px; gap: 16px; margin-top: 14px; }
+    .vw-specs { display: grid; grid-template-columns: repeat(6, 1fr); }
+    .vw-specs div { display: flex; gap: 12px; align-items: center; padding: 0 12px; border-left: 1px solid #ececef; }
+    .vw-specs div:first-child { border-left: 0; padding-left: 0; }
+    .vw-specs img { width: 26px; height: 26px; object-fit: contain; flex: none; }
+    .vw-specs small { display: block; font-size: 10.5px; color: #34363b; }
+    .vw-specs b { font-size: 12px; }
+    .vw-space { display: grid; grid-template-columns: 40px 1fr; gap: 10px; }
+    .vw-space img { width: 32px; }
+    .vw-space b { font-size: 12px; text-transform: uppercase; }
+    .vw-space p { font-size: 11px; color: #34363b; margin: 4px 0 8px; line-height: 1.3; }
+    .vw-space .btn { grid-column: span 2; border-color: #cfd0d4; color: #222; font-size: 11px; padding-top: 8px; padding-bottom: 8px; }
+    .vw-views { display: flex; align-items: center; gap: 14px; margin: 12px 0 14px; }
+    .vw-views .arr { width: 30px; height: 30px; border: 1px solid #d9dadd; border-radius: 3px; background: #fff; font-size: 16px; flex: none; }
+    .vw-views button.v { flex: 1; background: #fff; border: 1px solid #e6e7ea; border-radius: 3px; padding: 4px 4px 6px; font-size: 10.5px; color: #555; }
+    .vw-views button.v img { width: 100%; height: 38px; object-fit: contain; margin-bottom: 3px; }
+    .vw-views button.v.on { border: 1.5px solid var(--red); color: #111; }
+    @media (max-width: 1100px) { .vw-grid, .vw-row2 { grid-template-columns: 1fr; } .vw-specs { grid-template-columns: repeat(3, 1fr); row-gap: 14px; } .vw-views { overflow-x: auto; } .vw-exr.r1, .vw-exr.r2 { grid-template-columns: 1fr 1fr; } .vw-exf { flex-wrap: wrap; gap: 12px; } }
+    @media (max-width: 1400px) { .vw-cps .trk { min-width: 0; } }
+    @media (max-width: 1100px) {
+      .vw-head { flex-wrap: wrap; gap: 14px; }
+      .vw-head .acts { flex-wrap: wrap; gap: 10px; }
+      .vw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .vw-grid > .vw-stage { grid-column: 1 / -1; order: -1; }
+      .vw-grid > div, .vw-row2 > div { min-width: 0; }
+      .vw-views button.v { flex: 0 0 118px; }
+      .vw-exbar { flex-wrap: wrap; gap: 10px; }
+      .vw-exf { padding: 14px 20px; }
+      .vw-exf .f { padding: 0 18px; }
+    }
+    @media (max-width: 760px) {
+      .vw-head h1 { font-size: 28px; flex-wrap: wrap; gap: 8px 12px; }
+      .vw-head .acts .btn { flex: 1 1 auto; padding: 12px 14px; }
+      .vw-grid { grid-template-columns: minmax(0, 1fr); }
+      .vw-stage { height: 340px; }
+      .vw-mode { left: 12px; top: 12px; }
+      .vw-mode button { width: 28px; }
+      .vw-exp { right: 12px; top: 12px; padding: 8px 10px; }
+      .vw-img { top: 22%; height: 52%; }
+      .vw-tools { left: 8px; right: 8px; bottom: 8px; transform: none; justify-content: space-between; padding: 6px 4px 4px; }
+      .vw-tools button { width: auto; flex: 1 1 0; min-width: 0; font-size: 10px; padding: 6px 0 8px; }
+      .vw-tools button img { width: 22px; height: 22px; }
+      .vw-axes { display: none; }
+      .vw-angle { left: 14px; bottom: 80px; }
+      .vw-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .vw-specs div:nth-child(odd) { border-left: 0; padding-left: 0; }
+      .vw-exr.r1, .vw-exr.r2 { gap: 8px; padding: 0 8px; margin-top: 8px; }
+      .vw-exf { padding: 14px 16px; gap: 14px; }
+      .vw-exf .nm { flex: 1 1 100%; }
+      .vw-exf .f { flex: 1 1 40%; padding: 0; border-left: 0; }
+      .vw-exf .btn { flex: 1 1 100%; margin-left: 0; padding: 14px 20px; }
+    }
+    @media (max-width: 480px) {
+      .vw-tools button { font-size: 0; gap: 0; padding: 9px 0; }
+      .vw-angle { bottom: 64px; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="products" data-footer="values6">
+  <div id="site-header"></div>
+  <main class="container" id="page"></main>
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc, param, product, catName } = P;
+      const p = product(param("id")) || product("r32");
+      const comps = D.components.r32;
+      const V = "assets/img/viewer/";
+      document.title = `${p.model} 360° Viewer — PISTON`;
+      const views = [["front", "Front View"], ["rear", "Rear View"], ["left", "Left View"], ["right", "Right View"], ["top", "Top View"], ["iso", "Isometric View"], ["operator", "Operator View"]];
+      // Clickable areas over the hotspots drawn in the front-view image (percent of image box).
+      const spots = [[15.8, 21.7, 3], [71, 2.7, 7], [91.2, 46.5, 5], [68.9, 53.5, 1]];
+      const strip = [["Main Motor Power", "5.5 kW (7.5 HP)"], ["Max Cutting Length", "3200 mm"], ["Saw Blade Diameter", "Ø 400 mm"], ["Max Cutting Height (90°)", "120 mm"], ["Table Dimensions (L x W)", "3200 x 375 mm"], ["Net Weight", "750 kg"]];
+      const short = ["Complete machine assembly with all integrated components.", "Primary power unit with high efficiency and low noise.", "High-precision saw blade for smooth and accurate cuts.",
+        "Heavy-duty sliding table for large panel support.", "Adjustable rip fence for precise longitudinal cuts.", "Ergonomic control panel for easy and safe operation.",
+        "Efficient dust collection port for cleaner workspace.", "Protective guard for safe operation and compliance.", "Scoring blade unit for chip-free cutting on panels."];
+      // Exploded board tiles 10-12 show parts that are not in the components list.
+      const extra = ["Table Extension", "Tilting Mechanism", "Internal Structure"];
+      const query = (part) => { const u = new URLSearchParams(location.search); part === null ? u.delete("part") : u.set("part", part); const s = u.toString(); return location.pathname + (s ? "?" + s : ""); };
+
+      qs("#page").innerHTML = `<div id="vMain">
+        <div class="vw-crumb"><a href="index.html">Home</a><span>›</span><a href="products.html">Machinery</a><span>›</span><a href="products.html?cat=${p.cat}">${esc(catName(p.cat))}</a><span>›</span><a href="product.html?id=${p.id}">${esc(p.model.replace("PISTON", "Piston"))}</a><span>›</span>360° Viewer</div>
+        <div class="vw-head">
+          <div><h1>${esc(p.model)} <small>${esc(p.name)}</small></h1><div class="sub">Interactive 360° Viewer</div></div>
+          <div class="acts">
+            <button class="btn btn-outline" title="3D model download — Phase 2" onclick="P.toast('3D model download is planned for Phase 2')">⤓ &nbsp;Download 3D Model</button>
+            <button class="btn btn-outline" onclick="navigator.clipboard?.writeText(location.href).catch(() => {});P.toast('Link to this view copied')">⤳ &nbsp;Share View</button>
+            <button class="btn btn-red" data-wa-quote data-items="${p.id}" data-source="360° viewer">Request a Quote &nbsp;→</button>
+          </div>
+        </div>
+        <div class="vw-grid">
+          <div>
+            <div class="vw-box vw-comp"><h4>Machine Components</h4>${comps.map((c, i) => `<button data-c="${i}"><i></i>${c.name}<em>${c.n}</em></button>`).join("")}</div>
+            <div class="vw-box vw-about" style="margin-top:14px"><h4>About This Machine</h4><p>The ${esc(p.model)} ${esc(p.name)} is engineered for precision, stability, and durability. Perfect for panel sizing in woodworking, cabinetry, and furniture manufacturing.</p><a href="product.html?id=${p.id}">View full details &nbsp;→</a></div>
+          </div>
+          <div class="vw-stage" id="stage">
+            <div class="vw-mode">VIEW<div><button class="on" title="Solid">⬢</button><button title="Wireframe — Phase 2" data-toast="Wireframe view is planned for Phase 2">⧉</button><button title="Animation — Phase 2" data-toast="Animation view is planned for Phase 2">◷</button><button title="3D — Phase 2" data-toast="Interactive 3D is planned for Phase 2">⬡</button></div></div>
+            <button class="vw-exp" id="tExp" title="Exploded components view"><img src="${V}exploded.png" alt="">EXPLODED VIEW</button>
+            <img class="vw-fm" id="fm" src="${V}front-motor.png" alt="Main motor highlighted" hidden>
+            <div class="vw-img" id="vImg"><img id="spin" src="${V}front.png" alt="${esc(p.model)}" draggable="false">${spots.map(([x, y, c]) => `<button class="vw-hs" data-c="${c}" style="left:calc(${x}% - 11px);top:calc(${2.3 + y * 0.954}% - 11px)"></button>`).join("")}<span class="vw-mark" id="mark" hidden></span></div>
+            <div class="vw-tools">
+              <button class="on" id="tRot"><img src="${V}t-rotate.png" alt="">ROTATE</button><button id="tZoom"><img src="${V}t-zoom.png" alt="">ZOOM</button><button id="tPan"><img src="${V}t-pan.png" alt="">PAN</button>
+              <button disabled title="Measure — Phase 2"><img src="${V}t-measure.png" alt="">MEASURE</button><button id="tReset"><img src="${V}t-reset.png" alt="">RESET</button><button id="tFull"><img src="${V}t-full.png" alt="">FULLSCREEN</button>
+            </div>
+            <span class="vw-angle" id="ang">Front · 0°</span>
+            <img class="vw-axes" src="${V}axes.png" alt="">
+          </div>
+          <div class="vw-box vw-det" id="det"></div>
+        </div>
+        <div class="vw-row2" id="row2">
+          <div class="vw-box"><h4>Technical Specifications</h4>
+            <div class="vw-specs">${strip.map(([k, v], i) => `<div><img src="${V}s-${i + 1}.png" alt=""><span><small>${k}</small><b>${v}</b></span></div>`).join("")}</div>
+            <div style="text-align:right;margin-top:10px"><a class="red" style="font-size:11.5px;font-weight:600" href="product.html?id=${p.id}#specs">View full specifications &nbsp;→</a></div></div>
+          <div class="vw-box vw-space"><img src="${V}space.png" alt=""><div><b>Factory Space Mode</b><p>Check if this machine fits in your production space.</p></div>
+            <button class="btn btn-outline" onclick="P.toast('Factory layout planning is planned for Phase 2')">Open Space Calculator</button></div>
+        </div>
+        <div class="vw-views" id="views"><button class="arr" id="prev">‹</button>${views.map(([k, t], i) => `<button class="v ${i ? "" : "on"}" data-v="${i}"><img src="${V}v-${k}.png" alt="">${t}</button>`).join("")}<button class="arr" id="next">›</button></div>
+        <section class="vw-cps" id="cps" hidden><h4>Preview All Machine Components</h4><div class="rw"><div class="trk" id="trk">${comps.map((c, i) => `<div class="vw-cp" role="button" tabindex="0" data-c="${i}">
+          <div class="t"><em>${c.n}</em>${esc(c.name)}</div><img src="${V}cp-${i + 1}.png" alt=""><p>${short[i]}</p><span>View in 360° &nbsp;→</span></div>`).join("")}</div><button class="nx" id="cpNext" aria-label="More components">›</button></div></section>
+      </div>
+      <div id="vEx" hidden>
+        <div class="vw-exbar"><div class="vw-crumb"><a href="index.html">Home</a><span>›</span><a href="products.html">Machinery</a><span>›</span><a href="product.html?id=${p.id}">${esc(p.model.replace("PISTON", "Piston"))}</a><span>›</span><a href="#" data-back>360° Viewer</a><span>›</span>Exploded View</div>
+          <button class="btn btn-outline" data-back>← &nbsp;Back to 360° Viewer</button></div>
+        <div class="vw-exb"><img src="${V}ex-head.png" alt=""><h2 class="vw-sr">${esc(p.model)} ${esc(p.name)} — Machine Components</h2>
+          ${[[0, 4, "r1"], [4, 8, "r2"], [8, 12, "r2"]].map(([a, b, r]) => `<div class="vw-exr ${r}">${Array.from({ length: b - a }, (_, k) => a + k).map((i) =>
+            `<button class="vw-ext" data-x="${i}"><img src="${V}ex-${i + 1}.png" alt="${String(i + 1).padStart(2, "0")} ${esc(i < comps.length ? comps[i].name : extra[i - comps.length])}"></button>`).join("")}</div>`).join("")}
+          <div class="vw-exf"><div class="nm"><b>${esc(p.model)}</b><small>${esc(p.name)}</small></div>
+            ${["Precision Engineering", "Maximum Safety", "Premium Components", "Built for Durability"].map((t, i) => `<div class="f"><img src="${V}ex-f${i + 1}.png" alt="">${t}</div>`).join("")}
+            <button class="btn btn-red" data-wa-quote data-items="${p.id}" data-source="360° viewer — exploded view">Request a Quote &nbsp;→</button></div></div>
+      </div>`;
+
+      let sel = 1, view = 0, zoom = 1, drag = null, acc = 0, focus = false;
+      const spin = qs("#spin");
+      const spotOf = Object.fromEntries(spots.map(([x, y, c]) => [c, [x, 2.3 + y * 0.954]]));
+      function updateStage() {
+        const front = view === 0 && zoom === 1, motor = focus && sel === 1 && front;
+        qs("#fm").hidden = !motor; spin.style.visibility = motor ? "hidden" : "";
+        qsa(".vw-hs").forEach((h) => (h.style.display = front && !motor ? "" : "none"));
+        const m = qs("#mark"), at = spotOf[sel] || [comps[sel].x, comps[sel].y];
+        m.hidden = !(focus && front && !motor);
+        m.textContent = sel + 1; m.style.left = at[0] + "%"; m.style.top = at[1] + "%";
+        qs("#row2").hidden = qs("#views").hidden = focus; qs("#cps").hidden = !focus;
+        qsa(".vw-cp").forEach((b) => b.classList.toggle("on", focus && +b.dataset.c === sel));
+      }
+      function showDetail(i, f = focus) {
+        sel = i; focus = f; const c = comps[i];
+        qsa(".vw-comp button").forEach((b) => b.classList.toggle("on", +b.dataset.c === i));
+        qs("#det").classList.toggle("big", focus);
+        qs("#det").innerHTML = `<h4>Component Details</h4><div class="nm">${c.name}<em>${c.n}</em></div>
+          <div class="pic"><img src="${i === 1 ? V + (focus ? "motor-lg.png" : "motor.png") : focus ? `${V}cp-${i + 1}.png` : V + "v-iso.png"}" alt=""></div><p>${c.desc}</p>
+          ${c.specs.map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join("")}
+          ${focus ? `<button class="btn btn-outline" id="isolate"><img src="${V}isolate.png" alt="" style="width:16px">VIEW IN ISOLATION MODE</button>`
+            : `<button class="btn btn-outline" data-exploded><img src="${V}exploded.png" alt="" style="width:16px">View in Exploded Mode</button>`}`;
+        if (qs("#isolate")) qs("#isolate").onclick = () => isolate(i);
+        if (focus) history.replaceState(null, "", query(i));
+        updateStage();
+      }
+      function isolate(i) {
+        const name = i < comps.length ? comps[i].name : extra[i - comps.length];
+        P.modal(`<h3 style="margin:0 0 12px">${String(i + 1).padStart(2, "0")} ${esc(name)}</h3><img src="${V}ex-${i + 1}.png" alt="${esc(name)}" style="width:100%;border-radius:6px;display:block">
+          <p style="font-size:12px;color:#6a6c72;margin:10px 0 0">Isolated component photo. Interactive 3D isolation is planned for Phase 2.</p>`);
+      }
+      function showView(i) {
+        view = (i + views.length) % views.length;
+        spin.src = view === 0 ? V + "front.png" : `${V}v-${views[view][0]}.png`;
+        spin.classList.toggle("small", view !== 0);
+        qsa(".vw-views .v").forEach((b) => b.classList.toggle("on", +b.dataset.v === view));
+        qs("#ang").textContent = `${views[view][1].replace(" View", "")} · ${Math.round(view * 360 / views.length)}°`;
+        updateStage();
+      }
+      const applyZoom = () => { spin.style.transform = `scale(${zoom})`; updateStage(); };
+      function route() {
+        const ex = location.hash === "#exploded";
+        qs("#vMain").hidden = ex; qs("#vEx").hidden = !ex;
+        if (ex) window.scrollTo(0, 0);
+      }
+      const leaveExploded = () => { history.replaceState(null, "", location.pathname + location.search); route(); };
+      document.addEventListener("click", (e) => {
+        const c = e.target.closest("[data-c]"); if (c) { showDetail(+c.dataset.c, true); if (c.closest("#cps")) qs("#stage").scrollIntoView({ behavior: "smooth", block: "center" }); }
+        const v = e.target.closest("[data-v]"); if (v) showView(+v.dataset.v);
+        if (e.target.closest("[data-exploded]")) location.hash = "exploded";
+        if (e.target.closest("[data-back]")) { e.preventDefault(); leaveExploded(); }
+        const x = e.target.closest("[data-x]");
+        if (x) { const i = +x.dataset.x; if (i < comps.length) { leaveExploded(); showView(0); showDetail(i, true); } else isolate(i); }
+      });
+      qsa(".vw-cp").forEach((b) => b.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); b.click(); } }));
+      qs("#tExp").onclick = () => (location.hash = "exploded");
+      qs("#cpNext").onclick = () => qs("#trk").scrollBy({ left: 320, behavior: "smooth" });
+      window.addEventListener("hashchange", route);
+      qs("#prev").onclick = () => showView(view - 1);
+      qs("#next").onclick = () => showView(view + 1);
+      const img = qs("#vImg");
+      img.addEventListener("pointerdown", (e) => { if (e.target.closest("button")) return; drag = e.clientX; acc = 0; img.setPointerCapture(e.pointerId); });
+      img.addEventListener("pointermove", (e) => { if (drag === null) return; acc += e.clientX - drag; drag = e.clientX; if (Math.abs(acc) > 60) { showView(view + (acc > 0 ? 1 : -1)); acc = 0; } });
+      img.addEventListener("pointerup", () => (drag = null));
+      qs("#tZoom").onclick = () => { zoom = zoom >= 1.6 ? 1 : zoom + 0.3; applyZoom(); };
+      qs("#tReset").onclick = () => { zoom = 1; focus = false; history.replaceState(null, "", query(null)); showDetail(1); showView(0); };
+      qs("#tFull").onclick = () => (document.fullscreenElement ? document.exitFullscreen() : qs("#stage").requestFullscreen?.()?.catch(() => {}));
+      qs("#tPan").onclick = () => P.toast("Drag the machine to rotate between views");
+      let auto = null;
+      qs("#tRot").onclick = () => { if (auto) { clearInterval(auto); auto = null; } else auto = setInterval(() => showView(view + 1), 900); };
+      const part = parseInt(param("part"), 10);
+      if (part >= 0 && part < comps.length) showDetail(part, true); else showDetail(1);
+      showView(0); route();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.55.13.png",
+  "out": "src/demo/assets/img/case",
+  "items": [
+    { "name": "ov-1.png", "box": [55, 510, 79, 534], "trim": true, "scale": 2 },
+    { "name": "ov-2.png", "box": [284, 510, 308, 534], "trim": true, "scale": 2 },
+    { "name": "ov-3.png", "box": [55, 549, 79, 573], "trim": true, "scale": 2 },
+    { "name": "ov-4.png", "box": [284, 549, 308, 573], "trim": true, "scale": 2 },
+    { "name": "ov-5.png", "box": [55, 588, 79, 612], "trim": true, "scale": 2 },
+    { "name": "ov-6.png", "box": [284, 588, 308, 612], "trim": true, "scale": 2 },
+    { "name": "video.png", "box": [580, 426, 1099, 629] },
+    { "name": "j-1.png", "box": [69, 677, 99, 707], "trim": true, "scale": 2 },
+    { "name": "j-2.png", "box": [258, 677, 288, 707], "trim": true, "scale": 2 },
+    { "name": "j-3.png", "box": [435, 677, 465, 707], "trim": true, "scale": 2 },
+    { "name": "j-4.png", "box": [602, 677, 632, 707], "trim": true, "scale": 2 },
+    { "name": "j-5.png", "box": [779, 677, 809, 707], "trim": true, "scale": 2 },
+    { "name": "j-6.png", "box": [939, 677, 969, 707], "trim": true, "scale": 2 }
+  ]
+}

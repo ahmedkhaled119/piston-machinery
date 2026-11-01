@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Dashboard — PISTON Admin Portal</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="ad" data-page="dashboard">
+  <div class="ad-app">
+    <aside class="ad-side" id="adSide" aria-label="Admin navigation">
+      <a href="dashboard.html"><img class="ad-side-logo" src="../assets/img/admin/logo-side.png" alt="PISTON Admin Portal"></a>
+      <nav class="ad-nav">
+        <a class="on" href="dashboard.html" aria-current="page"><i data-icon="grid"></i>Dashboard</a>
+        <h6 class="first">Content Management</h6>
+        <a href="#" data-mod="Homepage"><i data-icon="home"></i>Homepage</a>
+        <a href="#" data-mod="Products &amp; Categories"><i data-icon="box"></i>Products<i data-icon="chev" class="sub"></i></a>
+        <a href="#" data-mod="Industries &amp; Solutions"><i data-icon="factory"></i>Industries &amp; Solutions<i data-icon="chev" class="sub"></i></a>
+        <a href="#" data-mod="Projects"><i data-icon="folder"></i>Projects</a>
+        <a href="#" data-mod="Case Studies"><i data-icon="case"></i>Case Studies</a>
+        <a href="#" data-mod="News"><i data-icon="news"></i>News</a>
+        <a href="#" data-mod="Videos"><i data-icon="video"></i>Videos</a>
+        <a href="#" data-mod="Events &amp; Exhibitions"><i data-icon="calendar"></i>Events &amp; Exhibitions</a>
+        <h6>Support</h6>
+        <div class="tight">
+          <a href="#" data-mod="Support Center"><i data-icon="buoy"></i>Support Center</a>
+          <a href="#" data-mod="Spare Parts"><i data-icon="gear"></i>Spare Parts</a>
+          <a href="#" data-mod="Maintenance Videos"><i data-icon="play"></i>Maintenance Videos</a>
+          <a href="#" data-mod="Technical Support tickets"><i data-icon="tool"></i>Technical Support</a>
+          <a href="#" data-mod="FAQ"><i data-icon="help"></i>FAQ</a>
+        </div>
+        <h6>Leads &amp; Requests</h6>
+        <a href="#" data-mod="WhatsApp Quote Clicks log"><i data-icon="wa"></i>WhatsApp Quote Clicks</a>
+        <a href="#" data-mod="Engineer Requests"><i data-icon="headset"></i>Engineer Requests<span class="cnt">8</span></a>
+        <a href="#" data-mod="Contact Messages"><i data-icon="mail"></i>Contact Messages<span class="cnt">3</span></a>
+        <a href="#" data-mod="Meeting Requests"><i data-icon="meet"></i>Meeting Requests<span class="cnt">2</span></a>
+        <a href="#" data-mod="Newsletter Subscribers"><i data-icon="send"></i>Newsletter Subscribers</a>
+        <h6>Assets</h6>
+        <a href="#" data-mod="Media Library"><i data-icon="image"></i>Media Library</a>
+        <h6>Administration</h6>
+        <a href="#" data-mod="Customers"><i data-icon="building"></i>Customers</a>
+        <a href="#" data-mod="Users &amp; Access"><i data-icon="users"></i>Users &amp; Access<i data-icon="chev" class="sub"></i></a>
+        <h6>Settings</h6>
+        <a href="#" data-mod="Website Settings"><i data-icon="globe"></i>Website Settings<i data-icon="chev" class="sub"></i></a>
+        <a href="#" data-mod="Company Facts &amp; Hours"><i data-icon="stats"></i>Company Facts &amp; Hours</a>
+        <a href="#" data-mod="SEO"><i data-icon="seo"></i>SEO</a>
+        <a href="#" data-mod="Localization"><i data-icon="lang"></i>Localization</a>
+        <h6>System</h6>
+        <a href="#" data-mod="Audit Logs"><i data-icon="shield"></i>Audit Logs</a>
+        <a href="#" data-mod="Activity Logs"><i data-icon="activity"></i>Activity Logs</a>
+        <a href="#" data-mod="Notifications"><i data-icon="bell"></i>Notifications</a>
+      </nav>
+      <button class="ad-collapse" type="button" data-mod="Collapse menu"><i data-icon="collapse"></i>Collapse Menu</button>
+    </aside>
+
+    <div class="ad-main">
+      <header class="ad-top">
+        <button class="ad-burger" type="button" aria-label="Toggle navigation" aria-controls="adSide" aria-expanded="false"><i data-icon="menu"></i></button>
+        <form class="ad-search" role="search"><i data-icon="search"></i><input type="search" placeholder="Search anything..." aria-label="Search the admin portal"><kbd>⌘ K</kbd></form>
+        <div class="ad-top-r">
+          <button class="ad-ibtn" type="button" aria-label="Notifications (5 new)" data-mod="Notifications"><i data-icon="bell"></i><span class="dot">5</span></button>
+          <button class="ad-ibtn" type="button" aria-label="Help" data-mod="Help center"><i data-icon="help"></i></button>
+          <button class="ad-user" type="button" aria-haspopup="menu" aria-expanded="false"><img src="../assets/img/admin/avatar.png" alt=""><div><b>Ahmed Khaled</b><small>Administrator</small></div><i data-icon="chev" class="chev"></i></button>
+          <div class="ad-menu" role="menu">
+            <a href="#" role="menuitem" data-mod="My profile"><span id="userEmail">admin@piston-machinery.com</span></a>
+            <a href="../index.html" role="menuitem">View public website</a>
+            <a href="#" role="menuitem" id="signOut">Sign out</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="ad-content">
+        <div class="ad-head">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Welcome back, Ahmed! Here's what's happening with Piston today.</p>
+          </div>
+          <div class="ad-head-r">
+            <button class="ad-range" type="button" data-mod="Date range filter"><i data-icon="calendar"></i>May 12, 2024 - May 18, 2024<i data-icon="chev" class="chev"></i></button>
+            <div class="ad-add"><button type="button" data-mod="Add Content"><i data-icon="plus"></i>Add Content</button><button type="button" class="ad-add-more" aria-label="More content types" data-mod="Add Product / News / Case Study / Video / Event"><i data-icon="chev"></i></button></div>
+          </div>
+        </div>
+
+        <section class="ad-kpis" id="kpis" aria-label="Key figures"></section>
+
+        <div class="ad-grid">
+          <div class="ad-col">
+            <section class="ad-panel ad-lead">
+              <div class="ad-panel-h"><h3>Lead Activity</h3>
+                <select class="ad-sel" aria-label="Period"><option>This Week</option><option>This Month</option><option>This Year</option></select></div>
+              <div class="ad-legend"><span><i style="background:#ef3340"></i>WhatsApp Quote Clicks</span><span><i style="background:#2f80ed"></i>Engineer Requests</span></div>
+              <div id="leadChart"></div>
+            </section>
+            <section class="ad-panel ad-activity">
+              <div class="ad-panel-h"><h3>Recent Activity</h3></div>
+              <div class="ad-act"><span class="ad-act-ico c-violet"><i data-icon="cube"></i></span><div><b>You updated product PISTON R32</b><small>Product information and specifications were updated.</small></div><time>10 minutes ago</time></div>
+              <div class="ad-act"><span class="ad-act-ico c-green"><i data-icon="news"></i></span><div><b>Sara published a news article</b><small>“Piston at LIGNA 2025” has been published.</small></div><time>1 hour ago</time></div>
+              <div class="ad-act"><span class="ad-act-ico c-orange"><i data-icon="image"></i></span><div><b>Mohamed uploaded 12 new images</b><small>Added to R32 product gallery.</small></div><time>3 hours ago</time></div>
+              <div class="ad-act"><span class="ad-act-ico c-blue"><i data-icon="users"></i></span><div><b>Admin created a new event</b><small>“WoodTech Expo 2024” event has been created.</small></div><time>5 hours ago</time></div>
+              <a class="ad-more" href="#" data-mod="Activity Logs">View All Activity <i data-icon="right"></i></a>
+            </section>
+          </div>
+
+          <div class="ad-col">
+            <section class="ad-panel ad-quotes" id="quotes" aria-label="Recent WhatsApp quote clicks (anonymous)">
+              <div class="ad-panel-h"><h3>Recent WhatsApp Quote Clicks</h3><a class="va" href="#" data-mod="WhatsApp Quote Clicks log">View All</a></div>
+            </section>
+            <section class="ad-panel ad-support">
+              <div class="ad-panel-h"><h3>Support Ticket Overview</h3><a class="va" href="#" data-mod="Technical Support tickets">View All</a></div>
+              <div class="ad-tickets">
+                <div class="ad-tk"><span class="ad-kpi-ico c-blue"><i data-icon="doc"></i></span><strong>12</strong><span>New</span></div>
+                <div class="ad-tk"><span class="ad-kpi-ico c-amber"><i data-icon="clock"></i></span><strong>8</strong><span>In Progress</span></div>
+                <div class="ad-tk"><span class="ad-kpi-ico c-violet"><i data-icon="alert"></i></span><strong>5</strong><span>Waiting</span></div>
+                <div class="ad-tk"><span class="ad-kpi-ico c-green"><i data-icon="checkC"></i></span><strong>124</strong><span>Resolved</span></div>
+              </div>
+            </section>
+          </div>
+
+          <div class="ad-col">
+            <section class="ad-panel ad-overview">
+              <div class="ad-panel-h"><h3>Content Overview</h3></div>
+              <div class="ad-donut-wrap">
+                <div class="ad-donut" id="donut"><div>Total<strong id="donutTotal">237</strong>Contents</div></div>
+                <ul class="ad-legend2" id="contentLegend"></ul>
+              </div>
+            </section>
+            <section class="ad-panel ad-events">
+              <div class="ad-panel-h"><h3>Upcoming Events</h3><a class="va" href="#" data-mod="Events &amp; Exhibitions">View All</a></div>
+              <div class="ad-ev"><img src="../assets/img/admin/ev-ligna.png" alt="LIGNA logo"><div><b>LIGNA 2025</b><small>Hannover, Germany</small></div><div class="r"><b>May 26 - May 30, 2025</b><span class="ad-pill p-green">Upcoming</span></div></div>
+              <div class="ad-ev"><img src="../assets/img/admin/ev-woodtech.png" alt="WoodTech Expo logo"><div><b>WoodTech Expo 2024</b><small>Cairo, Egypt</small></div><div class="r"><b>Oct 12 - Oct 14, 2024</b><span class="ad-pill p-green">Upcoming</span></div></div>
+              <div class="ad-ev"><img src="../assets/img/admin/ev-awfs.png" alt="AWFS Fair logo"><div><b>AWFS Fair 2025</b><small>Las Vegas, USA</small></div><div class="r"><b>Jul 22 - Jul 25, 2025</b><span class="ad-pill p-gray">Draft</span></div></div>
+              <a class="ad-more" href="#" data-mod="Events &amp; Exhibitions">View All Events <i data-icon="right"></i></a>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>

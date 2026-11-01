@@ -1,0 +1,94 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.03.05.png",
+ "out": "src/demo/assets/img/case",
+ "items": [
+  {
+   "name": "in-1.png",
+   "box": [
+    110,
+    531,
+    152,
+    573
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "in-2.png",
+   "box": [
+    284,
+    531,
+    326,
+    573
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "in-3.png",
+   "box": [
+    457,
+    531,
+    499,
+    573
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "in-4.png",
+   "box": [
+    632,
+    531,
+    674,
+    573
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "in-5.png",
+   "box": [
+    799,
+    531,
+    841,
+    573
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "in-6.png",
+   "box": [
+    970,
+    531,
+    1012,
+    573
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "in-cal.png",
+   "box": [
+    747,
+    696,
+    787,
+    736
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "in-check.png",
+   "box": [
+    71,
+    695,
+    91,
+    715
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

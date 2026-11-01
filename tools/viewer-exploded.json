@@ -1,0 +1,23 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.04.48.png",
+  "out": "src/demo/assets/img/viewer",
+  "items": [
+    { "name": "ex-head.png", "box": [0, 0, 1536, 68] },
+    { "name": "ex-1.png", "box": [19, 82, 413, 370] },
+    { "name": "ex-2.png", "box": [428, 82, 774, 370] },
+    { "name": "ex-3.png", "box": [789, 82, 1138, 370] },
+    { "name": "ex-4.png", "box": [1156, 82, 1517, 370] },
+    { "name": "ex-5.png", "box": [19, 388, 384, 660] },
+    { "name": "ex-6.png", "box": [401, 388, 761, 660] },
+    { "name": "ex-7.png", "box": [775, 388, 1138, 660] },
+    { "name": "ex-8.png", "box": [1156, 388, 1517, 660] },
+    { "name": "ex-9.png", "box": [19, 676, 384, 920] },
+    { "name": "ex-10.png", "box": [401, 676, 761, 920] },
+    { "name": "ex-11.png", "box": [775, 676, 1138, 920] },
+    { "name": "ex-12.png", "box": [1156, 676, 1517, 920] },
+    { "name": "ex-f1.png", "box": [334, 947, 383, 994], "trim": true, "scale": 2 },
+    { "name": "ex-f2.png", "box": [547, 947, 593, 994], "trim": true, "scale": 2 },
+    { "name": "ex-f3.png", "box": [742, 947, 789, 994], "trim": true, "scale": 2 },
+    { "name": "ex-f4.png", "box": [971, 947, 1016, 996], "trim": true, "scale": 2 }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.04.46.png",
+  "out": "src/demo/assets/img/viewer",
+  "items": [
+    { "name": "motor-lg.png", "box": [1300, 216, 1460, 336], "trim": true },
+    { "name": "isolate.png", "box": [1301, 544, 1326, 569], "trim": true, "scale": 2 },
+    { "name": "cp-1.png", "box": [40, 656, 186, 732], "trim": true },
+    { "name": "cp-2.png", "box": [213, 656, 347, 732], "trim": true },
+    { "name": "cp-3.png", "box": [374, 656, 508, 732], "trim": true },
+    { "name": "cp-4.png", "box": [535, 656, 669, 732], "trim": true },
+    { "name": "cp-5.png", "box": [696, 656, 830, 732], "trim": true },
+    { "name": "cp-6.png", "box": [857, 656, 991, 732], "trim": true },
+    { "name": "cp-7.png", "box": [1018, 656, 1152, 732], "trim": true },
+    { "name": "cp-8.png", "box": [1179, 656, 1313, 732], "trim": true },
+    { "name": "cp-9.png", "box": [1340, 656, 1460, 732], "trim": true }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 05.21.01.png",
+  "out": "src/demo/assets/img/products",
+  "items": [
+    { "name": "hero-products.png", "box": [372, 66, 864, 244] },
+    { "name": "r32.png", "box": [205, 372, 350, 456], "trim": true },
+    { "name": "peb368.png", "box": [362, 372, 508, 456], "trim": true },
+    { "name": "pvpm2500.png", "box": [520, 372, 666, 456], "trim": true },
+    { "name": "pbd21.png", "box": [680, 372, 828, 456], "trim": true },
+    { "name": "peb468.png", "box": [205, 712, 350, 794], "trim": true },
+    { "name": "pj1300.png", "box": [362, 712, 508, 794], "trim": true },
+    { "name": "pvpm3000.png", "box": [520, 712, 666, 794], "trim": true },
+    { "name": "pbd29.png", "box": [680, 712, 828, 794], "trim": true },
+    { "name": "r42.png", "box": [205, 1040, 350, 1118], "trim": true },
+    { "name": "peb580.png", "box": [362, 1040, 508, 1118], "trim": true },
+    { "name": "pbd42.png", "box": [680, 1040, 828, 1118], "trim": true },
+    { "name": "tab-all.png", "box": [51, 257, 71, 277], "trim": true, "scale": 2 },
+    { "name": "tab-saws.png", "box": [172, 257, 194, 277], "trim": true, "scale": 2 },
+    { "name": "tab-edge.png", "box": [308, 257, 330, 277], "trim": true, "scale": 2 },
+    { "name": "tab-press.png", "box": [459, 257, 481, 277], "trim": true, "scale": 2 },
+    { "name": "tab-drill.png", "box": [586, 257, 608, 277], "trim": true, "scale": 2 },
+    { "name": "tab-other.png", "box": [722, 257, 744, 277], "trim": true, "scale": 2 },
+    { "name": "compare-icon.png", "box": [40, 1366, 92, 1420], "trim": true },
+    { "name": "help-headset.png", "box": [48, 1474, 104, 1534], "trim": true },
+    { "name": "help-line.png", "box": [652, 1470, 824, 1546] },
+    { "name": "val-delivery.png", "box": [246, 1590, 276, 1624], "trim": true, "scale": 2 },
+    { "name": "val-quality.png", "box": [392, 1590, 422, 1624], "trim": true, "scale": 2 },
+    { "name": "val-support.png", "box": [546, 1590, 576, 1624], "trim": true, "scale": 2 },
+    { "name": "val-service.png", "box": [687, 1590, 717, 1624], "trim": true, "scale": 2 }
+  ]
+}

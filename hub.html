@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News, Case Studies &amp; Projects — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .hb-hero { position: relative; height: 245px; background: #fff; line-height: 1.35; }
+    .hb-hero > img { position: absolute; right: 0; top: 0; width: 1036px; max-width: 68%; }
+    .hb-hero .container { position: relative; }
+    .hb-hero .breadcrumb { padding: 9px 0 0 15px; font-size: 11px; color: #222; margin: 0; gap: 6px; }
+    .hb-hero .ey { display: block; margin: 12px 0 0 15px; color: var(--red); font-weight: 700; font-size: 12px; text-transform: uppercase; }
+    .hb-hero h1 { font-size: 37px; font-weight: 800; line-height: .97; letter-spacing: 2px; margin: 2px 0 10px 16px; color: #111; }
+    .hb-hero p { font-size: 12.3px; color: #111; margin: 0 0 8px 15px; max-width: 345px; line-height: 1.45; }
+    .hb-hero .acts { margin-left: 16px; display: flex; gap: 19px; }
+    .hb-hero .btn { height: 26px; padding: 0 20px; font-size: 9.5px; gap: 18px; min-width: 179px; }
+    .hb-hero .btn-w { background: #fff; border: 1px solid #e3e4e7; color: #111; min-width: 166px; }
+    .hb-wrap { margin: 0 16px 0 7px; line-height: 1.35; position: relative; z-index: 1; }
+    .hb-box { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.07); }
+    .hb-box h3 { font-family: var(--font); font-size: 10.5px; font-weight: 700; letter-spacing: 0; margin: 0; color: #111; }
+    .hb-bar { display: flex; align-items: center; gap: 10px; height: 47px; padding: 0 39px 0 25px; border-bottom: 1px solid #f0f0f2; }
+    .hb-bar a.pill { height: 23px; padding: 0 14px; display: grid; place-items: center; border: 1px solid #e3e4e7; border-radius: 2px; color: #111; font-size: 9.4px; font-weight: 700; }
+    .hb-bar a.pill.on { background: var(--red); border-color: var(--red); color: #fff; }
+    .hb-bar .flt { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 8.6px; }
+    .hb-bar .flt + .flt { margin-left: 25px; }
+    .hb-bar select { width: 152px; height: 23px; border: 1px solid #e3e4e7; border-radius: 2px; font: inherit; font-size: 8.6px; padding: 0 8px; appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' fill='none' stroke='%23333' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 10px center; }
+    .hb-bar select#sort { width: 134px; }
+    .hb-feat { display: grid; grid-template-columns: 405px 427px 1fr; gap: 19px; padding: 8px 22px 7px 11px; }
+    .hb-feat > img { width: 405px; height: 213px; display: block; }
+    .hb-feat .ey { display: block; color: var(--red); font-size: 8.5px; font-weight: 700; margin-top: 9px; }
+    .hb-feat h2 { font-family: var(--font); font-size: 19.5px; font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.05; margin: 4px 0 9px; }
+    .hb-feat .loc { display: flex; gap: 40px; font-size: 9.5px; }
+    .hb-feat .loc span { display: flex; gap: 8px; align-items: center; }
+    .hb-feat .loc img { width: 8px; }
+    .hb-feat p { font-size: 9.6px; margin: 12px 0 9px; line-height: 1.6; }
+    .hb-feat .met { display: grid; grid-template-columns: repeat(3, 127px); gap: 14px; }
+    .hb-feat .met div { display: flex; gap: 10px; align-items: center; height: 43px; padding: 0 10px; border: 1px solid #ececef; border-radius: 3px; }
+    .hb-feat .met img { width: 24px; }
+    .hb-feat .met b { display: block; font-size: 11.5px; }
+    .hb-feat .met small { display: block; font-size: 7.4px; }
+    .hb-feat .rd { display: inline-flex; gap: 12px; margin-top: 15px; color: var(--red); font-size: 8.6px; font-weight: 700; }
+    .hb-hl { background: #f6f6f7; display: grid; grid-template-columns: 1fr 205px; gap: 10px; padding: 11px 30px 8px 16px; position: relative; }
+    .hb-hl .it { display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: center; margin-top: 10.5px; font-size: 9px; }
+    .hb-hl .it:first-of-type { margin-top: 13px; }
+    .hb-hl .it img { width: 22px; }
+    .hb-hl .it b { display: block; font-size: 8.6px; }
+    .hb-q { background: #fff; border-radius: 3px; padding: 12px 15px 14px; margin-top: 8px; }
+    .hb-q > img { width: 17px; }
+    .hb-q p { font-size: 10.4px; line-height: 1.6; margin: 9px 0 10px; }
+    .hb-q .who { display: grid; grid-template-columns: 40px 1fr; gap: 10px; align-items: center; font-size: 7.6px; line-height: 1.75; }
+    .hb-q .who img { width: 40px; border-radius: 50%; }
+    .hb-q .who b { display: block; font-size: 7.8px; }
+    .hb-hl .nav { position: absolute; right: 30px; bottom: 6px; display: flex; gap: 8px; }
+    .hb-hl .nav a { width: 22px; height: 22px; display: grid; place-items: center; border: 1px solid #e3e4e7; border-radius: 2px; background: #fff; color: #111; font-size: 13px; }
+    .hb-r2 { display: grid; grid-template-columns: 980px 1fr; gap: 10px; margin-top: 2px; }
+    .hb-r3 { display: grid; grid-template-columns: 955px 1fr; gap: 10px; margin-top: 10px; }
+    .hb-sec { padding: 10px 10px 8px 11px; }
+    .hb-sec .hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; }
+    .hb-sec .hd a { color: var(--red); font-size: 6px; font-weight: 700; }
+    .hb-cards { display: grid; gap: 12px; }
+    .hb-pc { display: grid; grid-template-columns: auto 1fr; gap: 10px; color: #111; }
+    .hb-pc > img { height: 91px; max-width: 125px; object-fit: cover; display: block; }
+    .hb-pc b { display: block; font-size: 8.6px; line-height: 1.4; }
+    .hb-pc .lc { display: grid; grid-template-columns: 8px auto; gap: 2px 6px; font-size: 7px; margin-top: 7px; line-height: 1.3; }
+    .hb-pc .lc img { width: 7px; }
+    .hb-pc p { font-size: 7.4px; margin: 8px 0 6px; line-height: 1.45; max-width: 150px; }
+    .hb-pc .lk { color: var(--red); font-size: 6.6px; font-weight: 700; }
+    .hb-nc { display: grid; grid-template-columns: auto 1fr; gap: 13px; color: #111; }
+    .hb-nc > img { height: 83px; display: block; }
+    .hb-nc small { display: block; font-size: 6.6px; margin-top: 3px; }
+    .hb-nc b { display: block; font-size: 8.4px; line-height: 1.4; margin-top: 6px; }
+    .hb-nc p { font-size: 7.2px; margin: 6px 0 5px; line-height: 1.5; }
+    .hb-nc .lk { color: var(--red); font-size: 6.6px; font-weight: 700; }
+    .hb-vd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+    .hb-vd button { padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
+    .hb-vd img { width: 100%; display: block; }
+    .hb-vd b { display: block; font-size: 7.8px; font-weight: 600; line-height: 1.45; margin-top: 7px; }
+    .hb-cta { display: grid; grid-template-columns: 70px 1fr auto auto; align-items: center; gap: 0 8px; width: 1020px; margin: 5px 0 5px 210px; padding: 6px 30px 6px 23px; }
+    .hb-cta > img { width: 43px; }
+    .hb-cta h3 { font-size: 11px; }
+    .hb-cta p { font-size: 9.4px; margin: 3px 0 0; line-height: 1.45; }
+    .hb-cta .btn { height: 24px; padding: 0; width: 232px; font-size: 8.6px; gap: 14px; }
+    .hb-cta .btn-o { width: 183px; background: #fff; border: 1px solid var(--red); color: #111; }
+    @media (max-width: 1400px) {
+      .hb-feat { grid-template-columns: 405px minmax(0, 1fr); }
+      .hb-hl { grid-column: 1 / -1; }
+      .hb-r2, .hb-r3 { grid-template-columns: minmax(0, 1fr); }
+      #projects { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+      #stories { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .hb-cta { display: flex; flex-wrap: wrap; gap: 10px 16px; width: auto; margin: 10px 0; }
+      .hb-cta > div { flex: 1 1 300px; }
+      .hb-pc p { max-width: none; }
+    }
+    @media (max-width: 1100px) {
+      .hb-hero { display: flex; flex-direction: column; height: auto; }
+      .hb-hero > img { position: static; order: 2; width: 100%; max-width: none; margin-top: 14px; }
+      .hb-bar { flex-wrap: wrap; height: auto; padding: 10px 14px; }
+      .hb-bar .flt, .hb-bar .flt + .flt { margin-left: 0; }
+      .hb-bar .flt:first-of-type { margin-left: auto; }
+      #projects { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      #news { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .hb-feat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hb-feat > img { width: 100%; height: auto; }
+      .hb-feat .met { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    }
+    @media (max-width: 760px) {
+      .hb-hero h1 { font-size: 30px; }
+      .hb-hero .acts { flex-wrap: wrap; gap: 10px; margin-right: 16px; }
+      .hb-wrap { margin: 0; zoom: 1.25; }
+      .hb-bar .flt:first-of-type { margin-left: 0; }
+      .hb-feat { grid-template-columns: minmax(0, 1fr); padding: 10px; }
+      .hb-feat > img { width: 100%; height: auto; }
+      .hb-feat .loc { flex-wrap: wrap; gap: 4px 20px; }
+      .hb-feat p br { display: none; }
+      .hb-feat .met { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+      .hb-feat .met div { padding: 0 6px; gap: 6px; }
+      .hb-hl { grid-template-columns: minmax(0, 1fr); padding: 11px 14px 40px; }
+      .hb-hl .nav { right: 14px; }
+      #projects, #stories, #news { grid-template-columns: minmax(0, 1fr) !important; }
+      .hb-vd { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hb-cta { padding: 12px 14px; }
+    }
+    @media (max-width: 480px) {
+      .hb-feat .met { grid-template-columns: minmax(0, 1fr); }
+      .hb-bar select, .hb-bar select#sort { width: 100%; }
+      .hb-bar .flt { flex: 1 1 100%; }
+      .hb-cta .btn { flex: 1 1 100%; width: auto; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="about" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="hb-hero">
+    <img src="assets/img/hub/hero.png" alt="Piston production line — proven solutions, global experience, measurable results, end-to-end support">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>News, Case Studies &amp; Projects</div>
+      <span class="ey">Industry Insights &amp; Projects</span>
+      <h1>Real Machines.<br>Real Factories.<br>Real Results.</h1>
+      <p>Discover how Piston solutions help manufacturers increase productivity, improve quality and grow their business.</p>
+      <div class="acts">
+        <a class="btn btn-red" href="case-studies.html">Explore Case Studies <span>→</span></a>
+        <a class="btn btn-w" href="submit-story.html">Submit Your Story <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="hb-wrap">
+      <section class="hb-box">
+        <div class="hb-bar">
+          <a class="pill on" href="hub.html">ALL CONTENT (124)</a>
+          <a class="pill" href="case-studies.html">CASE STUDIES (42)</a>
+          <a class="pill" href="projects.html">PROJECTS (38)</a>
+          <a class="pill" href="news.html">NEWS (28)</a>
+          <a class="pill" href="videos.html">VIDEOS (16)</a>
+          <label class="flt">INDUSTRY: <select id="ind" aria-label="Industry"><option value="">All Industries</option></select></label>
+          <label class="flt">SORT BY: <select id="sort" aria-label="Sort by"><option value="latest">Latest</option><option value="oldest">Oldest</option></select></label>
+        </div>
+        <div class="hb-feat" id="feat"></div>
+      </section>
+
+      <div class="hb-r2">
+        <section class="hb-box hb-sec"><div class="hd"><h3>LATEST PROJECTS</h3></div><div class="hb-cards" id="projects" style="grid-template-columns:300px 310px 1fr"></div></section>
+        <section class="hb-box hb-sec"><div class="hd"><h3>LATEST STORIES</h3><a href="projects.html">VIEW ALL PROJECTS &nbsp;→</a></div><div class="hb-cards" id="stories" style="grid-template-columns:1fr 1fr;gap:8px"></div></section>
+      </div>
+
+      <div class="hb-r3">
+        <section class="hb-box hb-sec"><div class="hd"><h3>LATEST NEWS</h3></div><div class="hb-cards" id="news" style="grid-template-columns:repeat(4,1fr)"></div></section>
+        <section class="hb-box hb-sec"><div class="hd"><h3>VIDEO STORIES</h3><a href="videos.html">VIEW ALL VIDEOS &nbsp;→</a></div><div class="hb-vd" id="videos"></div></section>
+      </div>
+
+      <section class="hb-box hb-cta">
+        <img src="assets/img/hub/cta.png" alt="">
+        <div><h3>HAVE A PROJECT LIKE THIS?</h3><p>Tell our engineers about your production requirements<br>and we will help you build the right solution.</p></div>
+        <a class="btn btn-red" href="industries.html">BUILD YOUR PRODUCTION LINE <span>→</span></a>
+        <button class="btn btn-o" data-wa-quote data-source="Hub — Have a project like this?">REQUEST A QUOTE <span>→</span></button>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, esc, industry } = P;
+      const A = "assets/img/hub/";
+      const c = D.cases.find((x) => x.id === "cairo-cabinets");
+      qs("#ind").insertAdjacentHTML("beforeend", D.industries.map((i) => `<option value="${i.slug}">${esc(i.name)}</option>`).join(""));
+
+      qs("#feat").innerHTML = `<img src="${A}featured.png" alt="${esc(c.title)}">
+        <div><span class="ey">FEATURED CASE STUDY</span><h2>Cabinet Factory<br>Production Line Upgrade</h2>
+          <div class="loc"><span><img src="${A}pin.png" alt="">${c.city}, ${c.country}</span><span>Industry: ${esc(industry(c.industry).name)}</span></div>
+          <p>Piston delivered a complete production line solution <br>to increase capacity, reduce waste and improve overall quality.</p>
+          <div class="met">${c.metrics.slice(0, 3).map(([v, l], n) => `<div><img src="${A}mt-${n + 1}.png" alt=""><span><b>${v}</b><small>${l.replace("Overall ", "Overall ")}</small></span></div>`).join("")}</div>
+          <a class="rd" href="case-study.html?id=${c.id}">READ CASE STUDY <span>→</span></a></div>
+        <div class="hb-hl"><div><h3>PROJECT HIGHLIGHTS</h3>
+          ${[["Machines Installed", "R32, PEB 368, PBD 21, PVPM 2500"], ["Production Capacity", "From 380 to 485 m² / shift"], ["Material Waste Reduced", "From 12.5% to 10.2%"], ["Project Completion", "3 Weeks"], ["Customer Since", "2022"]]
+            .map(([t, v], n) => `<div class="it"><img src="${A}hl-${n + 1}.png" alt=""><span><b>${t}</b>${v}</span></div>`).join("")}</div>
+          <div class="hb-q"><img src="${A}quote.png" alt=""><p>Piston's solution completely transformed our production. The quality, precision and after-sales support are exceptional.</p>
+            <div class="who"><img src="${A}avatar.png" alt=""><span><b>Ahmed El-Sayed</b>Factory Manager<br>Cairo Cabinets Co.</span></div></div>
+          <div class="nav"><a href="case-studies.html" aria-label="Previous">‹</a><a href="case-studies.html" aria-label="Next">›</a></div></div>`;
+
+      const projects = [["istanbul-automation", "Modern Furniture Factory<br>Production Line", "Istanbul, Turkey", "Furniture", "Complete furniture production line with high automation and efficiency.", "furniture"],
+        ["warsaw-doors", "Door Manufacturing<br>Facility Setup", "Warsaw, Poland", "Doors", "High-precision door production solution with advanced CNC machining.", "door"],
+        ["riyadh-panels", "Industrial Panel<br>Production Line", "Riyadh, Saudi Arabia", "Industrial", "Automated line for industrial panel manufacturing with maximum productivity.", "industrial"]];
+      const stories = [["casablanca-workshop", "Workshop Upgrade<br>Solution", "Casablanca, Morocco", "Woodworking", "Upgraded woodworking workshop with modern machinery and better workflow.", "workshops"],
+        ["bucharest-expansion", "Cabinet Capacity<br>Expansion", "Bucharest, Romania", "Cabinet", "Added edge banding and drilling capacity for a growing cabinet producer.", "cabinet"]];
+      const card = (img) => ([id, t, city, ind, d, slug]) => `<a class="hb-pc" href="case-study.html?id=${id}" data-ind="${slug}"><img src="${A}${img}" alt=""><div><b>${t}</b>
+        <div class="lc"><img src="${A}pin.png" alt=""><span>${city}<br>Industry: ${ind}</span></div><p>${d}</p><span class="lk">VIEW PROJECT &nbsp;→</span></div></a>`;
+      const renderCards = () => {
+        const f = qs("#ind").value;
+        const keep = (x) => !f || x[5] === f;
+        qs("#projects").innerHTML = projects.map((p, n) => keep(p) ? card(`pr-${n + 1}.png`)(p) : "").join("") || '<small class="muted">No projects for this industry yet.</small>';
+        qs("#stories").innerHTML = stories.map((p, n) => keep(p) ? card(`st-${n + 1}.png`)(p) : "").join("") || '<small class="muted">No stories for this industry yet.</small>';
+      };
+      qs("#ind").onchange = renderCards;
+      qs("#sort").onchange = () => { projects.reverse(); stories.reverse(); renderCards(); };
+      renderCards();
+
+      qs("#news").innerHTML = [["smart-manufacturing", "May 10, 2024", "Piston Unveils New Generation<br>Edge Banding Series", "New series with smarter controls,<br>higher speed and enhanced reliability."],
+        ["ligna-2024", "April 22, 2024", "Piston at LIGNA 2024:<br>Thank You!", "Thank you to everyone who visited<br>our booth at LIGNA 2024."],
+        ["automation", "March 18, 2024", "5 Ways to Improve Productivity<br>in Furniture Manufacturing", "Expert tips to optimize your factory<br>and increase output."],
+        ["case-30", "February 05, 2024", "Customer Success Story:<br>+30% Output in 6 Months", "See how our customer achieved<br>remarkable results."]]
+        .map(([id, d, t, p], n) => `<a class="hb-nc" href="news-article.html?id=${id}"><img src="${A}nw-${n + 1}.png" alt=""><div><small>${d}</small><b>${t}</b><p>${p}</p><span class="lk">READ MORE &nbsp;→</span></div></a>`).join("");
+
+      qs("#videos").innerHTML = [["Factory Tour", "Piston Machinery"], ["Installation", "In Action"], ["Production", "In Action"], ["Customer", "Testimonial"]]
+        .map(([a, b], n) => `<button data-video="${a} ${b}"><img src="${A}vd-${n + 1}.png" alt="${a} ${b}"><b>${a}<br>${b}</b></button>`).join("");
+      qs("#videos").onclick = (e) => { const v = e.target.closest("[data-video]"); if (v) P.modal(`<h3>${esc(v.dataset.video)}</h3><div style="aspect-ratio:16/9;background:#111;color:#fff;display:grid;place-items:center;border-radius:4px;margin-top:10px">▶ Video plays here (demo placeholder)</div>`); };
+    });
+  </script>
+</body>
+</html>

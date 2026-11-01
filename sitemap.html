@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sitemap — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .sm h1 { font-size: 40px; margin: 6px 0 8px; }
+    .sm .lead { color: #44464b; margin: 0 0 30px; }
+    .sm-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 32px; padding-bottom: 60px; }
+    .sm-grid h2 { font-size: 16px; letter-spacing: .4px; border-bottom: 2px solid var(--red); padding-bottom: 8px; margin: 0 0 10px; }
+    .sm-grid a { display: block; padding: 5px 0; font-size: 14px; color: #22242a; }
+    .sm-grid a:hover { color: var(--red); }
+    .sm-grid a.sub { padding-left: 14px; font-size: 13px; color: #55575c; }
+    @media (max-width: 1100px) { .sm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .sm-grid { grid-template-columns: minmax(0, 1fr); } .sm h1 { font-size: 32px; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container sm">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Sitemap</div>
+    <h1>Sitemap</h1>
+    <p class="lead">All pages of the Piston website.</p>
+    <div class="sm-grid" id="sm"></div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, esc } = P;
+      const link = ([t, h, sub]) => `<a href="${h}"${sub ? ' class="sub"' : ""}>${esc(t)}</a>`;
+      const groups = [
+        ["Products", [["All Machines", "products.html"], ...D.categories.map((c) => [c.name, `products.html?cat=${c.id}`, 1]),
+          ...D.products.map((p) => [`${p.model} — ${p.name}`, `product.html?id=${p.id}`, 1]), ["360° Viewer — PISTON R32", "viewer.html"], ["Compare Machines", "compare.html"], ["Quote List", "quote-list.html"]]],
+        ["Industries & Solutions", [["Industries & Solutions", "industries.html"], ...D.industries.map((i) => [i.name, `industry.html?slug=${i.slug}`, 1]),
+          ["Machine Finder", "machine-finder.html"], ["Custom Solutions", "talk-to-engineer.html?type=custom"]]],
+        ["Support", [["Support Center", "support.html"], ["Technical Support", "technical-support.html"], ["Spare Parts", "spare-parts.html"], ["FAQ", "faq.html"], ["Maintenance Videos", "videos.html"]]],
+        ["Company", [["About Piston", "about.html"], ["News, Case Studies & Projects", "hub.html"], ["Case Studies", "case-studies.html"], ["Projects", "projects.html"],
+          ["News & Insights", "news.html"], ["Videos", "videos.html"], ["Events & Exhibitions", "event.html"], ["Submit Your Story", "submit-story.html"],
+          ["Talk to an Engineer", "talk-to-engineer.html"], ["Contact Us", "contact.html"], ["Search", "search.html"]]]
+      ];
+      qs("#sm").innerHTML = groups.map(([h, l]) => `<section><h2>${esc(h)}</h2>${l.map(link).join("")}</section>`).join("");
+    });
+  </script>
+</body>
+</html>

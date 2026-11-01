@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Sign in — PISTON Admin Portal</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="ad" data-page="login">
+  <main class="ad-auth">
+    <section class="ad-hero" aria-label="PISTON Admin Portal">
+      <img class="ad-hero-logo" src="../assets/img/admin/logo.png" alt="PISTON">
+      <span class="ad-hero-portal">ADMIN PORTAL</span>
+      <div class="ad-hero-copy">
+        <h1><span class="l1">Welcome back</span><em>Let's build</em><span>excellence.</span></h1>
+        <div class="ad-hero-bar"></div>
+        <p>Sign in to access the Piston Admin Portal and<br>manage your content, products, leads, and more.<br>All the tools you need to power the Piston experience.</p>
+        <ul class="ad-feats">
+          <li class="ad-feat"><i data-icon="access"></i><span>Secure<br>Access</span></li>
+          <li class="ad-feat"><i data-icon="perm"></i><span>Role Based<br>Permissions</span></li>
+          <li class="ad-feat"><i data-icon="track"></i><span>Activity<br>Tracking</span></li>
+          <li class="ad-feat"><i data-icon="backup"></i><span>Data<br>Backup</span></li>
+        </ul>
+      </div>
+      <small class="ad-hero-copyright">© <span data-year>2026</span> Piston Machinery. All rights reserved.</small>
+    </section>
+
+    <section class="ad-pane">
+      <button class="ad-lang" type="button" aria-label="Language: English"><i data-icon="globe"></i>English<i data-icon="chev" class="chev"></i></button>
+      <div class="ad-card">
+        <h2>Sign in to your account</h2>
+        <p class="ad-sub">Enter your credentials to access the admin portal</p>
+        <form id="loginForm" novalidate>
+          <div class="ad-field">
+            <label for="email">Email Address</label>
+            <div class="ad-input"><i data-icon="mail"></i><input id="email" type="email" autocomplete="username" placeholder="admin@piston-machinery.com" required></div>
+          </div>
+          <div class="ad-field">
+            <label for="password">Password</label>
+            <div class="ad-input"><i data-icon="lock"></i><input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" minlength="6" required>
+              <button class="ad-eye" type="button" aria-label="Show password"><i data-icon="eye"></i></button></div>
+          </div>
+          <div class="ad-row">
+            <label class="ad-check"><input id="remember" type="checkbox"> Remember me</label>
+            <a class="ad-link" href="forgot.html">Forgot password?</a>
+          </div>
+          <button class="ad-btn" type="submit">Sign In <i data-icon="right"></i></button>
+        </form>
+        <div class="ad-or">OR</div>
+        <p class="ad-help">Need help? <a class="ad-link" href="mailto:it@piston-machinery.com">Contact system administrator</a></p>
+      </div>
+      <div class="ad-secure"><i data-icon="shield"></i><b>Your security is our priority</b><span>All data is encrypted and securely protected.</span></div>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

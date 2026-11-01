@@ -1,0 +1,7 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 08.10.19.png",
+  "out": "src/demo/assets/img/admin",
+  "items": [
+    {"name": "reset-done.png", "box": [1160, 452, 1420, 610], "scale": 2}
+  ]
+}

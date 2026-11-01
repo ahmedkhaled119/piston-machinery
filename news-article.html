@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .na-wrap { display: grid; grid-template-columns: minmax(0, 927px) 395px; gap: 46px; margin: 0 0 0 30px; line-height: 1.4; align-items: start; }
+    .na-art .breadcrumb { padding: 12px 0 0; margin: 0; font-size: 10.3px; color: #222; gap: 6px; }
+    .na-art .breadcrumb span { margin: 0 5px; }
+    .na-art .breadcrumb #crumb { margin: 0; }
+    .na-ey { display: block; margin-top: 18px; color: var(--red); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+    .na-art h1 { font-family: var(--font); font-size: 33px; font-weight: 700; line-height: 35px; letter-spacing: .3px; margin: 7px 0 0; color: #111; }
+    .na-mb { display: flex; align-items: center; height: 28px; margin-top: 5px; }
+    .na-meta { display: flex; align-items: center; font-size: 10.6px; color: #333; }
+    .na-meta span { display: flex; align-items: center; gap: 9px; padding: 0 19px; }
+    .na-meta span:first-child { padding-left: 0; }
+    .na-meta span + span { border-left: 1px solid #c8c8cc; line-height: 12px; }
+    .na-meta img { width: 16px; }
+    .na-share { display: flex; align-items: center; gap: 11px; margin-left: auto; font-size: 10.6px; color: #555; }
+    .na-share b { font-weight: 400; margin-right: 22px; }
+    .na-share button { display: grid; place-items: center; width: 34px; height: 28px; padding: 0; background: #fff; border: 1px solid #e3e4e7; border-radius: 3px; cursor: pointer; }
+    .na-share button:hover { border-color: var(--red); }
+    .na-share img { height: 14px; width: auto; }
+    .na-img { display: block; width: 100%; height: 209px; object-fit: cover; border-radius: 3px; margin-top: 15px; background: #ddd; }
+    .na-body { color: #111; }
+    .na-body .lead { font-size: 15.3px; font-weight: 600; line-height: 20px; letter-spacing: .35px; margin: 22px 0 0; }
+    .na-body p { font-size: 12.2px; line-height: 18.5px; margin: 10px 0 0; }
+    .na-body h2 { position: relative; font-family: var(--font); font-size: 14.6px; font-weight: 700; letter-spacing: 0; margin: 17px 0 0; padding-bottom: 8px; color: #111; }
+    .na-body h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 55px; height: 2px; background: var(--red); }
+    .na-body h2 + p { margin-top: 5px; line-height: 16.5px; font-size: 11.6px; }
+    .na-body ul { list-style: none; margin: 7px 0 0; padding: 0; font-size: 11.4px; line-height: 17px; }
+    .na-body li { display: flex; align-items: center; gap: 8px; }
+    .na-body li img { width: 9px; }
+    .na-body h2.dd { margin-top: 17px; padding-bottom: 0; }
+    .na-body h2.dd::after { display: none; }
+    .na-body h2.dd + p { margin-top: 7px; }
+    .na-box { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.08); }
+    .na-side { display: grid; gap: 10px; margin-top: 35px; }
+    .na-rel { padding: 14px 19px 15px; }
+    .na-box h3 { font-family: var(--font); font-size: 11.6px; font-weight: 700; letter-spacing: 0; margin: 0; color: #111; }
+    .na-rel h3 { position: relative; padding-bottom: 8px; }
+    .na-rel h3::after { content: ""; position: absolute; left: 0; bottom: 0; width: 42px; height: 1px; background: #555; }
+    .na-rc { display: grid; grid-template-columns: 140px 1fr; gap: 13px; height: 74px; margin-top: 16px; color: #111; }
+    .na-rc + .na-rc { margin-top: 20.5px; }
+    .na-rc img { width: 140px; height: 74px; object-fit: cover; border-radius: 3px; }
+    .na-rc b { display: block; font-size: 11.2px; line-height: 17px; font-weight: 600; margin-top: 2px; }
+    .na-rc small { display: block; font-size: 9.6px; color: #555; margin-top: 4px; }
+    .na-rc em { display: block; font-style: normal; color: var(--red); font-size: 8.8px; font-weight: 700; margin-top: 3px; }
+    .na-rc em span { margin-left: 12px; font-size: 11px; }
+    .na-rc:hover b { color: var(--red); }
+    .na-cat { padding: 12px 16px 9px 15px; }
+    .na-cat a { display: grid; grid-template-columns: 20px 1fr auto; gap: 11px; align-items: center; height: 22.7px; font-size: 10.4px; color: #222; }
+    .na-cat h3 { margin-bottom: 12px; }
+    .na-cat a img { width: 19px; }
+    .na-cat a small { font-size: 10px; }
+    .na-cat a.on, .na-cat a:hover { color: var(--red); }
+    .na-nl { padding: 13px 16px 9px 15px; }
+    .na-nl p { font-size: 10.4px; line-height: 15px; margin: 4px 0 8px; color: #222; }
+    .na-nl form { display: grid; grid-template-columns: 1fr 105px; }
+    .na-nl input { height: 26px; border: 1px solid #e3e4e7; border-right: 0; border-radius: 2px 0 0 2px; font: inherit; font-size: 9.6px; padding: 0 8px; }
+    .na-nl button { background: var(--red); color: #fff; border: 0; border-radius: 0 2px 2px 0; font-size: 10.6px; font-weight: 700; cursor: pointer; }
+    .na-pv { display: flex; gap: 8px; align-items: center; font-size: 8.4px; margin-top: 10px; color: #333; }
+    .na-pv img { width: 12px; }
+    .na-cta { display: grid; grid-template-columns: 40px 1fr 204px 205px; gap: 0 20px; align-items: center; width: 1020px; height: 57px; margin: 9px auto 0; padding: 0 18px 0 16px; background: #f7f7f8; line-height: 1.35; }
+    .na-cta > img { width: 40px; }
+    .na-cta h3 { font-family: var(--font); font-size: 12.4px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .na-cta p { font-size: 10.4px; margin: 3px 0 0; }
+    .na-cta .btn { height: 28px; padding: 0; font-size: 9.8px; gap: 16px; }
+    .na-cta .btn-o { margin-left: 27px; background: #fff; border: 1px solid var(--red); color: #111; }
+    @media (max-width: 1500px) { .na-wrap { gap: 30px; margin-left: 0; } .na-art h1 br { display: none; } }
+    @media (max-width: 1100px) {
+      .na-wrap { grid-template-columns: minmax(0, 1fr); }
+      .na-side { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; margin-top: 24px; }
+      .na-cta { display: flex; flex-wrap: wrap; gap: 10px 16px; width: auto; height: auto; padding: 14px; margin-top: 16px; }
+      .na-cta > div { flex: 1 1 300px; }
+      .na-cta .btn { width: 204px; }
+      .na-cta .btn-o { margin-left: 0; }
+      .na-mb { flex-wrap: wrap; height: auto; gap: 10px; }
+    }
+    @media (max-width: 760px) {
+      .na-art h1 { font-size: 26px; line-height: 30px; }
+      .na-meta { flex-wrap: wrap; row-gap: 6px; }
+      .na-meta span { padding: 0 12px; }
+      .na-share { margin-left: 0; }
+      .na-share b { margin-right: 6px; }
+      .na-img { height: auto; aspect-ratio: 16 / 7; }
+      .na-body br { display: none; }
+      .na-meta { gap: 6px 16px; }
+      .na-meta span, .na-meta span + span { padding: 0; border-left: 0; }
+      .na-body .lead { font-size: 15px; }
+      .na-body p, .na-body h2 + p { font-size: 13px; line-height: 20px; }
+      .na-body ul { font-size: 13px; line-height: 21px; }
+      .na-body li { align-items: flex-start; }
+      .na-body li img { margin-top: 6px; }
+      .na-side { grid-template-columns: minmax(0, 1fr); }
+      .na-side { zoom: 1.15; }
+      .na-rc { height: auto; grid-template-columns: 110px minmax(0, 1fr); }
+      .na-rc img { width: 110px; }
+      .na-cta .btn { flex: 1 1 100%; width: auto; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="about" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <main class="container">
+    <div class="na-wrap">
+      <article class="na-art">
+        <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="hub.html">News, Case Studies &amp; Projects</a><span>›</span><a href="news.html">News</a><span>›</span><span id="crumb"></span></div>
+        <span class="na-ey">News &amp; Insights</span>
+        <h1 id="title"></h1>
+        <div class="na-mb">
+          <div class="na-meta" id="meta"></div>
+          <div class="na-share"><b>Share:</b>
+            <button data-share="LinkedIn" aria-label="Share on LinkedIn"><img src="assets/img/news-article/sh-in.png" alt=""></button>
+            <button data-share="Facebook" aria-label="Share on Facebook"><img src="assets/img/news-article/sh-fb.png" alt=""></button>
+            <button data-share="X (Twitter)" aria-label="Share on X (Twitter)"><img src="assets/img/news-article/sh-x.png" alt=""></button>
+            <button data-share="Email" aria-label="Share by email"><img src="assets/img/news-article/sh-mail.png" alt=""></button>
+          </div>
+        </div>
+        <img class="na-img" id="img" alt="">
+        <div class="na-body" id="body"></div>
+      </article>
+
+      <aside class="na-side">
+        <section class="na-box na-rel"><h3>RELATED NEWS</h3><div id="rel"></div></section>
+        <section class="na-box na-cat"><h3>NEWS CATEGORIES</h3><div id="cats"></div></section>
+        <section class="na-box na-nl">
+          <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+          <p>Get the latest news, updates and insights<br>delivered straight to your inbox.</p>
+          <form data-newsletter><input type="email" required placeholder="Enter your email address" aria-label="Email address"><button>SUBSCRIBE</button></form>
+          <div class="na-pv"><img src="assets/img/news-article/lock.png" alt="">We respect your privacy. Unsubscribe at any time.</div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="na-cta">
+      <img src="assets/img/news-article/cta.png" alt="">
+      <div><h3>READY TO ACHIEVE RESULTS LIKE THESE?</h3><p>Let's build a solution that drives your production forward.</p></div>
+      <a class="btn btn-red" href="industries.html">BUILD YOUR PRODUCTION LINE <span>→</span></a>
+      <button class="btn btn-o" id="quote" data-wa-quote data-source="News article">REQUEST A QUOTE <span>→</span></button>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, esc, param } = P;
+      const A = "assets/img/news-article/";
+      const n = D.news.find((x) => x.id === param("id")) || D.news.find((x) => x.featured) || D.news[0];
+      const MONTHS = { Jan: "January", Feb: "February", Mar: "March", Apr: "April", Aug: "August", Sep: "September", Oct: "October", Nov: "November", Dec: "December" };
+      const longDate = (d) => d.replace(/^(\w{3}) /, (m, k) => (MONTHS[k] || k) + " ");
+      const check = `<img src="${A}check.png" alt="">`;
+      const ul = (l) => `<ul>${l.map((x) => `<li>${check}${esc(x)}</li>`).join("")}</ul>`;
+
+      // Article bodies: the featured article follows the mockup; others get category-based generic copy.
+      const BODY = {
+        "smart-manufacturing": {
+          title: "PISTON UNVEILS NEXT GENERATION <br>SMART MANUFACTURING SOLUTIONS",
+          html: `<p class="lead">Piston today announced its next generation of smart manufacturing solutions designed to help wood<br>panel and cabinet manufacturers achieve higher productivity, reduce downtime and improve efficiency.</p>
+            <p>The new solutions combine advanced automation, intelligent control systems, and real-time data analytics to deliver<br>unprecedented visibility and optimization across the production line.</p>
+            <h2>INTELLIGENT AUTOMATION FOR MODERN MANUFACTURING</h2>
+            <p>At the heart of the new solution is Piston's intelligent automation platform. With advanced sensors, predictive maintenance<br>and adaptive process control, manufacturers can now minimize manual intervention and ensure consistent quality at every step.</p>
+            ${ul(["Reduced machine downtime with predictive maintenance", "Real-time monitoring and alerts", "Adaptive control for optimal performance", "Seamless integration with existing systems"])}
+            <h2 class="dd">DATA-DRIVEN INSIGHTS</h2>
+            <p>The solution provides powerful analytics dashboards that give manufacturers real-time visibility into production performance.<br>From machine utilization to material usage, every key metric is tracked and analyzed to drive continuous improvement.</p>`
+        }
+      };
+      const GEN = {
+        "Events & Exhibitions": ["MEETING OUR CUSTOMERS FACE TO FACE", "Visitors saw our machines running live, discussed their production challenges with our engineers and explored complete line solutions for their factories.",
+          ["Live demonstrations of sliding table saws, edge banders and drilling machines", "One-to-one consultations with Piston engineers", "Complete production line concepts for every factory size", "Follow-up visits and quotes arranged via WhatsApp"]],
+        "Product Updates": ["BUILT FOR PERFORMANCE AND RELIABILITY", "The new models are designed and manufactured in Egypt and backed by Piston's spare parts and service network.",
+          ["Higher precision and repeatable quality", "Faster set-up and easier operation", "Robust construction for heavy-duty use", "Full training, installation and after-sales support"]],
+        "Technology": ["SMARTER MACHINES, BETTER RESULTS", "Connected controls give production managers the information they need to keep machines running at their best.",
+          ["Intuitive operator interface", "Real-time machine status and alerts", "Remote diagnostics by Piston service engineers", "Seamless integration with existing lines"]],
+        "Industry Insights": ["WHAT IT MEANS FOR MANUFACTURERS", "Manufacturers who invest in the right machinery and processes see measurable gains in capacity, quality and cost.",
+          ["Higher production capacity per shift", "Less material waste and rework", "Consistent quality across every product", "A scalable path to future growth"]],
+        "Company News": ["OUR COMMITMENT TO CUSTOMERS", "This milestone reflects Piston's long-term commitment to the woodworking industry in Egypt, the Middle East and Africa.",
+          ["Faster local service and spare parts", "Experienced engineers close to our customers", "Training and support in every market", "Solutions built around real production needs"]],
+        "Partnerships": ["STRONGER TOGETHER", "Working with strong partners lets us bring better solutions to our customers faster.",
+          ["Wider product and service offering", "Shared engineering expertise", "Faster delivery and support", "Long-term value for customers"]]
+      };
+      const g = GEN[n.cat] || GEN["Company News"];
+      const body = BODY[n.id] || { title: esc(n.title.toUpperCase()), html: `<p class="lead">${esc(n.excerpt)}</p>
+        <p>Read on to learn how Piston continues to support woodworking manufacturers with reliable machinery, complete production solutions and dedicated local service.</p>
+        <h2>${g[0]}</h2><p>${esc(g[1])}</p>${ul(g[2])}
+        <h2 class="dd">LEARN MORE</h2><p>For more information, contact our team or message us on WhatsApp — our engineers will be happy to help you find the right solution for your production.</p>` };
+
+      const words = (body.html.replace(/<[^>]+>/g, " ").match(/\S+/g) || []).length;
+      document.title = `${n.title} — PISTON`;
+      qs("#crumb").textContent = n.title;
+      qs("#title").innerHTML = body.title;
+      qs("#meta").innerHTML = `<span><img src="${A}m-cal.png" alt="">${esc(n.date)}</span><span><img src="${A}m-user.png" alt="">Piston Editorial Team</span><span><img src="${A}m-clock.png" alt="">${Math.max(3, n.featured ? 5 : Math.ceil(words / 200))} min read</span>`;
+      const img = qs("#img");
+      img.src = n.id === "smart-manufacturing" ? `${A}hero-smart-manufacturing.png` : `assets/img/news/${n.id}.png`;
+      img.alt = n.title;
+      // Space before <br> is invisible on desktop and lets phones hide the breaks.
+      qs("#body").innerHTML = body.html.replace(/<br>/g, " <br>");
+      qs("#quote").dataset.source = `News article — ${n.title}`;
+
+      const REL_IMG = ["ligna-2024", "automation", "middle-east"];
+      const others = D.news.filter((x) => x.id !== n.id);
+      const rel = n.featured ? REL_IMG.map((id) => D.news.find((x) => x.id === id))
+        : others.filter((x) => x.cat === n.cat).concat(others.filter((x) => x.cat !== n.cat)).slice(0, 3);
+      const brk = (t) => esc(t).replace("Thank You for", "Thank You<br>for").replace("Transforming ", "Transforming<br>").replace("Service ", "Service<br>");
+      qs("#rel").innerHTML = rel.map((r) => `<a class="na-rc" href="news-article.html?id=${r.id}"><img src="${REL_IMG.includes(r.id) ? `${A}rel-${r.id}.png` : `assets/img/news/${r.id}.png`}" alt=""><div><b>${brk(r.title)}</b><small>${longDate(r.date)}</small><em>READ MORE<span>→</span></em></div></a>`).join("");
+
+      const CATS = [["Product Updates", 12], ["Company News", 8], ["Industry Insights", 6], ["Events & Exhibitions", 5], ["Technology", 4], ["Partnerships", 3]];
+      qs("#cats").innerHTML = CATS.map(([c, k], i) => `<a href="news.html" class="${!n.featured && c === n.cat ? "on" : ""}"><img src="${A}cat-${i + 1}.png" alt=""><span>${esc(c)}</span><small>${k}</small></a>`).join("");
+
+      document.addEventListener("click", (e) => {
+        const s = e.target.closest("[data-share]");
+        if (!s) return;
+        navigator.clipboard?.writeText(location.href).catch(() => {});
+        P.toast(`Link copied — share it on ${s.dataset.share}`);
+      });
+    });
+  </script>
+</body>
+</html>

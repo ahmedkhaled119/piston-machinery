@@ -1,0 +1,27 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 06.51.53.png",
+  "out": "src/demo/assets/img/news",
+  "items": [
+    { "name": "hero.png", "box": [490, 57, 1536, 245] },
+    { "name": "smart-manufacturing.png", "box": [47, 321, 443, 549] },
+    { "name": "ligna-2024.png", "box": [743, 308, 866, 374] },
+    { "name": "automation.png", "box": [743, 397, 866, 463] },
+    { "name": "middle-east.png", "box": [743, 486, 866, 552] },
+    { "name": "ebs-series.png", "box": [47, 596, 194, 691] },
+    { "name": "smart-control.png", "box": [409, 596, 554, 691] },
+    { "name": "dubai-woodshow.png", "box": [765, 596, 904, 691] },
+    { "name": "sustainability.png", "box": [47, 716, 194, 810] },
+    { "name": "drill-series.png", "box": [409, 716, 554, 810] },
+    { "name": "case-30.png", "box": [765, 716, 904, 810] },
+    { "name": "cat-1.png", "box": [1125, 336, 1145, 354], "trim": true, "scale": 2 },
+    { "name": "cat-2.png", "box": [1125, 360, 1145, 378], "trim": true, "scale": 2 },
+    { "name": "cat-3.png", "box": [1125, 384, 1145, 402], "trim": true, "scale": 2 },
+    { "name": "cat-4.png", "box": [1125, 407, 1145, 425], "trim": true, "scale": 2 },
+    { "name": "cat-5.png", "box": [1125, 431, 1145, 449], "trim": true, "scale": 2 },
+    { "name": "cat-6.png", "box": [1125, 455, 1145, 473], "trim": true, "scale": 2 },
+    { "name": "ev-ligna-2025.png", "box": [1130, 532, 1173, 573] },
+    { "name": "ev-dubai-woodshow-2025.png", "box": [1130, 589, 1173, 630] },
+    { "name": "ev-wofx-2025.png", "box": [1130, 646, 1173, 688] },
+    { "name": "lock.png", "box": [1126, 813, 1140, 827], "trim": true, "scale": 2 }
+  ]
+}

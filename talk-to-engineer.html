@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talk to an Engineer — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body.wide .te-c { padding: 0 41px 0 43px; }
+    .te-hero { position: relative; height: 402px; background: #fff; overflow: hidden; line-height: 1.35; }
+    .te-hero > img { position: absolute; right: 0; top: 0; height: 100%; }
+    .te-hero .te-c { position: relative; }
+    .te-crumb { display: flex; gap: 9px; font-size: 12.5px; color: #333; padding-top: 24px; }
+    .te-crumb a:hover { color: var(--red); }
+    .te-crumb b { color: #111; font-weight: 700; }
+    .te-eyebrow { display: block; color: var(--red); font-weight: 700; font-size: 13px; letter-spacing: .6px; margin-top: 28px; }
+    .te-hero h1 { font-family: var(--font); font-weight: 700; font-size: 47px; line-height: 1; letter-spacing: -.2px; color: #111; margin: 19px 0 0; }
+    .te-hero p { font-size: 17.3px; line-height: 30px; color: #16181b; margin: 21px 0 0; }
+    .te-feats { display: grid; grid-template-columns: 237px 240px 240px; margin-top: 67px; }
+    .te-feats div { display: flex; gap: 16px; align-items: center; }
+    .te-feats img { width: 38px; height: 42px; object-fit: contain; flex: none; }
+    .te-feats b { display: block; font-size: 14.5px; font-weight: 600; color: #111; }
+    .te-feats small { display: block; font-size: 13.5px; color: #333; margin-top: 3px; }
+    .te-main { display: grid; grid-template-columns: 964px 1fr; gap: 24px; align-items: start; margin-top: 30px; line-height: 1.35; }
+    .te-card { background: #fff; border: 1px solid #ececef; border-radius: 4px; }
+    .te-form .te-card { padding: 27px 24px 15px 26px; border-bottom: 0; border-radius: 4px 4px 0 0; }
+    .te-hd { display: flex; align-items: center; gap: 18px; height: 22px; margin-bottom: 28px; }
+    .te-hd img { width: 32px; height: 28px; object-fit: contain; margin-left: -2px; }
+    .te-hd h2, .te-side h3 { font-family: var(--font); font-size: 16px; font-weight: 700; letter-spacing: .2px; color: #111; margin: 0; line-height: 22px; }
+    .te-g { display: grid; grid-template-columns: 301px 1fr 1fr; gap: 31px 28.5px; }
+    .te-f { display: block; }
+    .te-f.w { grid-column: 1 / -1; }
+    .te-f.m1 { margin-top: -14px; }
+    .te-f.m2 { margin-top: -6px; }
+    .te-f > span:first-child { display: block; font-size: 13px; line-height: 17px; font-weight: 500; color: #222; margin-bottom: 8px; }
+    .te-f > span:first-child i { color: var(--red); font-style: normal; }
+    .te-in, .te-f input, .te-f select, .te-f textarea { width: 100%; height: 44px; border: 1px solid #e3e4e7; border-radius: 4px; background: #fff; font: inherit; font-size: 13px; color: #111; padding: 0 13px; }
+    .te-f input::placeholder, .te-f textarea::placeholder { color: #6b6d72; }
+    .te-f select { appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23333' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 18px center; padding-right: 36px; }
+    .te-f select:invalid { color: #6b6d72; }
+    .te-f input:focus, .te-f select:focus, .te-f textarea:focus { outline: 2px solid rgba(226, 35, 26, .2); border-color: var(--red); }
+    .te-tel { display: flex; border: 1px solid #e3e4e7; border-radius: 4px; height: 44px; }
+    .te-tel .fl { display: flex; align-items: center; gap: 5px; padding: 0 6px 0 8px; flex: none; font-size: 9px; color: #333; }
+    .te-tel .fl img { width: 19px; height: 14px; }
+    .te-tel .cc { display: flex; align-items: center; border-right: 1px solid #e3e4e7; flex: none; }
+    .te-tel .cc select { width: 58px; height: 42px; border: 0; padding: 0 18px 0 6px; background-position: right 6px center; font-size: 13px; }
+    .te-tel input { border: 0; height: 42px; }
+    .te-txt { position: relative; display: block; }
+    .te-f textarea { height: 118px; padding: 12px 13px; resize: vertical; display: block; }
+    .te-txt small { position: absolute; right: 14px; bottom: 9px; font-size: 11px; color: #555; }
+    .te-drop { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 84px; border: 1px solid #e3e4e7; border-radius: 4px; cursor: pointer; text-align: center; font-size: 13.5px; font-weight: 500; color: #111; }
+    .te-drop.over { border-color: var(--red); background: #fff7f7; }
+    .te-drop .l1 { display: flex; align-items: center; gap: 10px; }
+    .te-drop .l1 img { width: 22px; }
+    .te-drop u { color: var(--red); text-decoration: none; }
+    .te-drop small { display: block; font-size: 13px; font-weight: 400; color: #444; margin-top: 9px; }
+    .te-drop input { display: none; }
+    .te-files { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .te-files:empty { display: none; }
+    .te-files span { font-size: 12px; background: #f4f4f6; border: 1px solid #e3e4e7; border-radius: 3px; padding: 3px 8px; }
+    .te-files span.bad { border-color: #f1b8b5; color: #b3261e; }
+    .te-next { display: flex; align-items: center; gap: 16px; width: 941px; height: 80px; background: #f8f8f9; border-radius: 0 0 4px 4px; padding: 0 29px; }
+    .te-next img { width: 34px; height: 37px; object-fit: contain; }
+    .te-next b { display: block; font-size: 14.5px; color: #111; }
+    .te-next small { display: block; font-size: 13px; color: #333; margin-top: 4px; }
+    .te-acts { display: flex; justify-content: space-between; width: 941px; margin-top: 30px; }
+    .te-acts .btn { height: 44px; font-size: 13.5px; letter-spacing: .3px; gap: 22px; }
+    .te-acts .btn span { font-size: 19px; font-weight: 400; line-height: 1; }
+    .te-acts .cancel { width: 144px; background: #fff; border: 1px solid #d6d7db; color: #111; }
+    .te-acts .cancel:hover { border-color: #111; }
+    .te-acts .btn-red { width: 236px; }
+    .te-side { display: grid; gap: 16px; }
+    .te-side .te-card { padding: 18px 20px 21px 23px; }
+    .te-side h3 { margin-left: 5px; }
+    .te-why { display: grid; grid-template-columns: 38px 1fr; gap: 20px; margin-top: 29px; }
+    .te-why + .te-why { margin-top: 32px; }
+    .te-why img { width: 37px; height: 41px; object-fit: contain; margin-top: 4px; }
+    .te-why b { display: block; font-size: 14.5px; line-height: 20px; font-weight: 600; color: #111; }
+    .te-why p { font-size: 13.3px; line-height: 21px; color: #333; margin: 2px 0 0; max-width: 228px; }
+    .te-why p.nw { white-space: nowrap; }
+    .te-ci { display: grid; grid-template-columns: 38px 1fr; gap: 20px; align-items: start; margin-top: 23px; color: #111; }
+    .te-ci img { width: 29px; height: 28px; object-fit: contain; margin-top: -3px; }
+    .te-ci b { display: block; font-size: 14px; line-height: 22px; }
+    .te-ci small { display: block; font-size: 13.5px; line-height: 22px; color: #333; }
+    a.te-ci:hover b { color: var(--red); }
+    .te-hrs { border-left: 2px solid var(--red); padding-left: 14px; margin: 24px 0 0 6px; }
+    .te-hrs b { display: block; font-size: 14px; line-height: 22px; color: #111; }
+    .te-hrs span { display: block; font-size: 13.5px; line-height: 22px; color: #222; }
+    .te-hrs-note { font-size: 13.5px; line-height: 21px; color: #333; margin: 16px 0 0 22px; }
+    .te-band { display: flex; align-items: center; gap: 20px; height: 91px; margin: 48px 0 37px; background: #f6f6f8; border-radius: 4px; padding: 0 28px 0 20px; line-height: 1.35; }
+    .te-band img { width: 37px; height: 40px; object-fit: contain; }
+    .te-band b { display: block; font-size: 14.5px; color: #111; }
+    .te-band small { display: block; font-size: 13.5px; color: #333; margin-top: 4px; }
+    .te-band .btn { margin-left: auto; width: 239px; height: 40px; background: #fff; border: 1px solid var(--red); color: #111; font-size: 12.5px; letter-spacing: .4px; gap: 6px; }
+    .te-band .btn span { color: var(--red); }
+    .te-band .btn i { font-style: normal; margin-left: 14px; font-size: 16px; }
+    /* Desktop-only footer tweaks; below 1281px the shared responsive footer takes over. */
+    @media (min-width: 1281px) {
+    body.wide.te-page .site-footer { font-size: 14px; line-height: 1.45; padding-top: 22px; }
+    body.wide.te-page .footer-grid { grid-template-columns: 1.5fr 1fr 1.15fr .95fr 1.05fr 1.45fr; gap: 20px; }
+    body.wide.te-page .footer-grid > div + div { border-left: 1px solid #25272c; padding-left: 18px; }
+    body.wide.te-page .footer-grid h4 { font-size: 14px; margin-bottom: 8px; }
+    body.wide.te-page .footer-grid a { padding: 2px 0; }
+    body.wide.te-page .footer-about p { font-size: 13.5px; margin: 12px 0 16px; }
+    body.wide.te-page .footer-bottom { font-size: 13.5px; margin-top: 16px; padding: 14px 0; }
+    }
+    @media (max-width: 1100px) {
+      .te-hero > img { opacity: .25; }
+      .te-main { grid-template-columns: 1fr; }
+      .te-g { grid-template-columns: 1fr; }
+      .te-next, .te-acts { width: 100%; }
+      .te-feats { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+      .te-hero { height: auto; padding-bottom: 24px; }
+      .te-band { height: auto; flex-wrap: wrap; padding: 16px 20px; }
+    }
+    @media (max-width: 1400px) and (min-width: 1101px) {
+      .te-main { grid-template-columns: minmax(0, 1fr) 320px; }
+      .te-g { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .te-next, .te-acts { width: calc(100% - 23px); }
+      .te-why p.nw { white-space: normal; }
+    }
+    @media (max-width: 1100px) {
+      .te-side { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+      .te-hero > img { height: 100%; width: auto; max-width: none; }
+    }
+    @media (max-width: 760px) {
+      body.wide .te-c { padding: 0 16px; }
+      .te-hero h1 { font-size: 34px; margin-top: 12px; }
+      .te-hero p { font-size: 16px; line-height: 26px; }
+      .te-eyebrow { margin-top: 20px; }
+      .te-form .te-card { padding: 22px 16px 14px; }
+      .te-hd { height: auto; gap: 12px; margin-bottom: 20px; }
+      .te-g { gap: 20px; }
+      .te-f.m1, .te-f.m2 { margin-top: 0; }
+      .te-why p.nw { white-space: normal; }
+      .te-next { height: auto; padding: 14px 16px; }
+      .te-acts { flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+      .te-acts .btn, .te-acts .cancel, .te-acts .btn-red { width: auto; flex: 1 1 160px; }
+      .te-side .te-card { padding: 18px 16px; }
+      .te-ci b { overflow-wrap: anywhere; }
+      .te-band .btn { margin-left: 0; width: 100%; }
+      .te-drop { height: auto; padding: 14px 12px; }
+      .te-drop small { font-size: 12px; }
+    }
+    @media (max-width: 480px) {
+      .te-hero h1 { font-size: 28px; }
+      .te-acts .btn-red { order: -1; flex-basis: 100%; }
+      .te-acts .cancel { flex-basis: 100%; }
+    }
+  </style>
+</head>
+<body class="wide te-page" data-nav="support" data-footer="plain">
+  <div id="site-header"></div>
+
+  <section class="te-hero">
+    <img src="assets/img/engineer/hero.png" alt="Piston engineers reviewing an edge banding machine on the production floor">
+    <div class="container te-c">
+      <nav class="te-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a>›<a href="support.html">Support</a>›<b>Talk to an Engineer</b></nav>
+      <span class="te-eyebrow">SUPPORT</span>
+      <h1>TALK TO AN ENGINEER</h1>
+      <p>Our engineers are here to understand your challenges,<br>answer your technical questions, and help you find<br>the right solution for your business.</p>
+      <div class="te-feats">
+        <div><img src="assets/img/engineer/f-1.png" alt=""><span><b>Expert Engineers</b><small>Industry specialists</small></span></div>
+        <div><img src="assets/img/engineer/f-2.png" alt=""><span><b>Fast Response</b><small>Reply within 24 hours</small></span></div>
+        <div><img src="assets/img/engineer/f-3.png" alt=""><span><b>Tailored Advice</b><small>Solutions built for you</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container te-c">
+    <div class="te-main">
+      <form class="te-form" data-demo-form="ENG" id="form">
+        <div class="te-card">
+          <div class="te-hd"><img src="assets/img/engineer/needs.png" alt=""><h2>TELL US ABOUT YOUR NEEDS</h2></div>
+          <div class="te-g">
+            <label class="te-f"><span>Full Name <i>*</i></span><input required name="name" autocomplete="name" placeholder="Enter your full name"></label>
+            <label class="te-f"><span>Company Name <i>*</i></span><input required name="company" autocomplete="organization" placeholder="Enter your company name"></label>
+            <label class="te-f"><span>Email Address <i>*</i></span><input required type="email" name="email" autocomplete="email" placeholder="Enter your email address"></label>
+            <div class="te-f"><span>Phone Number <i>*</i></span>
+              <div class="te-tel"><span class="fl"><img id="flag" src="assets/img/engineer/flag-eg.png" alt="">⌄</span><label class="cc"><select id="cc" aria-label="Country code"></select></label><input required type="tel" name="phone" autocomplete="tel-national" placeholder="Enter phone number" aria-label="Phone number"></div>
+            </div>
+            <label class="te-f"><span>Job Title</span><input name="title" autocomplete="organization-title" placeholder="Enter your job title"></label>
+            <label class="te-f"><span>Country <i>*</i></span><select required name="country" id="country"><option value="">Select your country</option></select></label>
+            <label class="te-f w"><span>Subject <i>*</i></span><select required name="subject" id="subject"><option value="">Select a subject</option></select></label>
+            <label class="te-f w"><span>Describe Your Inquiry <i>*</i></span><span class="te-txt"><textarea required name="message" id="msg" maxlength="1500" placeholder="Please describe your technical question or requirement in detail..."></textarea><small id="cnt">0 / 1500</small></span></label>
+            <label class="te-f w m1"><span>Machine / Solution You Are Interested In</span><input name="machine" id="machine" list="machines" placeholder="Enter machine name, model or solution"><datalist id="machines"></datalist></label>
+            <div class="te-f w m2"><span>Attachments (Optional)</span>
+              <label class="te-drop" id="drop"><span class="l1"><img src="assets/img/engineer/upload.png" alt=""><span>Drag and drop files here or <u>browse</u></span></span><small>Supported files: PDF, DWG, XLS, DOC, JPG, PNG (Max. 20MB each)</small>
+                <input type="file" id="files" multiple accept=".pdf,.dwg,.xls,.xlsx,.doc,.docx,.jpg,.jpeg,.png"></label>
+              <div class="te-files" id="fileList"></div>
+            </div>
+          </div>
+        </div>
+        <div class="te-next"><img src="assets/img/engineer/next.png" alt=""><span><b>What happens next?</b><small>Our engineer will review your request and get back to you within 24 business hours.</small></span></div>
+        <div class="te-acts">
+          <a class="btn cancel" href="support.html"><span>←</span>CANCEL</a>
+          <button class="btn btn-red">SEND TO ENGINEER <span>→</span></button>
+        </div>
+      </form>
+
+      <aside class="te-side">
+        <div class="te-card">
+          <h3>WHY TALK TO AN ENGINEER?</h3>
+          <div class="te-why"><img src="assets/img/engineer/why-1.png" alt=""><div><b>Technical Expertise</b><p class="nw">Get answers from experienced<br>engineers with deep industry knowledge.</p></div></div>
+          <div class="te-why"><img src="assets/img/engineer/why-2.png" alt=""><div><b>Problem Solving</b><p>We help you solve application challenges and improve performance.</p></div></div>
+          <div class="te-why"><img src="assets/img/engineer/why-3.png" alt=""><div><b>Solution Guidance</b><p>Receive recommendations tailored to your production needs.</p></div></div>
+          <div class="te-why"><img src="assets/img/engineer/why-4.png" alt=""><div><b>Project Support</b><p>From planning to implementation, we're with you every step of the way.</p></div></div>
+        </div>
+        <div class="te-card">
+          <h3>CONTACT INFORMATION</h3>
+          <a class="te-ci" id="ciPhone"><img src="assets/img/engineer/c-phone.png" alt=""><span><b data-setting="phone"></b><small id="ciHours"></small></span></a>
+          <a class="te-ci" id="ciMail"><img src="assets/img/engineer/c-mail.png" alt=""><span><b data-setting="infoEmail"></b></span></a>
+          <a class="te-ci" href="#" data-wa-quote data-channel="support" data-source="Talk to an Engineer — contact card"><img src="assets/img/engineer/c-chat.png" alt=""><span><b>WhatsApp</b><small>Chat with our engineering team</small></span></a>
+        </div>
+        <div class="te-card">
+          <h3>SUPPORT HOURS</h3>
+          <div class="te-hrs"><b id="hDays"></b><span id="hTime"></span></div>
+          <p class="te-hrs-note" id="hClosed"></p>
+        </div>
+      </aside>
+    </div>
+
+    <section class="te-band">
+      <img src="assets/img/engineer/find.png" alt="">
+      <div><b>Can't find what you need?</b><small>Explore our Support Center for resources, manuals, spare parts and more.</small></div>
+      <a class="btn" href="support.html">VISIT <span>SUPPORT CENTER</span><i>→</i></a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, S, qs, esc, param, product, toast } = P;
+      const subjects = ["Machine selection & sizing", "Technical question", "Custom solution", "Production line planning", "Installation & commissioning", "Training", "Other"];
+      qs("#subject").insertAdjacentHTML("beforeend", subjects.map((s) => `<option>${esc(s)}</option>`).join(""));
+      const countries = ["Egypt", "Saudi Arabia", "United Arab Emirates", "Kuwait", "Qatar", "Jordan", "Morocco", "Algeria", "Tunisia", "Turkey", "Poland", "Romania", "Indonesia", "Other"];
+      qs("#country").insertAdjacentHTML("beforeend", countries.map((c) => `<option>${esc(c)}</option>`).join(""));
+      const codes = ["+20", "+966", "+971", "+965", "+974", "+962", "+212", "+213", "+216", "+90", "+48", "+40", "+62"];
+      qs("#cc").innerHTML = codes.map((c) => `<option>${c}</option>`).join("");
+      qs("#cc").onchange = (e) => { qs("#flag").style.visibility = e.target.value === "+20" ? "visible" : "hidden"; };
+      qs("#machines").innerHTML = D.products.map((p) => `<option value="${esc(p.model)} — ${esc(p.name)}">`).join("") + '<option value="Complete production line"><option value="Custom solution">';
+
+      if (param("type") === "custom") { qs("#subject").value = "Custom solution"; qs("#machine").value = "Custom solution"; }
+      const pre = param("machine") && product(param("machine"));
+      if (pre) qs("#machine").value = `${pre.model} — ${pre.name}`;
+
+      qs("#msg").oninput = (e) => { qs("#cnt").textContent = `${e.target.value.length} / 1500`; };
+
+      const ok = /\.(pdf|dwg|xlsx?|docx?|jpe?g|png)$/i, MAX = 20 * 1024 * 1024;
+      const show = (files) => {
+        qs("#fileList").innerHTML = [...files].map((f) => {
+          const bad = !ok.test(f.name) ? "unsupported type" : f.size > MAX ? "over 20MB" : "";
+          return `<span class="${bad ? "bad" : ""}">${esc(f.name)}${bad ? ` — ${bad}` : ""}</span>`;
+        }).join("");
+      };
+      const drop = qs("#drop"), input = qs("#files");
+      input.onchange = () => show(input.files);
+      ["dragenter", "dragover"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+      ["dragleave", "drop"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+      drop.addEventListener("drop", (e) => { input.files = e.dataTransfer.files; show(input.files); toast(`${e.dataTransfer.files.length} file(s) attached (demo — not uploaded)`); });
+
+      const h = S.hours.find((x) => x.channel === "Technical Support");
+      const short = (d) => d.replace("Sunday", "Sun").replace("Thursday", "Thu");
+      qs("#ciPhone").href = `tel:${S.phone.replace(/\s/g, "")}`;
+      qs("#ciMail").href = `mailto:${S.infoEmail}`;
+      qs("#ciHours").textContent = `${short(h.days)}: ${h.time} ${h.tz}`;
+      qs("#hDays").textContent = h.days;
+      qs("#hTime").textContent = `${h.time} ${h.tz}`;
+      qs("#hClosed").textContent = `We are closed on ${h.closed} and public holidays.`;
+    });
+  </script>
+</body>
+</html>

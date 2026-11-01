@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Study — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .cd-hero { position: relative; height: 308px; background: #fff; line-height: 1.35; }
+    .cd-hero > img { position: absolute; right: 0; top: 0; width: 966px; max-width: 63%; }
+    .cd-hero .container { position: relative; }
+    .cd-hero .breadcrumb { padding: 12px 0 0 16px; font-size: 10.5px; color: #222; margin: 0; gap: 6px; }
+    .cd-hero .ey { display: block; margin: 15px 0 0 16px; color: var(--red); font-weight: 600; font-size: 10px; text-transform: uppercase; }
+    .cd-hero h1 { font-family: var(--font); font-size: 34.5px; font-weight: 700; line-height: 1.12; letter-spacing: 0; margin: 4px 0 6px 16px; color: #111; }
+    .cd-meta { display: flex; align-items: center; gap: 0; margin-left: 16px; font-size: 11px; }
+    .cd-meta span { display: flex; align-items: center; gap: 7px; padding: 0 14px; }
+    .cd-meta span:first-child { padding-left: 0; }
+    .cd-meta span + span { border-left: 1px solid #bbb; }
+    .cd-meta img { width: 12px; }
+    .cd-hero p { font-size: 11.4px; margin: 12px 0 13px 16px; line-height: 1.5; max-width: 410px; }
+    .cd-mt { display: grid; grid-template-columns: repeat(4, 133px); gap: 10px; margin-left: 16px; }
+    .cd-mt div { display: flex; align-items: center; gap: 9px; height: 49px; padding: 0 10px; background: #fff; border: 1px solid #ececef; border-radius: 3px; }
+    .cd-mt img { width: 30px; }
+    .cd-mt b { display: block; font-size: 14.5px; }
+    .cd-mt small { display: block; font-size: 7.4px; }
+    .cd-acts { display: flex; gap: 22px; margin: 15px 0 0 16px; }
+    .cd-acts .btn { height: 25px; padding: 0; width: 201px; font-size: 9.4px; gap: 16px; }
+    .cd-acts .btn-o { width: 160px; background: #fff; border: 1px solid var(--red); color: #111; }
+    .cd-wrap { display: grid; grid-template-columns: 1065px 1fr; gap: 26px; margin: 0 8px 0 10px; line-height: 1.35; position: relative; z-index: 1; }
+    .cd-tabs { display: flex; gap: 0; height: 45px; margin: 11px 0 0 6px; }
+    .cd-tabs a { display: flex; align-items: center; gap: 9px; padding: 0 20px; color: #333; font-size: 11px; font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .cd-tabs a img { width: 18px; height: 18px; object-fit: contain; flex: none; }
+    .cd-tabs a .on-i, .cd-tabs a.on .off-i { display: none; }
+    .cd-tabs a.on .on-i { display: block; }
+    .cd-tabs a.on { color: var(--red); font-weight: 700; border-bottom-color: var(--red); }
+    .cd-panel { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.08); padding: 13px 28px 12px 26px; min-height: 362px; }
+    .cd-panel h2 { font-family: var(--font); font-size: 16.5px; font-weight: 700; letter-spacing: 0; margin: 0 0 7px; }
+    .cd-panel > p.lead { font-size: 11.2px; line-height: 1.5; margin: 0 0 11px; max-width: 560px; }
+    .cd-ch { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 14px; }
+    .cd-cc { display: grid; grid-template-columns: 44px 1fr; gap: 9px; height: 93px; padding: 12px 12px 0 12px; border: 1px solid #ececef; border-radius: 3px; }
+    .cd-cc img { width: 38px; }
+    .cd-cc b { display: block; font-size: 11.8px; margin-bottom: 6px; }
+    .cd-cc ul { margin: 0; padding-left: 10px; font-size: 10.4px; line-height: 1.7; }
+    .cd-note { display: grid; grid-template-columns: 38px 1fr; gap: 38px; align-items: center; margin: 13px 60px 0 77px; padding: 7px 14px; background: #f6f6f7; border-left: 2px solid var(--red); font-size: 12.6px; line-height: 1.55; }
+    .cd-note img { width: 36px; }
+    .cd-ov { display: grid; grid-template-columns: 1fr 519px; gap: 30px; margin: -2px -12px 0 -10px; }
+    .cd-ov h2 { font-size: 11.6px; margin: 6px 0 15px; }
+    .cd-ov .lead { font-size: 9.6px; line-height: 1.6; margin: 0 0 14px; }
+    .cd-info { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 6px; }
+    .cd-info div { display: grid; grid-template-columns: 22px 1fr; gap: 9px; font-size: 9.4px; line-height: 1.55; }
+    .cd-info b { display: block; font-size: 9.6px; font-weight: 600; }
+    .cd-info img { width: 21px; margin-top: 2px; }
+    .cd-vid { position: relative; display: block; width: 519px; height: 203px; border: 0; padding: 0; cursor: pointer; background: url("assets/img/case/video.png") center / cover; border-radius: 3px; }
+    .cd-jr { margin: 12px -12px 0 -8px; }
+    .cd-jr h3, .cd-panel h3 { font-family: var(--font); font-size: 11.5px; font-weight: 700; letter-spacing: 0; margin: 0 0 12px; }
+    .cd-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+    .cd-steps div { position: relative; font-size: 8.8px; line-height: 1.5; }
+    .cd-steps div + div::before { content: "→"; position: absolute; left: -16px; top: 6px; color: #999; }
+    .cd-jr .cd-steps { gap: 0 46px; padding-left: 8px; }
+    .cd-jr .cd-steps div + div::before { left: -28px; top: 30px; color: #111; font-size: 13px; }
+    .cd-jr .cd-steps img { width: 30px; height: 30px; object-fit: contain; display: block; margin: 0 0 8px 2px; }
+    .cd-jr .cd-steps b { font-size: 9.6px; font-weight: 600; }
+    .cd-jr .cd-steps div { font-size: 9.2px; line-height: 1.6; }
+    .cd-steps .n { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--red); color: var(--red); font-weight: 700; font-size: 11px; margin-bottom: 6px; }
+    .cd-steps b { display: block; font-size: 9.8px; margin-bottom: 2px; }
+    .cd-feat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .cd-feat div { border: 1px solid #ececef; border-radius: 3px; padding: 12px; font-size: 9.4px; line-height: 1.55; }
+    .cd-feat b { display: block; font-size: 10.6px; margin-bottom: 4px; }
+    .cd-sol { display: grid; grid-template-columns: 262px 1fr; gap: 20px; margin: 4px -14px 0 -4px; }
+    .cd-sf div { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 8px 0 9px; border-bottom: 1px solid #ececef; font-size: 8.8px; line-height: 1.5; }
+    .cd-sf div:first-child { padding-top: 0; }
+    .cd-sf div:last-child { border-bottom: 0; }
+    .cd-sf img { width: 28px; }
+    .cd-sf b { display: block; font-size: 9.8px; margin-bottom: 3px; }
+    .cd-ps { border: 1px solid #ececef; border-radius: 3px; padding: 12px 16px 8px; }
+    .cd-ps h3 { font-size: 12px !important; margin-bottom: 10px !important; }
+    .cd-chain { display: grid; grid-template-columns: 1fr 22px 1fr 22px 1fr 22px 1.2fr 22px 1.1fr; align-items: start; margin-top: 4px; }
+    .cd-chain a { color: #111; font-size: 8.4px; line-height: 1.55; }
+    .cd-chain img { height: 64px; max-width: 100%; object-fit: contain; object-position: left bottom; display: block; margin: 0 0 7px; }
+    .cd-chain b { display: block; font-size: 11px; color: var(--red); }
+    .cd-chain strong { display: block; font-size: 9.2px; margin-bottom: 2px; }
+    .cd-chain .ar { color: var(--red); font-size: 16px; margin-top: 26px; }
+    .cd-sb { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 10px; padding-top: 9px; border-top: 1px solid #ececef; }
+    .cd-sb div { display: grid; grid-template-columns: 30px 1fr; gap: 10px; font-size: 8.6px; line-height: 1.5; padding: 0 10px; }
+    .cd-sb div + div { border-left: 1px solid #ececef; }
+    .cd-sb img { width: 24px; }
+    .cd-sb b { display: block; font-size: 9.2px; }
+    .cd-is { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; margin: 4px -18px 0 -14px; }
+    .cd-is::before { content: ""; position: absolute; left: 8%; right: 8%; top: 12px; border-top: 1px solid #ececef; }
+    .cd-is div { position: relative; font-size: 10.2px; line-height: 1.5; }
+    .cd-is .n { display: grid; place-items: center; width: 24px; height: 24px; margin: 0 auto 10px; border-radius: 50%; border: 1.5px solid var(--red); background: #fff; color: var(--red); font-size: 10.5px; font-weight: 700; }
+    .cd-is img { height: 40px; display: block; margin: 0 auto 12px; }
+    .cd-is b { display: block; font-size: 10.6px; font-weight: 600; margin-bottom: 4px; }
+    .cd-ib { display: grid; grid-template-columns: 1fr 345px; gap: 22px; margin: 18px -16px 0 -12px; }
+    .cd-ih, .cd-it { background: #f6f6f7; border: 1px solid #ececef; border-radius: 3px; padding: 14px 18px 12px; }
+    .cd-ih h3, .cd-it h3 { font-size: 11px !important; margin-bottom: 11px !important; }
+    .cd-ih ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 228px 1fr; gap: 6px 0; font-size: 10.6px; }
+    .cd-ih li { display: flex; gap: 9px; align-items: center; }
+    .cd-ih img { width: 12px; }
+    .cd-it div { display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: center; }
+    .cd-it img { width: 30px; }
+    .cd-it b { display: block; font-size: 11.6px; font-weight: 600; margin-bottom: 8px; }
+    .cd-it em { font-style: normal; color: var(--red); font-size: 10.6px; font-weight: 600; }
+    .cd-rs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px 10px; margin: 0 -18px 0 -12px; }
+    .cd-rs div { display: grid; grid-template-columns: 36px 1fr; gap: 12px; min-height: 98px; padding: 12px 10px 10px 12px; border: 1px solid #ececef; border-radius: 3px; font-size: 10px; line-height: 1.55; }
+    .cd-rs img { width: 30px; margin-top: 2px; }
+    .cd-rs strong { display: block; font-size: 15.5px; line-height: 1.15; }
+    .cd-rs b { display: block; font-size: 10.6px; margin: 2px 0 6px; }
+    .cd-rn { display: grid; grid-template-columns: 40px 1fr; gap: 26px; align-items: center; margin: 12px -18px 0 -12px; padding: 9px 20px; background: #f6f6f7; border-radius: 3px; font-size: 11px; line-height: 1.6; }
+    .cd-rn img { width: 30px; }
+    .cd-rn b { font-weight: 700; }
+    .cd-fbw { display: grid; grid-template-columns: 26px 1fr 26px; gap: 10px; align-items: center; margin: 0 -22px 0 -18px; }
+    .cd-fbn { width: 30px; height: 30px; border-radius: 50%; border: 0; background: #fff; box-shadow: 0 1px 5px rgba(0,0,0,.2); font-size: 14px; cursor: pointer; }
+    .cd-fb { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cd-fb > div { border: 1px solid #ececef; border-radius: 3px; padding: 13px 18px 12px; font-size: 10.2px; line-height: 1.6; }
+    .cd-fb .qm { width: 22px; display: block; margin-bottom: 8px; }
+    .cd-fb p { margin: 0 0 12px; min-height: 50px; }
+    .cd-fb .who { display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: center; padding-top: 10px; border-top: 1px solid #ececef; font-size: 9.6px; line-height: 1.5; }
+    .cd-fb .who img { width: 38px; border-radius: 50%; }
+    .cd-fb .who b { display: block; font-size: 10px; }
+    .cd-dots { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
+    .cd-dots i { width: 6px; height: 6px; border-radius: 50%; background: #ccc; }
+    .cd-dots i.on { background: var(--red); }
+    .cd-areas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 0 -18px 0 -12px; }
+    .cd-areas div { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding: 8px 10px 8px 10px; border: 1px solid #ececef; border-radius: 3px; font-size: 9px; line-height: 1.5; }
+    .cd-areas img { width: 30px; }
+    .cd-areas b { display: block; font-size: 10px; margin-bottom: 2px; }
+    .cd-flt { display: flex; gap: 12px; margin: 0 -14px 10px 0; }
+    .cd-flt button { height: 27px; padding: 0 16px; border: 1px solid #e3e4e7; border-radius: 3px; background: #fff; font-size: 10.4px; font-weight: 600; cursor: pointer; }
+    .cd-flt button.on { background: var(--red); border-color: var(--red); color: #fff; }
+    .cd-flt .cd-exp { margin-left: auto; height: 26px; padding: 0 14px; font-weight: 700; }
+    .cd-gal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0 -14px 0 -2px; }
+    .cd-gal button { padding: 0; border: 0; cursor: zoom-in; background: none; border-radius: 3px; overflow: hidden; }
+    .cd-gal button[hidden] { display: none; }
+    .cd-gal img { width: 100%; height: 111px; object-fit: cover; display: block; }
+    .cd-more { display: flex; justify-content: center; margin-top: 10px; }
+    .cd-more button { height: 26px; padding: 0 22px; border: 1px solid #e3e4e7; border-radius: 3px; background: #fff; font-size: 9.6px; font-weight: 700; cursor: pointer; }
+    .cd-dbar { display: flex; align-items: center; gap: 0; margin: 0 -16px 8px -2px; }
+    .cd-dbar .cd-flt { margin: 0; gap: 9px; }
+    .cd-dbar .cd-flt button { height: 25px; padding: 0 15px; font-size: 9.6px; }
+    .cd-ds { display: flex; align-items: center; margin-left: auto; width: 216px; height: 27px; padding: 0 10px; border: 1px solid #e3e4e7; border-radius: 3px; }
+    .cd-ds input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 9.6px; }
+    .cd-dsort { display: flex; align-items: center; gap: 10px; margin-left: 24px; font-size: 9.6px; }
+    .cd-dsort select { height: 27px; width: 82px; border: 1px solid #e3e4e7; border-radius: 3px; font: inherit; font-size: 9.6px; padding: 0 8px; }
+    .cd-docs { width: calc(100% + 18px); margin-left: -4px; border-collapse: collapse; font-size: 10.2px; }
+    .cd-docs th { text-align: left; font-size: 8.4px; color: #333; font-weight: 600; padding: 7px 8px; border-bottom: 1px solid #ececef; }
+    .cd-docs th:last-child, .cd-docs td.dl { text-align: center; }
+    .cd-docs td { height: 37px; padding: 0 8px; border-bottom: 1px solid #f0f0f2; vertical-align: middle; }
+    .cd-docs .dn { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: center; font-size: 10px; line-height: 1.45; }
+    .cd-docs .dn img { width: 20px; }
+    .cd-docs .dn b { display: block; font-size: 10.4px; }
+    .cd-docs td.dl button { border: 0; background: none; padding: 0; cursor: pointer; }
+    .cd-docs td.dl img { width: 18px; }
+    .cd-gl { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.08); margin-top: -59px; padding: 18px 18px 16px 18px; align-self: start; }
+    .cd-gl h3 { font-family: var(--font); font-size: 12.6px; font-weight: 700; letter-spacing: 0; margin: 0 0 12px 9px; }
+    .cd-gl .it { display: grid; grid-template-columns: 26px 1fr; gap: 11px; align-items: center; height: 44px; margin-left: 6px; font-size: 10.6px; }
+    .cd-gl .it img { width: 24px; }
+    .cd-gl .it b { display: block; font-size: 10.6px; font-weight: 600; }
+    .cd-share { background: #f6f6f7; border-radius: 3px; padding: 8px 0 9px; text-align: center; margin-top: 4px; }
+    .cd-share b { display: block; font-size: 10.4px; font-weight: 600; margin-bottom: 7px; }
+    .cd-share div { display: flex; justify-content: center; gap: 16px; }
+    .cd-share button { padding: 0; border: 0; background: none; cursor: pointer; }
+    .cd-share img { width: 32px; display: block; }
+    .cd-int { display: grid; grid-template-columns: 48px 1fr; gap: 10px; margin-top: 13px; padding: 12px 10px 11px 8px; border: 1px solid #ececef; border-radius: 3px; }
+    .cd-int img { width: 45px; margin-top: 6px; }
+    .cd-int h4 { font-family: var(--font); font-size: 13.4px; font-weight: 700; letter-spacing: 0; margin: 0 0 4px; }
+    .cd-int p { font-size: 11px; line-height: 1.6; margin: 0 0 9px; }
+    .cd-int .btn { height: 27px; width: 205px; padding: 0; font-size: 10px; gap: 16px; }
+    .cd-cta { display: grid; grid-template-columns: 68px 1fr 233px 185px; align-items: center; gap: 0 20px; width: 980px; margin: 4px 0 0 262px; padding: 12px 0 15px; line-height: 1.35; }
+    .cd-cta > img { width: 48px; }
+    .cd-cta h3 { font-family: var(--font); font-size: 12.6px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .cd-cta p { font-size: 11px; margin: 4px 0 0; }
+    .cd-cta .btn { height: 30px; padding: 0; font-size: 10px; gap: 18px; }
+    .cd-cta .btn-o { background: #fff; border: 1px solid var(--red); color: #111; }
+    @media (max-width: 1400px) {
+      .cd-hero > img { max-width: calc(100% - 640px); }
+      .cd-wrap { grid-template-columns: minmax(0, 1fr); gap: 0; }
+      .cd-tabs { overflow-x: auto; overflow-y: hidden; }
+      .cd-gl { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 14px; margin-top: 14px; }
+      .cd-gl h3 { grid-column: 1 / -1; }
+      .cd-gl .it { height: auto; min-height: 44px; }
+      .cd-share { grid-column: span 2; align-self: start; margin-top: 12px; }
+      .cd-int { grid-column: span 3; margin-top: 12px; }
+      .cd-dbar { flex-wrap: wrap; gap: 8px 0; }
+      .cd-cta { grid-template-columns: 68px minmax(0, 1fr) 233px 185px; width: auto; margin: 4px 0 0; padding: 12px 10px 15px; }
+    }
+    @media (max-width: 1100px) {
+      .cd-hero { display: flex; flex-direction: column; height: auto; }
+      .cd-hero > img { position: static; order: 2; width: 100%; max-width: none; margin-top: 16px; aspect-ratio: 906 / 308; object-fit: cover; object-position: right; }
+      .cd-wrap { margin: 0; }
+      .cd-tabs { margin-left: 0; }
+      .cd-tabs a { padding: 0 14px; }
+      .cd-panel { padding: 13px 18px 14px; min-height: 0; }
+      .cd-ov { grid-template-columns: minmax(0, 1fr); margin: 0; }
+      .cd-vid { width: 100%; height: auto; aspect-ratio: 519 / 203; }
+      .cd-jr, .cd-sol, .cd-is, .cd-ib, .cd-rs, .cd-rn, .cd-fbw, .cd-areas, .cd-gal, .cd-dbar { margin-left: 0; margin-right: 0; }
+      .cd-flt { margin-right: 0; flex-wrap: wrap; }
+      .cd-docs { width: 100%; margin-left: 0; }
+      .cd-steps, .cd-jr .cd-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 34px; }
+      .cd-jr .cd-steps div:nth-child(3n + 1)::before { display: none; }
+      .cd-ch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cd-cc { height: auto; padding-bottom: 12px; }
+      .cd-note { margin: 13px 0 0; gap: 16px; }
+      .cd-sol { grid-template-columns: minmax(0, 1fr); }
+      .cd-is { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 0; }
+      .cd-is::before { display: none; }
+      .cd-ib { grid-template-columns: minmax(0, 1fr); }
+      .cd-rs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cd-areas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .cd-gal { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .cd-gal img { height: auto; }
+      .cd-gl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .cd-share { grid-column: span 1; }
+      .cd-int { grid-column: span 2; }
+      .cd-cta { display: flex; flex-wrap: wrap; gap: 10px 16px; padding: 12px 0 15px; }
+      .cd-cta > div { flex: 1 1 300px; }
+      .cd-cta .btn { width: 233px; }
+      .cd-cta .btn-o { width: 185px; }
+    }
+    @media (max-width: 760px) {
+      .cd-hero h1 { font-size: 26px; margin-right: 16px; }
+      .cd-meta { flex-wrap: wrap; gap: 6px 16px; }
+      .cd-meta span, .cd-meta span + span { padding: 0; border-left: 0; }
+      .cd-hero p { margin-right: 16px; }
+      .cd-mt { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-right: 16px; }
+      .cd-acts { flex-wrap: wrap; gap: 10px; margin-right: 16px; }
+      .cd-wrap, .cd-cta { zoom: 1.2; }
+      .cd-panel { padding: 12px; }
+      .cd-panel br:not(.who br), .cd-int p br { display: none; }
+      .cd-info { grid-template-columns: minmax(0, 1fr); }
+      .cd-steps, .cd-jr .cd-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      .cd-steps div + div::before, .cd-jr .cd-steps div + div::before { display: none; }
+      .cd-ch { grid-template-columns: minmax(0, 1fr); }
+      .cd-note { grid-template-columns: 30px minmax(0, 1fr); margin: 13px 0 0; font-size: 11px; }
+      .cd-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .cd-chain .ar { display: none; }
+      .cd-sb { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
+      .cd-sb div:nth-child(odd) { border-left: 0; }
+      .cd-is { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cd-ih ul { grid-template-columns: minmax(0, 1fr); }
+      .cd-rs { grid-template-columns: minmax(0, 1fr); }
+      .cd-rn { grid-template-columns: 30px minmax(0, 1fr); gap: 14px; padding: 10px 12px; }
+      .cd-fbw { grid-template-columns: minmax(0, 1fr); }
+      .cd-fbn { display: none; }
+      .cd-fb { grid-template-columns: minmax(0, 1fr); }
+      .cd-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cd-gal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cd-flt .cd-exp { margin-left: 0; }
+      .cd-ds { margin-left: 0; width: 100%; }
+      .cd-dsort { margin-left: 0; }
+      .cd-docs { display: block; overflow-x: auto; }
+      .cd-docs .dn { min-width: 210px; }
+      .cd-docs td:not(:first-child) { white-space: nowrap; }
+      .cd-gl { grid-template-columns: minmax(0, 1fr); }
+      .cd-share, .cd-int { grid-column: auto; }
+      .cd-int .btn { width: 100%; }
+      .cd-cta .btn, .cd-cta .btn-o { flex: 1 1 100%; width: auto; }
+    }
+    @media (max-width: 480px) {
+      .cd-areas, .cd-gal { grid-template-columns: minmax(0, 1fr); }
+      .cd-steps, .cd-jr .cd-steps, .cd-is { grid-template-columns: minmax(0, 1fr); }
+      .cd-sb { grid-template-columns: minmax(0, 1fr); }
+      .cd-sb div { border-left: 0 !important; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="about" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+  <div id="page"></div>
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc, param, product, industry } = P;
+      const A = "assets/img/case/";
+      const c = D.cases.find((x) => x.id === param("id")) || D.cases[0];
+      const ind = industry(c.industry).name;
+      const isProject = c.type === "Project";
+      const cust = c.customer || c.title;
+      const machines = (c.machines || []).map(product).filter(Boolean);
+      const m4 = c.metrics.length >= 4 ? c.metrics.slice(0, 4) : c.metrics.concat([["100%", "On-Time Delivery"]]).slice(0, 4);
+      document.title = `${c.title} — PISTON`;
+
+      const TABS = [["overview", "Overview"], ["challenge", "Challenge"], ["solution", "Solution"], ["installation", "Installation"], ["results", "Results"], ["feedback", "Customer Feedback"], ["gallery", "Gallery"], ["documents", "Documents"]];
+      const ul = (l) => `<ul>${l.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
+      const GAL = [["Installation"], ["Machines"], ["Production Line"], ["Machines"], ["Installation"], ["Machines"], ["Production Line"], ["Results"]];
+      const DOCS = [["Project Overview & Scope of Work", "Detailed overview of the project scope, objectives and deliverables.", "Reports", "1.2 MB", "May 8, 2024", "pdf"],
+        ["Production Line Layout Drawing", "Complete layout drawing of the installed production line.", "Technical Drawings", "2.8 MB", "May 6, 2024", "pdf"],
+        ["Machine Specifications - R32 Sliding Table Saw", "Technical specifications and features of the R32 Sliding Table Saw.", "Datasheets", "1.1 MB", "May 5, 2024", "pdf"],
+        ["Installation Report", "Summary of installation process, timeline and key milestones.", "Reports", "960 KB", "Apr 30, 2024", "docx"],
+        ["Electrical & Pneumatic Diagrams", "Electrical and pneumatic schematics for the complete line.", "Technical Drawings", "3.6 MB", "Apr 28, 2024", "pdf"]];
+      function renderDocs() {
+        const cat = qs("#df .on")?.dataset.d || "", q = (qs("#dq")?.value || "").toLowerCase();
+        let l = DOCS.filter((d) => (!cat || d[2] === cat) && (!q || `${d[0]} ${d[1]}`.toLowerCase().includes(q)));
+        if (qs("#dsort")?.value === "name") l = [...l].sort((a, b) => a[0].localeCompare(b[0]));
+        qs("#docs").innerHTML = l.map(([t, d, cg, sz, dt, ty]) => `<tr><td><div class="dn"><img src="${A}doc-${ty}.png" alt="${ty.toUpperCase()}"><span><b>${esc(t)}</b>${esc(d)}</span></div></td><td>${cg}</td><td>${sz}</td><td>${dt}</td><td class="dl"><button data-toast="${esc(t)} — download (demo)" aria-label="Download ${esc(t)}"><img src="${A}doc-dl.png" alt=""></button></td></tr>`).join("")
+          || '<tr><td colspan="5" style="text-align:center;padding:18px">No documents match.</td></tr>';
+      }
+      const phrase = (v, l) => (v[0] === "-" ? `Reduction in ${l}` : v[0] !== "+" ? l : /Efficiency|Quality/.test(l) ? `Improvement in ${l}` : `Increase in ${l}`);
+      const PANELS = {
+        overview: () => `<div class="cd-ov"><div><h2>PROJECT OVERVIEW</h2>
+            <p class="lead">${esc(cust)} is a leading manufacturer of custom ${esc(ind.split(" ")[0].toLowerCase())} and furniture solutions in ${esc(c.country)}.<br>As demand grew, they faced production bottlenecks, high material waste and inconsistent quality.<br>Piston designed and implemented a fully integrated production line tailored to their needs.</p>
+            <div class="cd-info">${[["Customer", cust], ["Project Type", c.solutionType], ["Location", `${c.city}, ${c.country}`], ["Project Duration", `${c.weeks || 8} Weeks`], ["Industry", ind], ["Completion Date", `May ${c.year}`]]
+              .map(([k, v], i) => `<div><img src="${A}ov-${i + 1}.png" alt=""><span><b>${k}</b>${esc(String(v))}</span></div>`).join("")}</div></div>
+          <button class="cd-vid" data-video="${esc(c.title)} — project overview" aria-label="Watch project overview, 02:45"></button></div>
+          <div class="cd-jr"><h3>THE JOURNEY</h3><div class="cd-steps">${[["Challenge", "Limited capacity, high waste and manual processes causing inefficiencies."], ["Requirements", "Detailed analysis and understanding of factory needs and goals."], ["Solution Design", "Custom production line designed for maximum performance."],
+            ["Installation", "Professional installation and integration with existing factory."], ["Training", "Operator training and process optimization on-site."], ["Results", "Measurable improvements achieved across all key metrics."]]
+            .map(([t, d], i) => `<div><img src="${A}j-${i + 1}.png" alt=""><b>${i + 1}. ${t}</b>${d}</div>`).join("")}</div></div>`,
+        challenge: () => `<h2>THE CHALLENGE</h2><p class="lead">As demand grew, ${esc(cust)} faced several operational and production challenges that limited their ability to scale and maintain consistent quality.</p>
+          <div class="cd-ch">${[["Limited Production Capacity", ["Outdated machinery limited daily output", "Unable to meet growing market demand", "Long lead times and delivery delays"]],
+            ["High Material Waste", ["Excessive panel offcuts and rework", "Inefficient cutting and edge banding", "High adhesive and consumable usage"]],
+            ["Inconsistent Quality", ["Manual processes caused variation", "Edge banding quality was inconsistent", "High defect rate and customer complaints"]],
+            ["Labor Intensive Processes", ["Heavy reliance on manual operations", "High labor cost and operator fatigue", "Productivity varies between shifts"]],
+            ["Frequent Downtime", ["Old machines caused breakdowns", "Long maintenance and repair times", "Lack of spare parts availability"]],
+            ["Lack of Scalability", ["Existing layout could not be expanded", "Difficult to integrate new technologies", "Limited flexibility for future growth"]]]
+            .map(([t, l], i) => `<div class="cd-cc"><img src="${A}ch-${i + 1}.png" alt=""><div><b>${t}</b>${ul(l)}</div></div>`).join("")}</div>
+          <div class="cd-note"><img src="${A}bulb.png" alt=""><span>${esc(cust)} needed a fully integrated, high-performance production line<br>to overcome these challenges and achieve sustainable growth.</span></div>`,
+        solution: () => `<h2>OUR SOLUTION</h2><p class="lead">Piston designed a fully integrated production line tailored to the customer's needs.<br><b>The solution combines high-performance machines, smart automation and<br>intelligent line control to deliver maximum productivity and quality.</b></p>
+          <div class="cd-sol"><div class="cd-sf">${[["Customized Production Line", "A complete line designed for their specific<br>products, capacity and factory layout."], ["Advanced Automation", "Integrated automation reduces manual work,<br>increases precision and ensures consistency."],
+            ["Smart Line Control", "Centralized control system for real-time<br>monitoring, data tracking and optimization."], ["High-Performance Machines", "Reliable Piston machines built for heavy-duty<br>operation, accuracy and long service life."]].map(([t, d], i) => `<div><img src="${A}sf-${i + 1}.png" alt=""><span><b>${t}</b>${d}</span></div>`).join("")}</div>
+          <div class="cd-ps"><h3>THE PISTON SOLUTION</h3>
+            <div class="cd-chain">${[["r32", "R32", "Sliding Table Saw", "High precision cutting<br>with maximum stability"], ["peb368", "PEB 368", "Edge Bander", "Perfect edge finishing<br>for modern production"], ["pbd21", "PBD 21", "Drilling Machine", "High speed, multi-spindle<br>drilling for accuracy"],
+              ["pvpm2500", "PVPM 2500", "Vacuum Press", "Strong, reliable pressing<br>for perfect panels"], ["stacker", "Stacker", "Automatic Stacker", "Efficient stacking and<br>material handling"]]
+              .map(([id, m, n, d], i) => `${i ? '<span class="ar">→</span>' : ""}<a href="product.html?id=${id}"><img src="${A}sm-${i + 1}.png" alt="${m}"><b>${m}</b><strong>${n}</strong>${d}</a>`).join("")}</div>
+            <div class="cd-sb">${[["Optimized Workflow", "Smooth material flow<br>with minimal handling"], ["Reduced Waste", "Efficient process reduces<br>offcuts and material loss"], ["Higher Productivity", "Increased output with<br>faster cycle times"], ["Consistent Quality", "High precision at every<br>step of production"]]
+              .map(([t, d], i) => `<div><img src="${A}sb-${i + 1}.png" alt=""><span><b>${t}</b>${d}</span></div>`).join("")}</div></div></div>`,
+        installation: () => `<h2 style="font-size:13.6px;margin-top:2px">INSTALLATION PROCESS</h2><p class="lead" style="max-width:none;font-size:10.8px">Our experienced team ensured a smooth and efficient installation with minimal disruption to the customer's operations.</p>
+          <div class="cd-is">${[["Pre-Installation Planning", "Site assessment, layout<br>review and detailed<br>installation plan."], ["Equipment Delivery", "All machines and<br>components delivered<br>safely to site."], ["Site Preparation", "Factory area prepared<br>including leveling,<br>power and utility setup."],
+            ["Machine Installation", "Machines positioned,<br>leveled and securely<br>installed."], ["System Integration", "Electrical connections,<br>automation integration<br>and safety checks."], ["Testing & Commissioning", "Complete testing and<br>performance validation<br>before handover."]]
+            .map(([t, d], i) => `<div><span class="n">${i + 1}</span><img src="${A}in-${i + 1}.png" alt=""><b>${t}</b>${d}</div>`).join("")}</div>
+          <div class="cd-ib"><div class="cd-ih"><h3>INSTALLATION HIGHLIGHTS</h3><ul>${[`Installation completed in ${c.weeks || 8} weeks`, "Full training provided on-site", "Zero safety incidents", "All systems tested and optimized", "Minimal production downtime", "Project completed on schedule"]
+            .map((x) => `<li><img src="${A}in-check.png" alt="">${x}</li>`).join("")}</ul></div>
+            <div class="cd-it"><h3>INSTALLATION TIMELINE</h3><div><img src="${A}in-cal.png" alt=""><span><b>March 4, 2024 — April 26, 2024</b><em>Total Duration: ${c.weeks || 8} Weeks</em></span></div></div></div>`,
+        results: () => `<h2 style="font-size:13.6px;margin-top:2px">THE RESULTS</h2><p class="lead" style="font-size:10.4px">The upgraded production line has delivered measurable improvements across all key areas,<br>helping ${esc(cust)} achieve their production goals and drive business growth.</p>
+          <div class="cd-rs">${m4.map(([v, l], i) => [v, l, [c.capacity ? `Daily output increased from<br>${c.capacity[0]} m² to ${c.capacity[1]} m² per shift.` : "Higher daily output across<br>all shifts.", c.waste ? `Waste reduced from ${c.waste[0]}<br>to ${c.waste[1]} of total material.` : "Less material loss and<br>fewer offcuts.", "Overall equipment effectiveness<br>increased significantly.", "All projects delivered on time<br>and within scope."][i]])
+              .concat([["", "Higher Quality", "Consistent quality achieved across<br>all products with reduced defects<br>and rework."], ["", "Lower Operating Costs", "Reduced manual labor, less rework,<br>and optimized processes lowered<br>operational costs."], ["", "Faster Cycle Times", "Optimized workflow and automation<br>reduced cycle times and increased<br>throughput."], ["", "Scalable for Future Growth", "Modular design and smart automation<br>make it easy to scale production<br>as demand grows."]])
+              .map(([v, l, d], i) => `<div><img src="${A}rs-${i + 1}.png" alt=""><span>${v ? `<strong>${v}</strong>` : ""}<b>${esc(v ? phrase(v, l) : l)}</b>${d}</span></div>`).join("")}</div>
+          <div class="cd-rn"><img src="${A}rs-trophy.png" alt=""><span><b>This project has set a new benchmark for productivity and quality,</b><br>empowering ${esc(cust)} to lead in the competitive ${esc(ind.toLowerCase())} market.</span></div>`,
+        feedback: () => `<h2 style="font-size:13.6px;margin-top:2px">WHAT OUR CUSTOMER SAYS</h2><p class="lead" style="font-size:10.4px;margin-bottom:9px">Real feedback from ${esc(cust)} about their experience working with Piston.</p>
+          <div class="cd-fbw"><button class="cd-fbn" data-fb="-1" aria-label="Previous">←</button><div class="cd-fb" id="fbList"></div><button class="cd-fbn" data-fb="1" aria-label="Next">→</button></div>
+          <div class="cd-dots" id="fbDots"></div>
+          <h3 style="font-size:12px;margin:10px 0 9px">KEY FEEDBACK AREAS</h3>
+          <div class="cd-areas">${[["Project Management", "Excellent planning, clear<br>communication and on-time<br>execution."], ["Machine Performance", "Reliable, precise and built<br>for heavy-duty operations."], ["Training & Support", "Comprehensive training and<br>responsive technical support."], ["After-Sales Service", "Quick response and effective<br>solutions whenever needed."], ["Overall Satisfaction", "Very satisfied with the solution<br>and partnership with Piston."]]
+            .map(([t, d], i) => `<div><img src="${A}fa-${i + 1}.png" alt=""><span><b>${t}</b>${d}</span></div>`).join("")}</div>`,
+        gallery: () => `<h2 style="font-size:13.6px;margin-top:2px">PROJECT GALLERY</h2><p class="lead" style="font-size:10.4px;margin-bottom:12px">Explore photos from the installation, production line and final results.</p>
+          <div class="cd-flt" id="gf">${[["", "All (28)"], ["Installation", "Installation (8)"], ["Machines", "Machines (10)"], ["Production Line", "Production Line (6)"], ["Results", "Results (4)"]].map(([v, t], i) => `<button class="${i ? "" : "on"}" data-g="${v}">${t}</button>`).join("")}
+            <button class="cd-exp" data-expand>EXPAND GALLERY <span>⤢</span></button></div>
+          <div class="cd-gal" id="gal">${GAL.map(([cat], i) => `<button data-img="${A}gal-${i + 1}.png" data-cat="${cat}"><img src="${A}gal-${i + 1}.png" alt="${cat}"></button>`).join("")}</div>
+          <div class="cd-more"><button data-toast="More photos — demo shows 8 of 28">LOAD MORE PHOTOS &nbsp;↓</button></div>`,
+        documents: () => `<h2 style="font-size:13.6px;margin-top:2px">PROJECT DOCUMENTS</h2><p class="lead" style="font-size:10.4px;margin-bottom:11px">Download detailed documents, technical specifications and reports related to this project.</p>
+          <div class="cd-dbar"><div class="cd-flt" id="df">${[["", "All Documents (18)"], ["Technical Drawings", "Technical Drawings (6)"], ["Datasheets", "Datasheets (4)"], ["Reports", "Reports (3)"], ["Manuals", "Manuals (3)"], ["Certificates", "Certificates (2)"]]
+            .map(([v, t], i) => `<button class="${i ? "" : "on"}" data-d="${v}">${t}</button>`).join("")}</div>
+            <label class="cd-ds"><input id="dq" placeholder="Search documents..." aria-label="Search documents"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#333" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg></label>
+            <label class="cd-dsort">Sort by: <select id="dsort" aria-label="Sort by"><option value="latest">Latest</option><option value="name">Name</option></select></label></div>
+          <table class="cd-docs"><thead><tr><th>DOCUMENT NAME</th><th>CATEGORY</th><th>SIZE</th><th>UPDATED</th><th>DOWNLOAD</th></tr></thead><tbody id="docs"></tbody></table>
+          <div class="cd-more"><button data-toast="More documents — demo shows 5 of 18">LOAD MORE DOCUMENTS &nbsp;↓</button></div>`,
+      };
+
+      qs("#page").innerHTML = `
+      <section class="cd-hero">
+        <img src="${A}hero.png" alt="Cairo Cabinets production line — customer quote from Ahmed El-Sayed, Factory Manager">
+        <div class="container">
+          <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="hub.html">News, Case Studies &amp; Projects</a><span>›</span><a href="${isProject ? "projects" : "case-studies"}.html">${isProject ? "Projects" : "Case Studies"}</a><span>›</span><span id="crumb">${esc(c.title)}</span></div>
+          <span class="ey">${isProject ? "Project" : "Case Study"}</span>
+          <h1>${esc(c.title.toUpperCase()).replace(/ (PRODUCTION|FACILITY|CAPACITY|AUTOMATION|SOLUTION|FACTORY SETUP)/, "<br>$1")}</h1>
+          <div class="cd-meta"><span><img src="${A}pin.png" alt="">${esc(c.city)}, ${esc(c.country)}</span><span>Industry: ${esc(ind)}</span><span><img src="${A}cal.png" alt="">Year: ${c.year}</span></div>
+          <p>${esc(c.summary)}</p>
+          <div class="cd-mt">${m4.map(([v, l], i) => `<div><img src="${A}mt-${i + 1}.png" alt=""><span><b>${v}</b><small>${esc(l)}</small></span></div>`).join("")}</div>
+          <div class="cd-acts"><a class="btn btn-red" href="industries.html?slug=${c.industry}">BUILD A SOLUTION LIKE THIS <span>→</span></a>
+            <button class="btn btn-o" data-wa-quote data-items="${(c.machines || []).join(",")}" data-source="Case study — ${esc(c.title)}">REQUEST A QUOTE <span>→</span></button></div>
+        </div>
+      </section>
+      <main class="container">
+        <div class="cd-wrap">
+          <div>
+            <nav class="cd-tabs" id="tabs">${TABS.map(([k, t]) => `<a href="#${k}" data-tab="${k}"><img class="off-i" src="${A}ti-${k}-off.png" alt=""><img class="on-i" src="${A}ti-${k}-on.png" alt="">${t.toUpperCase()}</a>`).join("")}</nav>
+            <section class="cd-panel" id="panel"></section>
+          </div>
+          <aside class="cd-gl">
+            <h3>PROJECT AT A GLANCE</h3>
+            ${[["Machines Installed", machines.map((p) => p.model.replace("PISTON ", "")).join(", ")], ["Production Capacity", c.capacity ? `From ${c.capacity[0]} to ${c.capacity[1]} m² / shift` : c.metrics[0].join(" ")],
+              ["Material Waste Reduced", c.waste ? `From ${c.waste[0]} to ${c.waste[1]}` : (c.metrics[1] || []).join(" ")], ["Project Completion", `${c.weeks || 8} Weeks`], ["Customer Since", c.since || c.year]]
+              .map(([k, v], i) => `<div class="it"><img src="${A}g-${i + 1}.png" alt=""><span><b>${k}</b>${esc(String(v))}</span></div>`).join("")}
+            <div class="cd-share"><b>SHARE THIS ${isProject ? "PROJECT" : "CASE STUDY"}</b><div>${[["in", "LinkedIn"], ["fb", "Facebook"], ["mail", "Email"], ["link", "Copy link"]].map(([k, l]) => `<button data-share="${k}" aria-label="Share on ${l}"><img src="${A}sh-${k}.png" alt=""></button>`).join("")}</div></div>
+            <div class="cd-int"><img src="${A}engineer.png" alt=""><div><h4>INTERESTED IN A SIMILAR SOLUTION?</h4><p>Our engineers will help you build the right <br>production line for your factory.</p><a class="btn btn-red" href="talk-to-engineer.html?type=custom">TALK TO AN ENGINEER <span>→</span></a></div></div>
+          </aside>
+        </div>
+        <section class="cd-cta">
+          <img src="${A}cta.png" alt="">
+          <div><h3>READY TO ACHIEVE RESULTS LIKE THESE?</h3><p>Let's build a solution that drives your production forward.</p></div>
+          <a class="btn btn-red" href="industries.html">BUILD YOUR PRODUCTION LINE <span>→</span></a>
+          <button class="btn btn-o" data-wa-quote data-source="Case study CTA">REQUEST A QUOTE <span>→</span></button>
+        </section>
+      </main>`;
+
+      function show() {
+        const k = PANELS[location.hash.slice(1)] ? location.hash.slice(1) : "overview";
+        qsa("#tabs a").forEach((a) => a.classList.toggle("on", a.dataset.tab === k));
+        const tb = qs("#tabs");
+        tb.scrollLeft += qs("#tabs a.on").getBoundingClientRect().left - tb.getBoundingClientRect().left - 16;
+        // Space before <br> is invisible on desktop and lets phones hide the breaks.
+        qs("#panel").innerHTML = PANELS[k]().replace(/<br>/g, " <br>");
+        if (k === "feedback") { fbPage = 0; renderFb(); }
+        if (k === "documents") { renderDocs(); qs("#dq").oninput = renderDocs; qs("#dsort").onchange = renderDocs; }
+        const label = TABS.find((t) => t[0] === k)[1];
+        qs("#crumb").innerHTML = k === "overview" ? esc(c.title) : `${esc(c.title)}<span>›</span>${label}`;
+      }
+      window.addEventListener("hashchange", show);
+      // Testimonials: 3 per page; ratings intentionally omitted (decision: no ratings).
+      const FB = [["The entire Piston team was professional from day one. They understood our challenges and delivered a solution that exceeded our expectations.", "Ahmed El-Sayed", "Factory Manager", 1],
+        ["The machines are excellent, and the automation system has significantly improved our efficiency and consistency. We've seen a real difference in our output and quality.", "Hossam Mohsen", "Production Director", 2],
+        ["Installation was smooth, training was thorough, and the after-sales support is outstanding. Piston is a partner we can always rely on.", "Mona Refaat", "Quality Assurance Manager", 3]];
+      let fbPage = 0;
+      const FB_PAGES = 3;
+      function renderFb() {
+        const list = FB.map((_, i) => FB[(i + fbPage) % FB.length]);
+        qs("#fbList").innerHTML = list.map(([q, n, r, av]) => `<div><img class="qm" src="${A}fb-quote.png" alt=""><p>${esc(q)}</p><div class="who"><img src="${A}fb-av-${av}.png" alt=""><span><b>${esc(n)}</b>${esc(r)}<br>${esc(cust)}</span></div></div>`).join("");
+        qs("#fbDots").innerHTML = Array.from({ length: FB_PAGES }, (_, i) => `<i class="${i === fbPage ? "on" : ""}"></i>`).join("");
+      }
+      document.addEventListener("click", (e) => { const b = e.target.closest("[data-fb]"); if (b) { fbPage = (fbPage + +b.dataset.fb + FB_PAGES) % FB_PAGES; renderFb(); } });
+      show();
+
+      document.addEventListener("click", (e) => {
+        const t = e.target.closest("[data-toast]"); if (t) { P.toast(t.dataset.toast); return; }
+        const s = e.target.closest("[data-share]");
+        if (s) { if (s.dataset.share === "link") { navigator.clipboard?.writeText(location.href).catch(() => {}); P.toast("Link copied"); } else P.toast("Share — demo"); return; }
+        const v = e.target.closest("[data-video]");
+        if (v) { P.modal(`<h3>${esc(v.dataset.video)}</h3><div style="aspect-ratio:16/9;background:#111;color:#fff;display:grid;place-items:center;border-radius:4px;margin-top:10px">▶ Video plays here (demo placeholder)</div>`); return; }
+        const g = e.target.closest("[data-img]"); if (g) { P.modal(`<img src="${g.dataset.img}" alt="" style="width:100%;border-radius:4px">`); return; }
+        const dfb = e.target.closest("#df button");
+        if (dfb) { qsa("#df button").forEach((b) => b.classList.toggle("on", b === dfb)); renderDocs(); return; }
+        const f = e.target.closest("#gf button[data-g]");
+        if (f) { qsa("#gf button[data-g]").forEach((b) => b.classList.toggle("on", b === f)); qsa("#gal button").forEach((b) => (b.hidden = !!f.dataset.g && b.dataset.cat !== f.dataset.g)); return; }
+        if (e.target.closest("[data-expand]")) P.modal(`<h3>PROJECT GALLERY</h3><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px">${GAL.map((_, i) => `<img src="${A}gal-${i + 1}.png" alt="" style="width:100%;border-radius:3px">`).join("")}</div>`);
+      });
+    });
+  </script>
+</body>
+</html>

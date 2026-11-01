@@ -1,0 +1,22 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 07.48.42.png",
+  "out": "src/demo/assets/img/engineer",
+  "items": [
+    { "name": "hero.png", "box": [430, 64, 1086, 366], "scale": 2 },
+    { "name": "f-1.png", "box": [30, 305, 66, 346], "trim": true, "scale": 2 },
+    { "name": "f-2.png", "box": [208, 305, 246, 346], "trim": true, "scale": 2 },
+    { "name": "f-3.png", "box": [389, 305, 427, 346], "trim": true, "scale": 2 },
+    { "name": "needs.png", "box": [49, 406, 77, 432], "trim": true, "scale": 2 },
+    { "name": "why-1.png", "box": [794, 447, 829, 481], "trim": true, "scale": 2 },
+    { "name": "why-2.png", "box": [794, 519, 829, 552], "trim": true, "scale": 2 },
+    { "name": "why-3.png", "box": [794, 591, 829, 624], "trim": true, "scale": 2 },
+    { "name": "why-4.png", "box": [794, 661, 829, 696], "trim": true, "scale": 2 },
+    { "name": "c-phone.png", "box": [794, 792, 820, 815], "trim": true, "scale": 2 },
+    { "name": "c-mail.png", "box": [794, 840, 820, 861], "trim": true, "scale": 2 },
+    { "name": "c-chat.png", "box": [794, 877, 820, 901], "trim": true, "scale": 2 },
+    { "name": "next.png", "box": [53, 977, 84, 1010], "trim": true, "scale": 2 },
+    { "name": "find.png", "box": [46, 1139, 77, 1172], "trim": true, "scale": 2 },
+    { "name": "upload.png", "box": [300, 897, 326, 919], "trim": true, "scale": 2 },
+    { "name": "flag-eg.png", "box": [57, 555, 76, 569], "scale": 2 }
+  ]
+}

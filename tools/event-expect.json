@@ -1,0 +1,105 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.15.21.png",
+ "out": "src/demo/assets/img/event",
+ "items": [
+  {
+   "name": "ti-overview-off.png",
+   "box": [
+    68,
+    342,
+    90,
+    363
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "ti-expect-on.png",
+   "box": [
+    208,
+    341,
+    229,
+    363
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "we-1.png",
+   "box": [
+    71,
+    449,
+    118,
+    497
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "we-2.png",
+   "box": [
+    434,
+    449,
+    480,
+    497
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "we-3.png",
+   "box": [
+    795,
+    448,
+    842,
+    498
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "we-4.png",
+   "box": [
+    72,
+    562,
+    116,
+    611
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "we-5.png",
+   "box": [
+    432,
+    562,
+    482,
+    609
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "we-6.png",
+   "box": [
+    794,
+    562,
+    843,
+    611
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "we-cal.png",
+   "box": [
+    76,
+    682,
+    115,
+    724
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

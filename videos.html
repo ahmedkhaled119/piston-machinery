@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Videos — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .vd-hero { position: relative; height: 216px; background: #fff; line-height: 1.35; }
+    .vd-hero > img { position: absolute; right: 0; top: 0; width: 996px; max-width: 66%; }
+    .vd-hero .container { position: relative; }
+    .vd-hero .breadcrumb { padding: 8px 0 0 12px; font-size: 11px; color: #222; margin: 0; gap: 6px; }
+    .vd-hero .ey { display: block; margin: 14px 0 0 12px; color: var(--red); font-weight: 700; font-size: 10.5px; text-transform: uppercase; }
+    .vd-hero h1 { font-size: 34px; font-weight: 700; line-height: 1.02; letter-spacing: 3.4px; margin: 3px 0 9px 12px; color: #111; }
+    .vd-hero h1 span { color: var(--red); }
+    .vd-hero p { font-size: 12px; color: #111; margin: 0 0 13px 12px; line-height: 1.4; }
+    .vd-hero .acts { margin-left: 12px; display: flex; gap: 19px; }
+    .vd-hero .btn { height: 27px; padding: 0; width: 175px; font-size: 9.4px; gap: 22px; }
+    .vd-hero .btn-w { width: 193px; background: #fff; border: 1px solid #e3e4e7; color: #111; }
+    .vd-box { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.07); margin: 11px 13px 0 10px; line-height: 1.35; position: relative; z-index: 1; }
+    .vd-bar { display: flex; align-items: center; gap: 8px; height: 49px; padding: 0 17px 0 12px; border-bottom: 1px solid #f0f0f2; }
+    .vd-bar a.pill { height: 24px; padding: 0 18px; display: grid; place-items: center; border: 1px solid #e3e4e7; border-radius: 2px; color: #111; font-size: 9.4px; font-weight: 700; }
+    .vd-bar a.pill.on { background: var(--red); border-color: var(--red); color: #fff; }
+    .vd-bar .flt { display: flex; align-items: center; gap: 12px; font-size: 9.4px; }
+    .vd-bar .flt:first-of-type { margin-left: auto; }
+    .vd-bar .flt + .flt { margin-left: 12px; }
+    .vd-sel { height: 24px; border: 1px solid #e3e4e7; border-radius: 2px; font: inherit; font-size: 9px; padding: 0 10px; appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' fill='none' stroke='%23333' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 10px center; }
+    .vd-body { display: grid; grid-template-columns: 1105px 1fr; }
+    .vd-l { padding: 12px 25px 8px 12px; }
+    .vd-body h3 { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0; margin: 0; color: #111; }
+    .vd-feat { position: relative; display: grid; grid-template-columns: 279px 249px 251px 249px; gap: 14px; margin-top: 12px; }
+    .vd-fc { display: block; background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.08); border-radius: 2px; color: #111; text-align: left; border: 0; padding: 0 0 9px; cursor: pointer; font: inherit; }
+    .vd-fc img { width: 100%; height: 146px; object-fit: cover; display: block; }
+    .vd-fc b { display: block; font-size: 10.6px; margin: 6px 10px 0; }
+    .vd-fc span { display: block; font-size: 9.4px; margin: 3px 10px 0; color: #222; }
+    .vd-fc small { display: block; font-size: 8.6px; margin: 8px 10px 0; color: #333; }
+    .vd-nx { position: absolute; right: -14px; top: 84px; width: 30px; height: 30px; border-radius: 50%; background: #fff; border: 0; box-shadow: 0 1px 6px rgba(0,0,0,.18); font-size: 16px; cursor: pointer; }
+    .vd-lh { display: flex; justify-content: space-between; align-items: center; margin-top: 17px; }
+    .vd-lh a { color: var(--red); font-size: 8px; font-weight: 700; }
+    .vd-latest { display: grid; grid-template-columns: 138px 146px 145px 162px 151px 147px; gap: 30px; margin-top: 10px; }
+    .vd-lc { display: block; background: none; border: 0; padding: 0; text-align: left; color: #111; cursor: pointer; font: inherit; }
+    .vd-lc img { width: 100%; height: 75px; object-fit: cover; display: block; }
+    .vd-lc b { display: block; font-size: 10px; line-height: 1.25; margin-top: 7px; }
+    .vd-lc span { display: block; font-size: 9px; margin-top: 3px; line-height: 1.35; }
+    .vd-lc small { display: block; font-size: 8.4px; margin-top: 6px; color: #333; }
+    .vd-r { border-left: 1px solid #f0f0f2; padding: 12px 12px 10px 17px; background: #fff; }
+    .vd-cat { margin: 8px 0 19px; }
+    .vd-cat button { display: grid; grid-template-columns: 16px 1fr auto; gap: 11px; align-items: center; width: 100%; height: 19px; background: none; border: 0; padding: 0; text-align: left; font-size: 9.8px; cursor: pointer; }
+    .vd-cat button.on { color: var(--red); font-weight: 600; }
+    .vd-cat img { width: 12px; }
+    .vd-cat small { font-size: 8.6px; padding-right: 10px; }
+    .vd-pl .hd { display: flex; justify-content: space-between; align-items: center; }
+    .vd-pl .hd a { color: var(--red); font-size: 7.6px; font-weight: 700; }
+    .vd-pl .top { display: grid; grid-template-columns: 113px 1fr; gap: 42px; margin-top: 10px; }
+    .vd-pl .top img { width: 113px; display: block; }
+    .vd-pl .top b { display: block; font-size: 10.4px; line-height: 1.3; margin-top: 2px; }
+    .vd-pl .top p { font-size: 8.8px; line-height: 1.45; margin: 7px 0 5px; }
+    .vd-pl .top small { font-size: 8.4px; }
+    .vd-pl ul { list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid #ececef; border-radius: 2px; }
+    .vd-pl li button { display: grid; grid-template-columns: 50px 1fr auto; gap: 9px; align-items: center; width: 100%; height: 24.4px; padding: 0 12px 0 1px; border: 0; border-bottom: 1px solid #ececef; background: #fff; text-align: left; font-size: 9.4px; cursor: pointer; }
+    .vd-pl li:last-child button { border-bottom: 0; }
+    .vd-pl li img { width: 50px; height: 20px; display: block; }
+    .vd-pl li small { font-size: 8.2px; }
+    .vd-pl .vp { display: flex; align-items: center; justify-content: center; gap: 12px; height: 23px; margin-top: 13px; border: 1px solid var(--red); border-radius: 2px; color: var(--red); font-size: 8.8px; font-weight: 700; background: #fff; width: 100%; cursor: pointer; }
+    .vd-cta { display: grid; grid-template-columns: 78px 1fr 196px 246px; align-items: center; gap: 0 10px; width: 1009px; margin: 12px 0 0 219px; padding: 8px 41px 8px 33px; background: #f6f6f7; border-radius: 3px 3px 0 0; line-height: 1.35; }
+    .vd-cta > img { width: 50px; }
+    .vd-cta h3 { font-family: var(--font); font-size: 12px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .vd-cta p { font-size: 9.6px; margin: 5px 0 0; line-height: 1.5; }
+    .vd-cta .btn { height: 27px; padding: 0; font-size: 9.4px; gap: 10px; }
+    .vd-cta .btn img { width: 21px; }
+    .vd-cta .btn-o { margin-left: 34px; background: #fff; border: 1px solid var(--red); color: #111; gap: 16px; }
+    .vd-empty { grid-column: 1 / -1; padding: 20px; font-size: 11px; }
+    @media (max-width: 1400px) {
+      .vd-body { grid-template-columns: minmax(0, 1fr) 300px; }
+      .vd-feat { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .vd-latest { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+      .vd-pl .top { gap: 16px; }
+      .vd-cta { display: flex; flex-wrap: wrap; gap: 10px 16px; width: auto; margin: 12px 13px 0 10px; }
+      .vd-cta > div { flex: 1 1 300px; }
+      .vd-cta .btn { width: 210px; }
+      .vd-cta .btn-o { margin-left: 0; }
+    }
+    @media (max-width: 1280px) {
+      .vd-bar { flex-wrap: wrap; height: auto; padding: 10px 14px; }
+      .vd-latest { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    }
+    @media (max-width: 1100px) {
+      .vd-hero { display: flex; flex-direction: column; height: auto; }
+      .vd-hero > img { position: static; order: 2; width: 100%; max-width: none; margin-top: 14px; }
+      .vd-bar .flt + .flt { margin-left: 0; }
+      .vd-body { grid-template-columns: minmax(0, 1fr); }
+      .vd-feat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .vd-fc img { height: auto; }
+      .vd-nx { right: -10px; }
+      .vd-r { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 0 30px; border-left: 0; border-top: 1px solid #f0f0f2; padding: 14px 25px 14px 12px; }
+      .vd-r > h3 { grid-column: 1 / -1; }
+      .vd-r > .vd-cat { grid-row: 2; }
+    }
+    @media (max-width: 760px) {
+      .vd-hero h1 { font-size: 28px; letter-spacing: 2px; }
+      .vd-hero .acts { flex-wrap: wrap; gap: 10px; }
+      .vd-box, .vd-cta { margin-left: 0; margin-right: 0; zoom: 1.25; }
+      .vd-bar .flt:first-of-type { margin-left: 0; }
+      .vd-bar .flt { flex: 1 1 100%; }
+      .vd-bar .vd-sel { flex: 1; }
+      .vd-l { padding: 12px 14px 8px; }
+      .vd-latest { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .vd-lc img { height: auto; }
+      .vd-r { padding: 14px; }
+      .vd-cta { padding: 12px 14px; }
+    }
+    @media (max-width: 480px) {
+      .vd-feat { grid-template-columns: minmax(0, 1fr); }
+      .vd-nx { top: 60px; right: 6px; }
+      .vd-cta .btn { flex: 1 1 100%; width: auto; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="about" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="vd-hero">
+    <img src="assets/img/videos/hero.png" alt="Piston machines in a factory — real demonstrations, installation stories, factory tours, customer success">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="hub.html">News, Case Studies &amp; Projects</a><span>›</span>Videos</div>
+      <span class="ey">Videos</span>
+      <h1>See Piston Machines<br><span>In Action.</span></h1>
+      <p>Watch machine demonstrations, installation stories,<br>factory tours and customer success videos.</p>
+      <div class="acts">
+        <a class="btn btn-red" href="#playlist">BROWSE PLAYLISTS <span>→</span></a>
+        <a class="btn btn-w" href="submit-story.html">SUBMIT YOUR VIDEO <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="vd-box">
+      <div class="vd-bar">
+        <a class="pill" href="hub.html">ALL CONTENT (124)</a>
+        <a class="pill" href="case-studies.html">CASE STUDIES (42)</a>
+        <a class="pill" href="projects.html">PROJECTS (38)</a>
+        <a class="pill" href="news.html">NEWS (28)</a>
+        <a class="pill on" href="videos.html">VIDEOS (16)</a>
+        <label class="flt">CATEGORY: <select class="vd-sel" id="cat" style="width:157px" aria-label="Category"><option value="">All Categories</option></select></label>
+        <label class="flt">INDUSTRY: <select class="vd-sel" style="width:148px" aria-label="Industry"><option>All Industries</option></select></label>
+        <label class="flt">SORT BY: <select class="vd-sel" id="sort" style="width:83px" aria-label="Sort by"><option value="latest">Latest</option><option value="views">Most Viewed</option></select></label>
+      </div>
+      <div class="vd-body">
+        <div class="vd-l">
+          <h3>FEATURED VIDEOS</h3>
+          <div class="vd-feat" id="feat"></div>
+          <div class="vd-lh"><h3>LATEST VIDEOS</h3><a href="#" id="all">VIEW ALL VIDEOS &nbsp;→</a></div>
+          <div class="vd-latest" id="latest"></div>
+        </div>
+        <aside class="vd-r">
+          <h3>BROWSE VIDEOS BY CATEGORY</h3>
+          <div class="vd-cat" id="cats"></div>
+          <div class="vd-pl" id="playlist">
+            <div class="hd"><h3>FEATURED PLAYLIST</h3><a href="#" data-toast="All playlists — demo">VIEW ALL PLAYLISTS &nbsp;→</a></div>
+            <div class="top"><img src="assets/img/videos/playlist.png" alt="12 videos"><div><b>Piston Machine<br>Demonstrations</b><p>See all our machines<br>in action</p><small>12 Videos</small></div></div>
+            <ul id="pl"></ul>
+            <button class="vp" data-video="Piston Machine Demonstrations — playlist">VIEW PLAYLIST <span>→</span></button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="vd-cta">
+      <img src="assets/img/videos/cta.png" alt="">
+      <div><h3>WANT TO SEE MORE?</h3><p>Subscribe to our YouTube channel for the latest videos,<br>machine demos and customer stories.</p></div>
+      <button class="btn btn-red" data-toast="YouTube channel link — set from the Admin Portal"><img src="assets/img/videos/yt.png" alt="">SUBSCRIBE ON YOUTUBE</button>
+      <a class="btn btn-o" href="submit-story.html">SUBMIT YOUR VIDEO <span>→</span></a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { qs, qsa, esc } = P;
+      const A = "assets/img/videos/";
+      const CATS = [["Machine Demonstrations", 28], ["Installation & Setup", 22], ["Factory Tours", 16], ["Customer Stories", 18], ["Technology & Innovation", 14], ["Maintenance Tips", 12], ["Events & Exhibitions", 14]];
+      let FEAT = [
+        ["f-1", "R32 Sliding Table Saw – Full Demo", "High precision cutting with maximum stability", "May 15, 2024", "12.5K"],
+        ["f-2", "PEB 368 Edge Bander – Live Demo", "Perfect edge finishing for modern production", "Apr 28, 2024", "9.8K"],
+        ["f-3", "PBD 21 Drilling Machine – In Action", "High speed, high accuracy drilling", "Apr 18, 2024", "7.6K"],
+        ["f-4", "PVPM 2500 Vacuum Press – Overview", "Strong, reliable, and energy efficient", "Mar 30, 2024", "6.3K"]
+      ];
+      const LATEST = [
+        ["l-1", "Complete Furniture<br>Production Line", "Factory walkthrough", "May 10, 2024", "8.2K", "Installation & Setup"],
+        ["l-2", "Edge Banding Process<br>Step by Step", "From panel to perfect edge", "May 6, 2024", "5.4K", "Machine Demonstrations"],
+        ["l-3", "Piston Factory Tour<br>2024", "A look inside our<br>manufacturing facilities", "Apr 22, 2024", "11K", "Factory Tours"],
+        ["l-4", "Machine Installation<br>in Saudi Arabia", "From delivery to production", "Apr 15, 2024", "6.1K", "Installation & Setup"],
+        ["l-5", "Customer Success Story<br>– Cabinet Factory", "+28% productivity increase", "Apr 5, 2024", "4.9K", "Customer Stories"],
+        ["l-6", "Automation Solutions<br>for Woodworking", "Smarter production,<br>better results", "Mar 28, 2024", "3.7K", "Technology & Innovation"]
+      ];
+      const views = (v) => parseFloat(v) * (v.endsWith("K") ? 1000 : 1);
+      qs("#cat").insertAdjacentHTML("beforeend", CATS.map(([c]) => `<option>${esc(c)}</option>`).join(""));
+      qs("#cats").innerHTML = CATS.map(([c, n], i) => `<button data-cat="${esc(c)}"><img src="${A}cat-${i + 1}.png" alt=""><span>${esc(c)}</span><small>${n}</small></button>`).join("");
+      qs("#pl").innerHTML = [["R32 Sliding Table Saw Demo", "04:28"], ["PEB 368 Edge Bander Demo", "03:52"], ["PBD 21 Drilling Machine Demo", "05:16"], ["PVPM 2500 Vacuum Press Demo", "03:41"]]
+        .map(([t, d], i) => `<li><button data-video="${t}"><img src="${A}pl-${i + 1}.png" alt=""><span>${t}</span><small>${d}</small></button></li>`).join("");
+
+      const renderFeat = () => (qs("#feat").innerHTML = FEAT.map(([img, t, d, date, v]) => `<button class="vd-fc" data-video="${t}"><img src="${A}${img}.png" alt=""><b>${t}</b><span>${d}</span><small>${date} &nbsp;|&nbsp; ${v} views</small></button>`).join("")
+        + '<button class="vd-nx" id="nx" aria-label="Next videos">›</button>');
+      function renderLatest() {
+        const cat = qs("#cat").value;
+        qsa("#cats button").forEach((b) => b.classList.toggle("on", b.dataset.cat === cat));
+        let list = LATEST.filter((x) => !cat || x[5] === cat);
+        if (qs("#sort").value === "views") list = [...list].sort((a, b) => views(b[4]) - views(a[4]));
+        qs("#latest").innerHTML = list.map(([img, t, d, date, v]) => `<button class="vd-lc" data-video="${t.replace("<br>", " ")}"><img src="${A}${img}.png" alt=""><b>${t}</b><span>${d}</span><small>${date} &nbsp;|&nbsp; ${v} views</small></button>`).join("")
+          || `<div class="vd-empty">No ${esc(cat)} videos in the latest list. <a class="red" href="#" id="clr">Show all</a></div>`;
+      }
+      renderFeat(); renderLatest();
+      qs("#cats").onclick = (e) => { const b = e.target.closest("[data-cat]"); if (b) { qs("#cat").value = qs("#cat").value === b.dataset.cat ? "" : b.dataset.cat; renderLatest(); } };
+      qs("#cat").onchange = renderLatest;
+      qs("#sort").onchange = renderLatest;
+      qs("#all").onclick = (e) => { e.preventDefault(); qs("#cat").value = ""; renderLatest(); };
+
+      document.addEventListener("click", (e) => {
+        if (e.target.closest("#nx")) { FEAT = FEAT.slice(1).concat(FEAT.slice(0, 1)); renderFeat(); return; }
+        if (e.target.id === "clr") { e.preventDefault(); qs("#cat").value = ""; renderLatest(); return; }
+        const t = e.target.closest("[data-toast]"); if (t) { e.preventDefault(); P.toast(t.dataset.toast); return; }
+        const v = e.target.closest("[data-video]");
+        if (v) P.modal(`<h3>${esc(v.dataset.video)}</h3><div style="aspect-ratio:16/9;background:#111;color:#fff;display:grid;place-items:center;border-radius:4px;margin-top:10px">▶ Video plays here (demo placeholder)</div>`);
+      });
+    });
+  </script>
+</body>
+</html>

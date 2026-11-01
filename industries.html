@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Industries & Solutions — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* v2 overview (mockup 07.56.36) */
+    .iv-hero { position: relative; height: 247px; background: #fafafa; overflow: hidden; line-height: 1.35; }
+    .iv-hero > img { position: absolute; right: 0; top: 0; height: 100%; width: 838px; max-width: 58%; object-fit: cover; object-position: left; }
+    .iv-hero .in { position: relative; padding: 15px 0 0 55px; }
+    .iv-hero .breadcrumb { padding: 0; margin: 0; font-size: 11px; line-height: 14px; color: #222; gap: 7px; }
+    .iv-hero .breadcrumb b { font-weight: 600; }
+    .iv-hero h1 { font-family: var(--font); font-size: 46px; line-height: 39.3px; font-weight: 700; letter-spacing: .3px; margin: 13px 0 0; color: #111; }
+    .iv-hero h1 span { color: var(--red); }
+    .iv-hero p { font-size: 13px; line-height: 18px; color: #2b2d32; margin: 11px 0 0; max-width: 345px; }
+    .iv-stats { display: grid; grid-template-columns: 154.5px 177.5px 169.5px auto; margin-top: 20px; }
+    .iv-stats > div { display: flex; gap: 13px; align-items: center; height: 30px; }
+    .iv-stats > div + div { border-left: 1px solid #dcdcde; }
+    .iv-stats > div:nth-child(2) { padding-left: 30px; } .iv-stats > div:nth-child(3) { padding-left: 23px; } .iv-stats > div:nth-child(4) { padding-left: 22px; }
+    .iv-stats img { width: 31px; height: 30px; object-fit: contain; flex: none; }
+    .iv-stats b { display: block; font-size: 15.5px; line-height: 17px; }
+    .iv-stats small { display: block; font-size: 11px; color: #333; }
+    .iv-main { display: grid; grid-template-columns: 1135px 270px; column-gap: 35.5px; margin: 9px 18px 0 22px; line-height: 1.35; align-items: start; }
+    .iv-head { display: flex; align-items: center; height: 28px; }
+    .iv-head h2 { font-family: var(--font); font-size: 15px; font-weight: 700; letter-spacing: .2px; margin: 0 auto 0 1px; color: #111; }
+    .iv-search { display: flex; align-items: center; width: 278px; height: 28px; border: 1px solid #dcdcde; border-radius: 4px; background: #fff; padding: 0 10px 0 11px; }
+    .iv-search input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 11.5px; color: #222; background: none; min-width: 0; }
+    .iv-search svg { width: 15px; height: 15px; color: #777; }
+    .iv-sort { display: flex; align-items: center; gap: 10px; width: 138px; height: 28px; margin-left: 12px; border: 1px solid #dcdcde; border-radius: 4px; background: #fff; padding: 0 0 0 10px; font-size: 11px; color: #222; }
+    .iv-sort select { flex: 1; border: 0; outline: 0; background: none; font: inherit; font-size: 11px; color: #222; min-width: 0; cursor: pointer; }
+    .iv-cards { display: grid; grid-template-columns: 382px 357px 359px; column-gap: 18.5px; row-gap: 14px; margin-top: 8px; }
+    .iv-card { position: relative; display: block; height: 168px; border: 1px solid #e6e6e8; border-radius: 6px; overflow: hidden; background: #fff; color: #111; }
+    .iv-card > img { width: 100%; height: 86px; object-fit: cover; display: block; }
+    .iv-card .iv-pn { position: absolute; left: 11px; right: 13px; top: 71px; bottom: 1px; background: #fff; border-radius: 6px 6px 0 0; box-shadow: 0 -1px 6px rgba(0,0,0,.07); padding: 7px 0 0 72px; }
+    .iv-card .ib { position: absolute; left: 0; top: 0; width: 57px; height: 56px; border: 1px solid #ececee; border-radius: 6px; background: #fff; box-shadow: 0 1px 5px rgba(0,0,0,.06); display: grid; place-items: center; }
+    .iv-card .ib img { width: 34px; height: 34px; object-fit: contain; }
+    .iv-card h3 { font-family: var(--font); font-size: 13.5px; font-weight: 700; letter-spacing: 0; line-height: 16px; margin: 0; }
+    .iv-card p { font-size: 10.4px; line-height: 14.7px; color: #2b2d32; margin: 9px 0 0; max-width: 218px; }
+    .iv-card .ft { position: absolute; left: 10px; right: 17px; bottom: 9px; display: grid; grid-template-columns: 110px 1fr auto; align-items: center; font-size: 11px; }
+    .iv-card .ft b { font-weight: 700; }
+    .iv-card .ft b.r { color: var(--red); }
+    .iv-card .ft i { font-style: normal; color: var(--red); font-size: 18px; line-height: 1; }
+    .iv-card:hover { border-color: var(--red); }
+    .iv-none { grid-column: 1 / -1; padding: 30px; text-align: center; color: #555; font-size: 13px; }
+    .iv-global { display: grid; grid-template-columns: 499px 193px 202px 1fr; align-items: center; height: 70px; margin-top: 15px; background: #f8f8f9; border: 1px solid #ececee; border-radius: 6px; }
+    .iv-global .gl { display: flex; align-items: center; gap: 19px; padding-left: 5px; }
+    .iv-global .gl img { width: 72px; height: 68px; flex: none; }
+    .iv-global h3 { font-family: var(--font); font-size: 14.5px; font-weight: 700; letter-spacing: 0; margin: 0; color: #111; }
+    .iv-global p { font-size: 10.8px; line-height: 14.6px; color: #222; margin: 4px 0 0; max-width: 330px; }
+    .iv-global .gs { display: flex; align-items: center; gap: 16px; height: 42px; border-left: 1px solid #dcdcde; padding-left: 47px; }
+    .iv-global .gs:nth-child(2) { padding-left: 50px; } .iv-global .gs:nth-child(4) { padding-left: 45px; }
+    .iv-global .gs img { width: 30px; height: 32px; object-fit: contain; }
+    .iv-global .gs b { display: block; font-size: 14.5px; line-height: 17px; }
+    .iv-global .gs small { display: block; font-size: 11px; color: #333; }
+    .iv-side { margin-top: 11.5px; height: 444.5px; border: 1px solid #ececee; border-radius: 6px; background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,.04); padding: 21px 25px 0 32px; }
+    .iv-side h3 { font-family: var(--font); font-size: 15.5px; line-height: 19px; font-weight: 700; letter-spacing: 0; margin: 0; color: #111; }
+    .iv-side > p { font-size: 11.5px; line-height: 15.3px; color: #222; margin: 8px 0 0; max-width: 185px; }
+    .iv-side ul { list-style: none; margin: 25px 0 0; padding: 0; }
+    .iv-side li { display: grid; grid-template-columns: 27px 1fr; column-gap: 17px; height: 65.7px; }
+    .iv-side li img { width: 27px; height: 27px; object-fit: contain; margin-top: 2px; }
+    .iv-side li b { display: block; font-size: 11.5px; }
+    .iv-side li small { display: block; font-size: 11px; line-height: 15px; color: #333; margin-top: 3px; }
+    .iv-side .btn { width: 219px; margin-left: -7px; font-size: 12px; gap: 0; padding: 0; position: relative; }
+    .iv-side .btn-red { height: 37px; margin-top: 4px; }
+    .iv-side .btn-red span { position: absolute; right: 16px; font-size: 16px; }
+    .iv-side .btn-o { height: 40px; margin-top: 16px; background: #fff; border: 1px solid #555; color: #111; gap: 14px; }
+    .iv-side .btn-o svg { width: 18px; height: 18px; }
+    .iv-v1 .is-tabs { margin-top: 26px; }
+    .iv-news { display: flex; align-items: center; height: 57px; margin: 14px 20px 10px 23px; background: #0b0d11; border-radius: 6px; color: #fff; line-height: 1.3; }
+    .iv-news > img { width: 30px; margin: 0 21px 0 26px; }
+    .iv-news .tx { width: 312px; }
+    .iv-news b { display: block; font-size: 11px; letter-spacing: .3px; }
+    .iv-news small { display: block; font-size: 9.5px; line-height: 11.3px; color: #c9ccd1; margin-top: 4px; max-width: 205px; }
+    .iv-news form { display: flex; gap: 8px; }
+    .iv-news input { width: 365px; height: 32px; box-sizing: border-box; border: 1px solid #3a3d44; border-radius: 3px; background: transparent; color: #fff; padding: 0 18px; font: inherit; font-size: 12.5px; }
+    .iv-news input::placeholder { color: #b9bcc2; }
+    .iv-news button { width: 111px; height: 31px; border: 0; border-radius: 3px; background: #c4060f; color: #fff; font: inherit; font-size: 11.5px; font-weight: 700; letter-spacing: .3px; cursor: pointer; }
+    .iv-news .fo { display: flex; align-items: center; margin-left: 155px; font-size: 11.5px; font-weight: 700; letter-spacing: .3px; }
+    .iv-news .fo span { margin-right: 52px; }
+    .iv-news .fo a { margin-right: 10.5px; }
+    .iv-news .fo img { width: 31px; height: 31px; display: block; }
+    @media (max-width: 1500px) { .iv-main { grid-template-columns: 1fr; } .iv-side { height: auto; padding-bottom: 20px; } .iv-cards { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); } .iv-global { grid-template-columns: 1fr; height: auto; padding: 10px; } .iv-news { flex-wrap: wrap; height: auto; padding: 12px; } .iv-news .fo { margin-left: 0; } }
+    /* v1 explorer (mockup 06.27.33) */
+    .is-tabs { position: relative; z-index: 2; margin-top: -20px; margin-left: 5px; margin-right: 8px; background: #fff; border: 1px solid #ececef; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,.05); padding: 10px 40px 8px; text-align: center; }
+    .is-tabs h4 { font-family: var(--font); font-size: 13px; letter-spacing: 0; margin: 0 0 12px; }
+    .is-tabs .row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+    .is-tabs button { background: #fff; border: 1px solid #ececef; border-radius: 3px; padding: 6px 4px 6px; font-size: 11px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .is-tabs button img { height: 30px; }
+    .is-tabs button.on { border: 1.5px solid var(--red); color: var(--red); border-bottom-width: 3px; }
+    .is-grid { display: grid; grid-template-columns: 284px 1fr 300px; gap: 8px; margin: 10px 8px 0 5px; line-height: 1.35; align-items: start; }
+    .is-grid > aside { grid-row: span 2; }
+    .is-box { background: #fff; border: 1px solid #ececef; border-radius: 4px; padding: 10px 10px; }
+    .is-box h3, .is-sol h3 { font-family: var(--font); font-size: 11.5px; font-weight: 700; letter-spacing: 0; margin: 0 0 8px; }
+    .is-ind h3 { font-size: 12.5px; }
+    .is-ind p { font-size: 10.5px; color: #2b2d32; margin: 0 0 8px; max-width: 230px; line-height: 1.4; }
+    .is-ind > img { width: 100%; border-radius: 3px; display: block; }
+    .is-ben { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 8px; margin-top: 12px; }
+    .is-ben div { display: flex; gap: 10px; align-items: center; }
+    .is-ben img { width: 20px; height: 20px; object-fit: contain; flex: none; }
+    .is-ben b { display: block; font-size: 8.5px; }
+    .is-ben small { font-size: 7.5px; color: #555; display: block; white-space: nowrap; }
+    .is-proc { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; margin: 4px 0 10px; text-align: center; }
+    .is-proc > div { position: relative; }
+    .is-proc > div + div::before { content: "\2192"; position: absolute; left: -12px; top: 26px; font-size: 18px; color: #333; }
+    .is-proc .ic { width: 50px; height: 50px; border-radius: 50%; background: #f3f4f6; margin: 10px auto 6px; display: grid; place-items: center; position: relative; }
+    .is-proc .ic img { width: 38px; mix-blend-mode: multiply; }
+    .is-proc .ic span { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 15px; height: 15px; border-radius: 50%; background: var(--red); color: #fff; font-size: 8.5px; display: grid; place-items: center; }
+    .is-proc b { display: block; font-size: 9.5px; }
+    .is-proc small { font-size: 8.5px; color: #333; display: block; max-width: 90px; margin: 2px auto 0; line-height: 1.3; }
+    .is-sol { border: 1px solid #ececef; border-radius: 3px; padding: 10px 12px 12px; }
+    .is-chain { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1fr 34px 1fr 120px; align-items: center; text-align: center; }
+    .is-chain .arr { font-size: 18px; color: #333; }
+    .is-chain img { width: 100%; height: 60px; object-fit: contain; }
+    .is-chain b { display: block; font-size: 9.5px; margin-top: 6px; }
+    .is-chain small { font-size: 8px; }
+    .is-line { text-align: left; padding-left: 16px; border-left: 1px solid #ececef; font-size: 8px; }
+    .is-line img { width: 18px; margin-bottom: 6px; }
+    .is-line b { display: block; font-size: 8px; margin: 0 0 4px; }
+    .is-line .btn { margin-top: 10px; border: 1px solid var(--red); color: var(--red); background: #fff; padding: 6px 10px; font-size: 8px; }
+    .is-res .r { display: flex; gap: 18px; align-items: center; margin-bottom: 8px; }
+    .is-res .r img { width: 28px; height: 28px; object-fit: contain; }
+    .is-res .r b { display: block; font-size: 16px; font-family: var(--font-head); }
+    .is-res .r small { font-size: 9.5px; }
+    .is-res .vc { display: block; text-align: center; border: 1px solid #ececef; border-radius: 3px; padding: 6px; font-size: 9.5px; font-weight: 700; }
+    .is-exp { margin-top: 8px; }
+    .is-exp .row { display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: start; }
+    .is-exp .row img { width: 70px; }
+    .is-exp p { font-size: 9px; margin: 4px 0 0; }
+    .is-exp .btn { width: 100%; margin-top: 8px; font-size: 9.5px; padding: 8px; gap: 10px; }
+    .is-exp small { display: block; text-align: center; font-size: 8.5px; color: #555; margin-top: 6px; }
+    .is-vals { grid-column: 1 / 3; display: grid; grid-template-columns: repeat(4, 1fr); padding: 6px 0; line-height: 1.35; }
+    .is-vals > div { display: flex; gap: 18px; align-items: center; padding: 0 28px; border-left: 1px solid #d9dadd; }
+    .is-vals > div:first-child { border-left: 0; }
+    .is-vals img { width: 28px; height: 28px; object-fit: contain; }
+    .is-vals b { display: block; font-size: 9px; }
+    .is-vals small { font-size: 8.5px; color: #333; }
+    @media (max-width: 1400px) {
+      .iv-global { grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); }
+      .iv-global .gs:nth-child(n) { padding-left: 24px; }
+    }
+    @media (max-width: 1100px) {
+      .is-tabs { margin-left: 0; margin-right: 0; }
+      .is-tabs .row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .is-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 10px 0 0; }
+      .is-grid > :nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+      .is-grid > aside { grid-row: auto; }
+      .is-vals { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
+      .is-vals > div:nth-child(3) { border-left: 0; }
+      .is-tabs h4 { font-size: 14px; }
+      .is-tabs button { font-size: 12px; }
+      .is-box h3, .is-sol h3 { font-size: 13px; }
+      .is-ind p { font-size: 13px; max-width: none; }
+      .is-ben b { font-size: 12px; }
+      .is-ben small { font-size: 12px; white-space: normal; }
+      .is-proc b { font-size: 12.5px; }
+      .is-proc small { font-size: 12px; max-width: none; }
+      .is-chain b { font-size: 13px; }
+      .is-chain small, .is-line, .is-line b, .is-line .btn, .is-res .r small, .is-res .vc, .is-exp p, .is-exp .btn, .is-exp small { font-size: 12px; }
+      .is-vals b { font-size: 13px; }
+      .is-vals small { font-size: 12px; }
+      .iv-hero { height: auto; display: flex; flex-direction: column; }
+      .iv-hero > img { position: static; order: 2; width: 100%; max-width: none; height: auto; margin-top: 18px; }
+      .iv-hero .in { padding: 15px 18px 0; }
+      .iv-main { margin: 9px 0 0; }
+      .iv-news { margin: 14px 0 10px; }
+    }
+    @media (max-width: 760px) {
+      .iv-hero .breadcrumb { flex-wrap: wrap; }
+      .iv-hero h1 { font-size: 36px; line-height: 1.05; }
+      .iv-hero p { font-size: 14px; line-height: 1.5; max-width: none; }
+      .iv-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 14px; }
+      .iv-stats > div:nth-child(n) { padding-left: 0; border-left: 0; }
+      .iv-stats > div:nth-child(even) { padding-left: 14px; border-left: 1px solid #dcdcde; }
+      .iv-stats small { font-size: 12px; }
+      .iv-head { flex-wrap: wrap; height: auto; gap: 8px; }
+      .iv-head h2 { width: 100%; margin: 0; }
+      .iv-search { flex: 1 1 180px; width: auto; height: 38px; }
+      .iv-sort { width: auto; height: 38px; margin-left: 0; padding-right: 6px; font-size: 12px; }
+      .iv-search input, .iv-sort select { font-size: 14px; }
+      .iv-cards { grid-template-columns: minmax(0, 1fr); }
+      .iv-card { height: auto; }
+      .iv-card .iv-pn { position: relative; left: auto; right: auto; top: auto; bottom: auto; margin: -15px 13px 0 11px; padding: 7px 0 44px 72px; }
+      .iv-card .ft { left: -1px; right: 6px; font-size: 12px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; }
+      .iv-card h3 { font-size: 14px; }
+      .iv-card p { font-size: 12px; line-height: 1.5; max-width: none; padding-right: 8px; }
+      .iv-global { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 12px; padding: 12px 8px; }
+      .iv-global .gl { grid-column: 1 / -1; padding-left: 0; gap: 12px; }
+      .iv-global .gl img { width: 56px; height: auto; }
+      .iv-global p { font-size: 12px; line-height: 1.5; }
+      .iv-global .gs:nth-child(n) { flex-direction: column; gap: 4px; height: auto; padding: 0 4px; text-align: center; }
+      .iv-global .gs:nth-child(2) { border-left: 0; }
+      .iv-global .gs small, .iv-side li small { font-size: 12px; }
+      .iv-side { padding: 20px 18px; }
+      .iv-side > p { font-size: 13px; max-width: none; }
+      .iv-side li { height: auto; padding-bottom: 16px; }
+      .iv-side li b { font-size: 13px; }
+      .iv-side .btn { width: 100%; margin-left: 0; }
+      .iv-news { flex-direction: column; align-items: stretch; gap: 12px; padding: 16px; }
+      .iv-news > img { margin: 0; }
+      .iv-news .tx { width: auto; }
+      .iv-news b { font-size: 13px; }
+      .iv-news small { font-size: 12px; line-height: 1.45; max-width: none; }
+      .iv-news input { flex: 1; width: auto; min-width: 0; height: 38px; padding: 0 12px; font-size: 14px; }
+      .iv-news button { height: 38px; font-size: 12px; }
+      .iv-news .fo span { margin-right: 16px; }
+      .is-tabs { padding: 10px 12px; }
+      .is-tabs .row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .is-grid { grid-template-columns: minmax(0, 1fr); }
+      .is-grid > :nth-child(2) { grid-row: auto; }
+      .is-proc { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 14px; }
+      .is-proc > div + div::before, .is-chain .arr { display: none; }
+      .is-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 14px; }
+      .is-line { grid-column: 1 / -1; border-left: 0; border-top: 1px solid #ececef; padding: 12px 0 0; }
+      .is-vals { grid-template-columns: minmax(0, 1fr); }
+      .is-vals > div { border-left: 0; padding: 0 8px; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="industries" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="iv-hero">
+    <img src="assets/img/industries/v2-hero.png" alt="Piston edge banding line">
+    <div class="in">
+      <div class="breadcrumb"><a href="index.html"><b>Home</b></a><span>›</span><b>Industries &amp; Solutions</b></div>
+      <h1>INDUSTRIES &amp;<br><span>SOLUTIONS</span></h1>
+      <p>Powering industries with precision woodworking solutions that drive productivity, quality and growth.</p>
+      <div class="iv-stats">
+        <div><img src="assets/img/industries/v2-hs-1.png" alt=""><span><b>6+</b><small>Industries Served</small></span></div>
+        <div><img src="assets/img/industries/v2-hs-2.png" alt=""><span><b>5000+</b><small>Machines Installed</small></span></div>
+        <div><img src="assets/img/industries/v2-hs-3.png" alt=""><span><b>80+</b><small>Countries Worldwide</small></span></div>
+        <div><img src="assets/img/industries/v2-hs-4.png" alt=""><span><b>Tailored</b><small>Solutions for You</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="iv-main">
+      <div>
+        <div class="iv-head"><h2>EXPLORE INDUSTRIES</h2>
+          <label class="iv-search"><input id="q" type="search" placeholder="Search industries..." aria-label="Search industries"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></label>
+          <label class="iv-sort">Sort By <select id="sort" aria-label="Sort industries"><option value="pop">Popular</option><option value="inst">Most Installations</option><option value="sol">Most Solutions</option><option value="az">Name (A–Z)</option></select></label>
+        </div>
+        <div class="iv-cards" id="cards"></div>
+        <section class="iv-global">
+          <div class="gl"><img src="assets/img/industries/v2-globe.png" alt=""><div><h3>GLOBAL EXPERIENCE, LOCAL SUPPORT</h3><p>With installations in over 80 countries, we understand the unique challenges of your market and provide local support worldwide.</p></div></div>
+          <div class="gs"><img src="assets/img/industries/v2-gs-1.png" alt=""><span><b>80+</b><small>Countries</small></span></div>
+          <div class="gs"><img src="assets/img/industries/v2-gs-2.png" alt=""><span><b>200+</b><small>Partners</small></span></div>
+          <div class="gs"><img src="assets/img/industries/v2-gs-3.png" alt=""><span><b>24/7</b><small>Global Support</small></span></div>
+        </section>
+      </div>
+      <aside class="iv-side">
+        <h3>NEED A SOLUTION FOR<br>YOUR INDUSTRY?</h3>
+        <p>Our experts will help you find the perfect solution for your business.</p>
+        <ul>
+          <li><img src="assets/img/industries/v2-si-1.png" alt=""><span><b>Expert Consultation</b><small>Talk to our specialists about<br>your specific needs.</small></span></li>
+          <li><img src="assets/img/industries/v2-si-2.png" alt=""><span><b>Custom Solutions</b><small>Tailored solutions designed<br>for your production goals.</small></span></li>
+          <li><img src="assets/img/industries/v2-si-3.png" alt=""><span><b>Increase Productivity</b><small>Boost efficiency and maximize<br>your ROI.</small></span></li>
+        </ul>
+        <button class="btn btn-red" data-wa-quote data-source="Industries &amp; Solutions">REQUEST A QUOTE<span>→</span></button>
+        <a class="btn btn-o" href="talk-to-engineer.html?type=custom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/><path d="M19 20a3 3 0 0 1-3 2h-2"/></svg>TALK TO AN ENGINEER</a>
+      </aside>
+    </div>
+
+    <div class="iv-v1">
+    <div class="is-tabs" id="explore"><h4>EXPLORE SOLUTIONS BY INDUSTRY</h4><div class="row" id="tabs"></div></div>
+    <section class="is-grid">
+      <div class="is-box is-ind" id="ind"></div>
+      <div class="is-box">
+        <h3>TYPICAL PRODUCTION PROCESS</h3>
+        <div class="is-proc" id="proc"></div>
+        <div class="is-sol"><h3>RECOMMENDED PISTON SOLUTION</h3><div class="is-chain" id="chain"></div></div>
+      </div>
+      <aside>
+        <div class="is-box is-res"><h3>REAL RESULTS</h3><div id="res"></div><a class="vc" href="case-studies.html">VIEW CASE STUDIES &nbsp;→</a></div>
+        <div class="is-box is-exp"><h3>TALK TO AN EXPERT</h3>
+          <div class="row"><img src="assets/img/industries/expert.png" alt="Piston engineer"><div><p>Need a custom solution for your production needs?</p><p>Our engineers are ready to help.</p></div></div>
+          <a class="btn btn-red" href="talk-to-engineer.html?type=custom">Get a Custom Solution &nbsp;→</a><small>Response within 24 hours</small></div>
+      </aside>
+      <section class="is-vals">
+        <div><img src="assets/img/industries/val-1.png" alt=""><span><b>Turnkey Solutions</b><small>From layout to installation</small></span></div>
+        <div><img src="assets/img/industries/val-2.png" alt=""><span><b>Global Experience</b><small>Projects in 50+ countries</small></span></div>
+        <div><img src="assets/img/industries/val-3.png" alt=""><span><b>Expert Engineering</b><small>Tailored to your needs</small></span></div>
+        <div><img src="assets/img/industries/val-4.png" alt=""><span><b>After Sales Support</b><small>Always by your side</small></span></div>
+      </section>
+    </section>
+    </div>
+
+    <section class="iv-news">
+      <img src="assets/img/industries/v2-mail.png" alt="">
+      <div class="tx"><b>STAY UPDATED</b><small>Subscribe to our newsletter for the latest news, innovations and industry insights.</small></div>
+      <form data-newsletter><input type="email" required placeholder="Enter your email address" aria-label="Your email address"><button>SUBSCRIBE</button></form>
+      <div class="fo"><span>FOLLOW US</span>
+        <a href="#" aria-label="LinkedIn" data-toast="LinkedIn page — link set from the Admin Portal (demo)"><img src="assets/img/industries/v2-soc-1.png" alt=""></a><a href="#" aria-label="YouTube" data-toast="YouTube page — link set from the Admin Portal (demo)"><img src="assets/img/industries/v2-soc-2.png" alt=""></a><a href="#" aria-label="Facebook" data-toast="Facebook page — link set from the Admin Portal (demo)"><img src="assets/img/industries/v2-soc-3.png" alt=""></a><a href="#" aria-label="Instagram" data-toast="Instagram page — link set from the Admin Portal (demo)"><img src="assets/img/industries/v2-soc-4.png" alt=""></a></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc, param, product, productImg } = P;
+      const I = "assets/img/industries/";
+      const steps = { furniture: [["Cutting", "Panel sizing and precision cutting"], ["Edge Banding", "Perfect edges every time"], ["Pressing", "Strong bonding and flat panels"], ["Drilling", "Accurate holes and fittings"], ["Finishing", "Final touch and inspection"]] };
+      const intro = { furniture: "Complete production solutions for modern furniture manufacturers. Improve efficiency, reduce waste and deliver exceptional quality." };
+      let cur = D.industries.some((i) => i.slug === param("slug")) ? param("slug") : "furniture";
+      qs("#tabs").innerHTML = D.industries.map((i) => `<button data-s="${i.slug}"><img src="${I}tab-${i.slug}.png" alt="">${esc(i.name)}</button>`).join("");
+      function render() {
+        const i = D.industries.find((x) => x.slug === cur);
+        qsa("#tabs button").forEach((b) => b.classList.toggle("on", b.dataset.s === cur));
+        qs("#ind").innerHTML = `<h3>${esc(i.name.toUpperCase())}</h3><p>${esc(intro[cur] || i.intro)}</p><img src="${I}furniture.png" alt="">
+          <div class="is-ben">${[["Higher Productivity", "Optimize your production flow"], ["Consistent Quality", "Precision in every step"], ["Reduced Waste", "Smart solutions, less material loss"], ["Lower Operating Cost", "Energy-efficient machinery"]]
+            .map(([t, s], n) => `<div><img src="${I}ben-${n + 1}.png" alt=""><span><b>${t}</b><small>${s}</small></span></div>`).join("")}</div>`;
+        const st = steps[cur] || i.process.slice(0, 5).map((s) => [s, ""]);
+        qs("#proc").innerHTML = st.map(([t, d], n) => `<div><div class="ic"><span>${n + 1}</span><img src="${I}proc-${(n % 5) + 1}.png" alt=""></div><b>${t}</b><small>${d}</small></div>`).join("");
+        const sol = i.solution.slice(0, 4);
+        qs("#chain").innerHTML = sol.map((id, n) => { const p = product(id); const own = ["r32", "peb368", "pvpm2500", "pbd21"].includes(id);
+          return `${n ? '<span class="arr">→</span>' : ""}<a href="product.html?id=${id}">${own ? `<img src="${I}sol-${id}.png" alt="">` : productImg(p)}<b>${esc(p.model.replace("PISTON ", ""))}</b><small>${esc(p.name)}</small></a>`; }).join("")
+          + `<div class="is-line"><img src="${I}line-ico.png" alt=""><b>COMPLETE<br>PRODUCTION LINE</b>Integrated solution for your ${esc(i.name.split(" ")[0].toLowerCase())} production<br><button class="btn" id="build">Build This Line &nbsp;→</button></div>`;
+        qs("#build").onclick = () => { sol.forEach((id) => P.addToQL(id, 1, true)); location.href = "quote-list.html"; };
+        qs("#res").innerHTML = i.benefits.slice(0, 3).map(([v, l], n) => `<div class="r"><img src="${I}res-${n + 1}.png" alt=""><span><b>${v}</b><small>${l}</small></span></div>`).join("");
+      }
+      qs("#tabs").onclick = (e) => { const b = e.target.closest("[data-s]"); if (b) { cur = b.dataset.s; render(); } };
+      render();
+
+      // v2 "Explore Industries" cards → industry detail pages. Counts as shown in mockup 07.56.36.
+      const V2 = {
+        furniture: [24, 1250, "Complete solutions for modern furniture production from start to finish."],
+        cabinet: [18, 980, "High-precision machinery for custom cabinet and modular furniture production."],
+        door: [16, 750, "Advanced solutions for interior, exterior and engineered door production."],
+        interior: [20, 640, "Machinery and solutions for custom interior fit-out and architectural woodwork."],
+        workshops: [15, 2100, "Reliable, space-saving machines for small workshops and craft businesses."],
+        industrial: [28, 1100, "Heavy-duty industrial solutions for high-volume and continuous production environments."]
+      };
+      const card = (i) => { const [s, n, d] = V2[i.slug];
+        return `<a class="iv-card" href="industry.html?slug=${i.slug}"><img src="${I}v2-card-${i.slug}.png" alt="">
+          <div class="iv-pn"><span class="ib"><img src="${I}v2-ic-${i.slug}.png" alt=""></span><h3>${esc(i.name.toUpperCase())}</h3><p>${esc(d)}</p>
+          <div class="ft"><span><b class="r">${s}</b> Solutions</span><span><b>${n}+</b> Installations</span><i>→</i></div></div></a>`; };
+      function cards() {
+        const q = qs("#q").value.trim().toLowerCase(), by = qs("#sort").value;
+        const list = D.industries.filter((i) => V2[i.slug] && (!q || `${i.name} ${V2[i.slug][2]}`.toLowerCase().includes(q)));
+        if (by === "inst") list.sort((a, b) => V2[b.slug][1] - V2[a.slug][1]);
+        if (by === "sol") list.sort((a, b) => V2[b.slug][0] - V2[a.slug][0]);
+        if (by === "az") list.sort((a, b) => a.name.localeCompare(b.name));
+        qs("#cards").innerHTML = list.map(card).join("") || `<div class="iv-none">No industries match “${esc(q)}”.</div>`;
+      }
+      qs("#q").addEventListener("input", cards);
+      qs("#sort").addEventListener("change", cards);
+      cards();
+      if (param("slug")) qs("#explore").scrollIntoView();
+    });
+  </script>
+</body>
+</html>

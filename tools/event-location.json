@@ -1,0 +1,81 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.27.03.png",
+ "out": "src/demo/assets/img/event",
+ "items": [
+  {
+   "name": "ti-location-on.png",
+   "box": [
+    728,
+    383,
+    747,
+    405
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "lo-1.png",
+   "box": [
+    70,
+    462,
+    91,
+    487
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "lo-2.png",
+   "box": [
+    68,
+    529,
+    93,
+    553
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "lo-3.png",
+   "box": [
+    68,
+    589,
+    93,
+    610
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "lo-4.png",
+   "box": [
+    69,
+    639,
+    92,
+    664
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "lo-5.png",
+   "box": [
+    68,
+    719,
+    93,
+    744
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "map.png",
+   "box": [
+    350,
+    440,
+    1126,
+    756
+   ]
+  }
+ ]
+}

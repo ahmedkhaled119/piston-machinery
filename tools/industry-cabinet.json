@@ -1,0 +1,351 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 06.30.19.png",
+ "out": "src/demo/assets/img/industry/cabinet",
+ "items": [
+  {
+   "name": "hero.png",
+   "box": [
+    540,
+    57,
+    1536,
+    375
+   ]
+  },
+  {
+   "name": "about.png",
+   "box": [
+    53,
+    488,
+    340,
+    582
+   ]
+  },
+  {
+   "name": "f-1.png",
+   "box": [
+    50,
+    598,
+    76,
+    626
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "f-2.png",
+   "box": [
+    209,
+    598,
+    237,
+    626
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "f-3.png",
+   "box": [
+    50,
+    653,
+    76,
+    681
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "f-4.png",
+   "box": [
+    209,
+    653,
+    237,
+    681
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "p-1.png",
+   "box": [
+    400,
+    440,
+    463,
+    498
+   ]
+  },
+  {
+   "name": "p-2.png",
+   "box": [
+    524,
+    440,
+    587,
+    498
+   ]
+  },
+  {
+   "name": "p-3.png",
+   "box": [
+    651,
+    440,
+    714,
+    498
+   ]
+  },
+  {
+   "name": "p-4.png",
+   "box": [
+    774,
+    440,
+    837,
+    498
+   ]
+  },
+  {
+   "name": "p-5.png",
+   "box": [
+    896,
+    440,
+    959,
+    498
+   ]
+  },
+  {
+   "name": "p-6.png",
+   "box": [
+    1018,
+    440,
+    1081,
+    498
+   ]
+  },
+  {
+   "name": "s-1.png",
+   "box": [
+    392,
+    575,
+    505,
+    640
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-2.png",
+   "box": [
+    545,
+    578,
+    652,
+    634
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-3.png",
+   "box": [
+    700,
+    578,
+    790,
+    634
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-4.png",
+   "box": [
+    835,
+    575,
+    948,
+    636
+   ],
+   "trim": true
+  },
+  {
+   "name": "s-5.png",
+   "box": [
+    982,
+    580,
+    1095,
+    636
+   ],
+   "trim": true
+  },
+  {
+   "name": "b-1.png",
+   "box": [
+    1166,
+    438,
+    1198,
+    470
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "b-2.png",
+   "box": [
+    1166,
+    477,
+    1198,
+    509
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "b-3.png",
+   "box": [
+    1166,
+    516,
+    1198,
+    548
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "b-4.png",
+   "box": [
+    1166,
+    555,
+    1198,
+    587
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "expert.png",
+   "box": [
+    1166,
+    630,
+    1252,
+    712
+   ]
+  },
+  {
+   "name": "a-1.png",
+   "box": [
+    54,
+    760,
+    81,
+    791
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-2.png",
+   "box": [
+    116,
+    760,
+    143,
+    791
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-3.png",
+   "box": [
+    177,
+    760,
+    205,
+    791
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-4.png",
+   "box": [
+    246,
+    760,
+    273,
+    791
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-5.png",
+   "box": [
+    314,
+    760,
+    341,
+    791
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "a-6.png",
+   "box": [
+    382,
+    760,
+    410,
+    791
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "story.png",
+   "box": [
+    489,
+    757,
+    643,
+    839
+   ]
+  },
+  {
+   "name": "m-1.png",
+   "box": [
+    852,
+    758,
+    968,
+    815
+   ],
+   "trim": true
+  },
+  {
+   "name": "m-2.png",
+   "box": [
+    1010,
+    756,
+    1120,
+    812
+   ],
+   "trim": true
+  },
+  {
+   "name": "m-3.png",
+   "box": [
+    1180,
+    758,
+    1262,
+    812
+   ],
+   "trim": true
+  },
+  {
+   "name": "m-4.png",
+   "box": [
+    1326,
+    758,
+    1432,
+    812
+   ],
+   "trim": true
+  },
+  {
+   "name": "tab-on.png",
+   "box": [
+    380,
+    336,
+    430,
+    372
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

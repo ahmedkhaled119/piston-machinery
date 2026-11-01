@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News &amp; Insights — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .nw-hero { position: relative; height: 188px; background: #fff; line-height: 1.35; }
+    .nw-hero > img { position: absolute; right: 0; top: 0; width: 1046px; max-width: 69%; }
+    .nw-hero .container { position: relative; }
+    .nw-hero .breadcrumb { padding: 9px 0 0 12px; font-size: 11px; color: #222; margin: 0; gap: 6px; }
+    .nw-hero .ey { display: block; margin: 14px 0 0 12px; color: var(--red); font-weight: 700; font-size: 10.5px; text-transform: uppercase; }
+    .nw-hero h1 { font-size: 35px; font-weight: 800; line-height: .95; letter-spacing: 3.2px; margin: 4px 0 10px 12px; color: #111; }
+    .nw-hero p { font-size: 12.4px; color: #111; margin: 0 0 0 12px; max-width: 250px; line-height: 1.4; }
+    .nw-bar { display: flex; align-items: center; gap: 11px; height: 28px; margin: 8px 27px 0 12px; }
+    .nw-bar a.pill { height: 28px; padding: 0 20px; display: grid; place-items: center; border: 1px solid #e3e4e7; border-radius: 2px; color: #111; font-size: 9.4px; font-weight: 700; }
+    .nw-bar a.pill.on { background: var(--red); border-color: var(--red); color: #fff; padding: 0 14px; }
+    .nw-bar .flt { display: flex; align-items: center; gap: 10px; font-size: 9px; }
+    .nw-bar .flt:first-of-type { margin-left: auto; }
+    .nw-bar .flt + .flt { margin-left: 18px; }
+    .nw-sel { height: 24px; border: 1px solid #e3e4e7; border-radius: 2px; font: inherit; font-size: 8.6px; padding: 0 10px; appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' fill='none' stroke='%23333' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 10px center; }
+    .nw-main { display: grid; grid-template-columns: 1061px 1fr; gap: 10px; margin: 9px 11px 10px 9px; line-height: 1.35; align-items: start; }
+    .nw-box { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.07); }
+    .nw-box h3, .nw-l h3 { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0; margin: 0; color: #111; }
+    .nw-l { padding: 10px 5px 4px 10px; }
+    .nw-top { display: grid; grid-template-columns: 664px 1fr; gap: 24px; margin-top: 6px; }
+    .nw-feat { display: grid; grid-template-columns: 396px 1fr; box-shadow: 0 1px 6px rgba(0,0,0,.08); border-radius: 2px; color: #111; height: 228px; }
+    .nw-feat > img { width: 396px; height: 228px; display: block; }
+    .nw-feat .t { padding: 16px 20px 18px 25px; display: flex; flex-direction: column; }
+    .nw-feat small { font-size: 8.4px; }
+    .nw-feat b { font-size: 14.6px; line-height: 1.3; margin-top: 12px; }
+    .nw-feat p { font-size: 10px; line-height: 1.6; margin: 14px 0 0; flex: 1; }
+    .nw-lk { color: var(--red); font-size: 8.2px; font-weight: 700; display: inline-flex; gap: 12px; }
+    .nw-feat .nw-lk { font-size: 9px; }
+    .nw-side { display: grid; gap: 17px; margin-top: -13px; }
+    .nw-sc { display: grid; grid-template-columns: 123px 1fr; gap: 16px; padding: 0 8px; height: 72px; box-shadow: 0 1px 6px rgba(0,0,0,.07); border-radius: 2px; color: #111; }
+    .nw-sc > img { width: 123px; height: 66px; margin-top: 0; display: block; }
+    .nw-sc small { display: block; font-size: 8.2px; margin-top: 5px; }
+    .nw-sc b { display: block; font-size: 10.6px; line-height: 1.45; margin: 3px 0 3px; }
+    .nw-grid { display: grid; grid-template-columns: 350px 344px 1fr; gap: 10px 12px; margin-top: 11px; }
+    .nw-c { display: grid; grid-template-columns: 147px 1fr; gap: 15px; padding: 8px 6px 7px 7px; box-shadow: 0 1px 6px rgba(0,0,0,.07); border-radius: 2px; color: #111; min-height: 109px; }
+    .nw-c > img { width: 147px; height: 95px; object-fit: cover; display: block; }
+    .nw-c small { display: block; font-size: 8.2px; }
+    .nw-c b { display: block; font-size: 10.4px; line-height: 1.4; margin-top: 6px; }
+    .nw-c p { font-size: 9px; line-height: 1.35; margin: 2px 0 5px; }
+    .nw-more { display: flex; align-items: center; justify-content: center; gap: 12px; width: 145px; height: 23px; margin: 6px 0 0 450px; background: #fff; border: 1px solid #e3e4e7; border-radius: 2px; font-size: 8.4px; font-weight: 700; color: #111; }
+    .nw-r { display: grid; gap: 12px; }
+    .nw-cat { padding: 14px 14px 14px 15px; }
+    .nw-cat button { display: grid; grid-template-columns: 16px 1fr auto; gap: 12px; align-items: center; width: 100%; height: 23.8px; background: none; border: 0; padding: 0; text-align: left; font-size: 10.2px; cursor: pointer; }
+    .nw-cat button.on { color: var(--red); font-weight: 600; }
+    .nw-cat button img { width: 15px; }
+    .nw-cat button small { font-size: 9px; }
+    .nw-ev { padding: 12px 14px 12px 15px; }
+    .nw-ev .hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .nw-ev .hd a { color: var(--red); font-size: 8px; font-weight: 700; }
+    .nw-ev .it { display: grid; grid-template-columns: 43px 1fr 105px; gap: 13px; align-items: center; padding-bottom: 7px; margin-bottom: 7px; border-bottom: 1px solid #f0f0f2; font-size: 9.2px; line-height: 1.45; }
+    .nw-ev .it:last-child { border-bottom: 0; margin-bottom: 0; }
+    .nw-ev .it img { width: 43px; }
+    .nw-ev .it b { display: block; font-size: 10.2px; }
+    .nw-ev .it a { display: grid; place-items: center; height: 24px; border: 1px solid #e3e4e7; border-radius: 2px; color: #111; font-size: 8.2px; font-weight: 700; }
+    .nw-nl { padding: 14px 16px 12px; }
+    .nw-nl p { font-size: 10px; line-height: 1.55; margin: 6px 0 6px; }
+    .nw-nl form { display: grid; grid-template-columns: 1fr 104px; }
+    .nw-nl input { height: 26px; border: 1px solid #e3e4e7; border-right: 0; border-radius: 2px 0 0 2px; font: inherit; font-size: 9px; padding: 0 10px; }
+    .nw-nl button { background: var(--red); color: #fff; border: 0; border-radius: 0 2px 2px 0; font-size: 8.6px; font-weight: 700; cursor: pointer; }
+    .nw-nl .pv { display: flex; gap: 8px; align-items: center; font-size: 8.4px; margin-top: 10px; }
+    .nw-nl .pv img { width: 9px; }
+    .nw-empty { grid-column: 1 / -1; padding: 24px; text-align: center; font-size: 11px; }
+    @media (max-width: 1400px) {
+      .nw-main { grid-template-columns: minmax(0, 1fr) 330px; }
+      .nw-top { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+      .nw-feat { grid-template-columns: 396px minmax(0, 1fr); }
+      .nw-side { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 0; }
+      .nw-sc { grid-template-columns: 100px minmax(0, 1fr); gap: 10px; height: auto; min-height: 72px; padding: 0 8px 0 0; }
+      .nw-sc > img { width: 100px; height: 72px; object-fit: cover; }
+      .nw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nw-more { margin: 10px auto 4px; }
+      .nw-ev .it { grid-template-columns: 43px minmax(0, 1fr) 90px; gap: 10px; }
+    }
+    @media (max-width: 1280px) {
+      .nw-bar { flex-wrap: wrap; height: auto; gap: 8px 11px; }
+    }
+    @media (max-width: 1100px) {
+      .nw-hero { display: flex; flex-direction: column; height: auto; }
+      .nw-hero > img { position: static; order: 2; width: 100%; max-width: none; margin-top: 14px; }
+      .nw-bar { margin: 10px 0 0; }
+      .nw-bar .flt + .flt { margin-left: 0; }
+      .nw-main { grid-template-columns: minmax(0, 1fr); margin: 10px 0; }
+      .nw-r { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
+    }
+    @media (max-width: 760px) {
+      .nw-hero h1 { font-size: 30px; letter-spacing: 2px; }
+      .nw-hero p { max-width: none; margin-right: 12px; }
+      .nw-bar .flt:first-of-type { margin-left: 0; }
+      .nw-bar .flt { flex: 1 1 100%; }
+      .nw-bar .nw-sel { flex: 1; }
+      .nw-bar a.pill { padding: 0 12px; }
+      .nw-main, .nw-bar { zoom: 1.25; }
+      .nw-l { padding: 10px; }
+      .nw-feat { grid-template-columns: minmax(0, 1fr); height: auto; }
+      .nw-feat > img { width: 100%; height: auto; }
+      .nw-feat .t { padding: 12px 14px 14px; }
+      .nw-side, .nw-grid { grid-template-columns: minmax(0, 1fr); }
+      .nw-c { grid-template-columns: 110px minmax(0, 1fr); gap: 10px; }
+      .nw-c > img { width: 110px; height: 80px; }
+      .nw-r { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="about" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="nw-hero">
+    <img src="assets/img/news/hero.png" alt="Piston factory — innovation, expert insights, company updates, events &amp; exhibitions">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="hub.html">News, Case Studies &amp; Projects</a><span>›</span>News</div>
+      <span class="ey">News &amp; Insights</span>
+      <h1>Stay Updated.<br>Stay Ahead.</h1>
+      <p>The latest updates, innovations and insights from Piston and the woodworking industry.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="nw-bar">
+      <a class="pill" href="hub.html">ALL CONTENT (124)</a>
+      <a class="pill" href="case-studies.html">CASE STUDIES (42)</a>
+      <a class="pill" href="projects.html">PROJECTS (38)</a>
+      <a class="pill on" href="news.html">NEWS (28)</a>
+      <a class="pill" href="videos.html">VIDEOS (16)</a>
+      <label class="flt">CATEGORY: <select class="nw-sel" id="cat" style="width:132px" aria-label="Category"><option value="">All Categories</option></select></label>
+      <label class="flt">INDUSTRY: <select class="nw-sel" style="width:126px" aria-label="Industry"><option>All Industries</option></select></label>
+      <label class="flt">SORT BY: <select class="nw-sel" id="sort" style="width:91px" aria-label="Sort by"><option value="latest">Latest</option><option value="oldest">Oldest</option></select></label>
+    </div>
+
+    <div class="nw-main">
+      <section class="nw-box nw-l">
+        <h3>FEATURED NEWS</h3>
+        <div class="nw-top">
+          <div id="feat"></div>
+          <div class="nw-side" id="side"></div>
+        </div>
+        <h3 style="margin-top:17px">LATEST NEWS</h3>
+        <div class="nw-grid" id="grid"></div>
+        <a class="nw-more" href="#" id="more">VIEW ALL NEWS <span>→</span></a>
+      </section>
+
+      <aside class="nw-r">
+        <section class="nw-box nw-cat"><h3 style="margin-bottom:12px">BROWSE NEWS BY CATEGORY</h3><div id="cats"></div></section>
+        <section class="nw-box nw-ev"><div class="hd"><h3>UPCOMING EVENTS</h3><a href="event.html">VIEW ALL EVENTS &nbsp;→</a></div><div id="events"></div></section>
+        <section class="nw-box nw-nl">
+          <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+          <p>Get the latest news, updates and insights<br>delivered straight to your inbox.</p>
+          <form data-newsletter><input type="email" required placeholder="Enter your email address" aria-label="Email address"><button>SUBSCRIBE</button></form>
+          <div class="pv"><img src="assets/img/news/lock.png" alt="">We respect your privacy. Unsubscribe at any time.</div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc } = P;
+      const A = "assets/img/news/";
+      const N = (id) => D.news.find((n) => n.id === id);
+      const longDate = (d) => d.replace(/^Apr /, "April ").replace(/^Mar /, "March ");
+      const read = (id, label = "READ MORE") => `<span class="nw-lk">${label} <span>→</span></span>`;
+
+      const f = N("smart-manufacturing");
+      qs("#feat").innerHTML = `<a class="nw-feat" href="news-article.html?id=${f.id}"><img src="${A}${f.id}.png" alt="${esc(f.title)}"><div class="t"><small>${f.date}</small><b>Piston Unveils Next Generation<br>Smart Manufacturing Solutions</b><p>${esc(f.excerpt)}</p>${read(f.id, "READ FULL ARTICLE")}</div></a>`;
+      qs("#side").innerHTML = ["ligna-2024", "automation", "middle-east"].map(N).map((n) => `<a class="nw-sc" href="news-article.html?id=${n.id}"><img src="${A}${n.id}.png" alt=""><div><small>${longDate(n.date)}</small><b>${esc(n.title).replace("Thank You for", "Thank You<br>for").replace("Transforming ", "Transforming<br>").replace("Service ", "Service<br>")}</b>${read(n.id)}</div></a>`).join("");
+
+      const CATS = [["Product Updates", 12], ["Company News", 8], ["Industry Insights", 6], ["Events & Exhibitions", 5], ["Technology", 4], ["Partnerships", 3]];
+      qs("#cat").insertAdjacentHTML("beforeend", CATS.map(([c]) => `<option>${esc(c)}</option>`).join(""));
+      qs("#cats").innerHTML = CATS.map(([c, n], i) => `<button data-cat="${esc(c)}"><img src="${A}cat-${i + 1}.png" alt=""><span>${esc(c)}</span><small>${n}</small></button>`).join("");
+
+      const LATEST = ["ebs-series", "smart-control", "dubai-woodshow", "sustainability", "drill-series", "case-30"];
+      const brk = { "ebs-series": "Edge Banding Excellence:<br>New EBS Series", "smart-control": "Smart Control System Update<br>Now Available", "dubai-woodshow": "Piston Showcases Innovative<br>Solutions in Dubai WoodShow",
+        "sustainability": "Sustainability in Manufacturing:<br>Our Commitment", "drill-series": "New Drill Series Launched<br>for High Performance", "case-30": "Case Study: 30% Productivity<br>Increase in Cabinet Factory" };
+      function render() {
+        const cat = qs("#cat").value;
+        qsa("#cats button").forEach((b) => b.classList.toggle("on", b.dataset.cat === cat));
+        let list = LATEST.map(N).filter((n) => !cat || n.cat === cat);
+        if (qs("#sort").value === "oldest") list = list.reverse();
+        qs("#grid").innerHTML = list.map((n) => `<a class="nw-c" href="news-article.html?id=${n.id}"><img src="${A}${n.id}.png" alt=""><div><small>${longDate(n.date)}</small><b>${brk[n.id]}</b><p>${esc(n.excerpt)}</p>${read(n.id)}</div></a>`).join("")
+          || `<div class="nw-empty">No ${esc(cat)} articles in the latest news. <a class="red" href="#" id="all">Show all categories</a></div>`;
+      }
+      qs("#cats").onclick = (e) => { const b = e.target.closest("[data-cat]"); if (b) { qs("#cat").value = qs("#cat").value === b.dataset.cat ? "" : b.dataset.cat; render(); } };
+      qs("#cat").onchange = render;
+      qs("#sort").onchange = render;
+      qs("#grid").addEventListener("click", (e) => { if (e.target.id === "all") { e.preventDefault(); qs("#cat").value = ""; render(); } });
+      qs("#more").onclick = (e) => { e.preventDefault(); P.toast("Demo shows the latest 10 articles"); };
+      render();
+
+      qs("#events").innerHTML = ["ligna-2025", "dubai-woodshow-2025", "wofx-2025"].map((id) => D.events.find((e) => e.id === id)).map((e) =>
+        `<div class="it"><img src="${A}ev-${e.id}.png" alt="${esc(e.name)}"><div><b>${esc(e.name)}</b>${esc(e.dates.replace("–", "-"))}<br>${esc(e.city === "Hannover" ? "Hanover" : e.city)}, ${esc(e.country)}</div><a href="event.html?id=${e.id}">LEARN MORE</a></div>`).join("");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine Finder — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .mf-hero { background: radial-gradient(800px 380px at 75% 45%, #2a2c30 0%, #121316 60%, #0b0c0e 100%); color: #fff; position: relative; overflow: hidden; }
+    .mf-hero .container { display: grid; grid-template-columns: 1.2fr 0.8fr; min-height: 340px; padding-bottom: 50px; position: relative; }
+    .mf-hero .breadcrumb { color: #d0d1d5; font-size: 12px; padding: 18px 0 0; }
+    .mf-hero h1 { font-size: 54px; margin: 18px 0 8px; }
+    .mf-hero h3 { font-family: var(--font); text-transform: none; font-weight: 500; font-size: 24px; letter-spacing: 0; margin-bottom: 14px; }
+    .mf-hero p { color: #e1e2e5; font-size: 16px; max-width: 400px; }
+    .mf-hb { display: flex; gap: 0; margin-top: 18px; }
+    .mf-hb div { display: flex; gap: 10px; align-items: center; font-size: 12.5px; padding: 0 18px; border-left: 1px solid #3a3c42; line-height: 1.4; white-space: nowrap; }
+    .mf-hb div:first-child { border-left: 0; padding-left: 0; }
+    .mf-hb img { width: 30px; height: 30px; object-fit: contain; }
+    .mf-hero-img { position: absolute; right: -24px; top: 0; height: 100%; max-width: none; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%); }
+    .mf-steps { position: relative; z-index: 2; margin-top: -24px; background: #fff; border-radius: 8px; box-shadow: 0 6px 22px rgba(0,0,0,.08); display: grid; grid-template-columns: repeat(5, 1fr); padding: 22px 40px; }
+    .mf-step { position: relative; }
+    .mf-step .top { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; color: #8a8c92; font-size: 13px; }
+    .mf-step .n { width: 26px; height: 26px; border-radius: 50%; background: #c9cacd; color: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+    .mf-step .top::after { content: ""; flex: 1; border-top: 1px solid #d9dadd; margin-right: 18px; }
+    .mf-step:last-child .top::after { display: none; }
+    .mf-step b { display: block; font-size: 13px; text-transform: uppercase; color: #6a6c72; font-weight: 600; }
+    .mf-step small { color: #6a6c72; font-size: 12px; }
+    .mf-step.on .n, .mf-step.done .n { background: var(--red); }
+    .mf-step.on .top, .mf-step.on b { color: var(--red); }
+    .mf-step.done .top::after { border-color: var(--red); }
+    .mf-main { display: grid; grid-template-columns: 1.65fr 1fr; gap: 26px; margin-top: 18px; align-items: start; }
+    .mf-card { background: #fff; border: 1px solid #e6e7ea; border-radius: 6px; padding: 24px 24px; }
+    .mf-card .stepno { color: var(--red); font-weight: 700; font-size: 13px; }
+    .mf-card h2 { font-size: 27px; margin: 8px 0 6px; }
+    .mf-card .hint { color: #2b2d32; font-size: 14px; margin-bottom: 22px; }
+    .mf-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 32px; max-width: 790px; }
+    .mf-opt { position: relative; display: flex; gap: 16px; text-align: left; background: #fff; border: 1px solid #e3e4e7; border-radius: 4px; padding: 20px 18px 16px; cursor: pointer; min-height: 0; }
+    .mf-opt:hover { border-color: #c9cacd; }
+    .mf-opt.sel { border-color: var(--red); }
+    .mf-opt.sel::before { content: "✓"; position: absolute; top: -10px; left: -10px; width: 20px; height: 20px; border-radius: 50%; background: var(--red); color: #fff; font-size: 11px; display: grid; place-items: center; }
+    .mf-opt img, .mf-opt .ic { width: 46px; height: 46px; object-fit: contain; flex: none; }
+    .mf-opt .ic svg { width: 40px; height: 40px; color: #2b2d32; }
+    .mf-opt b { display: block; font-size: 14.5px; line-height: 1.35; margin-bottom: 8px; }
+    .mf-opt small { color: #4a4c52; font-size: 12px; line-height: 1.45; display: block; }
+    .mf-nav { display: flex; gap: 12px; margin-top: 28px; }
+    .mf-nav .btn { padding: 12px 20px; }
+    .mf-sum { padding: 26px 24px; }
+    .mf-sum h4 { font-size: 15px; margin-bottom: 16px; }
+    .mf-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid #ececef; cursor: pointer; }
+    .mf-row:last-child { border-bottom: 0; }
+    .mf-row img { width: 30px; height: 30px; object-fit: contain; }
+    .mf-row small { display: block; font-size: 11.5px; color: #2b2d32; }
+    .mf-row span { font-size: 13.5px; color: #6a6c72; }
+    .mf-row span.set { color: var(--red); }
+    .mf-row::after { content: "›"; margin-left: auto; font-size: 22px; color: #333; }
+    .mf-help { display: flex; gap: 16px; }
+    .mf-help img { width: 40px; height: 40px; object-fit: contain; }
+    .mf-help b { font-size: 15px; }
+    .mf-help p { font-size: 12.5px; color: #4a4c52; margin: 4px 0 8px; max-width: 220px; line-height: 1.4; }
+    .mf-help .btn { border-color: #b9bbc1; color: #222; font-size: 11px; padding: 7px 18px; }
+    .mf-live { background: #121316; color: #fff; border-radius: 6px; padding: 22px 24px; margin-top: 16px; display: grid; grid-template-columns: 1.05fr 0.85fr 0.85fr 0.9fr; gap: 28px; }
+    .mf-live h3 { font-size: 20px; margin-bottom: 6px; }
+    .mf-live .based { font-size: 13px; color: #d0d1d5; margin-bottom: 14px; }
+    .mf-best img { width: 100%; border-radius: 4px; display: block; background: #1b1d21; }
+    .mf-best .btns { display: flex; gap: 10px; margin-top: 10px; }
+    .mf-best .btn { flex: 1; padding: 11px 10px; font-size: 11px; }
+    .mf-best .btn-outline { border-color: #8a8c92; }
+    .mf-name { padding-top: 34px; }
+    .mf-name h2 { font-family: var(--font-head); font-size: 26px; margin: 0; }
+    .mf-name h4 { font-family: var(--font); text-transform: none; font-weight: 500; font-size: 17px; letter-spacing: 0; margin: 4px 0 10px; }
+    .mf-match { display: inline-block; background: #1e4d2b; color: #63d17f; font-size: 11px; padding: 4px 8px; border-radius: 2px; margin-bottom: 10px; }
+    .mf-name p { font-size: 13px; color: #d9dade; margin-bottom: 8px; }
+    .mf-name ul { list-style: none; padding: 0; margin: 10px 0 0; }
+    .mf-name li { font-size: 12px; color: #e1e2e5; margin-bottom: 7px; display: flex; gap: 10px; }
+    .mf-name li::before { content: "✓"; color: #63d17f; border: 1px solid #63d17f; border-radius: 50%; width: 15px; height: 15px; display: grid; place-items: center; font-size: 9px; flex: none; }
+    .mf-why { padding-top: 46px; border-left: 1px solid #26282d; padding-left: 26px; }
+    .mf-why h4 { font-size: 15px; margin-bottom: 18px; }
+    .mf-why .r { display: grid; grid-template-columns: 36px 1fr auto; gap: 10px; align-items: center; margin-bottom: 14px; }
+    .mf-why .r img { width: 28px; height: 28px; object-fit: contain; }
+    .mf-why .r small { font-size: 12px; color: #d0d1d5; display: block; margin-bottom: 4px; }
+    .mf-why .dots { color: #3ec46d; letter-spacing: 2px; font-size: 13px; }
+    .mf-why .r b { font-size: 17px; }
+    .mf-other { background: #1b1d21; border: 1px solid #2c2e33; border-radius: 6px; padding: 20px 16px; }
+    .mf-other h4 { font-size: 15px; margin-bottom: 14px; }
+    .mf-oi { display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: center; margin-bottom: 16px; }
+    .mf-oi img { width: 110px; height: 76px; object-fit: contain; background: #fff; border-radius: 3px; }
+    .mf-oi b { display: block; font-size: 15px; }
+    .mf-oi span { font-size: 12.5px; color: #d0d1d5; display: block; margin: 4px 0 10px; }
+    .mf-oi .btn { border-color: #8a8c92; font-size: 10px; padding: 8px 14px; }
+    .mf-sol { border: 1px solid #e6e7ea; border-radius: 6px; margin-top: 18px; display: grid; grid-template-columns: 1fr 230px; }
+    .mf-sol > div:first-child { padding: 18px 18px 20px; }
+    .mf-sol h3 { font-size: 20px; margin-bottom: 6px; }
+    .mf-sol .sub { font-size: 13px; color: #34363b; margin-bottom: 18px; }
+    .mf-chain { display: grid; grid-template-columns: 1fr 50px 1fr 50px 1fr 50px 1fr; align-items: center; }
+    .mf-chain .arr { text-align: center; font-size: 20px; color: #333; }
+    .mf-ci { position: relative; border: 1px solid #e3e4e7; border-radius: 4px; padding: 14px 10px 10px; text-align: center; }
+    .mf-ci .k { position: absolute; top: -1px; left: -1px; width: 30px; height: 30px; border: 1px solid #e3e4e7; border-radius: 50%; background: #fff; display: grid; place-items: center; font-weight: 700; font-size: 15px; }
+    .mf-ci img { height: 76px; width: 100%; object-fit: contain; }
+    .mf-ci b { display: block; font-size: 14.5px; margin-top: 8px; }
+    .mf-ci small { font-size: 12px; color: #4a4c52; }
+    .mf-build { border-left: 1px solid #e6e7ea; padding: 20px 22px; }
+    .mf-build h3 { font-size: 19px; line-height: 1.3; }
+    .mf-build p { font-size: 12.5px; color: #34363b; }
+    .mf-build img { width: 100%; margin-top: 12px; }
+    .mf-bottom { border: 1px solid #e6e7ea; border-radius: 6px; display: grid; grid-template-columns: 1fr 1fr; margin: 14px 0 14px; }
+    .mf-bottom > div { display: flex; gap: 26px; align-items: center; padding: 14px 28px; }
+    .mf-bottom > div + div { border-left: 1px solid #e6e7ea; }
+    .mf-bottom h3 { font-size: 20px; margin-bottom: 10px; }
+    .mf-bottom p { font-size: 12.5px; color: #34363b; max-width: 280px; }
+    .mf-bottom .btn-outline { border-color: #9a9ca2; color: #222; font-size: 11px; padding: 10px 18px; }
+    .mf-bottom .btn-red { font-size: 11px; padding: 11px 18px; }
+    .mf-live[hidden], #mainWrap [hidden] { display: none !important; }
+    .mf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .mf-hero.q .container { min-height: 290px; align-content: start; }
+    .mf-hero.q h1 { font-size: 40px; margin: 40px 0 10px; }
+    .mf-hero.q p { max-width: none; font-size: 17px; }
+    .mf-hero.q h3, .mf-hero.q .mf-hb { display: none; }
+    .mf-opts.v { grid-template-columns: repeat(5, 1fr); gap: 16px; max-width: none; }
+    .mf-opts.v .mf-opt { flex-direction: column; align-items: center; text-align: center; padding: 30px 14px 26px; gap: 22px; }
+    .mf-opts.v .mf-opt img { width: 64px; height: 56px; }
+    .mf-opts.v .mf-opt b { font-size: 16px; margin-bottom: 12px; }
+    .mf-opts.v .mf-opt small { font-size: 12.5px; }
+    .mf-opts.m { grid-template-columns: repeat(3, 1fr); gap: 20px 22px; max-width: none; }
+    .mf-opts.m .mf-opt { flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 18px 24px; gap: 22px; min-height: 204px; }
+    .mf-opts.m .mf-opt img { width: 82%; height: 96px; }
+    .mf-opts.m .mf-opt b { font-size: 16px; margin-bottom: 4px; }
+    .mf-opts.m .mf-opt.sel { background: #fff7f7; }
+    .mf-opts.m .mf-opt.sel::before, .mf-opts.v .mf-opt.sel::before { top: -9px; left: -9px; }
+    .mf-prod h5 { font-family: var(--font); text-transform: none; letter-spacing: 0; font-size: 17px; font-weight: 600; margin: 0 0 26px; }
+    .mf-prod h5 small { font-size: 12px; color: #6a6c72; font-weight: 400; }
+    .mf-prod section { padding: 6px 0 30px; border-bottom: 1px solid #ececef; margin-bottom: 28px; }
+    .mf-prod section:last-of-type { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+    .mf-sl { position: relative; margin: 0 4px; }
+    .mf-sl input { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; margin: 0; cursor: pointer; position: relative; z-index: 2; }
+    .mf-sl input::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--red) var(--f), #e3e4e7 var(--f)); }
+    .mf-sl input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--red); margin-top: -9px; border: 0; }
+    .mf-sl input::-moz-range-track { height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--red) var(--f), #e3e4e7 var(--f)); }
+    .mf-sl input::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--red); border: 0; }
+    .mf-sl .tick { position: absolute; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: #fff; border: 1px solid #d9dadd; transform: translateX(-50%); z-index: 1; }
+    .mf-sl .lbls { position: relative; height: 46px; margin-top: 14px; }
+    .mf-sl .lbls span { position: absolute; top: 0; transform: translateX(-50%); text-align: center; font-size: 14px; color: #2b2d32; white-space: nowrap; cursor: pointer; }
+    .mf-sl .lbls span:first-child { transform: none; text-align: left; }
+    .mf-sl .lbls span:last-child { transform: translateX(-100%); text-align: right; }
+    .mf-sl .lbls small { display: block; font-size: 12px; color: #4a4c52; margin-top: 6px; }
+    .mf-sizes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+    .mf-size { border: 1px solid #e3e4e7; border-radius: 4px; background: #fff; padding: 22px 8px; text-align: center; cursor: pointer; }
+    .mf-size b { display: block; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .mf-size small { font-size: 12px; color: #4a4c52; }
+    .mf-size.sel { border-color: var(--red); background: #fff4f4; }
+    .mf-row.cur span { color: var(--red); }
+    .mf-opts img { mix-blend-mode: multiply; }
+    .mf-main.wide { grid-template-columns: 2.8fr 1fr; }
+    .mf-main.wide .mf-row::after, .mf-main.res .mf-row::after { display: none; }
+    .mf-main.wide .mf-row img, .mf-main.res .mf-row img { filter: grayscale(1); }
+    .mf-row span.ml { line-height: 1.5; }
+    .mf-main.res { grid-template-columns: 2.1fr 1fr; margin-top: 18px; }
+    .mf-res { padding: 24px 28px 28px; }
+    .mf-res .tag { display: inline-block; background: var(--red); color: #fff; font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; }
+    .mf-res .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; margin-top: -6px; }
+    .mf-res .pic img, .mf-res .pic svg { width: 100%; height: 190px; object-fit: contain; display: block; }
+    .mf-res .hd { display: flex; justify-content: space-between; gap: 12px; }
+    .mf-res h2 { font-size: 32px; margin: 8px 0 4px; }
+    .mf-res h4 { font-family: var(--font); text-transform: none; font-weight: 500; letter-spacing: 0; font-size: 17px; color: #4a4c52; margin: 0; }
+    .mf-score { text-align: center; font-size: 10.5px; color: #4a4c52; flex: none; }
+    .mf-score .ring { --p: 95; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 4px; font-weight: 700; font-size: 17px; color: #222;
+      background: radial-gradient(closest-side, #fff 82%, transparent 84%), conic-gradient(#2fa94e calc(var(--p) * 1%), #e3e4e7 0); }
+    .mf-res ul { list-style: none; padding: 0; margin: 18px 0 0; }
+    .mf-res li { display: flex; gap: 12px; align-items: center; font-size: 13.5px; color: #34363b; margin-bottom: 12px; }
+    .mf-res li::before { content: "✓"; color: #2fa94e; border: 1.5px solid #2fa94e; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; width: 16px; height: 16px; display: grid; place-items: center; font-size: 10px; font-weight: 700; flex: none; }
+    .mf-res .acts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; margin-top: 22px; max-width: 760px; }
+    .mf-res .acts .btn { padding: 17px 10px; font-size: 14px; }
+    .mf-res .acts .btn-outline { border-color: #9a9ca2; color: #222; }
+    .mf-oth { margin-top: 18px; padding: 24px 24px 22px; }
+    .mf-oth h3 { font-size: 22px; margin-bottom: 20px; }
+    .mf-oth .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .mf-oc { border: 1px solid #ececef; border-radius: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 18px 18px 16px; align-items: center; }
+    .mf-oc img, .mf-oc svg { width: 100%; height: 110px; object-fit: contain; }
+    .mf-oc b { display: block; font-family: var(--font-head); font-size: 24px; }
+    .mf-oc span { display: block; font-size: 13.5px; color: #4a4c52; margin: 4px 0 14px; }
+    .mf-oc em { font-style: normal; color: #2fa94e; font-weight: 700; font-size: 19px; }
+    .mf-oc em small { font-weight: 400; font-size: 11.5px; color: #6a6c72; margin-left: 4px; }
+    .mf-oc .btn { margin-top: 14px; border-color: #9a9ca2; color: #222; font-size: 11.5px; padding: 10px 22px; }
+    .mf-next { margin-top: 16px; padding: 22px 18px; }
+    .mf-next h4 { font-size: 15px; margin-bottom: 14px; }
+    .mf-ns { display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: center; width: 100%; text-align: left; border: 1px solid #ececef; border-radius: 4px; background: #fff; padding: 14px 14px; margin-bottom: 8px; color: inherit; cursor: pointer; font: inherit; }
+    .mf-ns:hover { border-color: #c9cacd; }
+    .mf-ns img { width: 26px; height: 26px; object-fit: contain; }
+    .mf-ns b { display: block; font-size: 13.5px; font-weight: 600; }
+    .mf-ns small { font-size: 11.5px; color: #6a6c72; }
+    .mf-ns::after { content: "›"; font-size: 24px; color: #333; }
+    @media (max-width: 1100px) { .mf-opts.v, .mf-opts.m, .mf-sizes, .mf-res .grid, .mf-oth .row { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 1100px) { .mf-hero .container, .mf-main, .mf-live, .mf-sol, .mf-bottom { grid-template-columns: 1fr; } .mf-steps { grid-template-columns: repeat(2, 1fr); } .mf-opts { grid-template-columns: 1fr 1fr; } .mf-hero-img { opacity: .25; } }
+    @media (max-width: 1100px) {
+      .mf-main.wide, .mf-main.res { grid-template-columns: minmax(0, 1fr); }
+      .mf-main > *, .mf-live > *, .mf-sol > * { min-width: 0; }
+      .mf-hero .container { min-height: 0; padding-bottom: 50px; }
+      .mf-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 18px; padding: 22px 26px; }
+      .mf-step:nth-child(3) .top::after { display: none; }
+      .mf-name, .mf-why { padding-top: 0; }
+      .mf-why { border-left: 0; padding-left: 0; }
+      .mf-build { border-left: 0; border-top: 1px solid #e6e7ea; }
+      .mf-build img { max-width: 360px; }
+      .mf-bottom > div + div { border-left: 0; border-top: 1px solid #e6e7ea; }
+    }
+    @media (max-width: 760px) {
+      .mf-hero h1 { font-size: 42px; }
+      .mf-hero h3 { font-size: 20px; }
+      .mf-hero.q h1 { font-size: 30px; margin-top: 28px; }
+      .mf-hero.q p { font-size: 15px; }
+      .mf-hb { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
+      .mf-hb div { white-space: normal; padding: 0; border-left: 0; font-size: 12px; }
+      .mf-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 18px; gap: 16px 14px; }
+      .mf-step:nth-child(3) .top::after { display: block; }
+      .mf-step:nth-child(even) .top::after { display: none; }
+      .mf-step b { font-size: 12px; }
+      .mf-card { padding: 20px 18px; }
+      .mf-card h2 { font-size: 24px; }
+      .mf-opts { gap: 16px; }
+      .mf-nav { flex-wrap: wrap; }
+      .mf-nav .btn { flex: 1 1 auto; }
+      .mf-sl .lbls { height: 54px; }
+      .mf-sl .lbls span { font-size: 12.5px; }
+      .mf-sizes { gap: 12px; }
+      .mf-live { padding: 20px 18px; gap: 22px; }
+      .mf-res { padding: 20px 18px 22px; }
+      .mf-res .grid { grid-template-columns: minmax(0, 1fr); margin-top: 10px; }
+      .mf-res h2 { font-size: 28px; }
+      .mf-res .acts { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+      .mf-res .acts .btn { padding: 14px 10px; font-size: 13px; }
+      .mf-oth { padding: 20px 18px; }
+      .mf-oth .row { grid-template-columns: minmax(0, 1fr); }
+      .mf-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .mf-chain .arr { display: none; }
+      .mf-bottom > div { padding: 18px; gap: 16px; }
+      .mf-bottom > div > img:last-child { display: none; }
+    }
+    @media (max-width: 480px) {
+      .mf-opts:not(.v):not(.m) { grid-template-columns: minmax(0, 1fr); }
+      .mf-opts.v .mf-opt { padding: 22px 10px 18px; gap: 14px; }
+      .mf-opts.m .mf-opt { min-height: 160px; padding: 22px 10px 18px; gap: 14px; }
+      .mf-sizes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mf-sl .lbls span { white-space: normal; max-width: 76px; }
+      .mf-oi { grid-template-columns: 96px minmax(0, 1fr); }
+      .mf-oi img { width: 96px; }
+      .mf-oc { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body class="cf" data-nav="solutions" data-footer="values5">
+  <div id="site-header"></div>
+
+  <section class="mf-hero" id="hero">
+    <img class="mf-hero-img" src="assets/img/finder/hero.png" alt="">
+    <div class="container">
+      <div>
+        <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Machine Finder</div>
+        <h1 id="heroH1">Machine <span class="red">Finder</span></h1>
+        <h3>Find the right machine for your production</h3>
+        <p id="heroP">Answer a few questions and we'll recommend the best Piston machinery for your needs.</p>
+        <div class="mf-hb">
+          <div><img src="assets/img/finder/hb-1.png" alt="">Personalized<br>Recommendation</div>
+          <div><img src="assets/img/finder/hb-2.png" alt="">Backed by<br>Engineering Experts</div>
+          <div><img src="assets/img/finder/hb-3.png" alt="">Save Time<br>& Compare</div>
+          <div><img src="assets/img/finder/hb-4.png" alt="">Complete Production<br>Solutions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="mf-steps" id="steps"></div>
+    <div class="mf-main" id="mainWrap">
+      <div id="stepCard"></div>
+      <aside>
+        <div class="mf-card mf-sum"><h4 id="sumTitle">Your Selection Summary</h4><div id="summary"></div></div>
+        <div class="mf-card mf-next" id="nextCard" hidden><h4>Next Steps</h4>
+          <button class="mf-ns" id="nsQuote" data-wa-quote data-source="Machine Finder"><img src="assets/img/finder/ns-quote.png" alt=""><div><b>Request a Quote</b><small>Get a personalized quote</small></div></button>
+          <button class="mf-ns" id="nsLine"><img src="assets/img/finder/ns-line.png" alt=""><div><b>Build Production Line</b><small>Get complete solution</small></div></button>
+          <a class="mf-ns" href="talk-to-engineer.html"><img src="assets/img/finder/ns-expert.png" alt=""><div><b>Talk to an Expert</b><small>Free consultation</small></div></a>
+        </div>
+        <div class="mf-card" id="helpCard" style="margin-top:16px;padding:16px 24px">
+          <div class="mf-help"><img src="assets/img/finder/headset.png" alt=""><div><b>Need help choosing?</b><p>Talk to our experts and get personalized assistance.</p>
+            <a class="btn btn-outline" href="talk-to-engineer.html">🎧 Talk to an Expert</a></div></div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="mf-live" id="live"></section>
+
+    <section class="mf-sol">
+      <div><h3>Complete Solution for Your Production</h3><div class="sub" id="solSub"></div><div class="mf-chain" id="chain"></div></div>
+      <div class="mf-build"><h3>Build Your<br>Production Line</h3><p>Get a complete solution with seamless machine integration.</p>
+        <button class="btn btn-red btn-sm" id="buildLine">Build My Line &nbsp;→</button><img src="assets/img/finder/line-art.png" alt=""></div>
+    </section>
+
+    <section class="mf-bottom">
+      <div><img src="assets/img/finder/consultant.png" alt="" style="width:58px"><div><h3>No time to explore?</h3><p>Get a free consultation from our experts and let us recommend the best solution for you.</p>
+        <a class="btn btn-outline" href="talk-to-engineer.html">Schedule a Call &nbsp;→</a></div><img src="assets/img/finder/person.png" alt="" style="width:110px;margin-left:auto"></div>
+      <div><div><h3>Ready to get a quote?</h3><p>Get a detailed quote for the recommended machine or complete production line.</p>
+        <button class="btn btn-red" id="quoteNow">Request a Quote Now &nbsp;→</button></div><img src="assets/img/finder/quote-doc.png" alt="" style="width:70px;margin-left:auto"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc, icon, product, productImg, industry, openWhatsApp } = P;
+      const F = "assets/img/finder/";
+      const steps = [
+        { key: "industry", label: "Industry", sub: "Choose your industry", q: "What industry are you in?", hint: "Select the industry that best describes your business.", opts: [
+          ["furniture", "Furniture<br>Manufacturing", "Residential, office and custom furniture", F + "ind-furniture.png"], ["cabinet", "Cabinet<br>Manufacturing", "Kitchen, wardrobe and cabinet production", F + "ind-cabinet.png"],
+          ["door", "Door<br>Manufacturing", "Wooden and engineered door production", F + "ind-door.png"], ["interior", "Interior<br>Production", "Interior fit-out and woodwork solutions", F + "ind-interior.png"],
+          ["workshops", "Woodworking<br>Workshops", "Small to medium woodworking shops", F + "ind-workshops.png"], ["industrial", "Other<br>Industries", "Other wood-based applications", F + "ind-other.png"]] },
+        { key: "operation", label: "Operation", sub: "Select required operation", q: "What operation do you need?", hint: "Select the main operation you want to perform.", layout: "v", opts: [
+          ["cutting", "Cutting", "Panel sizing, ripping,<br>cross cutting", F + "op-cutting.png"], ["edge", "Edge Banding", "Edge finishing and<br>band application", F + "op-edge.png"],
+          ["pressing", "Pressing", "Veneer pressing and<br>lamination", F + "op-pressing.png"], ["drilling", "Drilling", "Holes, hinges and<br>hardware drilling", F + "op-drilling.png"],
+          ["other", "Other Operations", "Specialized<br>applications", F + "op-other.png"]] },
+        { key: "material", label: "Material", sub: "What material do you work with?", multi: true, layout: "m", q: "What material do you work with?", hint: "Select the material(s) you primarily work with.", opts: [
+          ["MDF", "MDF", "", F + "mat-mdf.png"], ["Plywood", "Plywood", "", F + "mat-plywood.png"], ["Solid Wood", "Solid Wood", "", F + "mat-solid.png"],
+          ["Laminate", "Laminate", "", F + "mat-laminate.png"], ["Particle Board", "Particle Board", "", F + "mat-particle.png"], ["Multiple", "Multiple Materials", "More than one material", F + "mat-multiple.png"]] },
+        { key: "volume", label: "Production", sub: "Tell us about your production", q: "Tell us about your production", hint: "This helps us recommend the best machine for your needs." }
+      ];
+      const LV = [["low", "Low", "(0 – 500)"], ["medium", "Medium", "(500 – 2000)"], ["high", "High", "(2000 – 10000)"], ["veryhigh", "Very High", "(10000+)"]];
+      const LP = [["standard", "Standard"], ["good", "Good"], ["high", "High"], ["veryhigh", "Very High"]];
+      const LS = [["small", "Small", "(1 – 300 m²)"], ["medium", "Medium", "(300 – 1000 m²)"], ["large", "Large", "(1000 – 3000 m²)"], ["verylarge", "Very Large", "(3000+ m²)"]];
+      const RESULT = { label: "Results", sub: "Get your recommendation", q: "Your recommended machine", hint: "Based on your selections, we recommend the following." };
+      const blank = () => ({ industry: "furniture", operation: null, material: [], volume: null, precision: null, size: null });
+      const sel = blank();
+      let cur = Math.min(5, Math.max(1, parseInt(P.param("step"), 10) || 1)) - 1;
+      // Deep links (?step=N) open with the sample answers shown on the mockup board.
+      if (cur >= 1) sel.operation = "cutting";
+      if (cur >= 2) sel.material = ["MDF"];
+      if (cur >= 3) Object.assign(sel, { volume: "high", precision: "high", size: "medium" });
+
+      const byOp = { cutting: ["r32", "r42", "pj1300"], edge: ["peb368", "peb468", "peb580"], pressing: ["pvpm2500", "pvpm3000"], drilling: ["pbd21", "pbd29", "pbd42"], other: ["cnc2500", "slc", "stacker"] };
+      const rec = () => { let l = [...byOp[sel.operation || "cutting"]]; if (sel.volume === "veryhigh") l = l.slice(1).concat(l[0]); return l.map(product); };
+      const nm = (list, v) => (list.find((x) => x[0] === v) || [])[1];
+      const label = (k) => {
+        if (k === "volume") return sel.volume && sel.precision && sel.size ? [nm(LV, sel.volume) + " Volume", nm(LP, sel.precision) + " Precision", nm(LS, sel.size) + " Workshop"] : null;
+        const s = steps.find((x) => x.key === k), v = sel[k]; if (!v || (Array.isArray(v) && !v.length)) return null;
+        return [(Array.isArray(v) ? v : [v]).map((x) => s.opts.find((o) => o[0] === x)[1].replace("<br>", " ")).join(", ")];
+      };
+      const done = (k) => !!label(k);
+      const back = '<button class="btn btn-outline" id="back" style="border-color:#bbb;color:#222">Back</button>';
+
+      function renderHero() {
+        const q = cur >= 2 ? (steps[cur] || RESULT) : null;
+        qs("#hero").classList.toggle("q", !!q);
+        qs("#heroH1").innerHTML = q ? esc(q.q) : 'Machine <span class="red">Finder</span>';
+        qs("#heroP").textContent = q ? q.hint : "Answer a few questions and we'll recommend the best Piston machinery for your needs.";
+      }
+      function renderSteps() {
+        qs("#steps").innerHTML = steps.concat([RESULT]).map((s, i) =>
+          `<div class="mf-step ${i === cur ? "on" : i < cur ? "done" : ""}" ${i <= cur ? `data-go="${i}" style="cursor:pointer"` : ""}><div class="top"><span class="n">${i + 1}</span>${i + 1}</div><b>${s.label}</b><small>${s.sub}</small></div>`).join("");
+      }
+      function renderSummary() {
+        qs("#sumTitle").textContent = cur === 0 ? "Your Selection Summary" : "Your Selection";
+        qs("#sumTitle").hidden = cur === 4;
+        qs("#summary").innerHTML = steps.map((s, i) => { const v = label(s.key), hot = cur > 0 && i === Math.min(cur, 3);
+          return `<div class="mf-row ${hot && v ? "cur" : ""}" data-go="${i}"><img src="${F}sum-${i + 1}.png" alt=""><div><small>${s.label}</small><span class="${v ? (cur === 0 ? "set" : "ml") : ""}">${v ? v.map(esc).join("<br>") : "Not selected"}</span></div></div>`; }).join("");
+      }
+      function slider(key, list, sub) {
+        const i = Math.max(0, list.findIndex((x) => x[0] === sel[key])), f = (i / 3) * 100;
+        return `<div class="mf-sl"><input type="range" min="0" max="3" step="1" value="${i}" data-k="${key}" style="--f:${f}%" aria-label="${key}">
+          ${[0, 1, 2, 3].map((t) => `<i class="tick" style="left:calc(11px + (100% - 22px) * ${t / 3})"></i>`).join("")}
+          <div class="lbls">${list.map((x, t) => `<span data-k="${key}" data-i="${t}" style="left:${t === 0 ? 0 : `calc(11px + (100% - 22px) * ${t / 3})`}">${x[1]}${sub ? `<small>${x[2]}</small>` : ""}</span>`).join("")}</div></div>`;
+      }
+      function renderProduction() {
+        sel.volume ||= "medium"; sel.precision ||= "good";
+        qs("#stepCard").innerHTML = `<div class="mf-card mf-prod"><h2 class="mf-sr">Tell us about your production</h2>
+          <section><h5>Production volume <small>(Panels per month)</small></h5>${slider("volume", LV, true)}</section>
+          <section><h5>Required precision level</h5>${slider("precision", LP, false)}</section>
+          <section><h5>Workshop size</h5><div class="mf-sizes">${LS.map(([v, t, d]) => `<button class="mf-size ${sel.size === v ? "sel" : ""}" data-size="${v}"><b>${t}</b><small>${d}</small></button>`).join("")}</div></section>
+          <div class="mf-nav">${back}<button class="btn btn-red" id="next">Next Step &nbsp;→</button></div></div>`;
+        const set = (k, i) => { sel[k] = (k === "volume" ? LV : LP)[i][0]; render(); };
+        qsa(".mf-sl input").forEach((r) => r.oninput = () => { r.style.setProperty("--f", (r.value / 3) * 100 + "%"); sel[r.dataset.k] = (r.dataset.k === "volume" ? LV : LP)[r.value][0]; renderSummary(); renderLive(); });
+        qsa(".mf-sl .lbls span").forEach((s) => s.onclick = () => set(s.dataset.k, +s.dataset.i));
+        qsa(".mf-size").forEach((b) => b.onclick = () => { sel.size = b.dataset.size; render(); });
+        qs("#back").onclick = () => go(cur - 1);
+        qs("#next").onclick = () => sel.size ? go(4) : P.toast("Please select your workshop size to continue");
+      }
+      function renderResult() {
+        const [b, ...others] = rec();
+        const mats = sel.material.filter((m) => m !== "Multiple");
+        const opPhrase = { cutting: "High precision cutting for panel sizing", edge: "Clean, durable edge finishing", pressing: "Even pressure for flawless lamination", drilling: "Accurate, repeatable hardware drilling", other: "Automation that keeps your line moving" }[sel.operation || "cutting"];
+        const short = (p) => esc(p.model.replace("PISTON ", ""));
+        qs("#stepCard").innerHTML = `<div class="mf-card mf-res"><span class="tag">Best Match</span>
+            <div class="grid"><div class="pic">${productImg(b)}</div>
+              <div><div class="hd"><div><h2>${esc(b.model)}</h2><h4>${esc(b.name)}</h4></div><div class="mf-score"><div class="ring" style="--p:95">95%</div>Match Score</div></div>
+                <ul><li>Excellent match for your application</li><li>${opPhrase}</li><li>Ideal for ${esc(mats.length ? mats.join(", ") : "MDF")} and wood-based materials</li><li>Perfect for your production volume</li><li>Great value for your investment</li></ul></div></div>
+            <div class="acts"><a class="btn btn-red" href="product.html?id=${b.id}">View Machine Details &nbsp;→</a><a class="btn btn-outline" id="cmpBtn" href="compare.html">Compare Machines</a></div></div>
+          <div class="mf-card mf-oth"><h3>Other Great Options</h3><div class="row">${others.slice(0, 2).map((o, i) => `<div class="mf-oc"><div>${productImg(o)}</div>
+            <div><b>${short(o)}</b><span>${esc(o.name)}</span><em>${90 - i * 5}%<small>Match Score</small></em><br><a class="btn btn-outline" href="product.html?id=${o.id}">View Details</a></div></div>`).join("")}</div></div>`;
+        qs("#cmpBtn").onclick = () => P.setCmp([b, ...others].map((p) => p.id));
+        qs("#nsQuote").dataset.items = b.id;
+      }
+      function renderCard() {
+        qs("#mainWrap").classList.toggle("res", cur === 4);
+        qs("#mainWrap").classList.toggle("wide", cur > 0 && cur < 4);
+        qs("#nextCard").hidden = cur !== 4; qs("#helpCard").hidden = cur === 4; qs("#live").hidden = cur === 4;
+        if (cur === 4) return renderResult();
+        if (cur === 3) return renderProduction();
+        const s = steps[cur];
+        const head = cur < 2 ? `<div class="stepno">STEP 0${cur + 1} OF 5</div><h2>${s.q}</h2><p class="hint">${s.hint}</p>` : `<h2 class="mf-sr">${s.q}</h2>`;
+        qs("#stepCard").innerHTML = `<div class="mf-card">${head}
+          <div class="mf-opts ${s.layout || ""}">${s.opts.map(([v, t, d, im]) => { const on = s.multi ? sel[s.key].includes(v) : sel[s.key] === v;
+            return `<button class="mf-opt ${on ? "sel" : ""}" data-v="${v}" aria-pressed="${on}"><img src="${im}" alt=""><div><b>${t}</b>${d ? `<small>${d}</small>` : ""}</div></button>`; }).join("")}</div>
+          <div class="mf-nav">${cur ? back : ""}<button class="btn btn-red" id="next">Next Step &nbsp;→</button></div></div>`;
+        qsa(".mf-opt").forEach((b) => b.onclick = () => {
+          if (s.multi) { const a = sel[s.key], i = a.indexOf(b.dataset.v); i > -1 ? a.splice(i, 1) : a.push(b.dataset.v); } else sel[s.key] = b.dataset.v;
+          render();
+        });
+        if (qs("#back")) qs("#back").onclick = () => go(cur - 1);
+        qs("#next").onclick = () => done(s.key) ? go(cur + 1) : P.toast("Please make a selection to continue");
+      }
+      function renderLive() {
+        const [b, ...others] = rec();
+        const isDefault = b.id === "r32";
+        const scores = [["Industry Match", 95, sel.industry], ["Operation Match", 90, sel.operation], ["Material Compatibility", 90, sel.material.length], ["Production Suitability", 85, sel.volume]];
+        qs("#live").innerHTML = `
+          <div class="mf-best"><h3>Live Recommendation <span class="red">Preview</span></h3><div class="based">Based on your current selection</div>
+            ${isDefault ? `<img src="${F}best.png" alt="${esc(b.model)}">` : `<div style="position:relative;background:#fff;border-radius:4px;padding:20px;height:212px;display:grid;place-items:center">${productImg(b)}<span class="pc-badge">Best Match</span></div>`}
+            <div class="btns"><a class="btn btn-red" href="product.html?id=${b.id}">View Machine Details →</a><a class="btn btn-outline" href="compare.html" onclick="P.setCmp(['${b.id}','${others[0].id}'])">Compare ⇄</a></div></div>
+          <div class="mf-name"><h2>${esc(b.model)}</h2><h4>${esc(b.name)}</h4><span class="mf-match">Excellent Match</span>
+            <p>Perfect for your selected industry and ideal for your production needs.</p>
+            <ul><li>${esc(b.desc)}</li><li>Robust construction for heavy-duty use</li><li>Ideal for MDF, plywood and solid wood</li><li>Excellent value for your investment</li></ul></div>
+          <div class="mf-why"><h4>Why We Recommend This</h4>${scores.map(([t, v], i) => `<div class="r"><img src="${F}why-${i + 1}.png" alt=""><div><small>${t}</small><span class="dots">●●●●●</span></div><b>${v}%</b></div>`).join("")}</div>
+          <div class="mf-other"><h4>Other Great Options</h4>${others.slice(0, 2).map((o) => `<div class="mf-oi">${isDefault && (o.id === "r42" || o.id === "pj1300") ? `<img src="${F}opt-${o.id}.png" alt="">` : productImg(o)}<div><b>${esc(o.model.replace("PISTON ", ""))}</b><span>${esc(o.name)}</span><a class="btn btn-outline" href="product.html?id=${o.id}">View Details</a></div></div>`).join("")}</div>`;
+        qsa(".mf-oi > svg").forEach((s) => (s.style.cssText = "width:110px;height:76px;background:#fff;border-radius:3px"));
+      }
+      function renderSolution() {
+        const ind = industry(sel.industry) || D.industries[0];
+        const chain = ind.solution.slice(0, 4);
+        const imgs = ind.slug === "furniture" ? chain.map((_, i) => `${F}sol-${i + 1}.png`) : null;
+        qs("#solSub").textContent = `Based on similar production setups in the ${ind.name} industry`;
+        qs("#chain").innerHTML = chain.map((id, i) => { const p = product(id);
+          return `${i ? '<div class="arr">›</div>' : ""}<a class="mf-ci" href="product.html?id=${id}"><span class="k">${i + 1}</span>${imgs ? `<img src="${imgs[i]}" alt="">` : productImg(p)}<b>${esc(p.model.replace("PISTON ", ""))}</b><small>${esc(p.name)}</small></a>`; }).join("");
+        qs("#buildLine").onclick = qs("#nsLine").onclick = () => { chain.forEach((id) => P.addToQL(id, 1, true)); location.href = "quote-list.html"; };
+      }
+      function render() { renderHero(); renderSteps(); renderSummary(); renderCard(); renderLive(); renderSolution(); }
+      function go(i) {
+        cur = Math.max(0, Math.min(4, i));
+        history.replaceState(null, "", `?step=${cur + 1}`);
+        render();
+        if (qs("#steps").getBoundingClientRect().top < 0) qs("#steps").scrollIntoView({ behavior: "smooth" });
+      }
+      const jump = (e) => { const r = e.target.closest("[data-go]"); if (r) go(+r.dataset.go); };
+      qs("#summary").addEventListener("click", jump);
+      qs("#steps").addEventListener("click", jump);
+      qs("#quoteNow").onclick = () => { const b = rec()[0]; openWhatsApp({ items: [{ label: `${b.model} ${b.name}`, qty: 1 }], source: "Machine Finder" }); };
+      render();
+    });
+  </script>
+</body>
+</html>

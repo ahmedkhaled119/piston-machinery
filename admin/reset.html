@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Reset password — PISTON Admin Portal</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="ad" data-page="reset">
+  <main class="ad-auth">
+    <section class="ad-hero alt" aria-label="PISTON Admin Portal">
+      <img class="ad-hero-logo" src="../assets/img/admin/logo.png" alt="PISTON">
+      <span class="ad-hero-portal">ADMIN PORTAL</span>
+      <div class="ad-hero-copy">
+        <h1><span>Built for</span><em>Performance.</em><span>Managed by</span><span>Excellence.</span></h1>
+        <div class="ad-hero-bar"></div>
+        <p>Manage content, products, leads, and more<br>with the Piston Admin Portal.<br>Powering productivity. Everywhere.</p>
+      </div>
+      <small class="ad-hero-copyright">© <span data-year>2026</span> Piston Machinery. All rights reserved.</small>
+    </section>
+
+    <section class="ad-pane ad-pane-reset">
+      <button class="ad-lang" type="button" aria-label="Language: English"><i data-icon="globe"></i>English<i data-icon="chev" class="chev"></i></button>
+      <div class="ad-card ad-wide" aria-live="polite">
+        <div class="ad-badge-ico"><i data-icon="lockR"></i></div>
+        <h2>Reset Your Password</h2>
+        <p class="ad-sub">Enter your new password below.</p>
+        <form id="resetForm" novalidate>
+          <div class="ad-field">
+            <label for="password">New Password</label>
+            <div class="ad-input"><i data-icon="lock"></i><input id="password" type="password" autocomplete="new-password" placeholder="Enter new password" required>
+              <button class="ad-eye" type="button" aria-label="Show password"><i data-icon="eye"></i></button></div>
+            <div class="ad-meter" aria-live="polite"><i></i><i></i><i></i><span></span></div>
+          </div>
+          <div class="ad-rules">Your password must include:<ul></ul></div>
+          <div class="ad-field">
+            <label for="confirm">Confirm New Password</label>
+            <div class="ad-input"><i data-icon="lock"></i><input id="confirm" type="password" autocomplete="new-password" placeholder="Re-enter new password" required>
+              <button class="ad-eye" type="button" aria-label="Show password"><i data-icon="eye"></i></button></div>
+          </div>
+          <button class="ad-btn" type="submit">Reset Password <i data-icon="right"></i></button>
+        </form>
+        <a class="ad-back" href="login.html"><i data-icon="left"></i> Back to sign in</a>
+      </div>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

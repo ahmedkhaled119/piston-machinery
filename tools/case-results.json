@@ -1,0 +1,105 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.05.00.png",
+ "out": "src/demo/assets/img/case",
+ "items": [
+  {
+   "name": "rs-1.png",
+   "box": [
+    71,
+    503,
+    109,
+    541
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-2.png",
+   "box": [
+    333,
+    503,
+    371,
+    541
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-3.png",
+   "box": [
+    585,
+    503,
+    623,
+    541
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-4.png",
+   "box": [
+    843,
+    503,
+    881,
+    541
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-5.png",
+   "box": [
+    71,
+    610,
+    109,
+    648
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-6.png",
+   "box": [
+    333,
+    610,
+    371,
+    648
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-7.png",
+   "box": [
+    585,
+    610,
+    623,
+    648
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-8.png",
+   "box": [
+    843,
+    610,
+    881,
+    648
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "rs-trophy.png",
+   "box": [
+    70,
+    713,
+    110,
+    753
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

@@ -1,0 +1,149 @@
+{
+ "source": "docs/UI/Piston/2026-08-20 07.25.41.png",
+ "out": "src/demo/assets/img/event",
+ "items": [
+  {
+   "name": "ti-details-on.png",
+   "box": [
+    572,
+    383,
+    593,
+    404
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "dt-1.png",
+   "box": [
+    78,
+    541,
+    98,
+    561
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "dt-2.png",
+   "box": [
+    78,
+    568,
+    98,
+    587
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "dt-3.png",
+   "box": [
+    78,
+    594,
+    98,
+    615
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "dt-4.png",
+   "box": [
+    80,
+    633,
+    97,
+    653
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "dt-5.png",
+   "box": [
+    78,
+    687,
+    98,
+    706
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "dt-6.png",
+   "box": [
+    78,
+    714,
+    98,
+    733
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "check.png",
+   "box": [
+    577,
+    466,
+    596,
+    485
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "pv-1.png",
+   "box": [
+    1194,
+    144,
+    1217,
+    168
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "pv-2.png",
+   "box": [
+    1195,
+    214,
+    1216,
+    238
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "pv-3.png",
+   "box": [
+    1194,
+    285,
+    1217,
+    308
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "pv-4.png",
+   "box": [
+    1194,
+    355,
+    1217,
+    379
+   ],
+   "trim": true,
+   "scale": 2
+  },
+  {
+   "name": "pv-5.png",
+   "box": [
+    1194,
+    426,
+    1217,
+    450
+   ],
+   "trim": true,
+   "scale": 2
+  }
+ ]
+}

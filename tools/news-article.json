@@ -1,0 +1,26 @@
+{
+  "source": "docs/UI/Piston/2026-08-20 07.12.15.png",
+  "out": "src/demo/assets/img/news-article",
+  "items": [
+    {"name": "hero-smart-manufacturing.png", "box": [58, 241, 985, 450]},
+    {"name": "rel-ligna-2024.png", "box": [1050, 141, 1190, 215]},
+    {"name": "rel-automation.png", "box": [1050, 236, 1190, 310]},
+    {"name": "rel-middle-east.png", "box": [1050, 330, 1190, 404]},
+    {"name": "m-cal.png", "box": [54, 203, 76, 224], "trim": true, "scale": 2},
+    {"name": "m-user.png", "box": [177, 203, 201, 224], "trim": true, "scale": 2},
+    {"name": "m-clock.png", "box": [335, 203, 359, 224], "trim": true, "scale": 2},
+    {"name": "sh-in.png", "box": [825, 203, 844, 221], "trim": true, "scale": 2},
+    {"name": "sh-fb.png", "box": [869, 203, 888, 221], "trim": true, "scale": 2},
+    {"name": "sh-x.png", "box": [913, 203, 932, 221], "trim": true, "scale": 2},
+    {"name": "sh-mail.png", "box": [958, 203, 977, 221], "trim": true, "scale": 2},
+    {"name": "check.png", "box": [55, 645, 68, 661], "trim": true, "scale": 2},
+    {"name": "cat-1.png", "box": [1045, 467, 1067, 488], "trim": true, "scale": 2},
+    {"name": "cat-2.png", "box": [1045, 490, 1067, 511], "trim": true, "scale": 2},
+    {"name": "cat-3.png", "box": [1045, 513, 1067, 534], "trim": true, "scale": 2},
+    {"name": "cat-4.png", "box": [1045, 536, 1067, 557], "trim": true, "scale": 2},
+    {"name": "cat-5.png", "box": [1045, 558, 1067, 579], "trim": true, "scale": 2},
+    {"name": "cat-6.png", "box": [1045, 581, 1067, 602], "trim": true, "scale": 2},
+    {"name": "lock.png", "box": [1042, 723, 1063, 742], "trim": true, "scale": 2},
+    {"name": "cta.png", "box": [266, 794, 320, 848], "trim": true, "scale": 2}
+  ]
+}

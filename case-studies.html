@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Studies — PISTON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .cs-hero { position: relative; height: 203px; background: #fff; line-height: 1.35; }
+    .cs-hero > img { position: absolute; right: 0; top: 0; width: 1036px; max-width: 68%; }
+    .cs-hero .container { position: relative; }
+    .cs-hero .breadcrumb { padding: 10px 0 0 15px; font-size: 11px; color: #222; margin: 0; gap: 6px; }
+    .cs-hero .ey { display: block; margin: 19px 0 0 15px; color: var(--red); font-weight: 700; font-size: 12px; text-transform: uppercase; }
+    .cs-hero h1 { font-size: 36px; font-weight: 800; line-height: .97; letter-spacing: 2px; margin: 1px 0 10px 15px; color: #111; }
+    .cs-hero p { font-size: 12px; color: #111; margin: 0 0 0 15px; max-width: 345px; line-height: 1.45; }
+    .cs-box { background: #fff; border-radius: 3px; box-shadow: 0 1px 8px rgba(0,0,0,.07); margin: 0 11px 0 10px; line-height: 1.35; position: relative; z-index: 1; }
+    .cs-bar { display: flex; align-items: center; gap: 10px; height: 45px; padding: 0 33px 0 21px; border-bottom: 1px solid #f0f0f2; }
+    .cs-bar a.pill { height: 24px; padding: 0 16px; display: grid; place-items: center; border: 1px solid #e3e4e7; border-radius: 2px; color: #111; font-size: 9.4px; font-weight: 700; }
+    .cs-bar a.pill.on { background: var(--red); border-color: var(--red); color: #fff; }
+    .cs-bar .flt { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 9.4px; }
+    .cs-bar .flt + .flt { margin-left: 24px; }
+    .cs-sel { height: 24px; border: 1px solid #e3e4e7; border-radius: 2px; font: inherit; font-size: 9px; padding: 0 10px; appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' fill='none' stroke='%23333' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 10px center; }
+    .cs-body { display: grid; grid-template-columns: 228px 1fr; }
+    .cs-f { border-right: 1px solid #f0f0f2; padding: 16px 13px 16px 16px; }
+    .cs-f .hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .cs-f h3 { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .cs-f .hd button { background: none; border: 0; color: var(--red); font-size: 8px; font-weight: 700; cursor: pointer; }
+    .cs-f h5 { font-size: 9.2px; font-weight: 700; margin: 0 0 4px; text-transform: uppercase; }
+    .cs-f .grp { margin-bottom: 12px; }
+    .cs-f label.o { display: grid; grid-template-columns: 10px 1fr auto; gap: 9px; align-items: center; font-size: 8.8px; height: 15.6px; cursor: pointer; }
+    .cs-f label.o input { appearance: none; -webkit-appearance: none; width: 9px; height: 9px; border: 1px solid #c9cacd; border-radius: 1px; margin: 0; display: grid; place-items: center; }
+    .cs-f label.o input:checked { background: var(--red); border-color: var(--red); }
+    .cs-f label.o input:checked::after { content: ""; width: 4px; height: 2.5px; border: solid #fff; border-width: 0 0 1.3px 1.3px; transform: rotate(-45deg) translate(0, -1px); }
+    .cs-f label.o small { font-size: 8px; color: #333; }
+    .cs-f .cs-sel { width: 100%; height: 21px; font-size: 8px; margin-top: 3px; }
+    .cs-f .apply { width: 100%; height: 25px; margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 10px; background: #fff; border: 1px solid var(--red); border-radius: 2px; color: var(--red); font-size: 8.4px; font-weight: 700; cursor: pointer; }
+    .cs-main { padding: 13px 27px 12px 18px; }
+    .cs-grid { display: grid; grid-template-columns: 376px 373px 1fr; gap: 13px 17px; }
+    .cs-card { display: grid; grid-template-columns: auto 1fr; background: #fff; border-radius: 3px; box-shadow: 0 1px 6px rgba(0,0,0,.07); color: #111; min-height: 204px; }
+    .cs-card > img { height: 183px; display: block; border-radius: 3px 0 0 3px; }
+    .cs-card .t { padding: 9px 12px 8px 14px; display: flex; flex-direction: column; }
+    .cs-card b.h { font-size: 13.4px; line-height: 1.2; }
+    .cs-card .ckv { font-size: 8.2px; margin-top: 2px; }
+    .cs-card .ckv:first-of-type { margin-top: 9px; }
+    .cs-card .ckv span { font-weight: 700; }
+    .cs-card p { font-size: 8.2px; line-height: 1.65; margin: 10px 0 0; flex: 1; }
+    .cs-card .met { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 0 -6px 0 -2px; padding-top: 0; }
+    .cs-card .met div { text-align: left; }
+    .cs-card .met b { display: flex; gap: 5px; align-items: center; font-size: 10px; }
+    .cs-card .met img { width: 11px; }
+    .cs-card .met small { display: block; font-size: 5.8px; color: #333; margin-top: 2px; }
+    .cs-card .lk { color: var(--red); font-size: 7.2px; font-weight: 700; margin-top: 2px; }
+    .cs-card-wrap { display: grid; grid-template-rows: auto auto; }
+    .cs-pg { display: flex; justify-content: center; gap: 13px; margin-top: 13px; }
+    .cs-pg button { width: 23px; height: 23px; border: 1px solid #e3e4e7; border-radius: 2px; background: #fff; font-size: 8px; cursor: pointer; }
+    .cs-pg button.on { background: var(--red); border-color: var(--red); color: #fff; }
+    .cs-cta { display: grid; grid-template-columns: 66px 1fr auto auto; align-items: center; gap: 0 14px; width: 1057px; margin: 7px 0 0 210px; padding: 9px 30px 10px 30px; background: #fff; border-radius: 3px 3px 0 0; box-shadow: 0 1px 8px rgba(0,0,0,.07); line-height: 1.35; }
+    .cs-cta > img { width: 48px; }
+    .cs-cta h3 { font-family: var(--font); font-size: 11.5px; font-weight: 700; letter-spacing: 0; margin: 0; }
+    .cs-cta p { font-size: 9.6px; margin: 4px 0 0; line-height: 1.55; }
+    .cs-cta .btn { height: 27px; padding: 0; width: 210px; font-size: 8.6px; gap: 14px; }
+    .cs-cta .btn-o { width: 166px; background: #fff; border: 1px solid var(--red); color: #111; }
+    .cs-empty { padding: 30px; text-align: center; font-size: 11px; }
+    @media (max-width: 1400px) {
+      .cs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cs-cta { display: flex; flex-wrap: wrap; gap: 10px 16px; width: auto; margin: 10px 11px 0 10px; }
+      .cs-cta > div { flex: 1 1 300px; }
+    }
+    @media (max-width: 1100px) {
+      .cs-hero { display: flex; flex-direction: column; height: auto; }
+      .cs-hero > img { position: static; order: 2; width: 100%; max-width: none; margin-top: 14px; }
+      .cs-box { margin-top: 10px; }
+      .cs-bar { flex-wrap: wrap; height: auto; padding: 10px 14px; }
+      .cs-bar .flt, .cs-bar .flt + .flt { margin-left: 0; }
+      .cs-bar .flt:first-of-type { margin-left: auto; }
+      .cs-body { grid-template-columns: minmax(0, 1fr); }
+      .cs-f { columns: 4 170px; column-gap: 24px; border-right: 0; border-bottom: 1px solid #f0f0f2; }
+      .cs-f .hd, .cs-f .apply { column-span: all; }
+      .cs-f .grp { break-inside: avoid; }
+      .cs-f .apply { max-width: 240px; }
+      .cs-main { padding: 13px 14px 12px; }
+    }
+    @media (max-width: 760px) {
+      .cs-hero h1 { font-size: 30px; }
+      .cs-hero p { margin-right: 15px; }
+      .cs-box, .cs-cta { margin-left: 0; margin-right: 0; zoom: 1.25; }
+      .cs-bar .flt:first-of-type { margin-left: 0; }
+      .cs-grid { grid-template-columns: minmax(0, 1fr); }
+      .cs-card .met { margin-top: 8px; }
+      .cs-card .met small { font-size: 7.5px; }
+      .cs-cta { padding: 12px 14px; }
+    }
+    @media (max-width: 480px) {
+      .cs-bar .flt { flex: 1 1 100%; }
+      .cs-bar .cs-sel { flex: 1; }
+      .cs-card { grid-template-columns: minmax(0, 1fr); }
+      .cs-card > img { width: 100%; height: 160px; object-fit: cover; border-radius: 3px 3px 0 0; }
+      .cs-card > span:first-of-type { display: none; }
+      .cs-card .lk { padding-top: 6px !important; }
+      .cs-cta .btn { flex: 1 1 100%; width: auto; }
+    }
+  </style>
+</head>
+<body class="wide cf" data-nav="about" data-footer="plain" data-footer-solutions>
+  <div id="site-header"></div>
+
+  <section class="cs-hero">
+    <img src="assets/img/cases/hero.png" alt="Piston production line — proven solutions, global experience, measurable results, end-to-end support">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="hub.html">News, Case Studies &amp; Projects</a><span>›</span>Case Studies</div>
+      <span class="ey">Case Studies</span>
+      <h1>Real Results.<br>Real Impact.</h1>
+      <p>Explore how Piston solutions help manufacturers overcome challenges, improve productivity and achieve measurable results.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="cs-box">
+      <div class="cs-bar">
+        <a class="pill" href="hub.html">ALL CONTENT (124)</a>
+        <a class="pill on" href="case-studies.html">CASE STUDIES (42)</a>
+        <a class="pill" href="projects.html">PROJECTS (38)</a>
+        <a class="pill" href="news.html">NEWS (28)</a>
+        <a class="pill" href="videos.html">VIDEOS (16)</a>
+        <label class="flt">INDUSTRY: <select class="cs-sel" id="topInd" style="width:155px" aria-label="Industry"><option value="">All Industries</option></select></label>
+        <label class="flt">SORT BY: <select class="cs-sel" id="sort" style="width:115px" aria-label="Sort by"><option value="latest">Latest</option><option value="impact">Highest Impact</option></select></label>
+      </div>
+      <div class="cs-body">
+        <aside class="cs-f" id="filters">
+          <div class="hd"><h3>FILTER CASE STUDIES</h3><button type="button" id="clear">Clear All</button></div>
+          <div class="grp"><h5>Industry</h5><div id="fInd"></div></div>
+          <div class="grp"><h5>Solution Type</h5><div id="fSol"></div></div>
+          <div class="grp"><h5>Country / Region</h5><select class="cs-sel" id="fReg" aria-label="Country or region"><option value="">All Regions</option><option>Middle East</option><option>Africa</option><option>Europe</option></select></div>
+          <div class="grp"><h5>Results Achieved</h5><div id="fRes"></div></div>
+          <button type="button" class="apply" id="apply"><svg width="10" height="9" viewBox="0 0 10 9" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M.5 .5h9L6 4.5V8L4 7V4.5z"/></svg>APPLY FILTERS</button>
+        </aside>
+        <div class="cs-main">
+          <div class="cs-grid" id="grid"></div>
+          <div class="cs-pg" id="pg"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-cta">
+      <img src="assets/img/cases/cta.png" alt="">
+      <div><h3>READY TO ACHIEVE RESULTS LIKE THESE?</h3><p>Tell us about your production goals and our experts<br>will design the right solution for you.</p></div>
+      <a class="btn btn-red" href="industries.html">BUILD YOUR PRODUCTION LINE <span>→</span></a>
+      <a class="btn btn-o" href="talk-to-engineer.html">TALK TO AN EXPERT <span>→</span></a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("piston:ready", () => {
+      const { D, qs, qsa, esc } = P;
+      const A = "assets/img/cases/";
+      const CASES = [
+        { id: "cairo-cabinets", t: "Cabinet Factory<br>Production Line Upgrade", ind: "cabinet", indL: "Cabinet Manufacturing", sol: "Full Production Line", solK: "line", reg: "Middle East", res: ["prod", "waste"],
+          d: "Upgraded an outdated production line<br>with modern machines and automation<br>to increase capacity and improve quality.", m: [["+28%", "Production Capacity"], ["-18%", "Material Waste"], ["+35%", "Overall Efficiency"]] },
+        { id: "warsaw-doors", t: "Door Manufacturing<br>Facility Setup", ind: "door", indL: "Doors", sol: "Complete Setup", solK: "line", reg: "Europe", res: ["quality", "waste"],
+          d: "Established a new door manufacturing<br>facility with advanced CNC and<br>automation.", m: [["+30%", "Production Capacity"], ["-20%", "Production Cost"], ["+25%", "Quality Improvement"]] },
+        { id: "riyadh-panels", t: "Industrial Panel<br>Production Line", ind: "industrial", indL: "Industrial", sol: "Production Line", solK: "line", reg: "Middle East", res: ["prod", "labor"],
+          d: "Automated line for industrial panel<br>manufacturing with maximum<br>productivity.", m: [["+40%", "Output Increase"], ["-15%", "Cycle Time"], ["+40%", "Labor Efficiency"]] },
+        { id: "casablanca-workshop", t: "Workshop Upgrade<br>Solution", ind: "workshops", indL: "Woodworking Workshops", sol: "Machine Upgrade", solK: "upgrade", reg: "Africa", res: ["prod"],
+          d: "Upgraded woodworking workshop<br>with modern machinery and better<br>workflow.", m: [["+22%", "Productivity"], ["-12%", "Setup Time"], ["+18%", "Profitability"]] },
+        { id: "istanbul-automation", t: "Furniture Factory<br>Automation", ind: "furniture", indL: "Furniture Manufacturing", sol: "Automation Solution", solK: "auto", reg: "Europe", res: ["prod", "labor"],
+          d: "Integrated automation solution for<br>furniture production, reducing manual<br>work and increasing efficiency.", m: [["+32%", "Production Output"], ["-25%", "Labor Cost"], ["+30%", "On-Time Delivery"]] },
+        { id: "bucharest-expansion", t: "Cabinet Production<br>Capacity Expansion", ind: "cabinet", indL: "Cabinet Manufacturing", sol: "Capacity Expansion", solK: "capacity", reg: "Europe", res: ["prod"],
+          d: "Expanded production capacity to meet<br>growing demand with new machines<br>and optimized layout.", m: [["+45%", "Capacity Increase"], ["-17%", "Lead Time"], ["+20%", "Revenue Growth"]] }
+      ].map((c, n) => ({ ...c, n: n + 1, city: D.cases.find((x) => x.id === c.id)?.city }));
+
+      const opt = (name, v, label, cnt, on) => `<label class="o"><input type="checkbox" name="${name}" value="${v}" ${on ? "checked" : ""}><span>${esc(label)}</span><small>${cnt}</small></label>`;
+      const inds = [["furniture", 14], ["cabinet", 12], ["door", 5], ["interior", 4], ["workshops", 4], ["industrial", 3]];
+      qs("#fInd").innerHTML = opt("ind", "", "All Industries", "", true) + inds.map(([s, c]) => opt("ind", s, P.industry(s).name, c)).join("");
+      qs("#fSol").innerHTML = [["line", "Production Line", 20], ["upgrade", "Machine Upgrade", 9], ["capacity", "Capacity Expansion", 7], ["process", "Process Improvement", 4], ["auto", "Automation Solution", 2]].map(([v, l, c]) => opt("sol", v, l, c)).join("");
+      qs("#fRes").innerHTML = [["prod", "Increase Productivity", 28], ["waste", "Reduce Waste", 22], ["quality", "Improve Quality", 18], ["labor", "Labor Saving", 15]].map(([v, l, c]) => opt("res", v, l, c)).join("");
+      qs("#topInd").insertAdjacentHTML("beforeend", D.industries.map((i) => `<option value="${i.slug}">${esc(i.name)}</option>`).join(""));
+      qs("#pg").innerHTML = `<button aria-label="Previous">‹</button>${["1", "2", "3", "4", "5", "…", "9"].map((p) => `<button class="${p === "1" ? "on" : ""}">${p}</button>`).join("")}<button aria-label="Next">›</button>`;
+      qs("#pg").onclick = (e) => { if (e.target.closest("button") && !e.target.closest(".on")) P.toast("Demo shows page 1 of the case studies"); };
+
+      const checked = (name) => qsa(`#filters input[name=${name}]:checked`).map((x) => x.value).filter(Boolean);
+      // "All Industries" and specific industries are mutually exclusive.
+      qs("#fInd").addEventListener("change", (e) => {
+        const all = qs('#fInd input[value=""]');
+        if (e.target === all && all.checked) qsa("#fInd input").forEach((x) => (x.checked = x === all));
+        else all.checked = !checked("ind").length;
+      });
+      qs("#topInd").onchange = (e) => { qsa("#fInd input").forEach((x) => (x.checked = x.value === e.target.value)); render(); };
+
+      function render() {
+        const ind = checked("ind"), sol = checked("sol"), res = checked("res"), reg = qs("#fReg").value;
+        let list = CASES.filter((c) => (!ind.length || ind.includes(c.ind)) && (!sol.length || sol.includes(c.solK)) && (!reg || c.reg === reg) && (!res.length || res.some((r) => c.res.includes(r))));
+        if (qs("#sort").value === "impact") list = [...list].sort((a, b) => parseInt(b.m[0][0]) - parseInt(a.m[0][0]));
+        qs("#grid").innerHTML = list.map((c) => `<a class="cs-card" href="case-study.html?id=${c.id}"><img src="${A}c-${c.n}.png" alt="${esc(c.city || "")}">
+          <div class="t"><b class="h">${c.t}</b><div class="ckv"><span>Industry:</span> ${esc(c.indL)}</div><div class="ckv"><span>Solution:</span> ${esc(c.sol)}</div><p>${c.d}</p>
+            <div class="met">${c.m.map(([v, l], k) => `<div><b><img src="${A}m-${c.n}-${k + 1}.png" alt="">${v}</b><small>${l}</small></div>`).join("")}</div></div>
+          <span></span><span class="lk" style="padding:0 0 9px 14px">READ CASE STUDY &nbsp;→</span></a>`).join("")
+          || '<div class="cs-empty" style="grid-column:1/-1">No case studies match these filters. <a class="red" href="#" id="reset">Clear filters</a></div>';
+      }
+      qs("#apply").onclick = render;
+      qs("#sort").onchange = render;
+      const clear = () => { qsa("#filters input").forEach((x) => (x.checked = x.value === "" && x.name === "ind")); qs("#fReg").value = ""; qs("#topInd").value = ""; render(); };
+      qs("#clear").onclick = clear;
+      qs("#grid").addEventListener("click", (e) => { if (e.target.id === "reset") { e.preventDefault(); clear(); } });
+      render();
+    });
+  </script>
+</body>
+</html>
